@@ -1,6 +1,4 @@
 \documentclass{article}
-\usepackage[dvipsnames]{xcolor}
-\newcommand{\skipline}{\vskip 0.2in}
 
 \usepackage[mast]{dennis}
 
@@ -33,7 +31,10 @@ In a triangle with coordinates $A=(x_a,y_a),B=(x_b,y_b),C=(x_c,y_c)$, the coordi
 \end{theo}
 
 \section{Heuristics}
-\begin{itemize}
+
+Here are a couple of tips and some philosophy about coordinate bashes.
+
+\begin{enumerate}
     \item Many people say that coordinate bashing is a ``no brain" technique, and is for when you don't know how to synthetic the geometry. This is false. When coordinate bashing, the most important step is your set up. This means what you define as the origin, and the equations of circles, lines, etc. Having the right setup will save you lots of time.
     \item Have a plan. Whenever I use coordinates on a problem, I plan out how I would calculate each point, and the method of calculating each point. This helps you get a sense of how long it will take you to solve the problem, and whether its worth it to just move onto another problem, or to try to look for a synthetic solution. 
     \item Know when to apply coordinates! Right angles, lots of lines, problems where you are given triangle side lengths are your friend. Some things that are harder to deal with are incenters, multiple circles, etc.
@@ -41,12 +42,12 @@ In a triangle with coordinates $A=(x_a,y_a),B=(x_b,y_b),C=(x_c,y_c)$, the coordi
     \item When you have a nice central circle, its a good idea to set that circle at the origin, so the equation of the circle is easier to work with.
     \item For obvious reasons, knowledge of standard geometry theorems is also very helpful. If you can use synthetic techniques to help you simplify the problem, then coordinate bashing can be much less computationally heavy and much faster. 
     \item When given a triangle with three side lengths, then you can use Heron's to calculate the area, and then calculate the altitude of one of the sides, so you can place the triangle onto the coordinate plane. 
-\end{itemize}
+\end{enumerate}
 
 \section{Examples}
 
 \begin{exam}
-Let $ABC$ be a triangle with $AB=13$, $BC=14$, $AC=15$. Let $H,I,M$ be the orthocenter of $\Delta ABC$, incenter of $\Delta ABC$, and midpoint of $BC$ respectively. What is the area of $\Delta HIM$?
+Let $ABC$ be a triangle with $AB=13$, $BC=14$, $AC=15$. Let $H$, $I$, and $M$ be the orthocenter of $\triangle ABC$, incenter of $\triangle ABC$, and midpoint of $BC$ respectively. What is the area of $\triangle HIM$?
 \end{exam}
 
 \begin{walk}
@@ -158,7 +159,7 @@ Let $ABCD$ be an isosceles trapezoid with $AD=BC$ and $AB<CD.$ Suppose that the 
 
 \section{Solutions to Examples}
 \subsection{Unsourced}
-We set $A=(0,12),B=(-5,0),C=(9,0)$. Its easy to see that $M=(2,0)$. Now, basic computation gives us the inradius $r=4$. If we let $D$ be the $BC$ touchpoint of the incircle, then it isn't hard to see that $BD=5$, so $I=(1,5)$. Dropping altitudes gives $H=(0,\frac{15}{4})$, so we can use shoelace to get the answer of $\boxed{\frac{17}{8}}$.
+We set $A=(0,12),B=(-5,0),C=(9,0)$. Its easy to see that $M=(2,0)$. Now, basic computation gives us the inradius $r=4$. If we let $D$ be the $BC$ touchpoint of the incircle, then it isn't hard to see that $BD=5$, so $I=(1,5)$. Dropping altitudes gives $H=(0,\frac{15}{4})$, so we can use shoelace to get the answer of $\ansbold{\frac{17}{8}}$.
 
 \subsection{AMC 10A 2020/20}
 \begin{center}
@@ -178,7 +179,7 @@ It remains to calculate $B$. Now, note that $B$ is simply the intersection of $x
     \implies 5x^2+40x&=0\\
     \implies x&=-8,0
 \end{align*}
-Obviously, $x=0$ is the first intersection of $DE$ with $(ABC)$, so we can toss that out. Then, plugging $x=-4$ back in we get $y=-6$. Finally, we finish with shoelace on $ABCD$, and get an answer of $\boxed{360}$.
+Obviously, $x=0$ is the first intersection of $DE$ with $(ABC)$, so we can toss that out. Then, plugging $x=-4$ back in we get $y=-6$. Finally, we finish with shoelace on $ABCD$, and get an answer of $\ansbold{360}$.
 
 \subsection{AIME I 2021/9}
 Instead of high IQ similar triangle spam, we use the method of coordinate bashing. We do this by setting the origin to be the foot from $A$ to $CD$, and noting that we can use point to line formula and isosceles trapezoid properties to get the locations of the points $B,C,D$. 
@@ -216,10 +217,10 @@ Upon subtracting the two equations, we get $d=\frac{2}{5}b$. Now plugging this b
     \implies b=\frac{45\sqrt{2}}{4}\\
     \implies d=\frac{9\sqrt{2}}{2}
 \end{align*}
-From here it is not hard to get the answer of $\boxed{567}$.
+From here it is not hard to get the answer of $\ansbold{567}$.
 
-\skipline
-\noindent
-\textbf{Remark:} On contest, I calculated the area of the trapezoid to be $\frac{1}{2}\cdot(b+d)\cdot b\cdot18\implies 486$. Oops.
+\begin{remark}[Brian Zhang]
+On contest, I calculated the area of the trapezoid to be $\frac{1}{2}\cdot(b+d)\cdot b\cdot18\implies 486$. Oops.
+\end{remark}
 
 \end{document}
