@@ -28,7 +28,13 @@ If there are any environments you find yourself needing, submit an issue (here o
 
 ## Problems and point values
 
-Make sure you adhere to
+Make sure you adhere to the 1,2,4,6,9,13 point value standard. To input a problem, just type
+
+	\begin{prob}{points}[source]
+	Problem statement
+	\end{prob}
+	
+It will not compile until I update dennis.sty and the rest of the MAST handouts. Don't worry about that, just do it for now.
 
 ## Diagrams
 
