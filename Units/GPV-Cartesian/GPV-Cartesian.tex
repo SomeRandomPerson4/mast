@@ -10,33 +10,36 @@
 
 \begin{document}
 \maketitle
-\section{Useful theorems}
+\section{Theory}
+
+Here are a couple of useful theorems.
+
 \begin{theo}[Sholeace]
-In a polygon with coordinates $(x_1,y_1),(x_2,y_2),\dots,(x_n,y_n)$, the area $\textbf{A}$ is: 
+In a polygon with coordinates $(x_1,y_1),(x_2,y_2),\dots,(x_n,y_n)$, the area $\mathbf{A}$ is:
 \begin{align*}
-    \textbf{A} &= \frac{1}{2}\left|\left(\sum_{i=1}^{n-1}x_iy_{i+1}\right)+ x_ny_1-\left(\sum_{i=1}^{n-1}x_{i+1}y_i\right)-x_1y_n\right|\\ 
-    &=\frac{1}{2}\cdot |x_1y_2+x_2y_3+\cdots + x_{n-1}y_n+x_ny_1-x_2y_1-x_3y_2-\dots-x_ny_{n-1}-x_1y_n|
+    \mathbf{A} &= \frac{1}{2}\left|\left(\sum_{i=1}^{n-1}x_iy_{i+1}\right)+ x_ny_1-\left(\sum_{i=1}^{n-1}x_{i+1}y_i\right)-x_1y_n\right|\\ 
+    &=\frac{1}{2}\cdot |x_1y_2+x_2y_3+\cdots + x_{n-1}y_n+x_ny_1-x_2y_1-x_3y_2-\dots-x_ny_{n-1}-x_1y_n|.
 \end{align*}
 \end{theo}
 
 \begin{theo}[Point to line]
 The distance between the point $(x_0,y_0)$ to the line $Ax+By+C=0$ can be written as 
-\[\frac{|Ax_0+By_0+C|}{\sqrt{A^2+B^2}}\]
+\[\frac{|Ax_0+By_0+C|}{\sqrt{A^2+B^2}}.\]
 \end{theo}
 
 \begin{theo}[Centroid coordinates]
 In a triangle with coordinates $A=(x_a,y_a),B=(x_b,y_b),C=(x_c,y_c)$, the coordinates of the centroid is
-\[\left(\frac{x_a+x_b+x_c}{3},\frac{y_a+y_b+y_c}{3}\right)\]
+\[\left(\frac{x_a+x_b+x_c}{3},\frac{y_a+y_b+y_c}{3}\right).\]
 \end{theo}
 
 \section{Heuristics}
 \begin{itemize}
-    \item Many people say that coordinate bashing is a ``no brain" technique, and is for when you don't know how to synthetic the geometry. This is false. When coordbashing, the most important step is your set up. This means what you define as the origin, and the equations of circles, lines, etc. Having the right setup will save you lots of time.
+    \item Many people say that coordinate bashing is a ``no brain" technique, and is for when you don't know how to synthetic the geometry. This is false. When coordinate bashing, the most important step is your set up. This means what you define as the origin, and the equations of circles, lines, etc. Having the right setup will save you lots of time.
     \item Have a plan. Whenever I use coordinates on a problem, I plan out how I would calculate each point, and the method of calculating each point. This helps you get a sense of how long it will take you to solve the problem, and whether its worth it to just move onto another problem, or to try to look for a synthetic solution. 
     \item Know when to apply coordinates! Right angles, lots of lines, problems where you are given triangle side lengths are your friend. Some things that are harder to deal with are incenters, multiple circles, etc.
     \item Angle conditions are usually pretty hard to deal with, but if they can be reduced to the angle bisector theorem, cyclic quadrilaterals, or tangents, then it is much easier to deal with them. 
     \item When you have a nice central circle, its a good idea to set that circle at the origin, so the equation of the circle is easier to work with.
-    \item For obvious reasons, knowledge of standard geometry theorems is also very helpful. If you can use synthetic techniques to help you simplify the problem, then coordbashing can be much less computationally heavy and much faster. 
+    \item For obvious reasons, knowledge of standard geometry theorems is also very helpful. If you can use synthetic techniques to help you simplify the problem, then coordinate bashing can be much less computationally heavy and much faster. 
     \item When given a triangle with three side lengths, then you can use Heron's to calculate the area, and then calculate the altitude of one of the sides, so you can place the triangle onto the coordinate plane. 
 \end{itemize}
 
@@ -88,12 +91,12 @@ Let $ABCD$ be an isosceles trapezoid with $AD=BC$ and $AB<CD.$ Suppose that the 
         \sqrt{324+(b+d)^2}&=\frac{9}{5}b\\
         \sqrt{324+d^2}&=\frac{6}{5}b
     \end{align*}
-    or some equivalent expression. This may be slightly different based on how you chose your variables, and the origin. 
+    or some equivalent expression. This may be slightly different based on how you chose your variables and the origin. 
     \item Solve for $b$ and $d$, by squaring and subtracting. 
     \item Finish. 
 \end{enumerate}
 
-\newpage
+\pagebreak
 \section{Problems}
 
 \minpt{34}
@@ -134,7 +137,10 @@ Let $ABCD$ be an isosceles trapezoid with $AD=BC$ and $AB<CD.$ Suppose that the 
 
 \prob{9}{2020 AIME I Problem 13}{Point $D$ lies on side $BC$ of $\triangle ABC$ so that $\overline{AD}$ bisects $\angle BAC$. The perpendicular bisector of $\overline{AD}$ intersects the bisectors of $\angle ABC$ and $\angle ACB$ in points $E$ and $F$, respectively. Given that $AB=4$, $BC=5$, $CA=6$, the area of $\triangle AEF$ can be written as $\tfrac{m\sqrt n}p$, where $m$ and $p$ are relatively prime positive integers, and $n$ is a positive integer not divisible by the square of any prime. Find $m+n+p$.}
 
-\newpage
+\pagebreak
+
+\appendix
+
 \section{Solutions to Examples}
 \subsection{No source}
 We set $A=(0,12),B=(-5,0),C=(9,0)$. Its easy to see that $M=(2,0)$. Now, basic computation gives us the inradius $r=4$. If we let $D$ be the $BC$ touchpoint of the incircle, then it isn't hard to see that $BD=5$, so $I=(1,5)$. Dropping altitudes gives $H=(0,\frac{15}{4})$, so we can use shoelace to get the answer of $\boxed{\frac{17}{8}}$.
