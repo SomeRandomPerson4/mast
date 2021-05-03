@@ -1,0 +1,331 @@
+\documentclass[11pt]{article}
+
+\usepackage[mast]{dennis}
+
+\title{Introduction to Series}
+\author{William Dai}
+\date{APV} 
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This handout is supposed to be an introductory look at the very common arithmetic and geometric series while also introducing a few common strategies for computing series. You already should be quite familar with the formulas for arithmetic and geometric series.
+
+%%%---------------------------------------------------------------------------------------------------------%%%
+%--------------------------------------------------------------------------------------------------------------------%
+%%%---------------------------------------------------------------------------------------------------------%%%
+
+\section{Arithmetic Sequences and Series}
+
+\begin{defi}[Arithmetic Series and Sequences]
+An arithmetic series is $a_{1}+a_{2}+a_{3}\ldots $ where $a_{i}-a_{i-1}=d$ for some constant $d$ and all $i\ge 2$. Note that an arithmetic series refers to the \textbf{sum} while an arithmetic sequence refers to the \textbf{ordered list of terms}.\footnote{Sometimes, an arithmetic sequence or series starts with index $0$, making it \textbf{zero-indexed}. The same formulas still apply but you will have to adjust the indexes accordingly.}
+\end{defi}
+
+Using this definition, we can now derive some formulas for each term and the series.
+\begin{theo}[Formula For Term]
+If $a_{i}$ is $i$th term of an arithmetic sequence with common difference $d$, then $a_{i}=a_{1}+(i-1)d$.
+\end{theo}
+
+Now, we'll present some common formulas for arithmetic series and sequences. These all easily follow from the previous formula but it's useful to know them to quickly manipulate arithmetic series.
+
+\begin{theo}[Arithmetic Average]
+In an arithmetic series $a_{i}$, $a_{n}+a_{m}=2a_{\frac{n+m}{2}}$ if $n+m$ is even. 
+\end{theo}
+
+\begin{pro}
+We have $a_{n}=a_{1}+(n-1)d$ and $a_{m}=a_{1}+(m-1)d$. Then, $a_{n}+a_{m}=2a_{1}+(n+m-2)d=2(a_{1}+(\frac{n+m}{2}-1)d)=2a_{\frac{n+m}{2}}$
+\end{pro}
+
+\begin{theo}[Arithmetic Sequence and Series]
+For an arithmetic sequence $a_{i}$, $a_{1}+a_{2}\ldots + a_{n}=\frac{a_{1}+a_{n}}{2}\cdot n$.
+\end{theo}
+
+\begin{pro}
+Note that we can pair up $a_{i}$ and $a_{n+1-i}$ to get $a_{1}+(i-1)d+a_{1}+(n-i)d=2a_{1}+(n-1)d$. There is a special case that if $n$ is odd and $i=\frac{n+1}{2}$, we can't pair up that term with itself. However, $a_{\frac{n+1}{2}}=a_{1}+\frac{n-1}{2}d$ so it still averages out as $\frac{1}{2}$ of a pair.
+
+Then, we have $\frac{n}{2}$ pairs (if $n$ is odd, we have that $\frac{1}{2}$ pair). So, our total sum is 
+$\frac{n}{2}\cdot (a_{1}+a_{n})=\frac{a_{1}+a_{n}}{2}\cdot n$.
+\end{pro}
+
+\begin{theo}[Arithmetic Series]
+If the common difference is $d$ in arithmetic sequence $a_{i}$, $a_{1}+a_{2}\ldots + a_{n}=n\cdot a_{1}+d(\frac{(n-1)(n)}{2})$.
+\end{theo}
+
+\begin{pro}
+We use the previous theorem 
+$$a_{1}+a_{2}\ldots + a_{n}$$
+$$=\frac{a_{1}+a_{n}}{2}\cdot n$$
+$$=\frac{a_{1}+a_{1}+(n-1)d}{2}\cdot n$$
+$$=a_{1}\cdot n + d(\frac{(n-1)(n)}{2})$$
+\end{pro}
+
+Most of time, problems with arithmetic series require only simple algebraic manipulation to solve.
+
+\begin{exam}[NanoMath Fall Meet 2020]
+Let $a_0, a_1, a_2, \ldots$ be an arithmetic sequence of positive integers. If $a_0 + a_1 + \cdots + a_{10} = 209$ and $a_{a_{0}} +
+a_{a_{1}} + \cdots + a_{a_{10}} = 671$, then find $a_0$.
+\end{exam}
+
+\begin{sol}
+Using our series formula on $a_0 + a_1 + \cdots + a_{10} = 209$ gives that $11\cdot \frac{a_{0}+a_{10}}{2}=209\implies a_{0}+a_{10}=38\implies 2a_{0}+10d=38$.
+
+Now,
+$$a_{a_{0}}+a_{a_{1}} + \cdots + a_{a_{10}} = 671$$
+$$11a_{0}+(a_{0}+a_{1}\cdots + a_{10})d=671$$
+$$11a_{0}+209d=671$$
+
+Now, using the first equation, $11a_{0}+55d=209$. Then, subtracting from the second equation, $154d=462\implies d =3$. So, $a_{0}=\boxed{4}$.
+\end{sol}
+
+%%%---------------------------------------------------------------------------------------------------------%%%
+%--------------------------------------------------------------------------------------------------------------------%
+%%%---------------------------------------------------------------------------------------------------------%%%
+\section{Geometric Sequence and Series}
+
+\begin{defi}[Geometric Series and Sequences]
+An geometric series is $a_{1}+a_{2}+a_{3}\ldots $ where $a_{i}/a_{i-1}=r$ for some constant $r$ and all $i\ge 2$. Note that an geometric series refers to the \textbf{sum} while an geometric sequence refers to the \textbf{ordered list of terms}.\footnote{Sometimes, an geometric sequence or series starts with index $0$, making it \textbf{zero-indexed}. The same formulas still apply but you will have to adjust the indexes accordingly.}
+\end{defi}
+
+Using this definition, we can now derive some formulas for each term and the series.
+\begin{theo}[Formula For Term]
+If $a_{i}$ is $i$th term of an arithmetic sequence with common ratio $r$, then $a_{i}=a_{1}r^{i-1}$.
+\end{theo}
+
+Now, we'll present some common formulas for geometric series and sequences. 
+\begin{theo}[Geometric Average]
+In a geometric series $a_{i}$, $a_{n}a_{m}=(a_{\frac{n+m}{2}})^2$ if $n+m$ is even. 
+\end{theo}
+Notice that this is quite similar to the arithmetic average formula that we looked at before except with multiplying.
+
+\begin{pro}
+We have $a_{n}=a_{1}r^{n-1}$ and $a_{m}=a_{1}r^{m-1}$. Then, $a_{n}a_{m}=a_{1}^2 r^{n+m-2}=(a_{1}r^{\frac{n+m}{2}-1})^2=(a_{\frac{n+m}{2}})^2$.
+\end{pro}
+
+However, the formulas for geometric series is quite different. 
+\begin{theo}[Geometric Series]
+If the geometric sequence $a_{i}$ has common ratio $r$, then $a_{1}+a_{2}\ldots + a_{n} = a_{1}\frac{r^{n}-1}{r-1}$.
+\end{theo}
+
+\begin{pro}
+We can rewrite $a_{1}+a_{2}\ldots + a_{n}$ as $a_{1}+a_{1}r\ldots + a_{1}r^{n-1}=a_{1}(1+r+r^2\ldots + r^{n-1})$. Now, let $1+r+r^2\ldots + r^{n-1}=S$. Then, this implies $rS=r+r^2\ldots + r^{n}=S-1+r^{n}$.
+$$S(r-1)=r^{n}-1$$
+$$S=\frac{r^{n-1}-1}{r-1}$$
+Then, we have $a_{1}(1+r+r^2\ldots + r^{n-1})=a_{1}\frac{r^{n}-1}{r-1}$.
+\end{pro}
+
+Note that when $|r|<1$, we can calculate the infinite geometric series as this series as it goes to infinity is bounded by some number.
+\begin{theo}[Infinite Geometric Series]
+If the geometric sequence $a_{i}$ has common ratio $r$ and $|r|<1$, $a_{1}+a_{2}\ldots = \frac{a_{1}}{1-r}$.
+\end{theo}
+
+Intuitively, we could use the finite version of the geometric series and reason that the infinite version is what happens when $n$ goes to infinity. Then, as $|r|<1$, $r^{n}$ would tend to $0$. So, it would be $a_{1}\cdot \frac{-1}{r-1}=\frac{a_{1}}{1-r}$.
+
+\begin{pro}
+We can rewrite $a_{1}+a_{2}\ldots $ as $a_{1}+a_{1}r+a_{1}r^2\ldots$. Let this be $S$. Then, $rS=a_{1}r+a_{1}r^2\ldots = S-a_{1}$. Then, $(1-r)S=a_{1}\implies S =\frac{a_{1}}{1-r}$. \footnote{This reasoning is only valid since $|r|<1$.}
+\end{pro}
+
+Like problems involving arithmetic series and sequences, problems with geometric series and sequences tend to heavily rely on algebraic manipulation instead of deep theory.
+\begin{exam}[djmathman Mock AMC 2013/9]
+Let $p$ and $q$ be numbers with  $|p| <1$ and $|q| <1$ such that \[p+pq+pq^2+pq^3 + \dots = 2  ~~\text{and} ~~ q + qp + qp^2 + \dots = 3.\] What is $100pq$?
+\end{exam}
+
+\begin{sol}
+First, $p+pq+pq^2+pq^3 + \dots = \frac{p}{1-q}=2\implies p=2-2q$. Also, $q+qp+qp^2 + \dots = \frac{q}{1-p}=3\implies q=3-3p$. We plug this into the first equation to get $p=2-2(3-3p)=6p-4\implies p = \frac{4}{5}$ and $q=\frac{3}{5}$. Then, $100pq=12\cdot 4=\boxed{48}$.
+\end{sol}
+
+\section{Arithmetico-Geometric Sequence and Series}
+The term arithmetico-geometric sequence is rather obscure but such sequences do show occassionally on contests (though usually not with this name). The worth of this is not from memorizing the formula ad verbatim but rather from practicing strategies that commonly appears in all types of series problems, \textbf{breaking up the series into several series that are easier to compute} and \textbf{representing the series as a variable and manipulating that.}
+
+\begin{defi}[Arithmetico-Geometric Sequence]
+The $i$th term of an arithmetico-geometric sequence $b$ is $b_{i}=a_{i}g_{i}$ where $a_{i}$ is the $i$th term of an arithmetic sequence and $g_{i}$ is the $i$th term of a geometric sequence.
+
+Another way to state this is that $b_{i}=(a_{1}+(i-1)d)(g_{1}r^{i-1})$ for some constants $a_{1},d,g_{1}$ and $r$.
+\end{defi}
+
+Now, here's an interesting problem: what is $b_{1}+b_{2}\ldots+b_{n}$? When does $b_{1}+b_{2}\ldots $ converge and what is its value then?
+
+We'll investigate this problem first and give the formula later.
+\begin{pro}
+This series looks very messy so we try to simplify the terms a bit.
+Consider $b_{i}'=b_{i}-a_{1}g_{1}r^{i-1}=(i-1)dg_{1}r^{i-1}$. 
+
+So, $b_{1}+b_{2}\ldots + b_{n}=b_{1}'+b_{2}'\ldots + b_{n}'+a_{1}g_{1}(1+r+\ldots + r^{n-1})$
+
+Now, we can note that $a_{1}g_{1}(1+r+\ldots + r^{n-1})$ is a geometric series. We apply our formula to get $a_{1}g_{1}\cdot (\frac{r^{n}-1}{r-1})$ for this.
+
+Now, $b_{1}'+b_{2}'\ldots + b_{n}'=dg_{1}\cdot (0\cdot 1+1\cdot r+\ldots + (n-1)\cdot r^{n-1})$. Now, let $S=0\cdot 1+1\cdot r \ldots + (n-1)\cdot r^{n-1}$. We want to manipulate $S$ to get basically another copy of $S$ that's missing something we can easily calculate. If we look at $rS=0\cdot r+1\cdot r^2\ldots +(n-1)\cdot r^{n}$, we can notice that it's very similar to our $S$ before except with $(n-1)\cdot r^{n}-r^{n-1}-r^{n-2}\ldots-r=(n-1)\cdot r^{n}-\frac{r^{n}-r}{r-1}$ added. Then, $rS=S+(n-1)\cdot r^{n}-\frac{r^{n}-r}{r-1}\implies S=\frac{(n+1)\cdot r^{n}-\frac{r^{n}-r}{r-1}}{r-1}$.
+
+So, $b_{1}'+b_{2}'\ldots + b_{n}'=dg_{1}\cdot (\frac{(n+1)\cdot r^{n}-\frac{r^{n}-r}{r-1}}{r-1})$. 
+
+Now, we add the two series together to get 
+$$dg_{1}\cdot (\frac{(n+1)\cdot r^{n}-\frac{r^{n}-r}{r-1}}{r-1})+a_{1}g_{1}\cdot (\frac{r^{n}-1}{r-1})$$
+\end{pro}
+
+\begin{theo}[Arithmetico-Geometric Series]
+If $b$ is an arithmetico-geometric sequence such that $b_{i}=a_{i}g_{i}$ for arithmetic sequence $a$ with common difference $d$ and geometric sequence $g$ with common ratio $r$, then 
+$$b_{1}+b_{2}\ldots + b_{n} = dg_{1}\cdot (\frac{(n+1)\cdot r^{n}-\frac{r^{n}-r}{r-1}}{r-1})+a_{1}g_{1}\cdot (\frac{r^{n}-1}{r-1})$$
+\end{theo}
+
+As you can tell, this is a quite hefty formula and certainly not intuitively obvious. In general, when remembering complex formulas or ideas, it is best to remember the thought-process that led to it instead of trying to cram it in your mind.
+
+We can easily derive the infinite version from this.
+\begin{theo}[Arithmetico-Geometric Infinite Series]
+If $b$ is an arithmetico-geometric sequence such that $b_{i}=a_{i}g_{i}$ for arithmetic sequence $a$ with common difference $d$ and geometric sequence $g$ with common ratio $r$ and $|r|<1$, then 
+$b_{1}+b_{2}\ldots  = dg_{1}\cdot \frac{r}{(1-r)^2}+a_{1}g_{1}\cdot \frac{1}{1-r}$
+\end{theo}
+
+
+
+%%%---------------------------------------------------------------------------------------------------------%%%
+%--------------------------------------------------------------------------------------------------------------------%
+%%%---------------------------------------------------------------------------------------------------------%%%
+\section{The Distributive Property Extended}
+We'll reintroduce Distributive Property as a way to gain a new perspective on series involving combinations. There's no real theorem or theory to learn here, just simply how to reapply the Distributive Property that all of us learned in elementary school. 
+
+\begin{theo}[Extended Distributive Property]
+\[(a_{1}+a_{2}\ldots + a_{s_{1}})(b_{1}+b_{2}\ldots + b_{s_{2}})\ldots(z_{1}+z_{2}\ldots + z_{s_{n}})=\sum a_{i}b_{j}\ldots z_{k}\]
+
+In words, when we multiply all these sequences together, we get the sum of the products of all possible combination of terms. 
+\end{theo}
+
+We'll begin with a few concrete example problems to elucidate how exactly the Distributive Property is useful.
+
+\begin{exam}[Classical]
+Compute
+$$\sum_{i=1}^{19}\sum_{j=i+1}^{20} ij$$
+\end{exam}
+
+\begin{sol}
+This sum is basically the sum of every possible unordered pair of distinct positive integers from $1$ to $20$. 
+
+Now, here is the very crucial step. Then, notice that $(1+2+3\ldots + 20)(1+2+3\ldots + 20)$, by the Distributive Property, is the sum of the every possible ordered pair of positive integers from $1$ to $20$. This is almost exactly what we need! Once, we get rid of terms like $i\cdot i$, we can then divide the sum of every possible ordered pair of distinct integers by $2$ to get the sum of every possible unordered pair of distinct integers.
+
+So, our answer is 
+$$\frac{210^2-1^2-2^2\ldots - 20^2}{2}$$
+$$=\frac{210^2-\frac{(20)(21)(41)}{6}}{2}$$
+$$=\frac{210^2-70\cdot 41}{2}$$
+$$=\boxed{20615}$$
+\end{sol}
+
+We can actually extend this strategy further on into unordered distinct $n$-tuplets though it obviously becomes much more involved as there is a lot more terms to subtract out.
+
+We can also apply the Distributive Property to infinite series.
+
+\begin{exam}[2018 AMC 12A/18]
+Let $A$ be the set of positive integers that have no prime factors other than $2$, $3$, or $5$. The infinite sum $$\frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + \frac{1}{6} + \frac{1}{8} + \frac{1}{9} + \frac{1}{10} + \frac{1}{12} + \frac{1}{15} + \frac{1}{16} + \frac{1}{18} + \frac{1}{20} + \cdots$$of the reciprocals of the elements of $A$ can be expressed as $\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. What is $m+n$?
+\end{exam}
+
+\begin{sol}
+Note that such an $i$ can be represented as $2^{a}3^{b}5^{c}$ where $a,b,c$ are integers less than or equal to $0$. Then, the sum of all $i$ would be the sum of all combinations of $2^{0},2^{-1}\ldots$ and $3^{0},3^{-1}\ldots$ and $5^{0},5^{-1}\ldots $. Then, the sum is 
+$$(1+\frac{1}{2}+\frac{1}{2^2}\ldots)(1+\frac{1}{3}+\frac{1}{3^2}\ldots)(1+\frac{1}{5}+\frac{1}{5^2}\ldots)$$
+$$=2\cdot \frac{3}{2}\cdot \frac{5}{4}$$
+$$=\boxed{\frac{15}{4}}$$
+\end{sol}
+
+%%%---------------------------------------------------------------------------------------------------------%%%
+%--------------------------------------------------------------------------------------------------------------------%
+%%%---------------------------------------------------------------------------------------------------------%%%
+\section{Sum of Squares, Cubes}
+These are just the formulas for the sum of the first $n$ squares or cubes which come up semi-often.
+\begin{theo}[Sum of Squares]
+$$1^2+2^2\ldots + n^2=\frac{(n)(n+1)(2n+1)}{6}$$
+\end{theo}
+
+\begin{pro}
+We use induction. Our base case of $n=1$ is true as $1^2=\frac{1\cdot 2\cdot 3}{6}$. Now, we prove the inductive case of $P(n)\implies P(n+1)$. Note that $1^2+2^2\ldots + (n+1)^2=\frac{(n)(n+1)(2n+1)}{6}+(n+1)^2$ by the Inductive Hypothesis. We can do some algebra and find $\frac{(n)(n+1)(2n+1)}{6}+(n+1)^2=\frac{(n+1)(n+2)(2n+3)}{6}$. Our inductive case is complete.
+\end{pro}
+
+\begin{theo}[Sum of Cubes]
+$$1^3+2^3\ldots + n^3=(\frac{(n)(n+1)}{2})^2$$
+\end{theo}
+
+\begin{pro}
+We use induction. Our base case of $n=1$ is true as $1^3=(\frac{1\cdot 2}{2})^2$. Now, we prove the inductive case of $P(n)\implies P(n+1)$. Note that $1^3+2^3\ldots + (n+1)^3=(\frac{(n)(n+1)}{2})^2+(n+1)^3$ by the Inductive Hypothesis. We can do some algebra and find $(\frac{(n)(n+1)}{2})^2+(n+1)^3=(\frac{(n+1)(n+2)}{2})^2$. Our inductive case is complete.
+\end{pro}
+
+\section{General Strategies}
+Because just adding things up is such a broad topic, here are a few strategies to keep in mind.
+\begin{enumerate}
+\item When you have a double summation, see if you can reverse the order and if that makes it easier. Also, see if you can use pairing or symmetry.
+\item Let the series be called $S$ and try to manipulate to have get a copy of $S$ plus or minus something.
+\item Split the series into several simpler series that are easier to solve. 
+\item If everything else fails, try computing the first $n$ terms for small $n$ and see if there is a pattern.
+\end{enumerate}
+
+\pagebreak
+
+\section{Problems}
+
+\minpt{30}%slightly less than 1/2
+
+\psetquote{The future depends on the past, even if we don’t get to see it.}{Riebeck, Outer Wilds}
+
+\subsection{Arithmetic, Geometric, and Arithmetico-Geometric Series}
+
+\prob{1}{2020 AMC 10A/17}{Define $$P(x) =(x-1^2)(x-2^2)\cdots(x-100^2).$$How many integers $n$ are there such that $P(n)\leq 0$?}
+
+\prob{2}{Math Prize for Girls 2019}{The degree measures of the six interior angles of a convex hexagon form
+an arithmetic sequence (not necessarily in cyclic order). The common
+difference of this arithmetic sequence can be any real number in the
+open interval $(-D, D)$. Compute the greatest possible value of $D$.}
+%24
+
+\prob{2}{NEMO 2017}{I am thinking of a geometric sequence with $9600$ terms, $a_1, a_2, \ldots, a_{9600}$. The sum of the terms with indices divisible by three (i.e. $a_3 + a_6 + \cdots + a_{9600}$) is $\frac{1}{56}$ times the sum of the other terms (i.e. $a_1 + a_2 + a_4 + a_5 + · · · + a_{9598} + a_{9599}$). Given that the terms with even indices sum to $10$, what is the
+smallest possible sum of the whole sequence?}
+%80
+
+\req{4}{Mock AIME 2 2006-2007}{Given that $ iz^2=1+\frac 2z + \frac{3}{z^2}+\frac{4}{z ^3}+\frac{5}{z^4}+\cdots$ and $z=n\pm \sqrt{-i},$ find $ \lfloor 100n \rfloor$.}
+%100
+
+\prob{4}{BMT 2014}{Evaluate
+$$\sum_{n=0}^{\infty} \sum_{k=0}^{\infty} \text{min}(n,k)(\frac{1}{2})^{n}(\frac{1}{3})^{k}$$}
+% 3/5
+\subsection{Distributive Property}
+\prob{2}{PHS HMMT TST 2020}{
+What is the value of $\frac{\frac{1}{1^2}+\frac{1}{2^2}+\frac{1}{3^2} \cdots}{\frac{1}{1^2}+\frac{1}{3^2}+\frac{1}{5^2}\cdots}$?
+Remember that $\frac{1}{1^2}+\frac{1}{2^2}\cdots = \frac{\pi^2}{6}$.}
+
+%4/3
+
+\prob{4}{Math Prizes For Girls 2019}{
+For each integer from 1 through 2019, Tala calculated the product of
+its digits. Compute the sum of all 2019 of Tala’s products.}
+
+%
+
+\req{6}{HMMT Feburary 2017}{
+Find the value of
+$$\sum_{1\leq a<b<c} \frac{1}{2^{a}3^{b}5^{c}}$$
+(i.e the sum of $\frac{1}{2^{a}3^{b}5^{c}}$ over all triples of positive integers $(a, b, c)$ satisfying $a < b < c$)}
+
+
+\subsection{General}
+
+\prob{2}{HMMT November 2012 (Paraphrased)}{Compute
+$$(1^3 + 3 \cdot 1^2 + 3 \cdot 1) + (2^3 + 3 \cdot 2^2 + 3 \cdot 2) + · · · + (99^3 + 3 \cdot 99^2 + 3 \cdot 99)$$}
+
+\prob{2}{BMT 2015}{Let $\{a_n\}$ be a sequence of real numbers with $a_1 = -1, a_2 = 2$ and for all $n \ge 3$,
+$a_{n+1} - a_{n} - a_{n+2} = 0$.
+Find $a_{1} + a_{2} + a_{3} + . . . + a_{2015}$.}
+
+\prob{2}{MMATHS 2019}{ Let $F_1 = F_2 = 1$, and let $F_n = F_{n-1} + F_{n-2}$ for all $n \ge 3$. For each positive integer $n$, let $g(n)$ be the minimum possible value of
+$|a_1F_1 + a_2F_2 + · · · + a_nF_n|$,
+where each $a_i$
+is either $1$ or $-1$. Find $g(1) + g(2) + \cdots  + g(100)$}
+
+\prob{4}{HMMT February 2004}{Evaluate the sum
+$$\frac{1}{2\lfloor \sqrt{1} \rfloor + 1} +\frac{1}{2\lfloor \sqrt{2} \rfloor + 1}+\frac{1}{2\lfloor \sqrt{3} \rfloor + 1} + \cdots + \frac{1}{2\lfloor \sqrt{100} \rfloor + 1}$$ }
+
+\req{4}{Reun\rq{}s Thanksgiving Mock AMC 10}{Let $N=3+66+333+6666+33333+\ldots + \underbrace{666\cdots 666}_{\text{2016 6\rq{}s}} + \underbrace{333\cdots 333}_{\text{2017 3\rq{}s}}$. Find the sum of the digits of $N$}
+
+\prob{4}{MMATHS 2018}{Compute
+$$\sum_{m=1}^{\infty} \sum_{n=1}^{\infty} \frac{m\cos^2(n)+n\sin^2(m)}{3^{m+n}(m+n)}$$}
+
+\prob{8}{HMMT Feburary 2016}{Let $A$ denote the set of all integers $n$ such that $1 \leq n \leq 10000$, and moreover the sum of the decimal digits of $n$ is $2$. Find the sum of the squares of the elements of $A$.}
+
+\prob{14}{BMT 2018}{Let $F_{1}=0, F_{2}=1$ and $F_{n}=F_{n-1}+F_{n-2}$. Compute
+$$\sum_{n=1}^{\infty} \frac{\sum_{i=1}^{n} F_{i}}{3^{n}}$$}
+
+\end{document}

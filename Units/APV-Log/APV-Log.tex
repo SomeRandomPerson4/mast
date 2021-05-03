@@ -1,0 +1,81 @@
+\section{Theory}
+We commonly have functions of the form $f(x)=x^n,$ and to find $f^{-1}(x),$ we just take the $n$th root of both sides to get $\sqrt[n]{x}=f^{-1}(x).$ But how would we find the inverse of a function like $f(x)=n^x?$ To do this, we create an inverse function known as a logarithm, where $n^{\log_nx}=x.$
+
+Here are two examples to get you up to speed.
+
+\begin{exam}
+Find $\log_28.$
+\end{exam}
+
+\begin{sol} Notice that $2^{\log_28}=8=2^3$ by the definition of $\log,$ so $\log_28=3.$\end{sol}
+    
+\begin{exam}
+Simplify $\frac{\log_5x}{\log_{25}x}.$
+\end{exam}
+    
+\begin{sol}
+Let $25^a=x.$ Then notice $5^{2a}=x.$ Substituting yields $\frac{2a}{a}=2.$
+\end{sol}
+
+Here's a motivating exercise for what's going to come next.
+
+\begin{exer}
+Evaluate $\log_2{16}+\log_2{32},$ and then evaluate $\log_2{16\cdot 32}.$
+\end{exer}
+
+\subsection{Fundamental Rules}
+The fundamental two rules of logarithms are the addition and subtraction rules. Notice that addition outside becomes multiplication inside (and inversely, subtraction becomes division inside). This is because of the way exponents behave: $x^{a+b}=x^a\cdot x^b.$
+
+\begin{theo}[Logarithm Addition]
+For positive $a,b,c,$ $\log_{a}b+\log_{a}c=\log_{a}{bc}.$
+\end{theo}
+
+\begin{pro}
+Notice that $a^{\log_ab+\log_ac}=a^{\log_ab}\cdot a^{\log_ac}=bc=a^{\log_abc}.$ Since the bases are the same, it follows the exponents are the same.
+\end{pro}
+
+\begin{theo}[Logarithm Subtraction]
+For positive $a,b,c,$ $\log_{a}b-\log_{a}c=\log_{a}{\frac{b}{c}}.$
+\end{theo}
+
+\begin{pro}
+This is a repeat of logarithm addition. Notice that $a^{\log_ab-\log_ac}=\frac{a^{\log_ab}}{ a^{\log_ac}}=\frac{b}{c}=a^{\log_a\frac{b}{c}}.$
+\end{pro}
+
+Notice that we're exploiting the properties of logarithms, and we're expressing everything without using logarithms as soon as possible. This trend will continue in AIME problems; once the logs have been removed, there's not much underneath to solve.
+
+\subsection{Base Change}
+The base change rule allows you to express all logarithms in the same base; this is an extremely powerful, even if it doesn't look like much.
+
+\begin{theo}[Base Change]
+For positive $a,b,c,$ $\frac{\log_{a}b}{\log_{a}c}=\log_{c}b.$
+\end{theo}
+
+\begin{pro}
+Have $x=\log_ab,$ $y=\log_ac,$ and $z=\log_cb.$ Notice that $a^x=b,a^y=c,c^z=b.$ Then $(a^y)^z=a^x,$ implying $yz=x$ or $\frac{x}{y}=z.$
+\end{pro}
+
+We present the so-called logarithm chain rule as an exercise. (It's pretty useless and is only being presented as a check-up.)
+
+\begin{exer}[Logarithm Chain Rule]
+For positive $a,b,c,d,$ $(\log_{a}b)(\log_{c}d)=(\log_{a}d)(\log_{c}b).$
+\end{exer}
+
+\section{Examples}
+Here are some examples of AIME logarithm problems. I want to re-iterate the following with these two problems: usually, \dbold{interpreting the log condition is the entire problem}.
+   
+\begin{exam}[AIME II 2009/2]
+Suppose that $a$, $b$, and $c$ are positive real numbers such that $a^{\log_3 7} = 27$, $b^{\log_7 11} = 49$, and $c^{\log_{11}25} = \sqrt{11}$. Find
+\[a^{(\log_3 7)^2} + b^{(\log_7 11)^2} + c^{(\log_{11} 25)^2}.\]
+\end{exam}
+
+\begin{sol} We notice that $a^{(\log_37)^2}=(a^{\log_37})^{\log_37}.$ Similar expressions hold for $b,c.$
+
+We then substitute $a^{\log_37}=27$ as defined in the problem statement, and we do the same for $b,c$. This becomes $27^{\log_37}+49^{\log_711}+\sqrt{11}^{\log_{11}25}=3^{3\log_37}+7^{2\log_7{11}}+11^{\frac{1}{2}\log_{11}25}=7^3+11^2+25^{\frac{1}{2}}.$ This simplifies to $469,$ which is our answer.\end{sol}
+    
+\begin{exam}[AIME I 2011/9]
+Suppose $x$ is in the interval $[0, \pi/2]$ and $\log_{24\sin x} (24\cos x)=\frac{3}{2}$. Find $24\cot^2 x$.
+\end{exam}
+    
+\begin{sol}
+We can rewrite this as $(24\sin x)^3=(24\cos x)^2,$ which implies $24\sin^3 x=\cos^2 x=1-\sin^2 x.$ Thus we want to find the positive root of $24\sin^3 x+\sin^2 x-1=0.$ Using the Rational Root Theorem (aka guessing), we see that $\frac{1}{3}$ is a root. Thus $\cot x=2\sqrt{2}$ and our answer is $192.$\end{sol}

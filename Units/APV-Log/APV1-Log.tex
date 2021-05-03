@@ -1,0 +1,58 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{Logarithms}
+\author{Dennis Chen}
+\date{APV}
+
+\begin{document}
+\maketitle
+
+\input{APV-Log}
+
+\pagebreak
+
+\section{Problems}
+\minpt{32}
+
+\psetquote{I just long for a world in which ordinary things are done in an ordinary way.}{Psycho-Pass}
+
+\prob{1}{AIME II 2020/3}{The value of $x$ that satisfies $\log_{2^x} 3^{20} = \log_{2^{x+3}} 3^{2020}$ can be written as $\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.}
+
+\prob{2}{AIME 1986/8}{Let $S$ be the sum of the base $10$ logarithms of all the proper divisors (all divisors of a number excluding itself) of $1000000$. What is the integer nearest to $S$?}
+    
+\prob{2}{AIME I 2020/2}{There is a unique positive real number $x$ such that the three numbers $\log_8{2x}$, $\log_4{x}$, and $\log_2{x}$, in that order, form a geometric progression with positive common ratio. The number $x$ can be written as $\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m + n$.}
+
+\prob{2}{AIME I 2007/7}{Let $N = \sum\limits_{k = 1}^{1000} k ( \lceil \log_{\sqrt{2}} k \rceil  - \lfloor \log_{\sqrt{2}} k \rfloor ).$
+
+Find the remainder when $N$ is divided by 1000. ($\lfloor{k}\rfloor$ is the greatest integer less than or equal to $k$, and $\lceil{k}\rceil$ is the least integer greater than or equal to $k$.)}
+
+\prob{3}{SMT 2020}{If $a$ is the only real number that satisfies $\log_{2020}a=202020-a$ and $b$ is the only real number that satisfies $2020^b=202020-b,$ what is the value of $a+b?$}
+    
+\prob{3}{AIME II 2013/2}{Positive integers $a$ and $b$ satisfy the condition \[\log_2(\log_{2^a}(\log_{2^b}(2^{1000}))) = 0.\] Find the sum of all possible values of $a+b$.}
+    
+\req{3}{AIME II 2010/5}{Positive numbers $x$, $y$, and $z$ satisfy $xyz = 10^{81}$ and $(\log_{10}x)(\log_{10} yz) + (\log_{10}y) (\log_{10}z) = 468$. Find $\sqrt {(\log_{10}x)^2 + (\log_{10}y)^2 + (\log_{10}z)^2}$.}
+
+\prob{3}{AIME I 2006/9}{The sequence $a_1, a_2, \ldots$ is geometric with $a_1=a$ and common ratio $r,$ where $a$ and $r$ are positive integers. Given that $\log_8 a_1+\log_8 a_2+\cdots+\log_8 a_{12} = 2006,$ find the number of possible ordered pairs $(a,r).$}
+
+\prob{4}{HMMT 2020}{Let $a=256$. Find the unique real number $x>a^2$ such that
+\[\log_a \log_a \log_a x = \log_{a^2} \log_{a^2} \log_{a^2} x.\]}
+
+\prob{4}{AIME II 2007/12}{The increasing geometric sequence $x_{0},x_{1},x_{2},\ldots$ consists entirely of integral powers of $3.$ Given that $\sum_{n=0}^{7}\log_{3}(x_{n}) = 308$ and $56 \leq \log_{3}\left ( \sum_{n=0}^{7}x_{n}\right ) \leq 57,$ find $\log_{3}(x_{14}).$}
+
+\prob{4}{AIME I 2009/7}{The sequence $(a_n)$ satisfies $a_1 = 1$ and $5^{(a_{n + 1} - a_n)} - 1 = \frac {1}{n + \frac {2}{3}}$ for $n \geq 1$. Let $k$ be the least integer greater than $1$ for which $a_k$ is an integer. Find $k$.}
+
+\prob{4}{AIME I 2010/14}{For each positive integer n, let $f(n) = \sum_{k = 1}^{100} \lfloor \log_{10} (kn) \rfloor$. Find the largest value of n for which $f(n) \le 300$.
+
+Note: $\lfloor x \rfloor$ is the greatest integer less than or equal to $x$.}
+
+\req{6}{AIME I 2005/8}{The equation $2^{333x-2} + 2^{111x+2} = 2^{222x+1} + 1$ has three real roots. Given that their sum is $\frac mn$ where $m$ and $n$ are relatively prime positive integers, find $m+n.$}
+
+\prob{6}{AIME I 2013/8}{The domain of the function $f(x) = \arcsin(\log_{m}(nx))$ is a closed interval of length $\frac{1}{2013}$ , where $m$ and $n$ are positive integers and $m>1$. Find the remainder when the smallest possible sum $m+n$ is divided by $1000.$}
+
+\prob{7}{hARMLess Mock ARML 2019/10}{Compute the sum of all positive integers that can be expressed in the form \[\log_b(404!) - \log_b(c), \] where $b$ and $c$ are positive integers such that $b>1$ and $b+c$ is odd.}
+
+\prob{9}{AIME I 2012/9}{Let $x,$ $y,$ and $z$ be positive real numbers that satisfy \[2\log_{x}(2y) = 2\log_{2x}(4z) = \log_{2x^4}(8yz) \ne 0.\] The value of $xy^5z$ can be expressed in the form $\frac{1}{2^{p/q}},$ where $p$ and $q$ are relatively prime positive integers. Find $p+q.$}
+
+\end{document}

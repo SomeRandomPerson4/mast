@@ -1,0 +1,198 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{Solutions to Logarithms}
+\author{Dennis Chen}
+\date{AQU}
+
+\begin{document}
+
+\maketitle
+
+\toc
+
+\pagebreak\section{AIME II 2020/3}
+
+The value of $x$ that satisfies $\log_{2^x} 3^{20} = \log_{2^{x+3}} 3^{2020}$ can be written as $\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.
+
+\subsection{Solution}
+
+Note that $\log_2{3}\frac{20}{x}=\log_2{3}\frac{2020}{x+3},$ implying
+\[\frac{20}{x}=\frac{2020}{x+3}\]
+\[20x+60=2020x\]
+\[60=2000x\]
+\[x=\frac{3}{100}.\]
+Thus the answer is $3+100=103.$
+
+\pagebreak\section{AIME 1986/8}
+
+Let $S$ be the sum of the base $10$ logarithms of all the proper divisors (all divisors of a number excluding itself) of $1000000$. What is the integer nearest to $S$?
+
+\subsection{Solution}
+
+The log addition rule implies that $10^6\cdot 10^S$ is the product of all of the divisors of $10^6.$ Since $10^6=2^6\cdot 5^6,$ $10^6$ has $7\cdot 7=49$ divisors, so $10^6\cdot 10^S=(10^6)^{\frac{49}{2}}=10^{147},$ implying $S=141.$
+
+\pagebreak\section{AIME I 2020/2}
+
+There is a unique positive real number $x$ such that the three numbers $\log_8{2x}$, $\log_4{x}$, and $\log_2{x}$, in that order, form a geometric progression with positive common ratio. The number $x$ can be written as $\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m + n$.
+
+\subsection{Solution}
+
+Let $x=2^a.$ This implies that $\frac{\frac{1}{3}(a+1)}{\frac{1}{2}a}=\frac{\frac{1}{2}a}{a},$ or $\frac{a+1}{3}=\frac{a}{4},$ or $\frac{1}{3}=\frac{-a}{12}.$ Thus $a=-4$ and $x=2^{-4}=\frac{1}{16},$ so the answer is $1+16=17.$ 
+
+\pagebreak\section{AIME I 2007/7}
+
+Let $N = \sum\limits_{k = 1}^{1000} k ( \lceil \log_{\sqrt{2}} k \rceil  - \lfloor \log_{\sqrt{2}} k \rfloor ).$
+
+Find the remainder when $N$ is divided by 1000. ($\lfloor{k}\rfloor$ is the greatest integer less than or equal to $k$, and $\lceil{k}\rceil$ is the least integer greater than or equal to $k$.)
+
+\subsection{Solution}
+
+Note that $\lceil\log_{\sqrt{2}}k\rceil-\lfloor\log_{\sqrt{2}}k\rfloor=1$ unless $k$ is a power of $2.$ Then
+    \[N=\sum\limits_{k=1}^{1000}k-\sum\limits_{i=1}^{9}2^i=500\cdot 1001-2^{10}+1\]
+    \[N\equiv 500-24+1\equiv 477\pmod{1000}.\]
+
+\pagebreak\section{SMT Algebra 2020/1}
+
+If $a$ is the only real number that satisfies $\log_{2020}a=202020-a$ and $b$ is the only real number that satisfies $2020^b=202020-b,$ what is the value of $a+b?$
+
+\subsection{Solution}
+
+Note that $b=\log_{2020}a.$ Then the first equation implies
+    \[\log_{2020}a+a=202020,\] or
+    \[a+b=202020.\]
+
+\pagebreak\section{AIME II 2013/2}
+
+Positive integers $a$ and $b$ satisfy the condition \[\log_2(\log_{2^a}(\log_{2^b}(2^{1000}))) = 0.\] Find the sum of all possible values of $a+b$.
+
+\subsection{Solution}
+
+Note that this implies
+\[\log_{2^a}(\log_{2^b}(2^{1000}))=1\]
+\[\log_{2^b}2^{1000}=2^a\]
+\[\frac{1000}{b}=2^a.\]
+Thus the possible pairs are $(1,500),(2,250),(3,125).$ So the answer is $(1+500)+(2+250)+(3+125)=881.$
+
+\pagebreak\section{AIME II 2010/5}
+
+Positive numbers $x$, $y$, and $z$ satisfy $xyz = 10^{81}$ and $(\log_{10}x)(\log_{10} yz) + (\log_{10}y) (\log_{10}z) = 468$. Find $\sqrt {(\log_{10}x)^2 + (\log_{10}y)^2 + (\log_{10}z)^2}$.
+
+\subsection{Solution}
+
+Let $x=10^a,$ $y=10^b,$ and $z=10^c.$ Then $a+b+c=81$ and $a(b+c)+bc=ab+bc+ca=468.$ Then
+\[\sqrt{a^2+b^2+c^2}=\sqrt{(a+b+c)^2-2(ab+bc+ca)}=\sqrt{81^2-2\cdot 468}=75.\]
+
+\pagebreak\section{AIME I 2006/9}
+
+The sequence $a_1, a_2, \ldots$ is geometric with $a_1=a$ and common ratio $r,$ where $a$ and $r$ are positive integers. Given that $\log_8 a_1+\log_8 a_2+\cdots+\log_8 a_{12} = 2006,$ find the number of possible ordered pairs $(a,r).$
+
+\subsection{Solution}
+
+This implies
+\[a^{12}b^{66}=8^{2006}\]
+\[a^2b^{11}=2^{1003}.\]
+If $a=2^x$ and $b=2^y,$ then
+\[2x+11y=1003.\]
+Note that $1003=2+11\cdot 91,$ so the possible values of $b$ are $0,2,\cdots 90,$ giving us $46$ possible pairs.
+
+\pagebreak\section{HMMT Februrary Algebra and Number Theory 2020/3}
+
+Let $a=256$. Find the unique real number $x>a^2$ such that
+\[\log_a \log_a \log_a x = \log_{a^2} \log_{a^2} \log_{a^2} x.\]
+
+\subsection{Solution}
+
+Let $\log_a{x}=k$ and $\log_{a}k=m.$
+
+Note that \[\log_a{m}=\log_{a^2}\log_{a^2}(\frac{1}{2}k)=\log_{a^2}(\frac{m}{2}-\frac{1}{16}),\] implying $m^2=\frac{m}{2}-\frac{1}{16},$ or $m=\frac{1}{4}.$
+
+Since $\log_{256}k=\frac{1}{4},$ then $k=4,$ and since $\log_{256}x=4,$ then $x=256^4=2^{32}.$
+
+\pagebreak\section{AIME II 2007/12}
+
+The increasing geometric sequence $x_{0},x_{1},x_{2},\ldots$ consists entirely of integral powers of $3.$ Given that $\sum_{n=0}^{7}\log_{3}(x_{n}) = 308$ and $56 \leq \log_{3}\left ( \sum_{n=0}^{7}x_{n}\right ) \leq 57,$ find $\log_{3}(x_{14}).$
+
+\subsection{Solution}
+
+Note that
+    \[x_7\leq\sum\limits_{i=0}^{7}x_i \leq 3x_7,\]
+    which implies
+    \[\log_{3}x_7\leq\log_3(\sum\limits_{i=0}^{7}x_i)\leq 1+\log_{3}x_7,\]
+    so $\log_{3}x_7=56.$
+    Let $x_7=a$ and $\frac{x_7}{x_6}=r.$ Then
+    \[\frac{a^8}{r^28}=\frac{3^{56\cdot 8}}{r^28}=3^{308},\]
+    implying $r=3^5.$ Then note $x_14=x_7\cdot r^7=3^{56}\cdot 3^{5\cdot 7}=3^{91},$ so the answer is $91.$
+
+\pagebreak\section{AIME I 2009/7}
+
+The sequence $(a_n)$ satisfies $a_1 = 1$ and $5^{(a_{n + 1} - a_n)} - 1 = \frac {1}{n + \frac {2}{3}}$ for $n \geq 1$. Let $k$ be the least integer greater than $1$ for which $a_k$ is an integer. Find $k$.
+
+\subsection{Solution}
+
+This implies
+    \[5^{a_{n+1}-a_n}=1+\frac{1}{n+\frac{2}{3}}\]
+    \[a_{n+1}-a_n=\log_5(1+\frac{1}{n+\frac{2}{3}})=\log_5(\frac{3n+5}{3n+2})\]
+    \[a_{n+1}-a_n=\log_5(3n+5)-\log_5(3n+2).\]
+    Note that $(a_{n}-a_{n-1})+(a_{n-1}-a_{n-2})+\cdots+(a_{2}-a_{1})=a_n-a_1=\log_5(3n+5)-1.$ So $3n+2$ must be a power of $5$ greater than $5.$ Since $5^2\equiv 1\pmod{5},$ $25$ doesn't work. So
+    \[125=3n+2\]
+    \[123=3n\]
+    \[41=n.\]
+
+\pagebreak\section{AIME I 2020/14}
+
+For each positive integer n, let $f(n) = \sum_{k = 1}^{100} \lfloor \log_{10} (kn) \rfloor$. Find the largest value of n for which $f(n) \le 300$.
+
+Note: $\lfloor x \rfloor$ is the greatest integer less than or equal to $x$.
+
+\subsection{Solution}
+
+Note that $f(n)$ is monotonously increasing. The average value of each term should be roughly $3,$ so $n$ is around $100.$ Since $f(109)=300$ and $f(110)>300,$ $109$ is the answer.
+
+\textit{Comment:} As far as I'm aware, there's no good way to do this problem.
+
+\pagebreak\section{AIME I 2005/8}
+
+The equation $2^{333x-2} + 2^{111x+2} = 2^{222x+1} + 1$ has three real roots. Given that their sum is $\frac mn$ where $m$ and $n$ are relatively prime positive integers, find $m+n.$
+
+\subsection{Solution}
+
+Let $y=2^{111x}.$ Then
+    \[\frac{1}{4}y^3+4y=2y^2+1\]
+    \[y^3-8y^2+16y-4=0\]
+    We want to find
+    \[\log_{2^{111}}({y_1y_2y_3})=\log_{2^{111}}({4})=\frac{2}{111},\]
+    so the answer is $2+111=113.$
+
+\pagebreak\section{AIME I 2013/8}
+
+The domain of the function $f(x) = \arcsin(\log_{m}(nx))$ is a closed interval of length $\frac{1}{2013}$ , where $m$ and $n$ are positive integers and $m>1$. Find the remainder when the smallest possible sum $m+n$ is divided by $1000.$
+
+\subsection{Solution}
+
+This implies $-1\leq \log_m(nx)\leq 1,$ or
+    \[\frac{1}{n}\leq mx\leq n\]
+    \[\frac{1}{mn}\leq x\leq \frac{n}{m}\]
+    So the domain has length $\frac{m^2-1}{mn}=\frac{1}{2013}.$ So to minimize $m+n,$ we minimize $m.$ We must have $m|2013$ and $m>1,$ so the smallest possible $m$ is $m=3.$ We plug this in and find $\frac{8}{3n}=\frac{1}{2013},$ implying $n=5368.$ So the minimum $m+n$ is $5371,$ and thus the answer is $371.$
+
+\pagebreak\section{AIME I 2012/9}
+
+Let $x,$ $y,$ and $z$ be positive real numbers that satisfy \[2\log_{x}(2y) = 2\log_{2x}(4z) = \log_{2x^4}(8yz) \ne 0.\] The value of $xy^5z$ can be expressed in the form $\frac{1}{2^{p/q}},$ where $p$ and $q$ are relatively prime positive integers. Find $p+q.$
+
+\subsection{Solution}
+
+Note that this is the same as
+    \[\frac{\log(4y^2)}{\log(x)}=\frac{\log(16z^2)}{\log(2x)}=\frac{\log(8yz)}{\log(2x^4)}.\]
+    Since $\log(4y^2),\log(8yz),\log(16z^2)$ is a geometric series, so is $\log(x),\log(2x^4),\log(2x).$ Thus $2x^4=\sqrt{x(2x)},$ implying $x=2^{\frac{-1}{6}}.$
+    
+    Then plugging the value of $x$ into the first two equations yields
+    \[-6\log_{2}(2y)=\frac{6}{5}\log_{2}(4z),\]
+    implying
+    \[-5\log_{2}(y)-5=\log_{2}(z)+2\]
+    \[-7=\log_{2}(y^5z)\]
+    \[y^5z=\frac{1}{2^7}\]
+    So $xy^5z=\frac{1}{2^7\cdot 2^{\frac{1}{6}}}=\frac{1}{2^{\frac{43}{6}}}.$ Thus the answer is $49.$
+    
+\textit{Comment:} The answer is much easier to get if you let $2\log_{x}(2y) = 2\log_{2x}(4z) = \log_{2x^4}(8yz)=2.$ Some meta-reasoning as to why this is okay: The problem never specifies what the three expressions are equal to, so it's either a fixed value or you can set it to anything you want. If it was the former, it'd be more likely that the problem would ask for the fixed value.
+\end{document}
