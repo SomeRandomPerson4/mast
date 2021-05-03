@@ -14,7 +14,7 @@
 
 Here are a couple of useful theorems.
 
-\begin{theo}[Sholeace]
+\begin{theo}[Shoelace]
 In a polygon with coordinates $(x_1,y_1),(x_2,y_2),\dots,(x_n,y_n)$, the area $\mathbf{A}$ is:
 \begin{align*}
     \mathbf{A} &= \frac{1}{2}\left|\left(\sum_{i=1}^{n-1}x_iy_{i+1}\right)+ x_ny_1-\left(\sum_{i=1}^{n-1}x_{i+1}y_i\right)-x_1y_n\right|\\ 
@@ -22,12 +22,12 @@ In a polygon with coordinates $(x_1,y_1),(x_2,y_2),\dots,(x_n,y_n)$, the area $\
 \end{align*}
 \end{theo}
 
-\begin{theo}[Point to line]
+\begin{theo}[Point to Line]
 The distance between the point $(x_0,y_0)$ to the line $Ax+By+C=0$ can be written as 
 \[\frac{|Ax_0+By_0+C|}{\sqrt{A^2+B^2}}.\]
 \end{theo}
 
-\begin{theo}[Centroid coordinates]
+\begin{theo}[Coordinates of the Centroid]
 In a triangle with coordinates $A=(x_a,y_a),B=(x_b,y_b),C=(x_c,y_c)$, the coordinates of the centroid is
 \[\left(\frac{x_a+x_b+x_c}{3},\frac{y_a+y_b+y_c}{3}\right).\]
 \end{theo}
@@ -47,7 +47,9 @@ In a triangle with coordinates $A=(x_a,y_a),B=(x_b,y_b),C=(x_c,y_c)$, the coordi
 \begin{exam}[No Source]
 Let $ABC$ be a triangle with $AB=13$, $BC=14$, $AC=15$. Let $H,I,M$ be the orthocenter of $\Delta ABC$, incenter of $\Delta ABC$, and midpoint of $BC$ respectively. What is the area of $\Delta HIM$?
 \end{exam}
-\textcolor{Blue}{\textbf{Walkthrough:}}
+
+\begin{walk}
+
 \begin{enumerate}[label=(\alph*)]
     \item As usual, we want to set $A=(0,a)$, $B=(b,0)$, $C=(c,0)$. Find the values of $a,b,c$. 
     \item For $H$, we can drop an altitude from $B$ to $CA$, and find the intersection of that with the $A$ altitude.
@@ -59,10 +61,14 @@ Let $ABC$ be a triangle with $AB=13$, $BC=14$, $AC=15$. Let $H,I,M$ be the ortho
     \item Finish using a good area formula. 
 \end{enumerate}
 
+\end{walk}
+
 \begin{exam}[2020 AMC 10A Problem 20]
 Quadrilateral $ABCD$ satisfies $\angle ABC = \angle ACD = 90^{\circ}, AC=20,$ and $CD=30.$ Diagonals $\overline{AC}$ and $\overline{BD}$ intersect at point $E,$ and $AE=5.$ What is the area of quadrilateral $ABCD?$
 \end{exam}
-\textcolor{Blue}{\textbf{Walkthrough:}}
+
+\begin{walk}
+
 \begin{enumerate}[label=(\alph*)]
     \item We could set the origin to be $C$, as we have $CD$ and $AC$, but there actually is a better point to use. (If you can't figure out where this is, then think about how we know $AC$, and $\angle ABC=90^{\circ}$.)
     
@@ -73,11 +79,15 @@ Quadrilateral $ABCD$ satisfies $\angle ABC = \angle ACD = 90^{\circ}, AC=20,$ an
     \item Finish. 
 \end{enumerate}
 
+\end{walk}
+
 Here is an instructional problem demonstrating point to line that some of you may be slighlty familiar with. 
 \begin{exam}[2021 AIME I Problem 9]
 Let $ABCD$ be an isosceles trapezoid with $AD=BC$ and $AB<CD.$ Suppose that the distances from $A$ to the lines $BC,CD,$ and $BD$ are $15,18,$ and $10,$ respectively. Let $K$ be the area of $ABCD.$ Find $\sqrt2 \cdot K.$
 \end{exam}
-\textcolor{Blue}{\textbf{Walkthrough:}}
+
+\begin{walk}
+
 \begin{enumerate}[label=(\alph*)]
     \item Note how we have a bunch of distances from a point to several lines, with the point being on one of 2 parallel lines. What are we motivated to use?
     \item Find a nice point that we can set as the origin, so that the coordinates of $A,B,C,D$ are all relatively clean.
@@ -95,6 +105,8 @@ Let $ABCD$ be an isosceles trapezoid with $AD=BC$ and $AB<CD.$ Suppose that the 
     \item Solve for $b$ and $d$, by squaring and subtracting. 
     \item Finish. 
 \end{enumerate}
+
+\end{walk}
 
 \pagebreak
 \section{Problems}
