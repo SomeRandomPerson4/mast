@@ -5,6 +5,7 @@ These are units that either do not have enough problems or are missing some theo
 ## Environments
 
 There are a number of environments present in dennis.sty. Please use them instead of manually writing things such as
+	
 	\textbf{Walkthrough:}
 	\begin{enumerate}
 	\item Step 1
