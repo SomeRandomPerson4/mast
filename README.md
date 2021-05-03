@@ -15,3 +15,19 @@ For any "obvious errors" (say I forgot to add a parenthesis, added an extra, the
 Please send PRs (Pull requests) for any larger changes so staff can look at them.
 
 TeX includes a bunch of junk whenever you compile so PLEASE make sure your gitignore is correct, it should absolutely not contain any latexmk files or whatever
+
+# Quote suggestions
+
+Even if you know how to PR, please submit all quote suggestions as issues. Something of the form
+
+	CQV Perspectives "abcde"
+
+will work. Please tag all such issues as quotes.
+
+# Missing solutions or diagrams
+
+You do not need to send an issue for every problem without a solution, but if you feel like it's a problem that particularly needs one, please submit an issue. Please tag as "No solution."
+
+You are encouraged to write the solution if you can.
+
+The same applies for diagrams.
