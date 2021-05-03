@@ -12,4 +12,4 @@
 *.synctex(busy)
 
 # compendium
-*.compendium-
+compendium-*.pdf
