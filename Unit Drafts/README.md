@@ -5,6 +5,7 @@ These are units that either do not have enough problems or are missing some theo
 ## Environments
 
 There are a number of environments present in dennis.sty. Please use them instead of manually writing things such as
+	
 	\textbf{Walkthrough:}
 	\begin{enumerate}
 	\item Step 1
@@ -28,7 +29,15 @@ If there are any environments you find yourself needing, submit an issue (here o
 
 ## Problems and point values
 
-Make sure you adhere to
+Make sure you adhere to the 1,2,4,6,9,13 point value standard. To input a problem, just type
+
+	\begin{prob}[source]{points}
+	Problem statement
+	\end{prob}
+	
+Make sure you have the most recent version of dennis.sty (as of 5/3/2021).
+
+Source is an optional argument. Please do not put [] if there is no source.
 
 ## Diagrams
 
