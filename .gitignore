@@ -10,3 +10,6 @@
 *.pre
 *.synctex
 *.synctex(busy)
+
+# compendium
+*.compendium-
