@@ -125,14 +125,14 @@ Let $ABCD$ be an isosceles trapezoid with $AD=BC$ and $AB<CD.$ Suppose that the 
 
 \prob{3}{AMC 10A 2018/23}{Farmer Kevin has a field of corn in the shape of a right triangle. The right triangle's legs have lengths 3 and 4 units. In the corner where those sides meet at a right angle, he leaves a small unplanted square $S$ so that from the air it looks like the right angle symbol. The rest of the field is planted. The shortest distance from $S$ to the hypotenuse is 2 units. Given that the fraction of the field that is planted can be written as $\frac{m}{n}$ where $\gcd(m,n)=1$, then find the value of $m+n$.
 \begin{center}
-    \includegraphics[width=0.4\textwidth]{pythagoras.png}
+    \input{amc-10a-2018-23}
 \end{center}}
 
 \prob{3}{AMC 10A 2016/19}{In rectangle $ABCD$, $AB=6$ and $BC=3$. Point $E$ between $B$ and $C$, and point $F$ between $E$ and $C$ are such that $BE=EF=FC$. Segments $\overline{AE}$ and $\overline{AF}$ intersect $\overline{BD}$ at $P$ and $Q$, respectively. The ratio $BP:PQ:QD$ can be written as $r:s:t$, where the greatest common factor of $r,s$ and $t$ is $1$. What is $r+s+t$?}
 
 \prob{3}{AMC 10A 2014/16}{n rectangle $ABCD$, $AB=1$, $BC=2$, and points $E$, $F$, and $G$ are midpoints of $\overline{BC}$, $\overline{CD}$, and $\overline{AD}$, respectively. Point $H$ is the midpoint of $\overline{GE}$. What is the area of the shaded region?
 \begin{center}
-    \includegraphics[width=0.3\textwidth]{amc-2014.png}
+    \input{amc-10a-2014-16}
 \end{center}
 }
 
@@ -142,10 +142,10 @@ Let $ABCD$ be an isosceles trapezoid with $AD=BC$ and $AB<CD.$ Suppose that the 
 
 \prob{6}{AIME II 2018/9}{Octagon $ABCDEFGH$ with side lengths $AB = CD = EF = GH = 10$ and $BC=  DE = FG = HA = 11$ is formed by removing four $6-8-10$ triangles from the corners of a $23\times 27$ rectangle with side $\overline{AH}$ on a short side of the rectangle, as shown. Let $J$ be the midpoint of $\overline{HA}$, and partition the octagon into $7$ triangles by drawing segments $\overline{JB}$, $\overline{JC}$, $\overline{JD}$, $\overline{JE}$, $\overline{JF}$, and $\overline{JG}$. Find the area of the convex polygon whose vertices are the centroids of these $7$ triangles.
 \begin{center}
-    \includegraphics[width = 0.4\textwidth]{problem_4.png}
+    \input{aime-i-2018-9}
 \end{center}}
 
-\prob{6}{AIME II 2017/10}{Rectangle $ABCD$ has side lengths $AB=84$ and $AD=42$. Point $M$ is the midpoint of $\overline{AD}$, point $N$ is the trisection point of $\overline{AB}$ closer to $A$, and point $O$ is the intersection of $\overline{CM}$ and $\overline{DN}$. Point $P$ lies on the quadrilateral $BCON$, and $\overline{BP}$ bisects the area of $BCON$. Find the area of $\triangle{CDP}$.}
+\prob{6}{AIME II 2017/10}{Rectangle $ABCD$ has side lengths $AB=84$ and $AD=42$. Point $M$ is the midpoint of $\overline{AD}$, point $N$ is the trisection point of $\overline{AB}$ closer to $A$, and point $O$ is the intersection of $\overline{CM}$ and $\overline{DN}$. Point $P$ lies on the quadrilateral $BCON$, and $\overline{BP}$ bisects the area of $BCON$. Find the area of $\triangle CDP$.}
 
 \prob{6}{AIME II 2003/11}{Triangle $ABC$ is a right triangle with $AC=7,$ $BC=24,$ and right angle at $C.$ Point $M$ is the midpoint of $AB,$ and $D$ is on the same side of line $AB$ as $C$ so that $AD=BD=15.$ Given that the area of triangle $CDM$ may be expressed as $\frac{m\sqrt{n}}{p},$ where $m,$ $n,$ and $p$ are positive integers, $m$ and $p$ are relatively prime, and $n$ is not divisible by the square of any prime, find $m+n+p.$}
 
@@ -162,16 +162,13 @@ Let $ABCD$ be an isosceles trapezoid with $AD=BC$ and $AB<CD.$ Suppose that the 
 We set $A=(0,12),B=(-5,0),C=(9,0)$. Its easy to see that $M=(2,0)$. Now, basic computation gives us the inradius $r=4$. If we let $D$ be the $BC$ touchpoint of the incircle, then it isn't hard to see that $BD=5$, so $I=(1,5)$. Dropping altitudes gives $H=(0,\frac{15}{4})$, so we can use shoelace to get the answer of $\ansbold{\frac{17}{8}}$.
 
 \subsection{AMC 10A 2020/20}
-\begin{center}
-    \includegraphics[width = 0.5\textwidth]{amc2020.png}\\
-    \textit{Diagram from AoPS Wiki.}
-\end{center}
-We set the origin to be the midpoint of $AC$. Now, construct $(ABC)$, and note that the equation of $(ABC)$ is $x^2+y^2=100$. We have the coordinates are
+
+We set the origin to be the midpoint of $AC$. Now, construct $(ABC)$, and note that the equation of $(ABC)$ is $x^2+y^2=100$. We have the coordinates as
 \begin{align*}
     A&=(-10,0)\\
     C&=(10,0)\\
     D&=(10,30)\\
-    E&=(-5,0)
+    E&=(-5,0).
 \end{align*}
 It remains to calculate $B$. Now, note that $B$ is simply the intersection of $x^2+y^2=100$ and line $DE$. But line $DE$ can be easily calculated to be $y=-2(x+5)$ from point slope formula. It remains to solve 
 \begin{align*}
@@ -181,8 +178,34 @@ It remains to calculate $B$. Now, note that $B$ is simply the intersection of $x
 \end{align*}
 Obviously, $x=0$ is the first intersection of $DE$ with $(ABC)$, so we can toss that out. Then, plugging $x=-4$ back in we get $y=-6$. Finally, we finish with shoelace on $ABCD$, and get an answer of $\ansbold{360}$.
 
+\begin{center}
+    \begin{asy}
+    size(8cm);
+draw((10,30)--(10,0)--(-8,-6)--(-10,0)--(10,30));
+draw((-20,0)--(20,0));
+draw((0,-15)--(0,35));
+draw((10,30)--(-8,-6));
+draw(circle((0,0),10));
+label("E",(-4.05,-.25),S);
+label("D",(10,30),NE);
+label("C",(10,0),NE);
+label("B",(-8,-6),SW);
+label("A",(-10,0),NW);
+label("5",(-10,0)--(-5,0), NE);
+label("15",(-5,0)--(10,0), N);
+label("30",(10,0)--(10,30), E);
+dot((-5,0));
+dot((-10,0));
+dot((-8,-6));
+dot((10,0));
+dot((10,30));
+    \end{asy}
+    
+    \textit{Diagram from AoPS Wiki.}
+\end{center}
+
 \subsection{AIME I 2021/9}
-Instead of high IQ similar triangle spam, we use the method of coordinate bashing. We do this by setting the origin to be the foot from $A$ to $CD$, and noting that we can use point to line formula and isosceles trapezoid properties to get the locations of the points $B,C,D$. 
+Instead of taking the effort to find similar triangles, we use the method of coordinate bashing. We do this by setting the origin to be the foot from $A$ to $CD$, and noting that we can use point to line formula and isosceles trapezoid properties to get the locations of the points $B,C,D$. 
 
 We let $X$, $Y$, $Z$ be the feet of the altitudes from $A$ to $CD$, $DB$, and $BC$, respectively.  
 
@@ -213,14 +236,14 @@ Now, point to line on $A$ to $BD$ and $BC$ gives
 Upon subtracting the two equations, we get $d=\frac{2}{5}b$. Now plugging this back into $324+d^2=\frac{36}{25}b^2$, we get 
 \begin{align*}
     324+\frac{4}{25}b^2&=36b^2\\
-    \implies 324=\frac{32}{25}b^2\\
-    \implies b=\frac{45\sqrt{2}}{4}\\
-    \implies d=\frac{9\sqrt{2}}{2}
+    324=\frac{32}{25}b^2\\
+    b=\frac{45\sqrt{2}}{4}\\
+    d=\frac{9\sqrt{2}}{2}.
 \end{align*}
 From here it is not hard to get the answer of $\ansbold{567}$.
 
-\begin{remark}[Brian Zhang]
-On contest, I calculated the area of the trapezoid to be $\frac{1}{2}\cdot(b+d)\cdot b\cdot18\implies 486$. Oops.
+\begin{remark}[(Brian Zhang)]
+On contest, I calculated the area of the trapezoid to be $\frac{1}{2}\cdot(b+d)\cdot b\cdot18 = 486$. Oops.
 \end{remark}
 
 \end{document}
