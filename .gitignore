@@ -9,3 +9,4 @@
 *.fls
 *.pre
 *.synctex
+*.synctex(busy)
