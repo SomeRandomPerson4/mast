@@ -31,11 +31,13 @@ If there are any environments you find yourself needing, submit an issue (here o
 
 Make sure you adhere to the 1,2,4,6,9,13 point value standard. To input a problem, just type
 
-	\begin{prob}{points}[source]
+	\begin{prob}[source]{points}
 	Problem statement
 	\end{prob}
 	
-It will not compile until I update dennis.sty and the rest of the MAST handouts. Don't worry about that, just do it for now.
+Make sure you have the most recent version of dennis.sty (as of 5/3/2021).
+
+Source is an optional argument. Please do not put [] if there is no source.
 
 ## Diagrams
 
