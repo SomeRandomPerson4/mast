@@ -1,0 +1,164 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{Careful!}
+\author{Dennis Chen}
+\date{MQU}
+
+\begin{document}
+\maketitle
+We discuss common mistakes that happen in math competitions, also known as "sillies." Included are stupid "problems" with stupid solutions.
+
+\section{Pitfalls}
+I believe that you fix your "stupider" mistakes first. In practice, this means that people who say they "silly" a lot are often the ones who are losing a significant amount of points to them. In order of descending stupidity, common mistakes people make:
+
+\begin{enumerate}
+    \item Read the problem wrong.
+
+    \item Make arithmetic/algebra errors.
+    
+    \item In the AIME - forgetting to simplify fractions before doing $m+n.$ (AIME I 2020/6 was particularly infamous in the year I wrote this handout, with $\frac{480}{39}\to 519.$) Or just forget to simplify answers at all.
+    
+    \item For problems in different bases, remember that the base must be greater than the value of the largest digit. (For example, $658_7$ is absurd because $7\leq 8.$)
+    
+    \item "Find all..." or "How many..." problems are two-part: First, you must find all of the things that work \textbf{and verify they do}, then you must verify no other work.
+    
+    \item Pointwise trap for functional equations, in particular. For example, for $f(x)^2=x^2,$ the solutions are NOT $f(x)=x$ and $f(x)=-x.$ It is possible for $f(1)=1$ and $f(2)=-2.$ In practice this will not happen, but \textbf{you have to check that it doesn't.}
+\end{enumerate}
+
+\section{Don't Do This}
+I don't think the problems I'm about to present have some sort of intrinsic condition that you mess up (which makes them kind of boring). But I messed these up, and from the looks of it, several other people have done the exact same thing. So I think they could be valuable - if you have already seen these problems/don't really care about arithmetic mistakes as opposed to fundamental ones, feel free to skip.
+
+\begin{exam}[AMC 8 2018/3]
+Students Arn, Bob, Cyd, Dan, Eve, and Fon are arranged in that order in a circle. They start counting: Arn first, then Bob, and so forth. When the number contains a 7 as a digit (such as 47) or is a multiple of 7 that person leaves the circle and the counting continues. Who is the last one present in the circle?
+\end{exam}
+
+Here's how you mess it up: There are $5$ answer choices, so there are clearly $5$ people in the circle.
+
+This cost me a bid for a perfect score. Grr dumb problem.
+
+\begin{exam}[AMC 10A 2020/7]
+The $25$ integers from $-10$ to $14,$ inclusive, can be arranged to form a $5$-by-$5$ square in which the sum of the numbers in each row, the sum of the numbers in each column, and the sum of the numbers along each of the main diagonals are all the same. What is the value of this common sum?
+\end{exam}
+
+The main idea is pretty obvious: the sum of one of the rows is $\frac{1}{5}$ the sum of all the numbers, which is $(-10)+(-9)+\cdots+14.$ The way you screw this up is by forgetting the tens digit and thinking $11+12+13+14=10.$ Oops.
+
+\pagebreak
+
+\section{Problems}
+
+On the page below, I detail common mistakes (so if you don't know what you did wrong, you can learn). \db{Every problem is required}; therefore, no problems will be marked as required here, and a minimum point value will not be given.
+
+\psetquote{I am Giovanni Bertuccio; thy death for my brother's; thy treasure for his widow; thou seest that my revenge is more complete than I had hoped.}{The Count of Monte Cristo}
+
+\prob{2}{AMC 12A 2021/2}{Under what conditions is $\sqrt{a^2+b^2}=a+b$ true, where $a$ and $b$ are real numbers?\footnote{You must \textit{describe} all conditions yourself; answer choices are not given to you.}}
+
+\prob{2}{OMO Fall 2018/1}{Let $a,b,c,d,e$ be pairwise relatively prime non-negative integers. Find the minimum value $a+b+c+d+e$ can take.}
+
+\prob{2}{AMC 10A 2017/10}{Joy has $30$ thin rods, one each of every integer length from $1$ cm through $30$ cm. She places the rods with lengths $3$ cm, $7$ cm, and $15$ cm on a table. She then wants to choose a fourth rod that she can put with these three to form a quadrilateral with positive area. How many of the remaining rods can she choose as the fourth rod?}
+
+\prob{3}{AMC 10B 2019/10}{In a given plane, points $A$ and $B$ are $10$ units apart. How many points $C$ are there in the plane such that the perimeter of $\triangle ABC$ is $50$ units and the area of $\triangle ABC$ is $100$ square units?}
+
+\prob{3}{AIME I 2007/2}{A $100$ foot long moving walkway moves at a constant rate of $6$ feet per second. Al steps onto the start of the walkway and stands. Bob steps onto the start of the walkway two seconds later and strolls forward along the walkway at a constant rate of $4$ feet per second. Two seconds after that, Cy reaches the start of the walkway and walks briskly forward beside the walkway at a constant rate of $8$ feet per second. At a certain time, one of these three persons is exactly halfway between the other two. At that time, find the distance in feet between the start of the walkway and the middle person.}
+
+\prob{3}{AMC 10B 2020/12}{The decimal representation of\[\dfrac{1}{20^{20}}\]consists of a string of zeros after the decimal point, followed by a $9$ and then several more digits. How many zeros are in that initial string of zeros after the decimal point?}
+
+\prob{3}{AMC 10A 2021/15}{Values for $A, B, C,$ and $D$ are to be selected from $\{1, 2, 3, 4, 5, 6 \}$ without replacement (i.e., no two letters have the same value). How many ways are there to make such choices that the two curves $y=Ax^2+B$ and $y=Cx^2+D$ intersect? (The order in which the curves are listed does not matter; for example, the choices $A=3, B=2, C=4, D=1$ is considered the same as the choices $A=4, B=1, C=3, D=2.$)}
+
+\prob{3}{NICE Spring 2021/5}{Aeren needs to memorize a table about a new binary operation $\heartsuit$. He is given the table below by his teacher and is also told that
+\[A - (A \heartsuit B) = (B \heartsuit A) - B\]for all positive integers $A$ and $B$ between $1$ and $6$ inclusive. At most how many additional entries in the table can he fill out (without guessing)?
+\begin{center}
+\begin{tabular}{l|llllll} $\heartsuit$ & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline 1 & & 1 & & & & \\ 2 & & & & & & \\ 3 & & 1 & & & 8 & \\ 4 & 3 & & & & 7 & \\ 5 & & & & & & \\ 6 & 4 & & & 9 & & \end{tabular}
+\end{center}
+}
+
+\prob{3}{AIME II 2020/2}{Let $P$ be a point chosen uniformly at random in the interior of the unit square with vertices at $(0,0), (1,0), (1,1)$, and $(0,1)$. The probability that the slope of the line determined by $P$ and the point $\left(\frac58, \frac38 \right)$ is greater than $\frac12$ can be written as $\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.}
+
+\prob{4}{AIME II 2016/2}{There is a $40\%$ chance of rain on Saturday and a $30\%$ of rain on Sunday. However, it is twice as likely to rain on Sunday if it rains on Saturday than if it does not rain on Saturday. The probability that it rains at least one day this weekend is $\frac{a}{b}$, where $a$ and $b$ are relatively prime positive integers. Find $a+b$.}
+
+\prob{4}{AMC 12B 2019/14}{Let $S$ be the set of all positive integer divisors of $100,000.$ How many numbers are the product of two distinct elements of $S?$}
+
+\prob{4}{AIME I 2020/5}{Six cards numbered $1$ through $6$ are to be lined up in a row. Find the number of arrangements of these six cards where one of the cards can be removed leaving the remaining five cards in either ascending or descending order.}
+
+\prob{4}{AMC 10A 2015/14}{The diagram below shows the circular face of a clock with radius $20$ cm and a circular disk with radius $10$ cm externally tangent to the clock face at $12$ o' clock. The disk has an arrow painted on it, initially pointing in the upward vertical direction. Let the disk roll clockwise around the clock face. At what point on the clock face will the disk be tangent when the arrow is next pointing in the upward vertical direction?}
+\vspace{-0.2cm}
+	\begin{center}
+	\begin{asy}
+	size(170);defaultpen(linewidth(0.9)+fontsize(13pt));draw(unitcircle^^circle((0,1.5),0.5));
+path arrow = origin--(-0.13,-0.35)--(-0.06,-0.35)--(-0.06,-0.7)--(0.06,-0.7)--(0.06,-0.35)--(0.13,-0.35)--cycle;
+for(int i=1;i<=12;i=i+1){draw(0.9*dir(90-30*i)--dir(90-30*i));label("$"+(string) i+"$",0.78*dir(90-30*i));}
+dot(origin);draw(shift((0,1.87))*arrow);draw(arc(origin,1.5,68,30),EndArrow(size=12));
+	\end{asy}
+	\end{center}
+\vspace{0.2cm}
+
+\prob{6}{AIME II 2017/9}{A special deck of cards contains $49$ cards, each labeled with a number from $1$ to $7$ and colored with one of seven colors. Each number-color combination appears on exactly one card. Sharon will select a set of eight cards from the deck at random. Given that she gets at least one card of each color and at least one card with each number, the probability that Sharon can discard one of her cards and still have at least one card of each color and at least one card with each number is $\frac{p}{q}$, where $p$ and $q$ are relatively prime positive integers. Find $p+q$.}
+
+\prob{6}{NARML 2020/3}{Find all values of $a$ such that the equation \[ax^2-(a+4)x+\frac{9}{2}=0\] only has one solution.}
+    
+\prob{6}{AIME II 2020/10}{Find the sum of all positive integers $n$ such that when $1^3+2^3+3^3+\cdots+n^3$ is divided by $n+5$, the remainder is $17.$}
+
+\prob{6}{AIME I 2021/14}{For any positive integer $a,$ $\sigma(a)$ denotes the sum of the positive integer divisors of $a.$ Let $n$ be the least positive integer such that $\sigma(a^n)-1$ is divisible by $2021$ for all positive integers $a.$ Find the sum of the prime factors in the prime factorization of $n.$}
+
+\prob{9}{AIME I 2020/11}{For integers $a,b,c$ and $d,$ let $f(x)=x^2+ax+b$ and $g(x)=x^2+cx+d.$ Find the number of ordered triples $(a,b,c)$ of integers with absolute values not exceeding $10$ for which there is an integer $d$ such that $g(f(2))=g(f(4))=0.$}
+
+\prob{9}{OMO Fall 2014/26}{Let $ABC$ be a triangle with $AB=26$, $AC=28$, $BC=30$. Let $X$, $Y$, $Z$ be the midpoints of arcs $BC$, $CA$, $AB$ (not containing the opposite vertices) respectively on the circumcircle of $ABC$. Let $P$ be the midpoint of arc $BC$ containing point $A$. Suppose lines $BP$ and $XZ$ meet at $M$ , while lines $CP$ and $XY$ meet at $N$. Find the square of the distance from $X$ to $MN$.}
+
+\prob{13}{AIME I 2021/8}{Find the number of integers $c$ such that the equation $$\left||20|x|-x^2|-c\right|=21$$has $12$ distinct real solutions.}
+
+\prob{13}{AIME II 2020/9}{While watching a show, Ayako, Billy, Carlos, Dahlia, Ehuang, and Frank sat in that order in a row of six chairs. During the break, they went to the kitchen for a snack. When they came back, they sat on those six chairs in such a way that if two of them sat next to each other before the break, then they did not sit next to each other after the break. Find the number of possible seating orders they could have chosen after the break.}
+
+    %(PAMO 2018) Find all functions $f : \mathbb Z \to \mathbb Z$ such that$$(f(x + y))^2 = f(x^2) + f(y^2)$$for all $x, y \in \mathbb Z$.
+
+\pagebreak
+
+\section{Common Mistakes}
+
+\begin{enumerate}
+    
+    \item Square roots are non-negative.
+    
+    \item The problem never says ``distinct''; also, remind yourself of the definition of $\gcd$.
+    
+    \item You can't use a rod twice.
+
+    \item First, you must find all of the things that work \db{and verify they do}...
+    
+    \item Make sure everyone moves the way you \textit{think} they do.
+
+    \item If you're getting $27,$ the $0$ to the left of the decimal place doesn't count. There are also a dozen of other ways to screw this up and this is just generally tricky.
+    
+    \item Read the last sentence.
+    
+    \item $A=B$ exists.
+    
+    \item There's just so many ways to mess up. Try calculating the area in two different ways - whichever seems less dependent on being careful is probably right.
+    
+    \item The chance that it rains on Sunday given that it doesn't rain on Saturday is \db{not} $30\%.$ That refers to the overall probability.
+    
+    \item What divisors don't work?
+    
+    \item The most common method is the "insertion" method (where you have a list of $5$ numbers and insert the sixth to satisfy the requirement). But what about the cases where one valid arrangement can be produced by more than one insertion?
+    
+    \item The rotation of the arrow with respect to the stationary observer is distinct from the rotation of the arrow with respect to the clock.
+    
+    \item You can't assign the non-unique color to the non-unique number both times.
+    
+    \item This is not always a quadratic.
+    
+    \item Division with mods is not well-defined - be careful and verify all of your solutions work.
+    
+    \item Check $p\equiv 1\pmod{43}$ and $p\equiv 1\pmod{47}.$
+    
+    \item What about $f(2)=f(4)?$
+    
+    \item $BC=30,$ not $28.$
+    
+    \item After simplifying and assuming $x>0,$ actually make sure both of the roots \textit{are} greater than $0.$ (The answer is not $82.$)
+    
+    \item Just a remarkably easy problem to mess up. Probably requires multiple tries to get right, and definitely requires very organized, well defined, and generalizable casework bash.
+    
+%    \item What if $f(0)=2?$ Watch out for pointwise trap here!
+\end{enumerate}
+\end{document}

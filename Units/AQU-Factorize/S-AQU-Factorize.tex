@@ -1,0 +1,188 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{Solutions to Factoring a Polynomial}
+\author{Dennis Chen}
+\date{AQU}
+
+\begin{document}
+
+\maketitle
+
+{\hypersetup{
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black}\tableofcontents
+}
+
+\pagebreak\section{MATHCOUNTS State 2020/Target/6}
+
+What is the value of $\sqrt{111,111,111\cdot 1,000,000,011+4}?$
+
+\subsection{Solution}
+
+Note that
+\[\sqrt{111,111,111\cdot 1,000,000,011+4}=\]
+\[\sqrt{333,333,333\cdot 333,333,337+4}=\]
+\[\sqrt{(333,333,335-2)(333,333,335+2)+4}=\]
+\[333,333,335.\]
+
+\pagebreak\section{Unsourced}
+
+Find $\frac{1999^3-1000^3-999^3}{1999\cdot 1000\cdot 999}.$
+
+\subsection{Solution}
+
+Note $1999^3-1000^3-999^3-3\cdot 1999\cdot (-1000)\cdot (-999)=0,$ since $1999-1000-999=0.$ Thus $\frac{1999^3-1000^3-999^3}{3\cdot 1999\cdot 1000\cdot 999}=\frac{3\cdot 1999\cdot 1000\cdot 999}{1999\cdot 1000\cdot 999}=3.$
+
+\pagebreak\section{PAMO 2003/3}
+
+Does there exists a base in which the numbers of the form:
+\[ 10101, 101010101, 1010101010101,\cdots \]
+are all prime numbers?
+
+\subsection{Solution}
+No. Note that the first number is $b^4+b^2+1=(b^2-b+1)(b^2+b+1).$
+
+\pagebreak\section{Dennis Chen}
+
+Find all constants $r$ such that $a-r|ar^2+ar-17a+15.$
+
+\subsection{Solution}
+
+Substitute $a=r.$ The remainder is $r^3+r^2-17r+15=(r+5)(r-1)(r-3).$ Thus the roots are $r=-5,1,3.$
+
+\pagebreak\section{AIME 1985/3}
+
+Find $c$ if $a$, $b$, and $c$ are positive integers which satisfy $c=(a + bi)^3 - 107i$, where $i^2 = -1$.
+
+\subsection{Solution}
+
+This implies that we want the imaginary term of $(a+bi)^3$ to be $107.$ Note that the imaginary part of $(a+bi)^3$ is $a^2bi-b^3i,$ so $3a^2b-b^3=b(3a^2-b^2)=107.$ Since $107$ is prime, we must have $b=1$ or $b=107.$ We check that only the first case works since $107^2+1\equiv 2\pmod{3},$ so $a=\sqrt{\frac{107+1^2}{3}}=6.$ Then note the real part of $(6+i)^3$ is $6^3-3\cdot 6=198.$
+
+\pagebreak\section{AMC 10B 2020/22}
+
+What is the remainder when $2^{202}+202$ is divided by $2^{101}+2^{51}+1$?
+
+\subsection{Solution}
+
+Let $2^{50}=x.$ We want to find the remainder of $4x^4+202$ divded by $2x^2+2x+1.$ Long division gives $201.$
+
+\pagebreak\section{AHSME 1969/34}
+
+Find the remainder when $x^{100}$ is divided by $x^2-3x+2.$
+
+\subsection{Solution}
+
+Note $x^2-3x+2=(x-1)(x-2).$ By Remainder Theorem, \[x^{100}\equiv 1\equiv x(2^{100}-1)+(-2^{100}+2)\pmod{x-1}\]
+\[x^{100}\equiv 2^{100}\equiv x(2^{100}-1)+(-2^{100}+2)\pmod{x-2}\]
+so
+\[x^{100}\equiv x(2^{100}-1)+(-2^{100}+2)\pmod{x^2-3x+2}\]
+where the final step is motivated by wanting to manipulate the constants of the first two modular congruences so that they are identical.
+
+\pagebreak\section{e-dchen Mock MATHCOUNTS}
+
+For any ordered pair of integers $(a,b)$ such that $a,b\not\in \{1,2\dots 8\},$ $a\neq b,$ and the remainder of $$f(x)=(x-1)(x-2)(x-3)\dots(x-8)$$ when divided by $x-a$ and $x-b$ are the same, find $a+b.$
+
+\subsection{Solution}
+
+Notice that $f(a)=f(b).$ Without loss of generality, let $a\geq b.$ Then notice that for $|f(a)|=|f(b)|,$ we desire $|a-8|=|b-1|.$ Since we cannot have $a,b\leq 1$ and $a\geq b,$ we have $a>8.$ (This all arises from our problem conditions.) Then $|a-8|=a-8.$ But by similar reasoning, we have $b<1,$ so $|b-1|=1-b.$ This yields $a-8=1-b\to a=9-b,$ implying $a+b=9-b+b=9.$
+
+\pagebreak\section{AIME 1991/1}
+
+Find $x^2+y^2$ if $x$ and $y$ are positive integers such that
+\[xy+x+y = 71\]
+\[x^2y+xy^2 = 880.\]
+
+\subsection{Solution}
+
+Let $a=x+y$ and note that from the first equation, $xy=71-a.$ So $x^2y+xy^2=xy(x+y)=(71-a)a=880.$ Since exactly one of $a,71-a$ are even and $880=16\cdot 55,$ we must either have $a=16$ or $a=55.$ The former must be correct since $xy\geq \max(x,y).$ Then note $x^2+y^2=(x+y)^2-2xy=16^2-2\cdot 55=146.$
+
+\pagebreak\section{AIME I 2015/3}
+
+There is a prime number $p$ such that $16p + 1$ is the cube of a positive integer. Find $p.$
+
+\subsection{Solution}
+
+Let $16p+1=a^3.$ Then $16p=(a-1)(a^2+a+1).$ Note that $a^2+a+1$ is always odd since $a(a+1)$ is always even, so $a-1=16.$ (We can check that $p=2$ doesn't work.) Thus $a=17$ and $p=\frac{17^3-1}{16}=17^2+17+1=307.$
+
+\pagebreak\section{AIME 1987/14}
+
+Compute
+\[\frac{(10^4+324)(22^4+324)(34^4+324)(46^4+324)(58^4+324)}{(4^4+324)(16^4+324)(28^4+324)(40^4+324)(52^4+324)}.\]
+
+\subsection{Solution}
+
+Note that by Sophie Germain, $n^4+4\cdot 3^4=(n^2+2\cdot 3^2-2\cdot 3\cdot n)(n^2+2\cdot 3^2+2\cdot 3\cdot n)=(n^2-6n+18)(n^2+6n+18)=((n-3)^2+9)((n+3)^2+9).$ So the fraction is equivalent to
+\[\prod_{i=0}^{4}\frac{(10+i)^4}{(4+i)^4}=\]
+\[\prod_{i=0}^{4}\frac{((7+12i)^2+9)((13+12i)^2+9)}{((1+12i)^2+9)((7+12i)^2+9)}\]
+which telescopes to $\frac{(61^2+9)}{(1^2+9)}=\frac{3730}{10}=373.$
+
+\pagebreak\section{Dennis Chen}
+
+Consider cubic $p(x)$ such that $p(1)=1,p(2)=2,p(3)=3,p(4)=0.$ Find $p(5).$
+
+\subsection{Solution}
+
+Let $Q(x)=P(x)-x.$ Then note $Q(1)=Q(2)=Q(3)=0$ and $Q(4)=-4,$ so $Q(x)=c(x-1)(x-2)(x-3).$ Also note that $Q(4)=6c=-4,$ so $c=-\frac{2}{3}.$ Thus $P(5)=Q(5)+5=-\frac{2}{3}\cdot 4\cdot 3\cdot 2+5=-11.$
+
+\pagebreak\section{JMC 10 2020/22}
+
+What is the remainder of $17^7+17^2+1$ when divided by $307^2?$
+
+\subsection{Solution}
+
+Note $307=17^2+17+1.$ Let $17=x.$ Then we want to find the remainder of $x^7+x^2+1$ divided by $(x^2+x+1)^2.$ Note that $x^2+x+1=\frac{x^3-1}{x-1},$ so $\frac{x^7+x^2+1}{x^2+x+1}=(x-1)\frac{(x^7-x)}{x^3-1}+1=x(x-1)(x^3+1)+1.$ The remainder when dividing by $\frac{x^3-1}{x-1}$ again is $x(x-1)(2)+1=2x^2-2x+1=-4x-1.$
+
+Thus the remainder of $\frac{17^7+17^2+1}{307}$ divided by $307$ is $307-4\cdot 17-1=238,$ so the remainder of $17^7+17^2+1$ divided by $307^2$ is $238\cdot 307=73066.$
+
+\pagebreak\section{AIME I 2013/5}
+
+The real root of the equation $8x^3 - 3x^2 - 3x - 1 = 0$ can be written in the form $\frac{\sqrt[3]a + \sqrt[3]b + 1}{c}$, where $a$, $b$, and $c$ are positive integers. Find $a+b+c$.
+
+\subsection{Solution}
+
+This implies $9x^3=x^3+3x^3+3x+1=(x+1)^3,$ or $\sqrt[3]{9}x=x+1.$ Thus $x(\sqrt[3]{9}-1)=1,$ implying
+\[x=\frac{1}{\sqrt[3]{9}-1}=\frac{\sqrt[3]{9}^2+\sqrt[3]{9}+1}{(\sqrt[3]{9}-1)(\sqrt[3]{9}^2+\sqrt[3]{9}+1)}=\frac{\sqrt[3]{81}+\sqrt[3]{9}+1}{8},\]
+so the answer is $81+9+8=98.$
+
+%\pagebreak\section{AMC 10A 2019/24}
+%
+%Let $p$, $q$, and $r$ be the distinct roots of the polynomial $x^3 - 22x^2 + 80x - 67$. It is given that there exist real numbers $A$, $B$, and $C$ such that\[\dfrac{1}{s^3 - 22s^2 + 80s - 67} = \dfrac{A}{s-p} + \dfrac{B}{s-q} + \frac{C}{s-r}\]for all $s\not\in\{p,q,r\}$. What is $\tfrac1A+\tfrac1B+\tfrac1C$?
+%
+%\subsection{Solution}
+%
+%This is a partial fraction decomposition, so we can multiply both sides by $s^3-22s^2+80s-67$ to get $1=A(s-q)(s-r)+B(s-r)(s-p)+C(s-p)(s-q).$ By continuity we can set $s=p,q,r$ to get
+%\[\frac{1}{(p-q)(p-r)}=A\]
+%\[\frac{1}{(q-r)(q-p)}=B\]
+%\[\frac{1}{(r-p)(r-q)}=C,\]
+%respectively.
+%Thus
+%\[\frac{1}{A}+\frac{1}{B}+\frac{1}{C}=p^2+q^2+r^2-pq-qr-rp=(p+q+r)^2-3(pq+qr+rp)=22^2-3\cdot 80=244.\]
+
+\pagebreak\section{AIME 1998/13}
+
+Find $a$ if $a$ and $b$ are integers such that $x^2 - x - 1$ is a factor of $ax^{17} + bx^{16} + 1$.
+
+\subsection{Solution}
+
+Note the roots of $x^2-x-1=0$ are $x=\frac{1\pm\sqrt{5}}{2}.$ Then note that $x^{16}(ax+b)=-1$ for both of these values of $x.$ Let $(\frac{1+\sqrt{5}}{2})^{16}=x+y\sqrt{5}$ for rational $x,y,$ and note that $(\frac{1-\sqrt{5}}{2})^{16}=x-y\sqrt{5}.$ Then we solve the system of equations
+    \[(x+y\sqrt{5})(\frac{a+2b}{2}+\frac{a\sqrt{5}}{2})=-1\]
+    \[(x-y\sqrt{5})(\frac{a+2b}{2}-\frac{a\sqrt{5}}{2})=-1.\]
+    We note this is secretly equivalent to just solving the first one. The irrational term being $0$ implies that $ya+2b+xa=0,$ or $a=-\frac{2b}{x+y},$ and the rational term being $-1$ implies that $xa+2xb+5ya=-2,$ or $xb-b+\frac{4yb}{x+y}=-1,$ or $b=\frac{-1}{x-1+\frac{4y}{x+y}}.$ All that is left to do is to painstakingly bash out $(\frac{1+\sqrt{5}}{2})^{16}=\frac{2207}{2}+\frac{987\sqrt{5}}{2},$ which gives us $b=-1597$ and $a=987.$ Thus the answer is $987.$
+
+\pagebreak\section{AIME II 2000/13}
+
+The equation $2000x^6+100x^5+10x^3+x-2=0$ has exactly two real roots, one of which is $\frac{m+\sqrt{n}}r$, where $m$, $n$ and $r$ are integers, $m$ and $r$ are relatively prime, and $r>0$. Find $m+n+r$.
+
+\subsection{Solution}
+
+Note the equation implies
+\[2(1000x^6-1)+x(100x^4+10x^2+1)=\]
+\[2((10x^2)^3-1^3)+x(100x^4+10x^2+1)=\]
+\[2(10x^2-1)(100x^4+10x^2+1)+x(100x^4+10x^2+1)=\]
+\[(20x^2+x-2)(100x^4+10x^2+1).\]
+Note that $100x^4+x^2+1\geq 1>0$ by the Trivial Inequality. So we find the larger root of $20x^2+x-2$ by the Quadratic Formula, which is $\frac{-1+\sqrt{161}}{40}.$ Thus the answer is $-1+161+40=200.$
+\end{document}

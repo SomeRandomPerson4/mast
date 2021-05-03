@@ -1,0 +1,142 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{Sequences in the AIME}
+\author{Dennis Chen}
+\date{AQV}
+
+\begin{document}
+\maketitle
+
+There are two types of problems in this unit. The first type is sequence problems: given some sequence, find a certain thing out about said sequence. Then there are restriction problems: with some restriction, how many ways can something be done? The former is solved with clever algebraic manipulation and is quite standard. The latter requires recursions.
+
+\section{Combinatorial Sequences}
+
+\begin{exam}[AIME I 2006/11]
+A collection of $8$ cubes consists of one cube with edge-length $k$ for each integer $k, 1 \le k \le 8.$ A tower is to be built using all $8$ cubes according to the rules:
+
+\begin{itemize}
+
+    \Item Any cube may be the bottom cube in the tower.
+
+    \Item The cube immediately on top of a cube with edge-length $k$ must have edge-length at most $k+2.$
+
+\end{itemize}
+
+Let $T$ be the number of different towers than can be constructed. What is the remainder when $T$ is divided by $1000?$
+\end{exam}
+\begin{sol}
+Let $a_k$ be the amount of ways to make a tower of height $k.$
+    
+Note that $a_k=3a_{k-1}$ for $k\geq 3,$ as we can put the last cube above the cube with edge length $k-1,$ above the cube with edge length $k-2,$ or as the bottom cube in the tower. It is obvious that $a_2=2,$ so $a_k=2\cdot 3^{k-2}.$ Thus, $a_6=2\cdot 3^6=1458,$ so the answer is $458.$
+\end{sol}
+That just required a little bit of clever thinking. Let's take a look at a more involved example.
+
+\begin{exam}[AMC 12B 2019/23]
+How many sequences of $0$s and $1$s of length $19$ are there that begin with a $0$, end with a $0$, contain no two consecutive $0$s, and contain no three consecutive $1$s?
+\end{exam}
+\begin{sol}
+Let $a_n$ be the number of sequences of length $n$ that start and end with $0,$ and have no two consecutive $0s$ and no three consecutive $1s.$
+
+Each sequence starts with $010$ or $0110,$ so $a_n=a_{n-2}+a_{n-3}.$ Since $a_1=1,$ $a_2=0,$ and $a_3=1,$
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+$n$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 \\
+\hline & \\[-12pt]
+$a_n$ & 1 & 0 & 1 & 1 & 1 & 2 & 2 & 3 & 4 & 5 & 7 & 9 & 12 & 16 & 21 & 28 & 37 & 49 & 65 \\
+\hline
+\end{tabular}
+\end{center}
+
+Thus the answer is $a_{19}=65.$
+\end{sol}
+These types of problems are a two step process:
+
+\begin{itemize}
+
+\Item Find a recursion that characterizes the number of ways to do something.
+
+\Item Extract the answer.
+
+\end{itemize}
+
+Generally the first step is much harder than the second. But usually neither step is very hard if you have experience doing recursion problems.
+
+\section{Algebraic Sequences}
+
+Some sequences \textit{feel} bashable because they have an organized structure, and you just have to figure out what it is. The only real choice that you have to make is whether to bash directly in terms of the constants or in terms of the varaible.
+
+\begin{exam}[AMC 10A 2019/15]
+A sequence of numbers is defined recursively by $a_1 = 1$, $a_2 = \frac{3}{7}$, and
+    \[a_n=\frac{a_{n-2} \cdot a_{n-1}}{2a_{n-2} - a_{n-1}}\]
+    for all $n \geq 3$. Then $a_{2019}$ can be written as $\frac{p}{q}$, where $p$ and $q$ are relatively prime positive integers. What is $p+q?$
+\end{exam}
+\begin{sol}
+We calculate a few terms to get a feel for the problem. Note that $a_3=\frac{3}{11}$, $a_4=\frac{3}{15},$ and $a_5=\frac{3}{19}.$ This leads us to believe $a_n=\frac{3}{4n-1},$ and checking that this holds for $a_1$ is enough to convince us that $a_{2019}=\frac{3}{4\cdot 2019-1}=\frac{3}{8075},$ so the answer is $8078.$
+
+In fact we can verify with induction that $a_n=\frac{3}{4n-1}.$ The base case $a_1$ is already done, and \[a_{n+1}=\frac{a_{n-1}\cdot a_n}{2a_{n-1}-a_n}=\frac{\frac{3}{4n-1}\cdot\frac{3}{4n-5}}{2\cdot \frac{3}{4n-5}-\frac{3}{4n-1}}=\frac{9}{12n+9}=\frac{3}{4n+3}\] finishes the inductive step.
+\end{sol}
+This is a problem where you bash directly with the given numbers, because you feel the given numbers might be special in some way.
+
+\begin{exam}[AIME II 2020/6]
+Define a sequence recursively by $t_1 = 20$, $t_2 = 21$, and$$t_n = \frac{5t_{n-1}+1}{25t_{n-2}}$$for all $n \ge 3$. Then $t_{2020}$ can be written as $\frac{p}{q}$, where $p$ and $q$ are relatively prime positive integers. Find $p+q$.
+\end{exam}
+\begin{sol}
+The fractions make the function \textit{feel} periodic. So we write everything in terms of $t_1$ and $t_2,$ because it is likely to stay periodic regardless of the values of $t_1$ and $t_2.$ Note
+\[t_3=\frac{5t_2+1}{25t_1}\]
+\[t_4=\frac{5\cdot \frac{5t_2+1}{25t_1}+1}{25t_2}=\frac{5t_1+5t_2+1}{125t_1t_2}\]
+\[t_5=\frac{5\cdot \frac{5t_1+5t_2+1}{125t_1t_2}+1}{25\cdot \frac{5t_2+1}{25t_1}}=\frac{5t_1+5t_2+1+25t_1t_2}{125t_2^2+25t_2}=\frac{(5t_1+1)(5t_2+1)}{25t_2(5t_2+1)}=\frac{5t_1+1}{25t_2}\]
+\[t_6=\frac{5\cdot \frac{5t_1+1}{25t_2}+1}{25\cdot \frac{5t_1+5t_2+1}{125t_1t_2}}=\frac{5t_1^2+5t_1t_2+t_1}{5t_1+5t_2+1}=t_1.\]
+So we see that this sequence repeats with a period of $5.$ Thus $t_{2020}=t_5=\frac{5\cdot 20+1}{5\cdot 21}=\frac{101}{125},$ so the answer is $226.$
+\end{sol}
+
+\pagebreak
+
+\section{Problems}
+    
+\prob{2}{AMC 12A 2007/25}{Call a set of integers spacy if it contains no more than one out of any three consecutive integers. How many subsets of $\{1,2,3,\ldots,12\},$ including the empty set, are spacy?}
+
+\prob{2}{AIME I 2001/14}{A mail carrier delivers mail to the nineteen houses on the east side of Elm Street. The carrier notices that no two adjacent houses ever get mail on the same day, but that there are never more than two houses in a row that get no mail on the same day. How many different patterns of mail delivery are possible?}
+
+\prob{3}{MAST Diagnostic 2020}{A secret spy organization needs to spread some secret knowledge to all of its members. In the beginning, only $1$ member is \textit{informed}. Every informed spy will call an uninformed spy such that every informed spy is calling a different uninformed spy. After being called, an uninformed spy becomes informed. The call takes $1$ minute, but since the spies are running low on time, they call the next spy directly afterward. However, to avoid being caught, after the third call an informed spy makes, the spy stops calling. How many minutes will it take for every spy to be informed, provided that the organization has $600$ spies?}
+
+\prob{3}{HMMT 2019}{Let $a_1,a_2,\dots$ be an arithmetic sequence and $b_1,b_2,\dots$ be a geometric sequence. Suppose that $a_1b_1=20,$ $a_2b_2=19,$ and $a_3b_3=14.$ Find the greatest possible value of $a_4b_4.$}
+% feb alg 
+
+\prob{3}{AIME II 2016/9}{The sequences of positive integers $1,a_2, a_3,...$ and $1,b_2, b_3,...$ are an increasing arithmetic sequence and an increasing geometric sequence, respectively. Let $c_n=a_n+b_n$. There is an integer $k$ such that $c_{k-1}=100$ and $c_{k+1}=1000$. Find $c_k.$}
+
+\prob{4}{AMC 12A 2002/21}{Consider the sequence of numbers: $4,7,1,8,9,7,6,\dots$ For $n>2$, the $n$-th term of the sequence is the units digit of the sum of the two previous terms. Let $S_n$ denote the sum of the first $n$ terms of this sequence. What is the smallest value of $n$ for which $S_n>10,000?$}
+
+\prob{4}{AIME 1984/7}{The function $f$ is defined on the set of integers and satisfies
+\[f(n)=\begin{cases} n-3&\mbox{if}\ n\ge 1000\\ f(f(n+5))&\mbox{if}\ n<1000\end{cases}.\]
+Find $f(84).$}
+    
+\prob{4}{AMC 12A 2001/25}{Consider sequences of positive real numbers of the form $x, 2000, y, \dots$ in which every term after the first is 1 less than the product of its two immediate neighbors. For how many different values of $x$ does the term 2001 appear somewhere in the sequence?}
+
+\req{4}{PUMaC 2017}{Let $a_1,a_2,\dots$ be a sequence of positive real numbers such that $a_n=11a_{n-1}-n$ for all $n>1.$ The smallest possible value of $a_1$ can be written as $\frac{p}{q},$ where $p$ and $q$ are relatively prime positive integers. Find $p+q.$}
+    
+\req{6}{OMO 2019}{Susan is presented with six boxes $B_1, \dots, B_6$, each of which is initially empty, and two identical coins of denomination $2^k$ for each $k = 0, \dots, 5$. Compute the number of ways for Susan to place the coins in the boxes such that each box $B_k$ contains coins of total value $2^k.$}
+
+\prob{6}{MATHCOUNTS State 2020}{Hank builds an increasing sequence of positive integers as follows: The first term is $1$ and the second term is $2.$ Each subsequent term is the smallest positive integer that does not form a three-term arithmetic sequence with any previous terms of the sequence. The first five terms of Hank's sequence are $1,2,4,5,10.$ How many of the first $729$ positive integers are terms in Hank's sequence?}
+
+
+\prob{9}{AMC 12B 2019/22}{Define a sequence recursively by $x_0=5$ and \[x_{n+1}=\frac{x_n^2+5x_n+4}{x_n+6}\] for all nonnegative integers $n.$ Let $m$ be the least positive integer such that \[x_m\leq 4+\frac{1}{2^{20}}.\] Find $\lfloor \log_3m\rfloor.$}
+
+
+\prob{13}{IMO 2014/1}{Let $a_0<a_1<a_2<\cdots$ be an infinite sequence of positive integers. Prove that there exists a unique integer $n\ge1$ such that
+\[a_n<\frac{a_0+a_1+\cdots + a_n}{n}\le a_{n+1}.\]}
+
+\prob{13}{rd123 AIME 2020/12}{Define a sequence of positive integers with $6$ terms, $(a_1,a_2,a_3,a_4,a_5,a_6),$ to be \textit{crazy} if:
+	\begin{itemize}
+		\Item $a_1=2016$
+        
+		\Item $a_6=1$
+        
+		\Item $a_{k+1}$ is a proper divisor of $a_k$ for $k\in \{1,2,3,4,5\}.$
+	\end{itemize}
+Compute the last three digits of the number of crazy sequences.}
+
+\end{document}

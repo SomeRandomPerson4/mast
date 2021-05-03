@@ -1,0 +1,135 @@
+\section{Power of a Point}
+We first extend the power of a point theorem to a definition.
+\begin{defi}[Power of a Point]
+The power of a point $P$ with respect to circle $\omega$ with center $O$ and radius $r$ as $OP^2-r^2.$ We will denote this as $\pow(P,\omega)=OP^2-r^2.$
+\end{defi}
+This yields the following corollary.
+\begin{fact}[Square of Tangent Line]
+The power of a point is the square of the length of the tangent line.
+\end{fact}
+\section{Radical Axes}
+\begin{defi}[Radical Axis]
+The radical axis of a pair of circles $\omega_1,\omega_2$ as the locus of points such that $\pow(P,\omega_1)=\pow(P,\omega_2).$
+\end{defi}
+
+\begin{theo}[Radical Axis Theorem]
+The radical axis of a pair of circles is a line.
+\end{theo}
+
+\begin{pro}
+We use coordinates to prove this.
+
+Without loss of generality, let the center of $\omega_1$ be $(0,0)$ and let the center of $\omega_2$ be $(x_{0},0).$ Denote the radii of $\omega_1,\omega_2$ as $r_1,r_2,$ respectively. If the coordinates of $P$ are $(x,y),$ then $(x^2+y^2)-r_1^2=([x-x_{0}]^2+y^2)-r_2^2.$ Rearranging, this yields $-r_1^2=-2x_{0}x+x^2_{0}-r_2^2.$ This is the equation of a line, as desired. 
+\end{pro}
+
+A corollary that arises: if $\omega_1,\omega_2$ intersect at $X,Y,$ then the radical axis is $XY.$ This is because $\pow(X,\omega_1)=0=\pow(X,\omega_2)$ and $\pow(Y,\omega_1)=0=\pow(Y,\omega_2).$ Since two points are needed to determine a line, the proof is done.
+
+\begin{theo}[Radical Center Theorem]
+Consider three circles $\omega_1,\omega_2,\omega_3.$ Then their pairwise radical axes either concur or are all parallel.
+\end{theo}
+
+\begin{pro}
+Without loss of generality, let the radical axis of $\omega_1,\omega_3$ and the radical axis of $\omega_1,\omega_2$ intersect at $P.$\footnote{If they do not intersect, then all three radical axes are parallel; this is because the proof works regardless of which pair of radical axes you intersect as it is symmetric.} Then notice that $\pow(P,\omega_1)=\pow(P,\omega_3)$ and $\pow(P,\omega_1)=\pow(P,\omega_2),$ so $\pow(P,\omega_2)=\pow(P,\omega_3),$ implying that $P$ lies on the radical axis of $\omega_2,\omega_3,$ as desired.
+\end{pro}
+
+\section{Techniques}
+
+\subsection{Basic Techniques}
+Keeping this simple result in mind kills problems involving common chords and external tangents.
+
+\begin{fact}[Radical Axis Bisects External Tangent]
+Consider two circles $\omega_1, \omega_2$ that intersect at $X,Y.$ Let one of their common external tangents intersect $\omega_1$ at $A$ and $\omega_2$ at $B.$ Then $XY$ bisects $AB.$
+\end{fact}
+
+\begin{pro}
+Note that $XY$ is the radical axis. Let $XY$ intersect $AB$ at $M.$ Since $M$ lies on the radical axis, $AM=BM.$
+\end{pro}
+
+\subsection{Advanced Techniques}
+We introduce two powerful techniques - Linearity of Power and circles with radius $0.$
+\begin{theo}[Linearity of Power]
+The function $f(P)=\pow(P,\omega_1)-\pow(P,\omega_2)$ changes at a linear rate as $P$ moves along a fixed line $\ell.$
+\end{theo}
+
+\begin{pro}
+Without loss of generality, let $\ell$ be the $x$ axis, let the equation of $\omega_1$ be $(x-h_1)^2+(y-k_1)^2=r_1^2,$ and let the equation of $\omega_2$ be $(x-h_2)^2+(y-k_2)^2=r_2^2.$
+
+Let the coordinates of $P$ be $(x,0).$ Then
+$$f(P)=(r_1^2-((h_1-x)^2+k_1^2))-(r_2^2-((h_2-x)^2+k_2^2))$$
+$$f(P)=r_1^2-r_2^2-(x^2-2h_1x+h_1^2+k_1^2)+(x^2-2h_2x+h_2^2+k_2^2)$$
+$$f(P)=r_1^2-r_2^2+h_2^2-h_1^2+k_2^2-k_1^2+x(2h_2-2h_1).$$
+
+Since all variables except for $x$ are constant, $f(P)$ varies linearly.
+\end{pro}
+
+Here's a really silly example of it.
+\begin{exam}[MAST Diagnostic 2021/12]
+In $\triangle ABC,$ let the foot of $B$ to $AC$ be $E$ and the foot of $C$ to $AB$ be $F.$ Suppose that the circle through $F$ centered at $B$ is externally tangent to the circle through $E$ centered at $C$ at some point $D.$ Let $G$ be the midpoint of $EF.$ Prove that $DG$ is perpendicular to $BC.$
+\end{exam}
+
+\begin{sol}
+Let the circle centered at $B$ be $\omega_1$ and the circle centered at $C$ be $\omega_2.$, and let $f(P)=\pow(P,\omega_1)-\pow(P,\omega_2).$ Then by Linearity of Power, we want to show that $f(F)+f(E)=0.$ Note that $f(F)=\pow(F,\omega_1)-\pow(F,\omega_2)=-\pow(F,\omega_2)=-(FC^2-CE^2)=-(BC^2-BF^2-CE^2)=BF^2+CE^2-BC^2.$ Also note that $f(E)=\pow(E,\omega_1)-\pow(E,\omega_2)=\pow(E,\omega_1)=EB^2-BF^2=BC^2-CE^2-BF^2.$
+
+Thus by Linearity of Power, $f(G)=0,$ implying that $G$ lies on the radical axis of $\omega_1,\omega_2.$ Since the radical axis is the line through $D$ perpendicular to $BC,$ we are done.
+\end{sol}
+
+This is all motivated by the fact that $G$ should lie on the radical axis of $\omega_1,\omega_2.$ The linearity of power solution comes quite naturally because of the right triangles created by the altitudes.
+
+And here's an example of a problem solved using circles with radius $0.$
+
+\begin{exam}[Iran TST 2011/1]
+In acute triangle $ABC$, $\angle B$ is greater than $\angle C$. Let $M$ be the midpoint of $BC$ and let $D$ and $E$ be the feet of the altitudes from $C$ and $B,$ respectively. Let $K$ and $L$ be the midpoints of $ME$ and $MD$. If $KL$ intersects the line through $A$ parallel to $BC$ in $T$, prove that $TA=TM$.
+\end{exam}
+
+\begin{sol}
+We claim that the line through $A$ parallel to $BC,$ $MD,$ and $ME$ are tangent to $(ADE).$ (This is known as the Three Tangent Lemma.)
+\\
+
+Proof: Let $H$ be the orthocenter of $\triangle ABC.$ Note that $AH$ is the diameter of $(ADE)$ as $\angle ADH=\angle AEH=90^{\circ}.$
+
+Since $AH$ is perpendicular to $BC$ and the line through $A$ is parallel to $BC,$ it is a tangent.
+
+To show $ME$ is tangent, we show $\angle DEM=\angle DAE=\angle A.$ Notice that $MB=MC=MD=ME,$ since $M$ is the center of $(BCDE).$
+
+Notice that
+\[\angle DEM=\angle DEB+\angle BEM=\angle DEB+\angle EBM=\angle DEB+\angle EBC\]
+\[\angle DEB+\angle EBC=90^{\circ}-\angle C+90^{\circ}-\angle B=\angle A,\]
+proving that $ME$ is tangent to $(AEF)$ as desired. $\blacksquare$
+\\
+
+Thus $KL$ is the radical axis of $(ADE)$ and the circle centered at $M$ with radius $0.$ Since $T$ lies on the radical axis and $TA$ is tangent to $(ADE),$ $TA=TM.$
+
+\begin{center}
+    \begin{asy}
+    import olympiad;
+    size(6cm);
+    pair A=dir(125), B=dir(210), C=dir(-30),M,D,E,H,K,L,T,P,X;
+    M=(B+C)/2;
+    D=foot(B,A,C);
+    E=foot(C,A,B);
+    H=extension(B,D,C,E);
+    K=(M+E)/2;
+    L=(M+D)/2;
+    P=foot(A,B,C);
+    X=A+P-B;
+    T=extension(A,X,K,L);
+    
+    draw(A--B--C--A);
+    draw(D--M--E);
+    draw(A--T--K);
+    draw(A--H,blue+dotted);
+    draw(circumcircle(A,D,E));
+    draw(circumcircle(D,E,B),blue+dotted);
+    dot("$A$", A, N);
+dot("$B$", B, dir(200));
+dot("$C$", C, dir(-20));
+dot("$D$", D, NE);
+dot("$E$", E, dir(210));
+dot("$M$", M, S);
+dot("$K$", K, N);
+dot("$L$", L, dir(-30));
+dot("$T$", T, NE);
+dot("$H$", H, N);
+    \end{asy}
+\end{center}
+\end{sol}

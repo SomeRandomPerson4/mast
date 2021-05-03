@@ -1,0 +1,126 @@
+\documentclass{article}
+\usepackage[mast]{dennis}
+
+\title{The Pigeonhole Principle}
+\author{Dennis Chen}
+\date{CQU}
+
+\begin{document}
+\maketitle
+
+% sources: shengmeng handout?
+
+\section{The Worst Case Scenario}
+
+Also known as ``construction plus one,'' where as the name implies, we try to add the largest number of items possible without satisfying the criterion. 
+
+\begin{exam}
+Raymond has a drawer of red, white, and blue socks, where there are at least two socks of each color. How many socks does he need to draw before he can guarantee he has a pair with the same color?
+\end{exam}
+
+\begin{sol}
+Note that Raymond can draw $3$ socks -- one of each color -- without getting a pair. Thus the answer is $3+1=\ansbold{4}.$
+\end{sol}
+
+This mindset will be present in \db{almost every} Pigeonhole problem. The reason it holds is because of the way the maximum is defined; if it were possible to add one more item without satisfying the criterion, then our initial construction would not be a maximum.
+
+\begin{exam}[AMC 10A 2006/20]
+Six distinct positive integers are randomly chosen between $1$ and $2006,$ inclusive. What is the probability that some pair of these integers has a difference that is a multiple of $5?$ 
+\end{exam}
+
+\begin{sol}
+This is a funny problem, because we only care about the remainders when divided by $5$ -- but there are only $5$ distinct residues mod $5,$ and $6\geq 5+1,$ so we are guaranteed to have such a pair of integers. Thus the answer is $\ansbold{1}.$
+\end{sol}
+
+\section{Rectangular Pigeonhole}
+
+This is a class of problems best explained through a series of examples.
+
+\begin{exam}[Classic]
+In a $3\times 7$ grid of unit squares, each square is either colored white or black. Prove there is some rectangle composed of squares whose corners are all the same color.
+\end{exam}
+
+\begin{sol}
+For convenience in this solution, note that swapping two rows/columns does not change the number of \db{monochromatic rectangles}. By Pigeonhole, note that each column has either at least two black or two white squares, since $\lceil\frac{3}{2}\rceil=2.$ Without loss of generality, let there be more columns with two or more black squares. Now note that by Pigeonhole again, there are $\lceil\frac{7}{2}\rceil=4$ rows with two or more black squares.
+
+We only examine these $4$ rows.\footnote{You cannot form a black rectangle with a row that has less than two black squares. You also can easily avoid making a white rectangle with $3$ rows of $2$ white rectangles.} We claim that with two black squares in each column, there must be two identical columns; this is because there are $\binom{3}{2}$ different possible columns, and since $\lceil\frac{4}{3}\rceil>1,$ we are done by Pigeonhole.
+
+\begin{center}
+\begin{asy}
+import patterns;
+add("hatch",hatch(2.5mm));
+
+size(6cm);
+
+fill((4,0)--(7,0)--(7,3)--(4,3)--cycle,pattern("hatch"));
+
+fill((0,1)--(1,1)--(1,3)--(0,3)--cycle,gray);
+fill((1,0)--(2,0)--(2,2)--(1,2)--cycle,gray);
+fill((2,0)--(3,0)--(3,1)--(2,1)--cycle,gray);
+fill((2,2)--(3,2)--(3,3)--(2,3)--cycle,gray);
+fill((3,1)--(4,1)--(4,3)--(3,3)--cycle,gray);
+
+for (int i=0;i<8;++i){
+draw((i,0)--(i,3));
+}
+
+for (int i=0;i<4;++i){
+draw((0,i)--(7,i));
+}
+
+draw((0.5,1.5)--(0.5,2.5)--(3.5,2.5)--(3.5,1.5)--cycle,red);
+\end{asy}
+\end{center}
+\end{sol}
+
+\begin{remark}
+Here are some followup questions.
+\begin{enumerate}
+\item Why doesn't the case of $3$ black rectangles in a row invalidate our argument?
+\item Can you construct a $2\times 7$ grid or $3\times 6$ grid with no monochromatic rectangles?
+\end{enumerate}
+\end{remark}
+
+\begin{exam}[HMMT Feb. 2011 Guts/19]
+Find the least positive integer $N$ with the following property: If all lattice points in $[1,3]\times[1,7]\times[1,N]$ are colored either black or white, then there exists a rectangular prism, whose faces are parallel to the $xy,xz,$ and $yz$ planes, and whose eight vertices are all colored in the same color.
+\end{exam}
+
+\begin{sol}
+Familiarity with the above example is crucial here.
+
+Heuristically, we are only concerned with the ``worst case scenario.'' One rectangle is always forced, and we conjecture that it is possible to avoid having two rectangles.\footnote{This is intuitively likely because the $3\times 7$ example was ``tight'' -- if either dimension was reduced by one, we could have no rectangles.} We construct such an example.
+
+\begin{center}
+\begin{asy}
+size(6cm);
+filldraw((0,3)--(2,3)--(2,1)--(0,1)--cycle,gray);
+filldraw((2,0)--(3,0)--(3,1)--(2,1)--cycle,gray);
+filldraw((3,1)--(4,1)--(4,2)--(3,2)--cycle,gray);
+filldraw((4,2)--(6,2)--(6,3)--(4,3)--cycle,gray);
+filldraw((6,0)--(7,0)--(7,2)--(6,2)--cycle,gray);
+filldraw((5,0)--(6,0)--(6,1)--(5,1)--cycle,gray);
+
+for (int i=0;i<8;++i){
+draw((i,0)--(i,3));
+}
+
+for (int i=0;i<4;++i){
+draw((0,i)--(7,i));
+}
+
+draw((0.5,1.5)--(1.5,1.5)--(1.5,2.5)--(0.5,2.5)--cycle,red);
+\end{asy}
+\end{center}
+
+Any rectangle can be attained by just swapping rows/columns accordingly.
+
+We need two rectangles of the same color and in the same location. Note that there are $2\cdot \binom{3}{2}\cdot \binom{7}{2}=126$ distinct rectangles; thus, the answer is $126+1=\ansbold{127}.$
+\end{sol}
+
+\pagebreak
+
+\section{Problems}
+
+\req{6}{USAMTS 4/1/18, buffed}{Every point in the plane is colored either red, green, or blue. Prove that there exists a rectangle in the plane such that all four of its vertices are the same color, and call such a rectangle monochromatic. Furthermore, find the ordered pair $(m,n)$ where $m<n$ and $mn$ is minimal such that an $m\times n$ lattice grid must contain a monochromatic rectangle.}
+
+\end{document}

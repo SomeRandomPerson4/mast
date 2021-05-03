@@ -1,0 +1,88 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{Games and Friends}
+\author{Dennis Chen}
+\date{CRT}
+
+\begin{document}
+
+\maketitle
+These are problems that you can show your non-math competition friends because they require little or no theory. Closer to riddles, except these riddles are very hard and the rules are clearly defined (so no "tricks" or "loopholes").
+
+\section{Games}
+One specific example of this is "game" problems.
+
+\subsection{Rules and Conventions}
+Before we begin, we have to lay out some rules/conventions of game problems. First, game problems are almost always turn-based. Second, game problems usually terminate (and if this is non obvious you should prove/disprove it). Finally, and most importantly, \textbf{games assume optimal play}. So ``who wins?'' is not a question of ``What if one side misplays and the other side wins,'' but ``is anyone guaranteed to win? And if so, who?''
+
+\subsection{Examples}
+Here's an infamous example of a game.
+
+\begin{exam}[21 Game]
+In the following game, players take turn saying numbers according to the following rules:
+\begin{itemize}
+    \Item Players take turn saying numbers.
+
+    \Item The first player starts with $1,2,$ or $3.$
+    
+    \Item Afterwards, a player must say $n+1,n+2,$ or $n+3,$ where $n$ is the number last said.
+    
+    \Item The player who says a number greater than or equal to $21$ will lose.
+\end{itemize}
+
+Is there a winning strategy, and if so, who wins? (Assume optimal play.)
+\end{exam}
+
+\begin{sol}
+There is a winning strategy, and we claim the second player will always win.
+
+The winning strategy is for the second player to say $4,8,12,16,20.$ Nothing the first player does can prevent this.
+\end{sol}
+The motivation is that saying $20$ will guarantee your victory and the only thing you can force is an increase of $4.$
+
+Now here's an absolutely absurd problem that I was told about. Familiarity with chess helps.
+
+\begin{exam}[Double-Move Chess]
+Consider a variant of chess where each player makes two moves in a row. Prove that white\footnote{White goes first in chess.} has a non-losing strategy.
+\end{exam}
+
+\begin{sol}
+Assume for the sake of contradiction there is no non-losing strategy. This implies black has a winning strategy. But if white moves their knight to a place and then back to the original position, now black is in the same position white was, and white has a winning strategy. Clearly black and white cannot both win, so there is a contradiction.
+\end{sol}
+This is incredibly unfair as a problem, which is why I included it as an example rather than on the problem set. But it does highlight that symmetry is everywhere in games!
+
+\pagebreak
+
+\section{Problems}
+\psetquote{True intellectuals integrate the quadratic in the question and look for local maxima and minima.}{Tanish Patil}
+
+\subsection{Games}
+\begin{enumerate}
+    
+    \item Two people play a game with the same rules as the $21$ game, but with the player saying a number greater than or equal to $n$ losing. For which $n$ does the first player win and for which $n$ does the second player win? (Assume optimal play.)
+    
+    \item (AMC 10B 2020/16) Bela and Jenn play the following game on the closed interval $[0, n]$ of the real number line, where $n$ is a fixed integer greater than $4$. They take turns playing, with Bela going first. At his first turn, Bela chooses any real number in the interval $[0, n]$. Thereafter, the player whose turn it is chooses a real number that is more than one unit away from all numbers previously chosen by either player. A player unable to choose such a number loses. Using optimal strategy, which player will win the game?
+    
+    \item (USAMTS) Two beasts, Rosencrans and Gildenstern, play a game. They have a circle with $n$ points ($n \ge 5$) on it. On their turn, each beast (starting with Rosencrans) draws a chord between a pair of points in such a way that any two chords have a shared point. (The chords either intersect or have a common endpoint.) For example, two potential legal moves for the second player are drawn below with dotted lines.
+
+\begin{center}
+\begin{asy}
+unitsize(0.7cm); draw(circle((0,0),1)); dot((0,-1)); pair A = (-1/2,-(sqrt(3))/2); dot(A); pair B = ((sqrt(2))/2,-(sqrt(2))/2); dot(B); pair C = ((sqrt(3))/2,1/2); dot(C); draw(A--C); pair D = (-(sqrt(0.05)),sqrt(0.95)); dot(D); pair E = (-(sqrt(0.2)),sqrt(0.8)); dot(E); draw(B--E,dotted); draw(C--D,dotted);
+\end{asy}
+\end{center}
+The game ends when a player cannot draw a chord. The last beast to draw a chord wins. For which $n$ does Rosencrans win?
+    
+    \item (Iran TST/2 2020/2) Alice and Bob take turns alternatively on a $2020\times2020$ board with Alice starting the game. In every move each person colours a cell that have not been coloured yet and will be rewarded with as many points as the coloured cells in the same row and column. When the table is coloured completely, the points determine the winner. Who has the wining strategy and what is the maximum difference he/she can grantees?
+\end{enumerate}
+
+\subsection{Other}
+\begin{enumerate}
+	\item (USAJMO 2020/1) Let $n \geq 2$ be an integer. Carl has $n$ books arranged on a bookshelf. Each book has a height and a width. No two books have the same height, and no two books have the same width. Initially, the books are arranged in increasing order of height from left to right. In a move, Carl picks any two adjacent books where the left book is wider and shorter than the right book, and swaps their locations. Carl does this repeatedly until no further moves are possible. Prove that regardless of how Carl makes his moves, he must stop after a finite number of moves, and when he does stop, the books are sorted in increasing order of width from left to right.
+
+    \item (TSTST 2019/3) On an infinite square grid we place finitely many \textit{cars}, which each occupy a single cell and face in one of the four cardinal directions. Cars may never occupy the same cell. It is given that the cell immediately in front of each car is empty, and moreover no two cars face towards each other (no right-facing car is to the left of a left-facing car within a row, etc.). In a \textit{move}, one chooses a car and shifts it one cell forward to a vacant cell. Prove that there exists an infinite sequence of valid moves using each car infinitely many times.
+    
+    \item (IMO 2011/2) Let $\mathcal{S}$ be a finite set of at least two points in the plane. Assume that no three points of $\mathcal S$ are collinear. A windmill is a process that starts with a line $\ell$ going through a single point $P \in \mathcal S$. The line rotates clockwise about the pivot $P$ until the first time that the line meets some other point belonging to $\mathcal S$. This point, $Q$, takes over as the new pivot, and the line now rotates clockwise about $Q$, until it next meets a point of $\mathcal S$. This process continues indefinitely. Show that we can choose a point $P$ in $\mathcal S$ and a line $\ell$ going through $P$ such that the resulting windmill uses each point of $\mathcal S$ as a pivot infinitely many times.
+\end{enumerate}
+\end{document}

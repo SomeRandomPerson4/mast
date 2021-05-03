@@ -1,0 +1,162 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{Generating Functions}
+\author{Dennis Chen}
+\date{AQT}
+
+\begin{document}
+\maketitle
+
+\section{Theory}
+Generating functions are combinatorial functions that can be manipulated in more ways. 
+
+\begin{theo}[Generating Functions]
+Given some sequence $a_0,a_1,\dots,a_n,$ we write a generating function $F(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n$ to represent it.
+\end{theo}
+Note the sequence can either be finite or infinite.
+\section{Examples}
+Here are a few useful examples of basic generating functions.
+\begin{exam}[Find Generating Function]
+Represent $0,0,0,1$ with a generating function.
+\end{exam}
+
+\begin{sol}
+The generating function is $0+0x+0x^2+1x^3=x^3.$
+\end{sol}
+
+\begin{exam}[One Term Generating Function]
+Represent $\underbrace{0,0,\cdots,0}_{n},b$ with a generating function.
+\end{exam}
+
+\begin{sol}
+The generating function is $bx^{n+1-1}=bx^n.$
+\end{sol}
+
+\begin{exam}[Infinite Generating Function]
+Represent $1,1,1,1\dots$ as a generating function.
+\end{exam}
+
+\begin{sol}
+Note that the generating function is $1+x+x^2+x^3+\cdots=\frac{1}{1-x},$ by the infinite geometric series formula.
+\end{sol}
+Note that this requires $|x|<1.$
+
+\begin{exam}[Infinite Generating Function]
+Represent $1,2,3,4\dots$ as a generating function.
+\end{exam}
+
+\begin{sol}
+Note the generating function is $1+2x+3x^2+4x^3=(1+x+x^2+\cdots)+(x+x^2+\cdots)+\cdots=\frac{1}{1-x}+\frac{x}{1-x}+\cdots=\frac{1}{(1-x)^2}.$
+\end{sol}
+
+\begin{exam}[Geometric Series Generating Function]
+Find the generating function of $1,k,k^2,k^3\dots$
+\end{exam}
+
+\begin{sol}
+Note the generating function is $1+xk+x^2k^2+x^3k^3+\cdots=\frac{1}{1-kx}$ by the Infinite Geometric Series Sum.
+\end{sol}
+
+\begin{exam}[Expand Generating Function]
+If the generating function of a sequence is $F(x)=\frac{1}{(1-x)^n},$ find the sequence.
+\end{exam}
+
+\begin{sol}
+This is equivalent to $F(x)=(1+x+x^2+\cdots)^n=\sum\limits_{i=0}^{\infty}\binom{n+i-1}{2}x^i,$
+so the sequence is $\binom{n-1}{0},\binom{n}{1},\binom{n+1}{2}\cdots$
+\end{sol}
+
+\begin{exam}[Binomial Theorem]
+Find the generating function of $\binom{n}{0},\binom{n}{1}\dots,\binom{n}{n}.$
+\end{exam}
+
+\begin{sol}
+Note that $\binom{n}{0}+x\binom{n}{1}+\cdots+x^n\binom{n}{n}=(1+x)^n.$
+\end{sol}
+
+\begin{exam}[Partitions]
+Find the generating function for the amount of ways to partition a number $n.$
+\end{exam}
+
+\begin{sol}
+Note a partition is simply a list of numbers that add to $n.$ Thus the number of $1's$ is a contributor, the number of $2's$ is a contributor, and so on.
+
+So the generating function is $(1+x+x^2+\cdots)(1+x^2+x^4+\cdots)\cdots=\frac{1}{(1-x)(1-x^2)(1-x^3)\cdots}.$
+\end{sol}
+
+This can be specialized for specific purposes.
+
+\section{Examples}
+
+We start with two generic questions that can probably be done without generation functions (i.e. with casework).
+
+\begin{exam}
+Three dimes, four nickels, and five pennies are all flipped at the same time. What is the probability that the value of the coins that land heads up is exactly thirty cents?
+\end{exam}
+
+\begin{sol}
+Note the generating function is $(1+x)^5(1+x^5)^4(1+x^{10})^3.$ Since the sum of the coefficients is $2^5\cdot 2^4\cdot 2^3=2^{12},$ the answer is the coefficient of $x^{30}$ divided by that.
+
+For the $(1+x)^5$ term, since we want the exponent to be divisible by $5,$ the only relevant terms are $1$ and $x^5,$ so we may treat the function as $(1+x^5)^5(1+x^{10})^3.$ As for $(1+x^5)^5,$ we only care about the terms with exponents divisible by $10,$ so expanding and removing any terms with odd exponents gives $(1+10x^{10}+5x^{20})(1+x^{10})^3.$ Thus the answer is
+\[\frac{1\cdot\binom{3}{0}+10\cdot \binom{3}{1}+5\cdot\binom{3}{2}}{2^{12}}=\frac{1+30+15}{2^{12}}=\ansbold{\frac{23}{2^{11}}}.\]
+\end{sol}
+
+\begin{exam}[AIME I 2010/4]
+Jackie and Phil have two fair coins and a third coin that comes up heads with probability $\frac47$. Jackie flips the three coins, and then Phil flips the three coins. Let $\frac {m}{n}$ be the probability that Jackie gets the same number of heads as Phil, where $m$ and $n$ are relatively prime positive integers. Find $m + n$. 
+\end{exam}
+
+\begin{sol}
+Note that the generating function is
+\[(x+1)^2(4x+3)=4+11x+10x^2+3x^3.\]
+Then the probability is
+\[\frac{4^2+11^2+10^2+3^2}{(4+11+10+3)^2}=\frac{123}{392},\]
+leading to an answer of $123+392=\ansbold{515}.$
+\end{sol}
+
+For the previous two examples, generating functions were ``optional,'' so to speak -- you could choose to flavor it with a generating functions approach or not.\footnote{Typically I will choose not to; for those who do, note the difference between such problems and ``real'' generating function problems, where you are pretty much \textit{forced} by the problem to interpret it with generating functions, and said interpretation is non-trivial. See HMMT 2016, ART 2020/4, BMO 2015, and NYCMT 2020 for examples of the latter in this handout.} We now present a ``real'' generating functions problem.
+
+\pagebreak
+
+\section{Problems}
+
+\minpt{32}
+
+\prob{1}{Stars and Bars}{How many ways can we pick $r$ objects out of $n$ distinguishable objects?}
+    
+\prob{2}{}{We choose four balls out of $2$ red, $1$ blue, $2$ green, and $1$ yellow. How many ways can we do this?}
+    
+\prob{2}{}{If we have infinitely many red, blue, green, and yellow balls, how many ways can we choose $4?$}
+    
+\prob{3}{}{Find the coefficient of $x^k$ in the expansion of $(x^3+x^4+\cdots)^6$ for $k\geq 18.$}
+
+\prob{3}{}{There are 25 people at Friday Math Practice. All 25 people agree to leave $\$1$ or $\$2$ as a tip for Alex, except for Naail, who will pay $\$3,$ $\$5,$ or $\$9,$ since he is so impressed with his outstanding work. In how many ways can Alex leave with $\$39$ to pay for his Thanksgiving feast at Friday Math Practice?}
+
+\prob{3}{}{How many ways can we throw a red, blue, and white die such that the numbers on top sum to $14?$}
+    
+\prob{4}{}{Prove that the amount of ways to partition a number $n$ into distinct numbers is the same as the amount of ways to partition $n$ into odd numbers.}
+    
+\prob{4}{}{Prove that the amount of ways to partition a number $n$ such that each number is used at most twice if the same as the amount of ways to partition $n$ without using any multiples of $3.$}
+
+\prob{4}{HMMT Nov. Team 2020/4}{Marisa has two identical cubical dice labeled with the numbers $\{1,2,3,4,5,6\}.$ However, the two dice are not fair, meaning that they can land on each face with different probability. Marisa rolls the two dice and calculates their sum. Given that the sum is $2$ with probability $0.04,$ and $12$ with probability $0.01,$ the maximum possible probability of the sum being $7$ is $p.$ Compute $\lfloor 100p\rfloor.$}
+
+\req{6}{}{Prove that the number of partitions of $n$ in which no individual integer appears exactly once is equal to the number of partitions in which no number is congruent to $1$ or $5\pmod{6}.$}
+    
+\prob{6}{ART 2020/4}{Santa Claus is putting $n$ identical toy trains into a red stocking, a green stocking, and a white stocking such that the amount of trains in the green stocking is divisible by $3$ and the amount of trains in the white stocking is even. Mrs. Claus is putting $n$ identical elves into a red stocking, a green stocking, and a white stocking such that the amount of elves in the green stocking is divisible by $3$ and the amount of elves in the white stocking is odd. Find, in terms of $n,$ the positive difference between the amount of ways Santa Claus can put his trains in the stockings and the amount of ways Mrs. Claus can put her elves in the stockings.}
+    
+\prob{9}{HMMT 2016}{Kelvin the Frog has a pair of standard fair $8$-sided dice (each labelled from $1$ to $8$). Alex the sketchy Kat also has a pair of fair $8$-sided dice, but whose faces are labelled differently (the integers on each Alex's dice need not be distinct). To Alex's dismay, when both Kelvin and Alex roll their dice, the probability that they get any given sum is equal!
+
+Suppose that Alex's two dice have $a$ and $b$ total dots on them, respectively. Assuming that $a \neq b$, find all possible values of $\min \{a,b\}$.}
+
+\req{9}{BMO Round 2 2015/2}{In Oddesdon Primary School there are an odd number of classes. Each class contains an odd number of pupils. One pupil from each class will be chosen to form the school council. Prove that the following two statements are logically equivalent.
+\begin{enumerate}
+\item There are more ways to form a school council which includes an odd number of boys than ways to form a school council which includes an odd number of girls.
+
+\item There are an odd number of classes which contain more boys than girls.
+\end{enumerate}}
+
+\prob{13}{NYCMT 2020}{Compute the value of
+\[\sum_{a+b+c=6}\frac{1}{2^a3^b5^c}\]
+where $a,b,c$ range over all triples of nonnegative integers that sum to $6.$}
+\end{document}

@@ -1,0 +1,211 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{Complex Numbers}
+\author{Dennis Chen}
+\date{GQV}
+
+\begin{document}
+
+\maketitle
+
+%chapterquote: ``The drys had their law, and the wets would have their liquor.'' - Prohibition-era saying
+
+We discuss geometric interpretations of complex numbers.
+
+\section{Triangle Centers}
+We can describe triangle centers with complex coordinates. The most obvious one is the centroid.
+
+\begin{theo}[Midpoint]
+The midpoint of $a$ and $b$ is $\frac{a+b}{2}.$
+\end{theo}
+
+\begin{pro}
+Convert to Cartesian Coordinates.
+\end{pro}
+
+\begin{theo}[Centroid]
+The centroid of $a,b,c$ is $\frac{a+b+c}{3}.$
+\end{theo}
+
+For the rest of the centers, $(ABC)$ is the unit circle \textbf{centered at the origin.} (In other words, $O=0.$)
+
+\begin{theo}[Circumcenter]
+The circumcenter is $0.$
+\end{theo}
+
+\begin{pro}
+Because I said so.
+\end{pro}
+
+\begin{theo}[Orthocenter]
+The orthocenter is $a+b+c.$
+\end{theo}
+
+\begin{pro}
+Note that $OH=3OG$ due to the Euler Line. Since $O=0$ and $G=\frac{1}{3}(a+b+c),$ $H=a+b+c.$
+\end{pro}
+
+Remember that addition of complex numbers is a translation, and multiplication of complex numbers is a spiral similarity (a rotation and a dilation about the same point) around the origin. This means that given some conditions, we can equate them to other (more manageable) conditions pretty easily.
+
+\begin{exam}[AMC 12B 2019/25]
+Let $ABCD$ be a convex quadrilateral with $BC=2$ and $CD=6.$ Suppose that the centroids of $\triangle ABC,\triangle BCD,$ and $\triangle ACD$ form the vertices of an equilateral triangle. What is the maximum possible value of $ABCD?$
+\end{exam}
+
+\begin{sol}
+We claim that $\triangle DAB$ is equilateral. To prove this, let the vertices have complex coordinates $a,b,c,d.$ Then the centroids are $\frac{a+b+c}{3},\frac{b+c+d}{3},\frac{a+c+d}{3}.$ The fraction is annoying, so we multiply by $3.$ So $a+b+c,b+c+d,a+c+d$ form equilateral triangles. Then subtract $a+b+c+d$ and we see that $-d,-a,-b$ form equilateral triangles. Multiplying by $-1,$ we see that $d,a,b$ form an equilateral triangle, implying that $\triangle DAB$ is equilateral.
+
+Let $BCD=\theta.$ Then
+$$[ABCD]=[ABD]+[BCD]=\frac{\sqrt{3}(\sqrt{2^2+6^2-24\cos\theta})^2}{4}+\frac{1}{2}\cdot 2\cdot 6\cdot \sin \theta$$
+$$[ABCD]=\sqrt{3}(10-6\cos\theta)+6\sin\theta=10\sqrt{3}+6(\sin\theta-\sqrt{3}\cos\theta).$$
+
+Since
+\[10\sqrt{3}+6(\sin(180-\theta)+\sqrt{3}\cos(180-\theta))\leq 10\sqrt{3}+6\sqrt{(1^2+\sqrt{3}^2)},\]
+our answer is $10\sqrt{3}+12.$
+\end{sol}
+
+\section{Complex Criterion}
+We introduce the perpendicularity, collinearity, concyclic, and equilateral triangle criterion in complex numbers.
+
+\begin{theo}[Perpendicular Condition]
+For points $A,B,C,D,$ $AB\perp CD$ if and only if $\frac{d-c}{b-a}$ is a purely imaginary number.
+\end{theo}
+
+\begin{pro}
+This implies the argument of $\frac{d-c}{b-a}$ is $\pm \frac{\pi}{2}.$
+\end{pro}
+
+\begin{theo}[Collinear Condition]
+Points $A,B,C$ are collinear if and only if $\frac{c-a}{c-b}$ is real.
+\end{theo}
+
+\begin{pro}
+This implies that the argument of $\frac{c-a}{c-b}$ is $0$ or $\pi.$
+\end{pro}
+
+\begin{theo}[Concyclic Condition]
+The complex number $z$ is concyclic with $z_1,z_2,z_3$ if and only if $\frac{z_3-z_1}{z_2-z_1}\cdot\frac{z-z_2}{z-z_3}$ is real.
+\end{theo}
+
+\begin{pro}
+All angles are directed.
+
+This is the same as claiming the argument of this product is $0$ or $\pi.$ 
+
+The argument of $\frac{z_3-z_1}{z_2-z_1}$ is $\measuredangle z_2z_1z_3$ and the argument of $\frac{z-z_2}{z-z_3}$ is $\measuredangle z_3zz_2.$ For the points to be concyclic, either $\measuredangle z_2z_1z_3+\measuredangle z_3zz_2=0$ or $\measuredangle z_2z_1z_3+\measuredangle z_3zz_2=\pi,$ as desired.
+\end{pro}
+
+Here's a direct example of a problem using this condition.
+
+\begin{exam}[AIME I 2017/10]
+Let $z_1=18+83i,$ $z_2=18+39i,$ and $z_3=78+99i,$ where $i=\sqrt{-1}.$ Let $z$ be the unique complex number with the properties that $\frac{z_3-z_1}{z_2-z_1}\cdot\frac{z-z_2}{z-z_3}$ is a real number and the imaginary part of $z$ is the greatest possible. Find the real part of $z$.
+\end{exam}
+
+\begin{sol}
+This implies $z$ lies on the circumcircle of $\triangle z_1z_2z_3.$ To maximize the imaginary part, the real part must be the same as the circumcenter.
+
+We can now ignore complex numbers and use Cartesian Coordinates.
+
+We want to find the $x$ coordinate of the circumcenter of $(18, 83),$ $(18, 39),$ $(78, 99).$ The $y$ coordinate is $\frac{83+39}{2}=61,$ so the circumcenter must satisfy $(x-18)^2+(61-39)^2=(x-78)^2+(99-61)^2,$ implying $x=56,$ which is our answer.
+\end{sol}
+
+\begin{theo}[Equilateral Triangles]
+Complex numbers $a,b,c$ form an equilateral triangle if and only if $a^2+b^2+c^2=ab+bc+ca.$
+\end{theo}
+
+\begin{pro}
+We prove this for complex numbers $0,b-a,c-a.$ Note 
+\[(b-a)^2+(c-a)^2=(b-a)(c-a)\Leftrightarrow a^2+b^2+c^2=ab+bc+ca.\]
+Then let $b-a=x$ and $c-a=y.$
+
+Then note $x^2+y^2=xy$ implies $x=\text{cis}(\pm 60^{\circ})y.$
+\end{pro}
+
+\section{Vectors}
+Vectors can be used similarly to complex numbers. They have a few unique uses that are more convenient than complex numbers. Here's an obvious (but useful) theorem.
+
+\begin{theo}[Polygon]
+Given points $A_1,A_2,\ldots,A_n,$
+\[\overrightarrow{A_1A_2}+\overrightarrow{A_2A_3}+\cdots+\overrightarrow{A_nA_1}=0.\]
+\end{theo}
+
+\begin{exam}[IMO 2005/1]
+Six points are chosen on the sides of an equilateral triangle $ABC$: $A_1$, $A_2$ on $BC$, $B_1$, $B_2$ on $CA$ and $C_1$, $C_2$ on $AB$, such that they are the vertices of a convex hexagon $A_1A_2B_1B_2C_1C_2$ with equal side lengths.
+
+Prove that the lines $A_1B_2$, $B_1C_2$ and $C_1A_2$ are concurrent.
+\end{exam}
+
+\begin{sol}
+Note that $$\overrightarrow{A_1A_2}+\overrightarrow{A_2B_1}+\overrightarrow{B_1B_2}+\overrightarrow{B_2C_1}+\overrightarrow{C_1C_2}+\overrightarrow{C_2A_1}=0.$$
+
+Since $\overrightarrow{A_1A_2},$ $\overrightarrow{B_1B_2},$ and $\overrightarrow{C_1C_2}$ make angles of $120^{\circ}$ with each other (they are parallel to sides of an equilateral triangle), $$\overrightarrow{A_1A_2}+\overrightarrow{B_1B_2}+\overrightarrow{C_1C_2}=0.$$
+
+This implies that $$\overrightarrow{A_2B_1}+\overrightarrow{B_2C_1}+\overrightarrow{C_2A_1}=0,$$ which implies that they form an equilateral triangle. Thus $\triangle A_1A_2B_1 \cong \triangle B_1B_2C_1 \cong \triangle C_1C_2A_1.$ Thus $\triangle A_1B_1C_1$ is equilateral and the lines concur in the center of the triangle.
+\end{sol}
+
+\pagebreak
+
+\section{Problems}
+
+\minpt{40}
+
+\psetquote{It is weakness that brought us this fear. It is weakness that made us strong.}{My Home Hero}
+
+\prob{2}{}{Consider $\triangle ABC$ with circumcenter $O,$ orthocenter $H,$ and centroid $G.$ Prove that any one of the four imply the other three:
+    \begin{enumerate}
+        \item $O=H$
+        \item $H=G$
+        \item $G=O$
+        \item $\triangle ABC$ is equilateral.
+    \end{enumerate}}
+
+\prob{2}{}{Consider convex non-self intersecting quadrilateral $ABCD,$ and let the midpoints of $AB,$ $BC,$ $CD,$ $DA$ be $P,Q,R,S.$
+    \begin{enumerate}
+        \item Prove that $PQRS$ is a parallelogram.
+        
+        \item Prove that $PQRS$ is a rhombus if and only if $AC=BD.$
+    \end{enumerate}}
+    
+\prob{3}{AIME II 2005/9}{For how many positive integers $n$ less than or equal to 1000 is $(\sin t + i \cos t)^n = \sin nt + i \cos nt$ true for all real $t$?}
+
+\prob{3}{AIME I 2020/8}{A bug walks all day and sleeps all night. On the first day, it starts at point $O,$ faces east, and walks a distance of $5$ units due east. Each night the bug rotates $60^\circ$ counterclockwise. Each day it walks in this new direction half as far as it walked the previous day. The bug gets arbitrarily close to the point $P.$ Then $OP^2=\tfrac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m+n.$}
+
+\prob{3}{Napoleon's Theorem}{Let equilateral triangles $\triangle ABR,$ $\triangle BCP,$ and $\triangle CAQ$ be constructed externally from $\triangle ABC.$ Prove their centers form an equilateral triangle.}
+
+\req{3}{AMC 12B 2020/23}{How many integers $n \geq 2$ are there such that whenever $z_1, z_2, ..., z_n$ are complex numbers such that
+
+$$|z_1| = |z_2| = ... = |z_n| = 1 \text{    and    } z_1 + z_2 + ... + z_n = 0,$$
+then the numbers $z_1, z_2, ..., z_n$ are equally spaced on the unit circle in the complex plane?}
+
+\prob{4}{AMC 12A 2019/21}{Let\[z=\frac{1+i}{\sqrt{2}}.\]What is\[\left(z^{1^2}+z^{2^2}+z^{3^2}+\dots+z^{{12}^2}\right) \cdot \left(\frac{1}{z^{1^2}}+\frac{1}{z^{2^2}}+\frac{1}{z^{3^2}}+\dots+\frac{1}{z^{{12}^2}}\right)?\]}
+
+\req{4}{AIME II 2012/6}{Let $z = a + bi$ be the complex number with $|z| = 5$ and $b > 0$ such that the distance between $(1 + 2i)z^3$ and $z^5$ is maximized, and let $z^4 = c + di$. Find $c+d$.}
+
+\prob{4}{AIME 1994/8}{The points $(0,0),$ $(a,11),$ and $(b,37)$ are the vertices of an equilateral triangle. Find the value of $ab.$}   
+
+\prob{4}{EGMO 2013/1}{The side $BC$ of the triangle $ABC$ is extended beyond $C$ to $D$ so that $CD = BC$. The side $CA$ is extended beyond $A$ to $E$ so that $AE = 2CA$. Prove that, if $AD=BE$, then the triangle $ABC$ is right-angled.}
+
+\req{6}{CMIMC Algebra 2016/6}{For some complex number $\omega$ with $|\omega| = 2016$, there is some real $\lambda>1$ such that $\omega, \omega^{2},$ and $\lambda \omega$ form an equilateral triangle in the complex plane. Then, $\lambda$ can be written in the form $\tfrac{a + \sqrt{b}}{c}$, where $a,b,$ and $c$ are positive integers and $b$ is squarefree. Compute $\sqrt{a+b+c}$.}
+
+\prob{6}{AIME I 2019/12}{Given $f(z) = z^2-19z$, there are complex numbers $z$ with the property that $z$, $f(z)$, and $f(f(z))$ are the vertices of a right triangle in the complex plane with a right angle at $f(z)$. There are positive integers $m$ and $n$ such that one such value of $z$ is $m+\sqrt{n}+11i$. Find $m+n$.}
+
+\prob{6}{AIME II 2014/10}{Let $z$ be a complex number with $|z| = 2014$. Let $P$ be the polygon in the complex plane whose vertices are $z$ and every $w$ such that $\tfrac{1}{z+w} = \tfrac{1}{z} + \tfrac{1}{w}$. Then the area enclosed by $P$ can be written in the form $n\sqrt{3},$ where $n$ is an integer. Find the remainder when $n$ is divided by $1000$.}
+
+\req{9}{AIME II 2012/14}{Complex numbers $a$, $b$ and $c$ are the zeros of a polynomial $P(z) = z^3+qz+r$, and $|a|^2+|b|^2+|c|^2=250$. The points corresponding to $a$, $b$, and $c$ in the complex plane are the vertices of a right triangle with hypotenuse $h$. Find $h^2$.}
+    
+\prob{13}{AIME I 2017/15}{The area of the smallest equilateral triangle with one vertex on each of the sides of the right triangle with side lengths $2\sqrt{3},~5,$ and $\sqrt{37},$ as shown, is $\frac{m\sqrt{p}}{n},$ where $m,~n,$ and $p$ are positive integers, $m$ and $n$ are relatively prime, and $p$ is not divisible by the square of any prime. Find $m+n+p.$}
+\begin{center}
+\begin{asy}
+   size(5cm);
+pair C=(0,0),B=(0,2*sqrt(3)),A=(5,0);
+real t = .385, s = 3.5*t-1;
+pair R = A*t+B*(1-t), P=B*s;
+pair Q = dir(-60) * (R-P) + P;
+fill(P--Q--R--cycle,gray);
+draw(A--B--C--A^^P--Q--R--P);
+dot(A--B--C--P--Q--R);
+\end{asy} 
+\end{center}
+
+\end{document}

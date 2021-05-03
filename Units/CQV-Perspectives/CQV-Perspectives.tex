@@ -1,0 +1,322 @@
+Before we begin, we establish some notation that will make it much easier (and faster!) to write intersections and unions.
+
+$A\cap B$ denotes the intersection of $A$ and $B$ (the set of elements that is in both sets $A$ and $B$). $A\cup B$ denotes the union of $A$ and $B$ (the set of elements in set $A,$ set $B,$ or both sets.) $|A|$ denotes the size of set $A,$ and $|A\cap B|$ denotes the size of the intersection of $A$ and $B.$
+
+\section{The Principle of Inclusion-Exclusion}
+
+Perhaps you've heard of "Venn Diagram" problems; if you haven't, here's an example problem.
+
+\begin{exam}[Two Sets]
+$20$ students are taking Spanish and $30$ students are taking French. If everyone takes at least one language and there are $45$ total students, how many students are \textbf{only} taking Spanish?
+\end{exam}
+
+\begin{sol}
+Let the amount of students taking Spanish and French be $x.$ Then note that there are $20-x$ students taking only Spanish, $30-x$ students only taking French. We can add the students in all three of these groups to find our total sum. Since there are only $45$ students, $20-x+30-x+x=45\to 50-x=45\to x=5.$
+\end{sol}
+
+The Principle of Inclusion-Exclusion is about splitting the students into groups depending on the exact \textbf{number} of classes they take (usually the exact classes they take are irrelevant), and making sure you count each student exactly once. We note that if we count everybody for each time they are in Spanish and each time they are in French, then we will "double-count" (count twice) the people in both Spanish and French. This means that we must subtract the people in both Spanish and French. Fortunately, this overcounting/undercounting behavior is actually quite predictable.
+
+\begin{theo}[The Two-Set Case]
+For sets $A_1,A_2,$
+\[|A_1\cup A_2|=|A_1|+|A_2|-|A_1\cap A_2|.\]
+\end{theo}
+
+\begin{pro}
+Notice that you count the elements in \textbf{exactly} one set once, but you count the elements in two sets twice. Thus, we must subtract the elements in both sets to account for this overcounting.
+\end{pro}
+
+Let's take a look at the case of $3$ people.
+
+\begin{theo}[The Three-Set Case]
+For sets $A_1,A_2,A_3,$
+\[|A_1\cup A_2\cup A_3|=\]
+\[|A_1|+|A_2|+|A_3|-|A_1\cap A_2|-|A_2\cap A_3|- |A_3\cap A_1|+|A_1\cap A_2\cap A_3|.\]
+\end{theo}
+
+\begin{pro}
+We note that if we count $A_1,A_2,A_3$ once, then we count everything in exactly two sets twice. Thus we subtract $|A_1\cap A_2|+|A_2\cap A_3|+|A_3\cap A_1|.$ This means our current value is $|A_1|+|A_2|+|A_3|-|A_1\cap A_2|-|A_2\cap A_3|- |A_3\cap A_1|,$ but we have counted every person in $|A_1|\cap |A_2|\cap |A_3|$ $0$ times. So we have to add $|A_1\cap A_2\cap A_3|,$ giving us our final value as
+$$|A_1\cup A_2\cup A_3|=$$
+$$|A_1|+|A_2|+|A_3|-|A_1\cap A_2|-|A_2\cap A_3|- |A_3\cap A_1|+|A_1\cap A_2\cap A_3|.$$
+\end{pro}
+
+Keeping in mind how many times we count each number, we can generalize PIE. Let's say we have $X$ sets. Then we add the amount of terms in the individual sets, subtract the terms in $2$ sets, add the amount of terms in $3$ sets, and so on. Note that this means the amount of terms in \textbf{at least} that many sets, not exactly. The general rule is we add the amount of terms in $K$ sets if $K$ is odd and we subtract the amount of terms in $K$ sets if $K$ is even. (See the top of the section for a more formalized statement and proof.)
+
+For example, with four sets $A_1,A_2,A_3,A_4,$ we have $$A_1\cup A_2\cup A_3\cup A_4=\sum\limits_{i=1}^{4}A_i-\sum\limits_{\text{sym}}A_1\cap A_2+\sum\limits_{\text{sym}}A_1\cap A_2\cap A_3-A_1\cap A_2\cap A_3 \cap A_4.$$
+
+As an exercise, do this with $5$ sets. (Do this only if you feel like it; it isn't very important.)
+
+You may be noticing a pattern here; we are ``adding'' intersections of an odd number of sets and ``subtracting'' intersections of an even number of sets. The natural question to ask is, ``Does this hold in general, and why?'' The answer to the first question is the general Principle of Inclusion-Exclusion, and the second is a Perspectives-style argument.
+\begin{theo}[The Principle of Inclusion-Exclusion]
+Given sets $A_1,A_2,\dots,A_n,$
+$$|\bigcup_{i=1}^n A_i|=\sum\limits_{i=1}^{n} (-1)^{i+1}\sum\limits_{\text{sym}}|\bigcap_{j=1}^{i} A_j|.$$
+\end{theo}
+
+We do the following problem to motivate the proof.
+
+\begin{exam}[AIME 1983/13]
+For $\{1, 2, 3, \ldots, n\}$ and each of its non-empty subsets a unique alternating sum is defined as follows. Arrange the numbers in the subset in decreasing order and then, beginning with the largest, alternately add and subtract successive numbers. For example, the alternating sum for $\{1, 2, 3, 6,9\}$ is $9-6+3-2+1=5$ and for $\{5\}$ it is simply $5$. Find the sum of all such alternating sums for $n=7$. 
+\end{exam}
+
+\begin{sol}
+Note that any subset $A$ not containing $7$ can be matched with a subset $B$ containing $7,$ and further note that $S(A)+S(B)=7.$ Since there are $2^6=64$ sets $A$ (we can treat the empty set as having alternating sum $0$), the answer is $64\cdot 7=448.$
+\end{sol}
+
+The reason behind the statement of PIE is that we need to ensure that each element is counted exactly once. Thus it logically follows that the simplest and fundamentally moral way to prove this is by proving each element is counted at most once, and the motivation behind our induction-style argument is the intuition we got from the last example.
+
+\begin{pro}
+We prove that each element is counted once.
+
+Say that some element $X$ is in $k$ sets. Without loss of generality, these sets are $A_1,A_2,\dots,A_k.$
+
+We proceed by induction. This is obvious for $k=1.$
+
+If this is true for $k,$ we prove this is true for $k+1.$ For every set of sets not containing $A_{k+1}$ with size $i,$ there is a set of sets containing $A_{k+1}$ with size $i+1.$ In PIE, the sum of how many times these sets are counted is $0.$ There is also one additional set of sets $\{A_{k+1}\},$ so $X$ is counted exactly once.
+\end{pro}
+
+
+\section{Clever Bijections}
+
+\subsection{Stars and Bars}
+The answer to the question "how many ways can we give identical things to non-identical people?" Also known as sticks and stones or balls and urns. This is a clever trick often used in lower-level competition mathematics, and it's best thought of as a clever bijection.
+
+\begin{theo}[Stars and Bars]
+The number of ways to distribute $n$ indistinguishable items to $k$ distinguishable people is $\binom{n+k-1}{k-1}.$
+\end{theo}
+
+\begin{pro}
+Let there be $k-1$ dividers and $n$ items in a line. Then we distribute the items between each set of dividers (and to the left of the leftmost divider and to the right of the rightmost divider) to the people in that order. Note that there are $\binom{n+k-1}{k-1}$ ways to do this, and this corresponds directly to the number of ways to directly distribute the items to the people.
+\[**|*|***|*\]
+\begin{center}
+    \textit{Stars and Bars for $n=7$ and $k=4.$}
+\end{center}
+\end{pro}
+
+We present a fairly straightforward application of Stars and Bars with no restrictions.
+
+\begin{exam}[AMC 10A 2003/21]
+Pat is to select six cookies from a tray containing only chocolate chip, oatmeal, and peanut butter cookies. There are at least six of each of these three kinds of cookies on the tray. How many different assortments of six cookies can be selected?
+\end{exam}
+
+\begin{sol}
+There are six stars and three bars, so the answer is $\binom{6+3-1}{3-1}=\binom{8}{2}=28.$
+\end{sol}
+
+You usually will have some sort of restrictions - most commonly, certain people must get a minimum of the distributed item. (This is evidenced by how hard it was for me to find an example for stars and bars with no restrictions.) In this case, allot the items "beforehand" and ignore the restrictions, while starting with less items than before you took care of the restrictions. This is all fairly abstract, so a concrete example will help.
+
+\begin{exam}[AMC 8 2019/25]
+Alice has $24$ apples. In how many ways can she share them with Becky and Chris so that each of the three people has at least two apples?
+\end{exam}
+
+\begin{sol}
+We distribute $2$ apples to each of the $3$ people. So we have $18$ apples left and no more restrictions, so the answer is $\binom{18+3-1}{3-1}=\binom{20}{2}=190.$
+\end{sol}
+
+There will be times when you need to do another clever bijection to make stars and bars easier. Some example include having a limit on how many items people can receive, and having a number of items very close to this limit - in this case, we can think about distributing "negative items" - that is, how far away each person is from receiving the maximum.
+
+\subsection{Picking Unordered Elements}
+Alternatively titled ascending numbers. We take a look at two generic examples that cover the section pretty well.
+
+\begin{exam}[Ascending Numbers]
+An \textit{ascending number} is a number whose digits increase from left to right. How many four digit ascending numbers are there?
+\end{exam}
+
+\begin{sol}
+We choose four distinct digits between $1$ and $9,$ and the order is fixed. Thus, the answer is just $\binom{9}{4}=126.$
+\end{sol}
+
+Now what if the number is just non-decreasing and can stay the same?
+
+\begin{exam}[Non-descending Numbers]
+A \textit{nondescending number} is a number whose digits never decrease (but may stay the same) from left to right. How many four digit nondescending numbers are there?
+\end{exam}
+
+\begin{sol}
+Let the digits be $a,b,c,d.$ Then we desire $1\leq a\leq b\leq c\leq d\leq 9.$ But note this is also equivalent to $1\leq a<b+1<c+2<d+3\leq 12.$ So we pick $4$ distinct numbers and match them with $a,b+1,c+2,d+3.$ There are $\binom{9-1+4}{4}=\binom{12}{4}$ ways to do this, so the answer is $495.$
+\end{sol}
+
+This can also be done with stars and bars - if we let the "baskets" be the digits $1,2,\ldots, 9$ and the "stars" be the 4 digits we choose. We also get the value of $\binom{9-1+4}{4}=495.$
+
+\section{Combinatorial Identites}
+We take a look at some famous combinatorial identities like Hockey-Stick, Vandermonde, and the Binomial Theorem (and friends). We will look at the combinatorial proofs (aka bijections) when possible because algebra is boring and straightforward (and sometimes not possible).
+
+We first start with the most boring one (which is done by algebra).
+
+\begin{theo}[Shift $1$]
+For positive integers $n,k,$
+\[\binom{n}{k}=\frac{n}{k}\binom{n-1}{k-1}.\]
+\end{theo}
+
+\begin{pro}
+Note that $\frac{n!}{k!(n-k)!}=\frac{n}{k}\cdot\frac{(n-1)!}{(k-1)!(n-k)!}.$
+\end{pro}
+
+This theorem does come into play as part of some harder problems, so it is good to be able to manipulate binomials this way. But there will probably never be a problem \textit{based} on this theorem.
+
+\begin{theo}[Hockey-Stick]
+For positive integers $n,k,$
+\[\sum\limits_{i=k}^{n}\binom{i}{k}=\binom{n+1}{k+1}.\]
+
+\begin{center}
+    \begin{asy}
+    size(6cm);
+    
+    import olympiad;
+    int chew(int n,int r){
+ int res=1;
+ for(int i=0;i<r;++i){
+  res=quotient(res*(n-i),i+1);
+  }
+ return res;
+ }
+for(int n=0;n<9;++n){
+ for(int i=0;i<=n;++i){
+  if((i==2 && n<8)||(i==3 && n==8)){
+   if(n==8){label(string(chew(n,i)),(11+n/2-i,-n),p=red+2.5);}
+   else{label(string(chew(n,i)),(11+n/2-i,-n),p=blue+2);}
+   }
+  else{
+   label(string(chew(n,i)),(11+n/2-i,-n));
+   }
+  }
+ }
+\end{asy}
+
+\textit{Diagram from AoPS Wiki.}
+\end{center}
+\end{theo}
+
+The Hockey-Stick identity is named such because it looks like a hockey stick in Pascal's Triangle.
+
+\begin{pro}
+Have a particle on the lattice grid starting at $(0,0),$ and allow it to either move $1$ unit right or $1$ unit up in each move. Then note that $\sum_{i=k}^{n}\binom{i}{k}$ is the sum of the number of ways to get to $(k,0),(k,1),\ldots,(k,n-k),$ and that $\binom{n+1}{k+1}$ is the number of ways to get to $(k+1,n-k).$ But note that to get to $(k+1,n-k),$ we go from a point $(k,i)$ to a point $(k+1,i)$ and then go straight up, which there is always exactly one way to do once you get to $(k,i).$ Thus the two values are equal.
+
+\begin{center}
+    \begin{asy}
+    import olympiad;
+size(5cm);
+int i, j;
+for(i=3; i<4; i=i+1)
+{
+for(j=0; j<5; j=j+1)
+dot((i,j));
+}
+
+draw((0,5)--(0,0)--(5,0));
+dot((3,0));
+label("$3,0$",(3,0),SW);
+dot((3,1));
+label("$3,1$",(3,1),SW);
+dot((3,2));
+label("$3,2$",(3,2),SW);
+dot((3,3));
+label("$3,3$",(3,3),SW);
+dot((3,4));
+label("$3,4$",(3,4),SW);
+dot((4,4));
+label("$4,4$",(4,4),SW);
+    \end{asy}
+    
+\textit{Example for $n=7$ and $k=3.$}
+\end{center}
+\end{pro}
+
+\begin{theo}[Vandermonde]
+For positive integers $m,n,k,$
+\[\sum_{i=0}^k\binom {m}{i}\binom {n}{k-i}=\binom{m+n}{k}.\]
+\end{theo}
+
+\begin{pro}
+Note that this is the same as picking a committee of $k$ people from $m+n$ people, since for every committee, there is some arbitrary number $i$ such that we pick $i$ from the group of $m$ and the rest of the $k-i$ from the group of $n.$
+\end{pro}
+
+\section{Freedom}
+
+As you might recall from \db{CPV-Intro}, the number of choices between independent events is multiplicative.\footnote{As an example, if you want to pick a piece of paper out of $5$ pieces and a pencil out of $10$ pencils, there are $5\cdot 10$ total choices.} However, sometimes it isn't clear what the independent events are, or if there even are any at all. The goal of this section is to develop the intuition of when and how counting problems hide their independent choices.
+
+\begin{exam}[Coins]
+Linus is flipping a fair coin $n$ times. In terms of $n,$ how many ways can he end his $n$th flip with an even number of heads?
+\end{exam}
+
+\begin{sol}
+Note that regardless of what he gets on his first $n-1$ flips, there is exactly $1$ choice for the final flip based on the current parity. If the current number of heads is odd, then the last flip must be heads, and if the current number of heads is even, then the last flip must be tails.
+\end{sol}
+
+As an exercise, find the number of ways Linus can flip his coin to end with an odd number of heads. Why is it the same even when a change of perspectives (when $n$ is even, and the argument ``even heads is equivalent to odd tails, and heads are no different from tails'' doesn't hold) is not possible?
+
+% add problem based on 2011 feb guts 14 after mat or some spam
+
+\begin{exam}
+Farmer John has $N$ cows of heights $a_1,\ldots,a_N.$ His barn has $N$ stalls with max height limits $b_1,\ldots,b_N$ (so for example, if $b_5=17$, then a cow of height at most $17$ can reside in stall $5$). In how many distinct ways can Farmer John arrange his cows so that each cow is in a different stall, and so that the height limit is satisfied for every stall? 
+
+Devise an $O(N^2)$ algorithm to determine the answer.
+\end{exam}
+
+\begin{sol}
+This is just glorified counting with restrictions. Note the cow with the tallest height has the most restrictions, the cow with the second tallest height has the second most restrictions, so on. So it is only natural to place the cows in order of height.
+
+Sort $a_1,a_2,\ldots,a_N$ such that $a_1>a_2>\cdots>a_N.$ Then say cow $a_i$ fits into $k_i$ stalls. Note that $a_i$ can be placed into $k_i-(i-1)$ stalls, because the previous $i-1$ cows are in stalls that the $i$th cow can fit in. This is because those $i-1$ cows are taller, so by definition they must be in a stall tall enough to fit the $i$th cow.
+
+Thus the answer is just
+\[\prod_{i=0}(k_i-(i-1)).\]
+Since each of the $N$ $k_i$ can be determined in $O(N)$ time, this algorithm is $O(N^2).$
+\end{sol}
+
+This idea of "do whatever for the first $n-k$ moves and meet restrictions in the last $k$ moves" is often considered difficult and thus not much extra stuff is added. So if you can get used to it, it's free points for you.\footnote{You only need to look at AMC 10A 2020/23 and AMC 10B 2020/23, which are on different versions of this handout, to get an idea of \textit{how inflated} this sense of difficulty is. Both are in the last $5$ of the AMCs and are only worth three points each -- something rare even in an $R$ unit.} These problems also have the added bonus of being very pleasant to solve -- something atypical of most AIME combo.
+
+To finish off, here's an example of a harder freedom problem.
+
+\begin{exam}[HMMT Feb. Guts 2011/10]
+In how many ways can one fill a $4\times 4$ grid with a $0$ or $1$ in each square such that the sum of the entries in each row, column, and long diagonal is even?
+\end{exam}
+
+\begin{sol}
+Surprisingly, this problem is completely independent. The free squares are denoted with an $F$ below:
+
+\begin{tabular}{c c c c}
+F & F & D & D \\
+F & F & F & D \\
+F & F & F & D \\
+D & D & D & D
+\end{tabular}
+
+The proof this works is left to the reader.
+\end{sol}
+
+\subsection{Binomial Sums}
+
+We start with the most obvious result.
+
+\begin{theo}[Binomial Theorem]
+For a positive number $n,$
+\[\sum_{i=0}^{n}\binom{n}{i}=2^n.\]
+\end{theo}
+
+\begin{pro}
+Note that $(1+1)^n=\sum\limits_{i=0}^{n}\binom{n}{i}=2^n.$
+
+Combinatorially, there are $2$ choices for each of the $n$ terms in the expansion; this leads to $2^n$ terms, each with value $1.$
+\end{pro}
+
+Closely related is the following theorem, which is obvious when $n$ is odd but not so much when $n$ is even.
+
+\begin{exam}[Even Binomial Theorem]
+For any $n\geq 1,$ $\sum\limits_{i=0}^{\lfloor\frac{n}{2}\rfloor}\binom{n}{2i}=\frac{2^n}{2}.$
+\end{exam}
+
+\begin{sol}
+This is the number of ways to flip $n$ coins such that an even of them land heads.
+\end{sol}
+
+Finally, we end with a useful identity that is proven with an \textit{algebraic} change of perspectives, rather than a combinatorial one.
+
+\begin{exam}[Binomial with Coefficient]
+For any $n\geq 1,$ $\sum\limits_{i=0}^{n}i\binom{n}{i}=\frac{n2^n}{2}.$
+\end{exam}
+
+\begin{sol}
+A combo problem is always easy when algebra saves the day.
+
+Note $2\sum\limits_{i=0}^{n}i\binom{n}{i}=\sum\limits_{i=0}^{n}i\binom{n}{i}+\sum\limits_{i=0}^{n}i\binom{n}{n-i}=\frac{n2^n}{2}=n\sum\limits_{i=0}^{n}\binom{n}{i}=n2^n.$ Dividing by $2$ yields the desired result.
+\end{sol}
+
+For those of you who know what the Roots of Unity Filter is, this is a very primitive form of it.

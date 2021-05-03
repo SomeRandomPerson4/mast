@@ -1,0 +1,356 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{Roots of a Polynomial}
+\author{Dennis Chen, William Dai}
+\date{APV}
+
+\begin{document}
+\maketitle
+
+We discuss algebraic manipulations with the roots of polynomials. We also give some general tricks and approaches for how to manipulate polynomials.
+
+\section{Vieta's Formulas}
+To motivate this section, we give Vieta's upfront.
+
+\begin{theo}[Vieta's Formulas]
+Consider polynomial $a_nx^n+a_{n-1}x^{n-1}+\cdots+a_{1}x+a_0$ with roots $r_1,r_2,\ldots,r_n.$ Then
+\[\sum\limits_{1\leq i_1<i_2<\cdots<i_k}r_{i_1}r_{i_2}\ldots r_{i_k}=(-1)^k\frac{a_{n-k}}{a_n}.\]
+\end{theo}
+
+So what does this mean, and what's the right way to think about Vieta's? The answer is through factoring the polynomial and matching coefficients.
+
+\begin{exam}[Quadratic]
+Let the roots of $x^2+7x-30$ be $r_1,r_2.$ Find $r_1+r_2.$
+\end{exam}
+
+We're not going to just use Vieta's Theorem blindly here. Instead we'll try to motivate its discovery.
+
+\begin{sol}
+Note that $x^2+7x-30=(x-r_1)(x-r_2)$, \textbf{by definition}. Expanding gives $x^2+7x+30=x^2-(r_1+r_2)x+r_1r_2.$ Matching coefficients
+\end{sol}
+
+Let's explicitly formalize this matching coefficients idea.
+
+\begin{theo}[Matching Coefficients]
+Consider polynomials $f(x)=a_0+a_1x+a_2x^2+\cdots$ and $g(x)=b_0+b_1x+b_2x^2+\cdots.$ Then $f(x)=g(x)$ if and only if $a_i=b_i$ for all $i.$\footnotemark
+\end{theo}
+
+\footnotetext{We use $\cdots$ even though the polynomials are terminating because $a_k=0$ for all $k>\deg{f}.$ In other words, at some point it's just coefficients of $0$ going forward.}
+
+With this idea in mind we can now prove Vieta's formulas.
+
+\begin{pro}[(Vieta's Formulas)]
+Expand $(x-r_1)(x-r_2)\ldots(x-r_n)$ and compare its coefficients with the coefficients of $a_nx^n+a_{n-1}x^{n-1}+\cdots+a_{1}x+a_0.$
+\end{pro}
+
+\section{Newton's Sums}
+
+Newton's Sums are about the sum $r_1^k+r_2^k+\cdots+r_n^k,$ where $r_1,r_2,\ldots,r_k$ are the roots of some polynomial $P.$
+
+\begin{theo}[Newton's Sums]
+Consider some degree $n$ polynomial $P(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_0$ with roots $r_1,r_2,\ldots,r_n.$ Then let $Z_k=r_1^k+r_2^k+\cdots+r_n^k.$ Then
+\[\sum_{i=0}^{n}a_iZ_{k-n+i}=a_nZ_k+a_{n-1}Z_{k-1}+\cdots+a_{n-(k-1)}Z_1+a_{0}Z_{k-n}=0.\]
+\end{theo}
+
+The proof is actually surprisingly obvious.
+
+\begin{pro}
+Note that for any root $x$ of $P(x),$ $x^{k-n}(a_nx^n+a_{n-1}x^{n-1}+\cdots+a_0)=0=a_nx^k+a_{n-1}x^{k-1}+\cdots+a_0x^{k-n}.$ Now just take $x=r_1,r_2,\ldots,r_n$ and sum all the equations.
+\end{pro}
+
+Here's a direct example of Newton's Sums.
+
+\begin{exam}[AMC 12A 2019/17]
+Let $s_k$ denote the sum of the $\textit{k}$th powers of the roots of the polynomial $x^3-5x^2+8x-13$. In particular, $s_0=3$, $s_1=5$, and $s_2=9$. Let $a$, $b$, and $c$ be real numbers such that $s_{k+1} = as_k + bs_{k-1} + cs_{k-2}$ for $k=2$, $3$, $\ldots$ What is $a+b+c$?
+\end{exam}
+
+% Perhaps this is what expletives were invented for.
+
+\begin{sol}
+By Newton's Sums, $s_{k+1}-5s_k+8s_{k-1}-13s_{k-2},$ or $s_{k+1}=5s_k-8s_{k-1}+13s_{k-2}.$ Thus $a+b+c=5-8+13=10.$
+\end{sol}
+
+\pagebreak
+
+%%----------------------------------------------------------------------------------------------------------------------------%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%----------------------------------------------------------------------------------------------------------------------------%%
+
+\section{Reciprocal Roots}
+\begin{theo}[Reciprocal Roots]
+If $f(x)=a_{k}x^{k}+a_{k-1}x^{k-1}\ldots + a_{0}$ has roots $r_{1},r_{2}\ldots r_{k}$, then $g(x)=a_{0}x^{k}+a_{1}x^{k-1}\ldots + a_{k}$ has roots $\frac{1}{r_{1}}, \frac{1}{r_{2}}\ldots \frac{1}{r_{k}}$.
+\end{theo}
+
+\begin{pro}
+Use Vieta\rq{}s  to show that the polynomial with roots $\frac{1}{r_{1}}, \frac{1}{r_{2}}\ldots \frac{1}{r_{k}}$ and leading coefficient $a_{0}$ is indeed $g(x)$.
+\end{pro}
+
+After doing this, you can find symmetric sums of $\frac{1}{r_{1}} \ldots \frac{1}{r_{k}}$ using Vieta\rq{}s and other polynomial techniques. In many cases like computing $\frac{1}{r_{1}}\cdots + \frac{1}{r_{k}}$ or $\sum \frac{1}{r_{i}r_{j}}$, it\rq{}s simply easier to combine under a common denominator and apply Vieta\rq{}s on $f(x)$. However, this trick is very useful for sums like $\frac{1}{r_{1}^2}+\frac{1}{r_{2}^2}\cdots  + \frac{1}{r_{k}^2}$ where the numerator isn\rq{}t very easy to work with using the original roots. In this example, once you switch to the reciprocal roots, it simply becomes Newton\rq{}s Sums.
+
+One interesting corollary of this is that for polynomials with palindromic coefficents, that is $a_{i}=a_{k-i}$, $r$ is a root of $f(x)$ if and only if $\frac{1}{r}$ is a root.
+
+
+\newpage
+%%----------------------------------------------------------------------------------------------------------------------------%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%----------------------------------------------------------------------------------------------------------------------------%%
+\section{Symmetry}
+Basically, we use some kind of symmetry in the function to find solutions. This can just be that the function is symmetric about $x=c$. Note that if we make a substitution, we can use the symmetry of the substitution, even if the polynomial in terms of the substitution isn't actually symmetric.
+\begin{exam}[HMMT February 2014]
+Find the sum of all real numbers $x$ such that $5x^4+10x^3 + 10x^2+5x-11 = 0.$
+\end{exam}
+
+\begin{sol}
+First, note that we cannot just use Vieta\rq{}s because it specifies \textbf{real} roots. Now, to make the equation more symmetric, we rewrite this as \[5x^4+10x^3+10x^2+5x=11.\] The left hand, which we will call $f(x),$ side factors to
+\begin{align*}
+5(x(x^3+1)+2x^2(x+1))&=5(x+1)(x(x^2-x+1)+2x^2) \\
+&=5(x+1)(x^3+x^2+x) \\
+&=5x(x+1)(x^2+x+1) \\
+&=5(x^2+x)(x^2+x+1) \\
+&=5((x^2+x)^2+(x^2+x))
+\end{align*} which is a polynomial in $x^2+x$. Since $x^2+x$ is symmetric about $\frac{-1}{2}$, $f(x)$ is also symmetric about $\frac{-1}{2}$. This implies that if $f(x)=-11$, then $f(-1-x)=11$. So, the real solution $x$\rq{}s come in pairs that sum to $-1$ (note that $\frac{-1}{2}$ isn\rq{}t a solution). Now we need to find the number of these pairs. We subtitute in $x^2+x=k$ to get \[5k^2+5k=11\implies 5k^2+5k-11\] which has solutions $\frac{-5 \pm 7\sqrt{5}}{10}$. Now, note that $5k^2+5k=5(k+\frac{1}{2})^2-\frac{5}{4}$ so it has a minimum of $\frac{-5}{4}$. Then, $\frac{-5-7\sqrt{5}}{10}$ is less than this minimium but $\frac{-5+7\sqrt{5}}{10}$ is greater than this minimum. So, there is only one pair, yielding an answer of $\ansbold{-1}$.
+\end{sol}
+
+\newpage
+%%----------------------------------------------------------------------------------------------------------------------------%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%----------------------------------------------------------------------------------------------------------------------------%%
+\section{Derivatives Trick}
+
+The following section requires pre-requisite knowledge of the Chain Rule and Quotient Rule from calculus. This trick mainly appears on college competitions, and those preparing primarily for the AMCs and AIME should not feel the need to know this.
+
+\begin{theo}[Derivatives Trick]
+Let $f(x)=(x-r_{1})(x-r_{2})\ldots(x-r_{k})$. Then,
+$$\frac{f'(x)}{f(x)} = \sum_{i=1}^{k} \frac{1}{x-r_{i}}$$
+\end{theo}
+
+\begin{pro}
+We take the natural log of both sides.
+$$\ln (f(x)) = \sum_{i=1}^{k} \ln(x-r_{i})$$
+We take the derivative of both sides using the chain rule.
+$$\frac{f'(x)}{f(x)} = \sum_{i=1}^{k} \frac{1}{x-r_{i}}$$
+\end{pro}
+
+We can extend this further by taking the derivative again as much as we need to do to find $\sum_{i=1}^{k} \frac{1}{(x-r_{k})^n}$ for $n$ in general.
+\begin{theo}[Derivatives Trick Extended]
+$$\frac{f''(x)f(x)-f'(x)^2}{f(x)^2} = -\sum_{i=1}^{k} \frac{1}{(x-r_{i})^2}$$
+\end{theo}
+
+\begin{pro}
+Use the Quotient Rule.
+\end{pro}
+\newpage
+
+%%----------------------------------------------------------------------------------------------------------------------------%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%----------------------------------------------------------------------------------------------------------------------------%%
+\section{Substitutions}
+The big idea is that you make substitutions to simplify a seemingly very complicated equation such as a quartic or higher degree polynomial. Then, you work backwards to find the solutions in the original variable. In this section, we'll present some common substitutions.
+
+
+Note that a common substitution is $y=x+\frac{1}{x}$, particularly for polynomials which are palindromic.
+
+\begin{exam}[HMMT February 2014]
+Find all real numbers $k$ such that $r^4+kr^3+r^2+4kr+16=0$ is true for exactly one real number $r$.
+\end{exam}
+
+\begin{sol}
+We divide by $r^2$ to get $r^2+\frac{16}{r^2} + k(r+\frac{4}{r})+1=0$. Then subsitute $t=r+\frac{4}{r}$ to get
+\begin{align*}
+t^2-8+kt+1 &= 0\\
+t^2+kt-7&=0\\
+k^2-28&=0\\
+k &= \ansbold{\pm 2\sqrt{7}}.
+\end{align*}
+\end{sol}
+
+When you have a factorization of the form $(x+a)(x+b)(x+c)(x+d)$ where $a+d=b+c=k$, group together $(x+a)(x+d)=x^2+kx+ad$ and $(x+b)(x+c)=x^2+kx+bc$. Then substituting $y=x^2+kx$, or in some cases $y=x^2+kx+\frac{ad+bc}{2}$ to take advantage of difference of squares, will help
+
+This applies more generally in that you should try to group together terms to produce polynomials that only differ in the constant term.
+
+\begin{exam}[AMC 10A 2019/19]
+What is the least possible value of
+\[(x+1)(x+2)(x+3)(x+4)+2019\]
+where $x$ is a real number?
+\end{exam}
+
+\begin{sol}
+We group together $(x+1)(x+4)=x^2+5x+4$ and $(x+2)(x+3)=x^2+5x+6$. We make the substitution $y=x^2+5x+5$. Then, the expression is $(y-1)(y+1)+2019=y^2+2018\ge 2018$ with equality if $y=0$. We use the quadratic formula and see that $\Delta\footnote{This denotes the discriminant of the quadratic.} > 0$, so $y=0$ is actually possible. Then, the minimum is $\ansbold{2018}$.
+\end{sol}
+\newpage
+%%----------------------------------------------------------------------------------------------------------------------------%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%----------------------------------------------------------------------------------------------------------------------------%%
+
+\section{Polynomial Interpolation}
+
+\begin{theo}[Fundamental Theorem of Algebra]
+If a polynomial $f(x)$ has degree $d>0$, then it has $d$ complex roots.
+\end{theo}
+
+\begin{theo}[Equal Polynomials]
+If two polynomials $f(x)$ has degree $d$ and $g(x)$ has a degree less than or equal to $d$ and $f(x)=g(x)$ for $x_{1},x_{2}\ldots x_{d+1}$, then $f(x)=g(x)$.
+\end{theo}
+
+\begin{pro}
+Consider the polynomial $f(x)-g(x)$ which has degree at most $d$. Then, $f(x)-g(x)$ has $d+1$ roots $x_{1},x_{2}\ldots x_{d+1}$. Because there are more roots than the degree $d$, by the Fundamental Theorem of Algebra, this implies that $f(x)-g(x)$ is the zero polynomial and that $f(x)-g(x)=0\implies f(x)=g(x)$.
+\end{pro}
+
+\begin{theo}[Lagrangian Interpolation]
+If a polynomial $f(x)$ of degree $d$ passes through $(x_{1},y_{1}),$ $(x_{2},y_{2}),$ $\ldots (x_{d+1},y_{d+1})$, then
+$$f(x)=\frac{y_{1}(x-x_{2})(x-x_{3})\ldots (x-x_{d+1})}{(x_{1}-x_{2})(x_{1}-x_{3})\ldots (x_{1}-x_{d+1})}$$
+$$+\frac{y_{2}(x-x_{1})(x-x_{3})\ldots (x-x_{d+1})}{(x_{2}-x_{1})(x_{2}-x_{3})\ldots (x_{2}-x_{d+1})}$$
+$$\ldots$$
+$$+\frac{y_{d+1}(x-x_{1})(x-x_{2})\ldots (x-x_{d})}{(x_{d+1}-x_{1})(x_{d+2}-x_{2})\ldots (x_{d+1}-x_{d})}$$
+\end{theo}
+
+\begin{pro}
+If we represent the right hand side as $g(x)$, then we can clearly see that $g(x)=f(x)$ for $x=x_{1},x_{2}\ldots x_{d+1}$ as most of the terms except the one we want cancel out. By the previous theorem, $f(x)=g(x)$.
+\end{pro}
+
+\begin{exam}[Mandelbrot]
+There is a unique polynomial $P(x)$ of the form 
+$$P(x)=7x^7+c_{1}x^6+c_{2}x^{5}+\cdots + c_{6}x+c_{7}$$
+such that $P(1)=1,P(2)=2, \ldots,$ and $P(7)=7$. Find $P(0)$.
+\end{exam}
+
+\begin{sol}
+Note that $P(x)-x$ has the $7$ roots $1,2\ldots 7$. By the Fundamental Theorem of Algebra, it can have no other roots so $P(x)-x=a(x-1)(x-2)\cdots(x-7)$. We are given that the leading coefficient of $P(x)$ is $7$ so $a=7$. Then, $P(0)-0=-7!\cdot 7 = \ansbold{-35280}$.
+\end{sol}
+
+\newpage
+%%----------------------------------------------------------------------------------------------------------------------------%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%----------------------------------------------------------------------------------------------------------------------------%%
+\section{Root Rules}
+This is an assorted collection of rules and theorems about the roots of a polynomials. These don't come up often as the whole problem but may be useful as intermediate steps. 
+\begin{theo}[Descartes' Rule of Signs]
+The number of sign changes in the coefficients of a polynomial $f(x)$ is the maximium possible number of positive zeros. Also, the number of sign changes in the coefficients of polynomial $f(-x)$ from is the maximium possible number of negative zeros.
+\end{theo}
+
+\begin{exam}
+Using Descartes' Rule of Signs, what is the maximum number of positive real solutions to $x^4-x^3+x^2+1$?
+\end{exam}
+
+\begin{sol}
+The coefficients change sign two times, $1$ to $-1$ and $-1$ to $1$. So, $\ansbold{2}$.
+\end{sol}
+
+\begin{theo}[Rational Root Theorem]
+A rational root of the polynomial $f(x)=a_{k}x^{k}+a_{k-1}x^{k-1}\ldots + a_{0}$ is in the form $\frac{p}{q}$ where $p,q$ are relatively prime integers such that $p|a_{0}$ and $q|a_{k}$.
+\end{theo}
+
+\begin{theo}[Conjugate Root Theorem]
+If a polynomial $f(x)$ with real coefficients has a complex root $a+bi$, then the complex conjugate $a-bi$ is also a root.
+\end{theo}
+
+\begin{exam}
+Find the roots of the polynomial $x^4-14x^3+71x^2-136x+58$ given that $5-2i$ is a root.
+\end{exam}
+
+\begin{sol}
+By Conjugate Root Theorem, $5+2i$ is also a root. Then, $(x-5-2i)(x-5+2i)=x^2-10x+29$. We apply long division and the Quadratic Formula on $x^2-4x+2$ to find the other roots of $2\pm \sqrt{2}$.
+\end{sol}
+
+
+\begin{theo}[Radical Conjugate Root Theorem]
+If a polynomial $f(x)$ with rational coefficients has a root of the form $a+b\sqrt{c}$, then $a-b\sqrt{c}$ is also a root.
+\end{theo}
+
+\newpage
+\section{Problems}
+
+\minpt{60}
+
+%about 2/3 of points minus the hardest problem
+\psetquote{No matter how far you push your feelings down... they'll always come back somehow. And what you do with those feelings... That will be your truth.}{Aubrey, OMORI}
+
+\prob{1}{AMC 12B 2019/8}{
+Let $f(x) = x^{2}(1-x)^{2}$. What is the value of the sum
+
+\[f \left(\frac{1}{2019} \right)-f  \left(\frac{2}{2019} \right)+f \left(\frac{3}{2019} \right)-f \left(\frac{4}{2019} \right)+\cdots + f \left(\frac{2017}{2019} \right) - f \left(\frac{2018}{2019} \right)?\]}
+
+\prob{2}{BMT 2015}{Let $r, s$, and $t$ be the three roots of the equation $8x^3 + 1001x + 2008 = 0$. Find
+$(r + s)^3 + (s + t)^3 + (t + r)^3.$}
+
+\prob{3}{PuMAC 2019}{Let Q be a quadratic polynomial. If the sum of the roots of $Q^{100}(x)$ (where $Q^{i}(x)$ is defined
+by $Q^{1}(x) = Q(x), Q^{i}(x) = Q(Q^{i-1}(x))$ for integers $i \ge 2$) is $8$ and the sum of the roots of $Q$
+is $S$, compute $|\log_{2}(S)|$.}
+
+\prob{3}{PHS HMMT TST 2020}{Let $a,b,c$ be the distinct real roots of $x^3+2x+5$. Find $(8-a^3)(8-b^3)(8-c^3)$.}
+
+\prob{3}{AMC 10A 2017/24}{For certain real numbers $a$, $b$, and $c$, the polynomial\[g(x) = x^3 + ax^2 + x + 10\]has three distinct roots, and each root of $g(x)$ is also a root of the polynomial\[f(x) = x^4 + x^3 + bx^2 + 100x + c.\]What is $f(1)$?}
+
+\req{3}{AMC 10A 2019/24}{Let $p$, $q$, and $r$ be the distinct roots of the polynomial $x^3 - 22x^2 + 80x - 67$. It is given that there exist real numbers $A$, $B$, and $C$ such that $$\dfrac{1}{s^3 - 22s^2 + 80s - 67} = \dfrac{A}{s-p} + \dfrac{B}{s-q} + \frac{C}{s-r}$$for all $s\not\in\{p,q,r\}$. What is $\tfrac1A+\tfrac1B+\tfrac1C$?}
+
+\prob{3}{Canada}{If $a,b,c$ are roots of $a^3-a-1=0$, compute
+$$\frac{1+a}{1-a}+\frac{1+b}{1-b}+\frac{1+c}{1-c}$$}
+%-7
+
+\prob{3}{William Dai}{If $r_{1},r_{2},r_{3}$ and $r_{4}$ are the roots of $x^4+5x^3+3x^2+2x+1$, find $\frac{1}{r_{1}^3}+\frac{1}{r_{2}^3}+\frac{1}{r_{3}^3}+\frac{1}{r_{4}^3}$.}
+
+\prob{3}{AIME 1993/5}{Let $P_0(x) = x^3 + 313x^2 - 77x - 8$. For integers $n \ge 1$, define $P_n(x) = P_{n - 1}(x - n)$. What is the coefficient of $x$ in $P_{20}(x)$?}
+
+\prob{4}{BMT 2019}{
+Let $r_1, r_2, r_3$ be the (possibly complex) roots of the polynomial $x^3 + ax^2 + bx + \frac{4}{3}$. How many
+pairs of integers a, b exist such that $r_{1}^3 + r_{2}^3 + r_{3}^3 = 0$ ?}
+
+\req{4}{AMC 12B 2017/23}{The graph of $y=f(x)$, where $f(x)$ is a polynomial of degree $3$, contains points $A(2,4)$, $B(3,9)$, and $C(4,16)$. Lines $AB$, $AC$, and $BC$ intersect the graph again at points $D$, $E$, and $F$, respectively, and the sum of the $x$-coordinates of $D$, $E$, and $F$ is $24$. What is $f(0)$?}
+
+\prob{4}{FARML 2007/T9}{For fixed numbers $x,y,z,$ let $p(n)=x^n+y^n+z^n.$ If $p(2)=2,$ $p(4)=\frac{3}{2},$ and $p(6)=\frac{29}{24},$ compute $p(8).$}
+
+\prob{4}{David's Problem Stash}{Let $a$, $b$, and $c$ be nonzero real numbers such that $a+b+c=0$ and \[28(a^4+b^4+c^4) = a^7+b^7+c^7.\] Find $a^3+b^3+c^3$.}
+
+\prob{4}{}{Give all unordered pairs of $(x,y)$ where $x$ and $y$ are complex numbers satisfying:
+$$x+y=3$$
+$$x^5+y^5=33$$}
+
+\req{4}{HMMT 2008}{The equation $x^3-9x^2+8x+2=0$ has three real roots $p,q,r.$ Find $\frac{1}{p^2}+\frac{1}{q^2}+\frac{1}{r^2}.$}
+
+% find 1/p+1/q+1/r then square
+
+% general part 1 p7
+
+\prob{4}{NanoMath Fall Meet 2020}{If $x + y = 6$ and $x^3 + y^3 = 108$, find $x^5 + y^5$.}
+%2376
+
+\prob{4}{2019 AIME I}{Let $x$ be a real number such that $\sin^{10} x + \cos^{10}x=\frac{11}{36}$. Then $\sin^{12}x+\cos^{12}x=\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.}
+
+\prob{6}{AoPS Forums}{
+Given $x_1,x_2,x_3,x_4$ are the roots of $P(x)=2x^4-5x+1$, find the value of $\sum_{i=1}^4 \frac{1}{(1-x_i)^3}$.}
+
+\prob{6}{AIME I 2014/14}{
+Let $m$ be the largest real solution to the equation
+
+$$ \dfrac{3}{x-3} + \dfrac{5}{x-5} + \dfrac{17}{x-17} + \dfrac{19}{x-19} = x^2 - 11x - 4$$
+
+There are positive integers $a, b,$ and $c$ such that $m = a + \sqrt{b + \sqrt{c}}$. Find $a+b+c$.}
+
+\prob{6}{SLKK AIME 2020}{Let $a, b,$ and $c$ be the three distinct solutions to $x^{3} - 4x^{2} + 5x + 1 = 0$.
+Find $$(a^3+b^3)(a^3+c^3)(b^3+c^3).$$}
+
+\prob{6}{AIME I 2019/10}{For distinct complex numbers $z_1,z_2,\dots,z_{673}$, the polynomial\[(x-z_1)^3(x-z_2)^3 \cdots (x-z_{673})^3\]can be expressed as $x^{2019} + 20x^{2018} + 19x^{2017}+g(x)$, where $g(x)$ is a polynomial with complex coefficients and with degree at most $2016$. The value of\[\left| \sum_{1 \le j <k \le 673} z_jz_k \right|\]can be expressed in the form $\tfrac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.}
+
+\prob{9}{HMMT Feburary 2017}{A polynomial P of degree $2015$ satisfies the equation $P(n) = \frac{1}{n^2}$ for $n = 1, 2, \ldots , 2016$. Find
+$\lfloor 2017P(2017) \rfloor$}
+
+\prob{9}{AIME 1990/15}{Find $ax^5 + by^5$ if the real numbers $a$, $b$, $x$, and $y$ satisfy the equations\[ax + by = 3,\]\[ax^2 + by^2 = 7,\]\[ax^3 + by^3 = 16,\]\[ax^4 + by^4 = 42.\]}
+
+
+\prob{13}{HMMT February 2020}{Let $P(x)$ be the unique polynomial of degree at most $2020$ satisfying $P(k^2) = k$ for $k = 0, 1, 2, \ldots , 2020$.
+Compute $P(2021^2)$.}
+
+\begin{remark}
+The following problem is not explicitly algebra but it does use several polynomial techniques. It\rq{}s very, very hard!
+\end{remark}
+
+\prob{21}{SLKK AIME 2020}{Let $p = 991$ be a prime. Let $S$ be the set of all lattice points $(x, y)$,
+with $1 \leq x, y \leq p - 1$. On each point $(x, y)$ in $S$, Olivia writes the number $x^2 + y^2$. Let
+$f(x, y)$ denote the product of the numbers written on all points in $S$ that share at least
+one coordinate with $(x, y)$. Find the remainder when
+$$\sum_{i=1}^{p-2} \sum_{j=1}^{p-2} f(i,j)$$
+is divided by p.}
+%A: 24
+\end{document}

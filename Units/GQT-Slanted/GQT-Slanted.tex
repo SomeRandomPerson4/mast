@@ -1,0 +1,405 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{Slanted Coordinate Axes}
+\author{Dennis Chen}
+\date{GQT}
+
+\begin{document}
+
+\maketitle
+
+Slanted coordinate axes are very useful when dealing with parallelograms, since the coordinates of all the vertices will be very nice and obvious. They are also good at dealing with angle bisectors due to their simple and symmetrical equation. For easier problems, slanted coordinate axes reduce the amount of intelligence needed to actually solve the problem, and also reduce the difficulty of just coordinate bashing the answer/proof.
+
+\section{Theory}
+
+\subsection{So What Are Cartesian Coordinates?}
+In Cartesian Coordinates we have an $x$ axis and a $y$ axis. Let them be $\ell_1$ and $\ell_2$ respectively. They form a $90^{\circ}$ angle and they intersect at a point called the \textit{origin}.
+
+Let's talk about lines in Cartesian Coordinates first. A line can be described with two points. In a coordinate plane, these two points are the intersections with the axes $\ell_1$ and $\ell_2$ - we call them the $x$ and $y$ intercepts. Let the $x$ intercept be $A$ and the $y$ intercept be $B.$ Then let $OA=a$ and $OB=b.$ We let the \textit{coordinates} of the intercepts be $(a,0)$ and $(0,b),$ depending on what axis it is on. Then the line through $(a,0)$ and $(0,b)$ has equation $x/a+y/b=1,$ and any point $(x,y)$ that satisfies this condition is on the line. Of course, we can describe a point as the intersection of two lines (though we really don't do that). We'll go over what coordinates really mean later.
+
+Wait a minute - what does any of this have to do with the fact that the axes are perpendicular?
+
+\subsection{Setup}
+We see that coordinate planes can be generalized! This is really intuitive - we already know how to do this for perpendicular axes.
+
+Use directed lengths. The axes are $\ell_1,\ell_2,$ and the directed angle $\measuredangle(\ell_1,\ell_2)=\theta.$ Let $\ell_1,\ell_2$ intersect at $O.$ Then let our line $\ell$ intersect $\ell_1$ at $A$ and $\ell_2$ at $B.$ If $OA=a$ and $OB=b$ (remember directed lengths) then our line has equation $x/a+y/b=1,$ and the $x$ and $y$ intercepts are $(a,0)$ and $(0,b),$ respectively.
+
+\begin{asy}
+size(4cm); 
+
+
+dot((0,0));
+
+label("$O$", (0,0), SE);
+
+draw((-7,0)--(10,0),Arrows);
+
+draw((-3,-6)--(4,8),Arrows);
+
+
+dot((2,4));
+
+label("$B$", (2,4), 1.5E+0.5N);
+
+
+dot((7,0));
+
+label("$A$", (7,0), N+0.5E);
+
+
+draw((-3,8)--(9.5,-2),Arrows);
+\end{asy}
+
+Then if we have two lines $x/a_1+y/b_1=1$ and $x/a_2+y/b_2=1,$ we can solve for their intersection. Doing the algebra,
+
+$$y=-b_1/a_1x+b_1$$
+$$y=-b_2/a_2x+b_2$$
+$$-b_1/a_1x+b_1=-b_2/a_2x+b_2$$
+$$x(b_2/a_2-b_1/a_1)=b_2-b_1$$
+$$x=\frac{b_2-b_1}{b_2/a_2-b_1/a_1}$$
+$$y=\frac{a_2-a_1}{a_2/b_2-a_1/b_1}$$
+
+(This looks suspiciously like slope-intercept, which it should. We used standard form to introduce slanted axes because they have the simplest definition.)
+
+\subsection{What is Slope?}
+
+Let $\ell$ intersect $\ell_1$ and $\ell_2$ at $A$ and $B,$ respectively. Then the slope of $\ell$ is $\frac{OB}{AO}.$
+\\
+
+\begin{asy}
+size(4cm); 
+
+
+dot((0,0));
+
+label("$O$", (0,0), SE);
+
+
+draw((-5,0)--(10,0),Arrows);
+
+
+draw((-2.5,-2.5sqrt(3))--(5,5sqrt(3)),Arrows);
+
+
+dot((3,3sqrt(3)));
+
+label("$B_m$", (3,3sqrt(3)), E);
+
+dot((6,0));
+
+label("$A_m$", (6,0), NE);
+
+draw((1,5sqrt(3))--((8.5,-2.5sqrt(3))),Arrows);
+\end{asy}
+
+\begin{theo}[Slope of Parallel Lines]
+Two lines are parallel if and only if they have the same slope.
+\end{theo}
+
+\begin{pro}
+We prove the if condition.
+
+Let the axes be $\ell_1$ and $\ell_2,$ and let the lines be $m,n.$ Let $m$ intersect $\ell_1$ and $\ell_2$ at $A_m$ and $B_m,$ respectively, and let $n$ intersect $\ell_1$ and $\ell_2$ at $A_m$ and $B_m,$ respectively. By definition, $\frac{OB_m}{A_mO}=\frac{OB_n}{A_nO}.$ Then by SAS similarity, $\triangle OA_mB_m\sim \triangle OA_nB_n.$ Since $A_m,A_n,O$ and $B_m,B_n,O$ are collinear, $A_mB_m\parallel A_nB_n.$
+\\
+
+We prove the only if condition.
+
+Let the axes be $\ell_1$ and $\ell_2,$ and let the lines be $m,n.$ Let $m$ intersect $\ell_1$ and $\ell_2$ at $A_m$ and $B_m,$ respectively, and let $n$ intersect $\ell_1$ and $\ell_2$ at $A_m$ and $B_m,$ respectively. By definition, $A_mB_m\parallel A_nB_n,$ so $\triangle OA_mOB_m\sim \triangle OA_nOB_n$ as $A_m,A_n,O$ and $B_m,B_n,O$ are collinear. Since the triangles are similar, $\frac{OB_m}{OA_m}=\frac{OB_n}{OA_n}$ as desired.
+\\
+
+\begin{asy}
+size(4cm); 
+
+
+dot((0,0));
+
+label("$O$", (0,0), SE);
+
+
+draw((-10,0)--(10,0),Arrows);
+
+
+draw((-5,-5sqrt(3))--(5,5sqrt(3)), Arrows);
+
+
+dot((2,2sqrt(3)));
+
+label("$B_m$", (2,2sqrt(3)), E);
+
+dot((4,0));
+
+label("$A_m$", (4,0), NE);
+
+draw((-1,5sqrt(3))--((9,-5sqrt(3))),Arrows);
+
+
+dot((-3,-3sqrt(3)));
+
+label("$B_n$", (-3,-3sqrt(3)), E);
+
+dot((-6,0));
+
+label("$A_n$", (-6,0), NE);
+
+draw((-10,4sqrt(3))--(-1,-5sqrt(3)),Arrows);
+\end{asy}
+\end{pro}
+
+So what's the slope through an origin? We can't find it by our definition, but we can say that it has the same slope as any line parallel to it. Now that we've defined the slope of a point through the origin, we can ask ourselves what slope really means.
+
+\begin{theo}[Slope: Ratio of Sines]
+Consider line $\ell$ in coordinate plane with axes $\ell_1,\ell_2.$ Then the slope of $\ell$ is $\frac{\sin\measuredangle(l,\ell_2)}{\sin\measuredangle(\ell_1,l)}.$
+\end{theo}
+
+\begin{pro}
+Let $\ell$ intersect the axes at $A$ and $B$ respectively. Then by the Law of Sines, $\frac{OB}{\sin\measuredangle(OAB)}=\frac{OA}{\sin\measuredangle(ABO)}.$ Rearranging, $\frac{OB}{OA}=\frac{\sin\measuredangle(ABO)}{\sin\measuredangle(OAB)}=\frac{\sin\measuredangle(l,\ell_2)}{\sin\measuredangle(\ell_1,l)},$ as desired.
+
+\begin{asy}
+size(4cm); 
+
+
+dot((0,0));
+
+label("$O$", (0,0), SE);
+
+
+draw((-10,0)--(12,0),Arrows);
+
+
+draw((-6,-6sqrt(3))--(5,5sqrt(3)),Arrows);
+
+
+dot((-3,-3sqrt(3)));
+
+label("$B$",(-3,-3sqrt(3)),SE);
+
+dot((6,0));
+
+label("$A$",(6,0),SE);
+
+draw((12,2sqrt(3))--(-10,-16/sqrt(3)),Arrows);
+\end{asy}
+\end{pro}
+
+The final question is, what are the slopes of lines parallel to the axes? What does a line with slope $0$ or slope "infinity" (for lack of a better term) look like? To answer this, we'll borrow an idea from projective geometry - the point at infinity.
+
+If $\ell$ is a line parallel to $\ell_1,$ it intersects $\ell_1$ at a point $A_{\infty},$ a point at infinity, and $\ell_2$ on some normal point $B.$ Then the slope is $\frac{OB}{OA_{\infty}}.$ Since $A_{\infty}$ is the point at infinity, we want to find $\lim\limits_{OA_{\infty}\to \infty}\frac{OB}{OA_{\infty}},$ which is $0.$
+
+Similarly, if $\ell$ is parallel to $\ell_2,$ it intersects $\ell_1$ at $A$ and $\ell_2$ at $B_{\infty}.$ Then the slope is $\lim\limits_{OB_{\infty}\to \infty}\frac{OB_{\infty}}{OA}=\infty.$ But it's irresponsible to say the slope is "infinity." In Cartesian Coordinates, a line parallel to the $y$ axis has an undefined slope, so here, a line parallel to $\ell_2$ also has an undefined slope.
+
+\subsection{What do Coordinates Mean?}
+A point can be uniquely defined as the intersection of two lines. In Cartesian Coordinates, we may describe the point $(a,b)$ as the intersection of $x=a$ and $y=b.$ For a slanted coordinate system, we can do the same thing.
+
+Let line $m$ have equation $x=a$ and line $n$ have equation $y=b.$ Then let $O=(0,0),$ $A=(a,0),$ $B=(0,b),$ and $P=(a,b).$ Then notice that $OAPB$ is a parallelogram (as $AO\parallel BP$ and $BO\parallel AP$ by definition). Thus we can use some angle chasing to determine things such as the magnitude of a point and its distance from the axes.
+
+\begin{theo}[Point to Axes Distance]
+Let $P=(a,b)$ and let $\measuredangle(\ell_1,\ell_2)=\theta.$ Then the distance from $P$ to $\ell_1$ is $a\sin\theta$ and the distance from $P$ to $\ell_2$ is $b\sin\theta.$
+\end{theo}
+
+\begin{pro}
+Let the foot of the altitude from $P$ to $\ell_1$ be $H_A$ and let the foot of the altitude from $P$ to $\ell_2$ be $H_B.$ Since $PA||BO,$ $\measuredangle HAP=\measuredangle AOB=\theta,$ so $H_AP=AP\sin\theta=a\sin\theta,$ as desired.
+
+Similarly, $H_BP=b\sin\theta.$
+\\
+
+\begin{asy}
+size(4cm); 
+
+
+dot((0,0));
+
+label("$O$", (0,0), NW);
+
+
+dot((10,0));
+
+label("$A$", (10,0), NW);
+
+
+dot((3,7));
+
+label("$B$", (3,7), NW);
+
+
+dot((13,7));
+
+
+label("$P$", (13,7), NW);
+
+
+draw((0,0)--(10,0)--(13,7)--(3,7)--cycle);
+
+
+dot((13,0));
+
+label("$H_A$", (13,0), NE);
+
+
+draw((13,7)--(13,0)--(10,0));
+
+\end{asy}
+\end{pro}
+
+\subsection{Distance and Circles}
+How do you find the distance between two points? We use the Law of Cosines.
+
+\begin{theo}[Distance Formula]
+Given two points $X=(a,b)$ and $Y=(a+\Delta a,b+\Delta b),$ \[XY=\sqrt{(\Delta a)^2+(\Delta b)^2+2\Delta a\Delta b\cos\theta}.\]
+\end{theo}
+
+\begin{pro}
+Without loss of generality, let $A=(0,0).$ (Anything else just is a translation.)
+
+Let $A=(\Delta a,0)$ and $B=(0,\Delta b).$ Angle chasing, we find that $\measuredangle OBP=180-\theta,$ as $OAPB$ is a parallelogram. Then by the Law of Cosines, $OP^2=OB^2+BP^2-2\cdot OB\cdot BP\cos(180-\theta).$ Since $\cos(180-\theta)=-\cos\theta,$ $OB=b,$ and $BP=a,$ $OP^2=b^2+a^2+2ab\cos\theta,$ or $OP=\sqrt{a^2+b^2+2ab\cos\theta},$ as desired.
+
+\begin{asy}
+size(4cm); 
+
+
+dot((0,0));
+
+label("$O$", (0,0), NW);
+
+draw((-7,0)--(10,0),Arrows);
+
+draw((-3,-6)--(4,8),Arrows);
+
+
+dot((2,4));
+
+label("$B$", (2,4), NW);
+
+
+dot((7,0));
+
+label("$A$", (7,0), NW);
+
+
+dot((9,4));
+
+label("$P$", (9,4), NE);
+
+
+draw((2,4)--(9,4)--(7,0));
+
+
+draw((0,0)--(9,4));
+\end{asy}
+\end{pro}
+
+A circle is the locus of points equidistant from a given point (called the center). So if we have center $P=(a,b)$ and a radius of $r,$ our equation $r^2=(x-a)^2+(y-b)^2+2(x-a)(y-b)\cos\theta.$
+
+\subsection{Slopes of Lines Given Angles}
+In Cartesian Coordinates, two lines $m,n$ with slopes $p,q$ are perpendicular if and only if $pq=-1$ (with the exception of a vertical line). Is there a similar way to find if two lines are perpendicular in a slanted coordinate system?
+
+\begin{theo}[Slope of a Perpendicular Line]
+Given a line $m$ such that $\measuredangle(\ell_1,m)=\alpha,$ the slope of the line $n$ perpendicular to $m$ is $-\frac{\cos(\theta-\alpha)}{\cos\alpha}.$
+\end{theo}
+
+\begin{pro}
+Notice that $\measuredangle(\ell_1,n)=\alpha+90^{\circ}.$ Thus the slope of $n$ is $\frac{\sin(\theta-(\alpha+90^{\circ}))}{\sin(\alpha+90^{\circ})}=\frac{-\cos(\theta-\alpha)}{\cos\alpha}=-\frac{\cos(\theta-\alpha)}{\cos\alpha},$ as desired.
+\end{pro}
+
+This is interesting - but doesn't reduce to what we want it to. What if the reason the slopes of perpendicular lines multiply to $-1$ is because the angle between perpendicular lines is the same as the angle between the axes?
+
+\begin{theo}[Slope of Lines with Axes Angle]
+Given a line $m$ such that $\measuredangle(\ell_1,m)=\alpha,$ the slope of the line $n$ such that $\measuredangle(m,n)=\theta$ is $-\frac{\sin(\alpha)}{\sin(\alpha+\theta)}.$
+\end{theo}
+
+\begin{pro}
+Notice that $\measuredangle(\ell_1,n)=\alpha+\theta.$ Thus the slope of $n$ is $\frac{\sin((\theta-\alpha)-\theta)}{\sin(\alpha+\theta)}=\frac{-\sin(\alpha)}{\sin(\alpha+\theta)}=-\frac{\sin(\alpha)}{\sin(\alpha+\theta)},$ as desired.
+\end{pro}
+
+There's no exact match with the perpendicularity theorem for Cartesian Coordinates, but these results are useful nonetheless.
+
+\subsection{Special Lines and Angles}
+
+A few reasons we use slanted coordinates - angle bisectors have a really nice equation, and medians/centroids don't really change at all.
+
+\begin{theo}[Internal Angle Bisector]
+The equation of the angle bisector of $\measuredangle(\ell_1,\ell_2)$ is $x=y.$
+\end{theo}
+
+\begin{pro}
+The angle bisector of $\measuredangle(\ell_1,\ell_2)$ passes through the origin. Since $\alpha=\theta-\alpha=\frac{\theta}{2}$ by definition, the slope is $\frac{\sin(\frac{\theta}{2})}{\sin(\frac{\theta}{2})}=1.$ Thus, the equation is $x=y,$ as desired.
+\end{pro}
+
+(We use directed angles because we're talking about the internal angle bisector, not external.)
+
+Similarly, a reflection of point $(a,b)$ about the angle bisector yields $(b,a),$ and two lines through the origin are bisected by the angle bisector if the product of their slopes is $1.$
+
+\begin{theo}[Centroid]
+If $A=(x_a,y_a),$ $B=(x_b,y_b),$ and $C=(x_c,y_c),$ then the centroid of $\triangle ABC$ has coordinates $(\frac{1}{3}(x_a+x_b+x_c),\frac{1}{3}(y_a+y_b+y_c)).$
+\end{theo}
+
+\begin{pro}
+Note that the midpoint of $BC$ is $(\frac{1}{2}(x_b+x_c),\frac{1}{2}(y_b+y_c)).$ We want the point $\frac{2}{3}$ of the way from $(x_a,y_a)$ to $(\frac{1}{2}(x_b+x_c),\frac{1}{2}(y_b+y_c)),$ which is $(\frac{1}{3}(x_a+x_b+x_c),\frac{1}{3}(y_a+y_b+y_c)),$ as desired.
+\end{pro}
+
+The proof is identical to the proof in Cartesian Coordinates.
+
+\begin{theo}[Circumcenter]
+If $A=(0,0),$ $B=(b,0),$ and $C=(0,c),$ the circumcenter of $\triangle ABC$ has coordinates $(\frac{b\sec\theta-c}{2(\sec\theta-\cos\theta)},\frac{c\sec\theta-b}{2(\sec\theta-\cos\theta)}).$
+\end{theo}
+
+\begin{pro}
+We claim that the coordinates of the antipode of $A$ are $(\frac{b\sec\theta-c}{\sec\theta-\cos\theta},\frac{c\sec\theta-b}{\sec\theta-\cos\theta}).$ Let the antipode be $D.$ Note that by Thale's Theorem, $\angle ABD=\angle ACD=90^{\circ}.$
+
+Let the line through $B$ perpendicular to $AB$ intersect $AC$ at $P,$ and the line through $C$ perpendicular to $AC$ intersect $AB$ at $Q.$ Then the slope of $BP$ is $-\frac{AP}{AB}=-\sec\theta.$ Similarly, the slope of $CQ$ is $-\frac{AC}{AQ}=-\cos\theta.$ So the equation of the line through $B$ is $y=-\sec\theta(x-b)$ and the equation of the line through $C$ is $y=-x\cos\theta+c.$ Thus $-\sec\theta(x-b)=-x\cos\theta+c,$ implying $x(\cos\theta-\sec\theta)=-b\sec\theta+c,$ or $x=\frac{b\sec\theta-c}{\sec\theta-\cos\theta}$ and $y=\frac{c\sec\theta-b}{\sec\theta-\cos\theta},$ so $D=(\frac{b\sec\theta-c}{\sec\theta-\cos\theta},\frac{c\sec\theta-b}{\sec\theta-\cos\theta}).$
+\end{pro}
+
+This works well with circumcenter problems with one reference triangle and manageable slopes (like perpendicular or parallel lines).
+
+\pagebreak
+
+\section{Problems}
+
+\psetquote{When we students forget something, Sensei is unforgiving. But why do you act so light-heartedly when it's you who's forgotten?}{Yugami-kun}
+
+\begin{enumerate}
+    \item (AIME I 2009/4) In parallelogram $ABCD$, point $M$ is on $\overline{AB}$ so that $\frac {AM}{AB} = \frac {17}{1000}$ and point $N$ is on $\overline{AD}$ so that $\frac {AN}{AD} = \frac {17}{2009}$. Let $P$ be the point of intersection of $\overline{AC}$ and $\overline{MN}$. Find $\frac {AC}{AP}$.
+
+    \item (HMMT 2019) Let $ABCD$ be a parallelogram. Points $X$ and $Y$ lie on segments $AB$ and $AD$ respectively, and $AC$ intersects $XY$ at point $Z.$ Prove that
+    $$\frac{AB}{AX}+\frac{AD}{AY}=\frac{AC}{AZ}.$$
+    
+    \item Consider $\angle A$ with varying points $B,C$ on opposite rays of the angle such that $1/AB+1/AC$ is constant. Prove that all possible $BC$ pass through a fixed point.
+    
+    \item Given $\angle D$ and $A,B,C$ on one ray and $A',B',C'$ on the other, prove that if $A'B\parallel B'A$ and $A'C\parallel AC',$ then $BC'\parallel B'C.$
+    
+    \item Consider parallelogram $ABCD.$ Let $M$ be the midpoint of $BC$ and let $N$ be the midpoint of $CD.$ Let $AM$ and $BN$ intersect at $P.$ If $CP$ intersects $AD$ at $Q,$ prove that $\frac{QA}{AD}=2.$
+    
+    \item In quadrilateral $ABCD,$ $AB$ and $CD$ intersect at $P,$ and $AD$ and $BC$ intersect at $Q.$ Let $AC$ intersect $PQ$ at $X$ and let $BD$ intersect $PQ$ at $Y.$ Prove that $\frac{PX}{XQ}=\frac{PY}{YQ}.$
+    
+    \item (USAMTS) The bisectors of the internal angles of parallelogram $ABCD$ determine a quadrilateral with the same area as $ABCD$. Given that $AB > BC$, compute, with proof, the ratio $\frac{AB}{BC}$.
+    
+    \item (January Mock AMC 10) A paper trapezoid has side lengths $AB = 3, BC = 8, CD = 9,$ and $DA = 9$ with $AB$ parallel to $DC$. Let $E$ be a point on line segment $\overline{BC}$ such that, when $C$ is folded over the crease $\overline{DE}$, $C$ coincides exactly with $A$. What is the length of $CE?$
+    
+    \item Let $\ell$ be a line through the centroid of $\triangle ABC.$ If $\ell$ intersects $AB$ at $M$ and $AC$ at $N,$ prove that $AM\cdot NC+AN\cdot MB=AM\cdot AN.$
+    
+    \item Sides $AB,BC,CD,$ and $DA$ of quadrilateral $ABCD$ are cut by a straight line at points $K,L,M,N,$ respectively. Prove that $\frac{BL}{LC}\cdot \frac{AK}{KB}\cdot \frac{DN}{NA}\cdot \frac{CM}{MD}=1.$
+    
+    \item Consider lines $\ell_1,\ell_2$ such that $\measuredangle(\ell_1,\ell_2)=75^{\circ},$ and let $d(X,\ell_1)$ and $d(X,\ell_2)$ denote the distance of point $X$ to line $\ell_1$ and point $X$ to line $\ell_2,$ respectively. Let $\ell$ be the locus of points $X$ such that $\frac{d(X,\ell_1)}{d(X,\ell_2)}=\frac{\sqrt{2}}{2}.$
+    
+    \begin{itemize}
+        \Item Prove that $\ell$ is a line.
+        
+        \Item Find $\measuredangle(\ell_1,l).$
+    \end{itemize}
+    
+    \item (MAST Diagnostic 2020) Consider parallelogram $ABCD$ with $AB=7,$ $BC=6.$ Let the angle bisector of $\angle DAB$ intersect $BC$ at $X$ and $CD$ at $Y.$ Let the line through $X$ parallel to $BD$ intersect $AD$ at $Q.$ If $QY=6,$ find $\cos\angle DAB.$
+    
+    \item (PUMAC 2018) Let $ABCD$ be a parallelogram such that $AB=35$ and $BC=28.$ Suppose that $BD\perp BC$. Let $\ell_1$ be the reflection of $AC$ across the angle bisector of $\angle BAD,$ and let $\ell_2$ be the line through $B$ perpendicular to $CD.$ If $\ell_1$ and $\ell_2$ intersect at a point $P,$ find $PD.$
+    
+    \item Sides $BA$ and $CA$ of $\triangle ABC$ are extended through $A$ to form rhombuses $BATR$ and $CAKN.$ Let $BN$ intersect $RC$ at $P.$ Let $BN$ intersect $AC$ at $M$ and $RC$ intersect $AB$ at $S.$ Let the line through $M$ parallel to $AB$ intersect $BC$ at $Q.$
+    \begin{enumerate}
+        \item Prove that $AMQS$ is a rhombus.
+        
+        \item Prove that $[BPC]=[ASPM].$ (This can't be done with slanted axes, but relies on the first result and is informative.) 
+    \end{enumerate}
+    
+    \item (Sharygin Correspondence 2020) Let $BB_1,$ $CC_1$ be altitudes of triangle $ABC,$ and $AD$ be the diameter of its circumcircle. The lines $BB_1$ and $DC_1$ meet at point $E,$ and the lines $CC_1$ and $DB_1$ meet at point $F.$ Prove that $\angle CAE=\angle BAF.$
+\end{enumerate}
+
+\end{document}

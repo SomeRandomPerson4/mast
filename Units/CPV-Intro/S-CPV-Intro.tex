@@ -1,0 +1,276 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{Solutions to Introduction to Counting}
+\author{Dennis Chen, Abrar Fiaz}
+\date{CPV}
+
+\begin{document}
+
+\maketitle
+
+\toc
+
+\pagebreak\section{Dennis Chen}
+
+The Committee of MAST needs to split $3$ distinct jobs among $8$ students. If each student can do as many jobs as they please, how many ways are there to assign the jobs?
+
+\subsection{Solution}
+We have three choices: who to do job A, job B, and job C. Each of these choices have eight options, so the answer is $8^3=512.$
+
+\pagebreak\section{Dennis Chen}
+
+There are $52$ postal abbreviations for the $50$ states of America, D.C. and Puerto Rico. If we choose a two-letter "word" at random (such as $AA$), what is the probability that we choose one of the $52$ postal abbreviations?
+\subsection{Solution}
+
+There are a total of $26^2$ combinations, of which $52$ satisfy the given condition. So the probability is $\frac{52}{26^2}=\frac{1}{13}.$
+
+\pagebreak\section{Dennis Chen}
+
+Say Jim is getting an ice cream cone. He can get either $1,$ $2,$ or $3$ scoops. For each scoop, he can get $3$ different flavors. How many different ice creams can he get? (Order of the scoops matter!)
+
+\subsection{Solution}
+
+If he gets one scoop, he has $3^1$ choices. If he gets two, he has $3^2.$ If he gets three, he has $3^3.$ Adding it all up, he has $3+9+27=39$ choices.
+
+\pagebreak\section{Dennis Chen}
+
+Find the amount of terms in $\{5,7,9\cdots 39\}.$ (This is an arithmetic sequence.)
+
+\subsection{Solution}
+
+Subtract $3$ to get $\{2,4,6\cdots 36\}.$ Divide by $2$ to get $\{1,2,3\cdots 18\}.$ So the answer is $18.$
+
+\pagebreak\section{Dennis Chen}
+
+Find the amount of terms in $\{3,6,12,24,48,96\}.$ (This is a geometric sequence.)
+
+\subsection{Solution}
+
+Multiply by $\frac{2}{3}$ to get $\{2,4,8,16,32,64\}.$ Then take $\log_2{x}$ to get $\{1,2,3,4,5,6\}.$ So the answer is $6.$
+
+\pagebreak\section{Well-known}
+
+How many ways can you arrange the letters in TARGET?
+
+\subsection{Solution}
+
+There are $6$ letters, so there are $6!$ ways to rearrange them. However, there are two of the same letter, so we overcount by a factor of $2!$ Thus the answer is $\frac{6!}{2!}=360.$
+
+\pagebreak\section{Well-known}
+
+How many ways are there to arrange the letters in MATHCOUNTS?
+
+\subsection{Solution}
+There are $10$ letters and $T$ is repeated twice, so the answer is $\frac{10!}{2!}=181440.$
+
+\pagebreak\section{Well-known}
+
+How many positive integers less than 1000 only have even digits?
+
+\subsection{Solution}
+
+Say we have a three-digit sequence that corresponds to a positive integer with only even digits. Then each digit has $5$ choices, so we have $125$ sequences. But note $000$ does not correspond to a positive intger, so the answer is $5^3 - 1 = 124.$
+
+\pagebreak\section{Dennis Chen}
+
+We want to choose two disjoint committees of $4$ people from a class of $12.$ How many ways can we do this, if the committees are distinct?
+\subsection{Solution}
+
+We first begin by choosing the $8$ people that will be part of a committee. There are $\binom{12}{8}$ ways to do this. We then choose $4$ people to make one committee (the other four go to the other committee). There are $\binom{8}{4}$ ways to do this. Thus our answer is $\binom{12}{8}\binom{8}{4}=34650.$
+
+\pagebreak\section{Dennis Chen}
+
+What if the committees are indistinguishable?
+
+\subsection{Solution}
+
+We first choose $8$ people to form our two committees. There are $\binom{12}{8}$ ways to do this. Then we permute them and account for overcounting. There are $8!$ ways to permute them, but we overcount by a factor of $4!4!2!.$ This is because any rearrangement of the first four people in our permutation is counted $4!$ times. The same holds for the last four people. Then, we count every ordering of the committee $2!$ times as there are two groups. (For example, $\{\{A,B,C,D\},\{E,F,G,H\}\}$ would be counted twice as $(\{A,B,C,D\},\{E,F,G,H\})$ and $(\{E,F,G,H\},\{A,B,C,D\}).$) Thus our answer is $\binom{12}{8}\frac{8!}{4!4!2!}=17325.$
+
+\pagebreak\section{AMC 12 2001/16}
+
+A spider has one sock and one shoe for each of its eight legs. In how many different orders can the spider put on its socks and shoes, assuming that, on each leg, the sock must be put on before the shoe?
+
+\subsection{Solution}
+
+Since the sock must be put on the shoe, we can consider each sock and its corresponding shoe to be identical. Thus the answer is identical to the amount of ways to permute $AABBCC\cdots HH,$ which is $\frac{16!}{2^8}.$
+
+\pagebreak\section{2019 AMC 10A \#17}
+
+A child builds towers using identically shaped cubes of different color. How many different towers with a height $8$ cubes can the child build with $2$ red cubes, $3$ blue cubes, and $4$ green cubes? (One cube will be left out.)
+
+\subsection{Solution}
+
+Quick casework by leaving off one red, one green and one blue gives $\frac{8!}{3!\cdot4!} + \frac{8!}{2!\cdot2!\cdot4!} + \frac{8!}{2!\cdot3!\cdot3!} = 1260.$
+
+\subsection{Clever Bijection}
+
+Note that we can put the last cube on top, and this will not generate more towers since there is only one way to put the last cube on top. So the answer is $\frac{9!}{4!3!2!}=2160.$
+
+\pagebreak\section{MATHCOUNTS State 2020}
+
+Iris is playing a game that has a $5 \times 5$ gameboard like the one shown. The goal is to get her game piece from the square labeled $\star$ to the square labeled $\circ$ using a series of moves any positive integer number of squares up or any positive integer number of squares to the right. Note that moving two squares up in a single move is different than moving two squares up in two moves. How many unique sequences of moves can Iris make to get her game piece from $\star$ to $\circ?$
+\begin{center}
+\begin{asy}
+import olympiad;
+unitsize(0.5 cm);pair A, B, C, D, E, F, G, H, I, J;A = dir(90);B = dir(90 + 360/5);C = dir(90 + 2*360/5);D = dir(90 + 3*360/5);E = dir(90 + 4*360/5);F = extension(A,C,B,E);G = rotate(360/5)*(F);H = rotate(360/5)*(G);I = rotate(360/5)*(H);J = rotate(360/5)*(I);int i;for (i = 0; i <= 5; ++i) {  draw((i,0)--(i,5));  draw((0,i)--(5,i));}draw(circle((4.5,4.5),0.25));label("$\star$",(.5,0.5));
+\end{asy}
+\end{center}
+
+\subsection{Solution}
+
+Okay, one way you can do this is to just manually find the number of ways to go from one square to the next.\footnote{Try to approach this from backwards.} I am showing another way. \\
+
+Notice that you need to do move $4$ units right and $4$ units up to reach that square in any ways. You do have the choice how you want to select ways for reaching $4$ units. You can partition $4$ into these ways: \begin{align*}
+    4 &= 4 \\ &= 3+1 \\ &= 2+1+1 \\ &= 2+ 2 \\ &= 1+1+1+1 
+\end{align*} 
+Let's denote 1 unit right as $R_1$ and up as $U_1$ and similarly for others. So there are $5$ kind of ways to reach $4$ units right $\{R_1R_1R_1R_1, R_1R_3, R_2R_1R_1, R_4, R_2R_2\}$ and 
+its permutations and same for $4$ units up.
+
+Now if you want to do the standard MISSISSIPPI method, you will need to pair up R's and U's and calculate the number of ways for each of them and then sum up everything. \\
+
+We have two sets $\{R_1R_1R_1R_1, R_1R_3, R_2R_1R_1, R_4, R_2R_2\}$ and $\{U_1U_1U_1U_1, U_1U_3, U_2U_1U_1, U_4, U_2U_2\}$. We have the strings
+\begin{table}[ht]
+\centering
+\resizebox{\textwidth}{!}
+{\begin{tabular}{ |c|c|c|c|c| } 
+ \hline
+ $R_1R_1R_1R_1U_1U_1U_1U_1 \rightarrow 70$ & $R_1R_3U_1U_1U_1U_1\rightarrow30$ & $R_2R_1R_1U_1U_1U_1U_1 \rightarrow 105 $ &  $R_4 U_1 U_1 U_1 U_1\rightarrow5$  & $R_2R_1R_1U_4 \rightarrow12$\\ 
+ $R_1R_1R_1R_1U_1U_3 \rightarrow 30$  & $R_1R_3U_1U_3\rightarrow24$ & $R_2R_1R_1U_1U_3 \rightarrow 60$ &  $R_4U_1U_3\rightarrow6$ &$R_2R_2U_1U_3\rightarrow12 $ \\ 
+ $R_1R_1R_1R_1U_2U_1U_1 \rightarrow105$  & $R_1R_3U_2U_1U_1\rightarrow60$ & $R_2R_1R_1U_2U_1U_1 \rightarrow 180$ &  $R_4U_2U_1U_1\rightarrow12$& $R_2R_2U_2U_1U_1\rightarrow30$\\ 
+ $R_1R_1R_1R_1U_4\rightarrow5$ & $R_1R_3U_4\rightarrow6 $ & $R_2R_2U_1U_1U_1U_1\rightarrow 15$ &  $R_4U_4\rightarrow2$ & $R_2R_2U_4\rightarrow3$\\
+ $R_1R_1R_1R_1U_2U_2\rightarrow15$ & $R_1R_3U_2U_2 \rightarrow 12 $ & $R_2R_1R_1U_2U_2\rightarrow30$ &  $R_4U_2U_2\rightarrow3$  & $R_2 R_2 U_2 U_2\rightarrow6$ \\
+ \hline
+\end{tabular}}
+\end{table}
+
+That was a lot of cases. Summing up everything, we get $838$ ways.\footnote{Well, I am quite sure there must be a better way.} 
+
+\pagebreak\section{Falling numbers}
+
+How many 4 digit falling numbers are there? (A falling number is a number whose last digit is strictly smaller than its second-to last digit, and so on, such as $4321.$
+
+\subsection{Solution}
+
+You can choose $4$ digits in $\binom{10}{4}$ ways and for every selection of $4$ numbers, there is going to be 1 way to order them in a strictly decreasing way. Hence, the answer is $210.$
+
+\pagebreak\section{AMC 10A 2021/21}
+
+In how many ways can the sequence $1, 2, 3, 4, 5$ be rearranged so that no three consecutive terms are increasing and no three consecutive terms are decreasing?
+
+\subsection{Solution}
+
+\pagebreak\section{HMMT Feb. Guts 2012/20}
+
+Let $n$ be the maximum numbers of bishops that can be placed on the squares of a $6\times 6$ chessboard such that no two bishops are attacking each other. Find $n+k.$\footnote{\href{https://www.ichess.net/blog/chess-pieces-moves/}{Rules of chess}}
+
+\subsection{Solution}
+
+We can color the chessboard black and white; note that black squares and white squares are independent and symmetric. We only care about black squares. To make everything clearer, rotate the chessboard by $45^{\circ}$ to get the following diagram.
+
+\begin{center}
+\begin{tikzpicture}
+\filldraw (0,0) circle (1pt);
+\filldraw (-1,-1) circle (1pt);
+\filldraw (0,-1) circle (1pt);
+\filldraw (1,-1) circle (1pt);
+\filldraw (-2,-2) circle (1pt);
+\filldraw (-1,-2) circle (1pt);
+\filldraw (0,-2) circle (1pt);
+\filldraw (1,-2) circle (1pt);
+\filldraw (2,-2) circle (1pt);
+\filldraw (-2,-3) circle (1pt);
+\filldraw (-1,-3) circle (1pt);
+\filldraw (0,-3) circle (1pt);
+\filldraw (1,-3) circle (1pt);
+\filldraw (2,-3) circle (1pt);
+\filldraw (-1,-4) circle (1pt);
+\filldraw (0,-4) circle (1pt);
+\filldraw (1,-4) circle (1pt);
+\filldraw (0,-5) circle (1pt);
+\end{tikzpicture}
+\\[\baselineskip]
+\textit{Each black dot represents a black square.}
+\end{center}
+
+Notice that each column can have at most one bishop. Since $5$ bishops is possible (this is incredibly easy to verify), we now have to construct all possible arrangements of $5$ bishops. Note that the outer two columns must have bishops, and there are $2$ ways to choose the bishop for the left outer column which locks the position of the bishop on the right outer column. Now we can delete the middle two rows.
+
+\begin{center}
+\begin{tikzpicture}
+\filldraw (0,0) circle (1pt);
+\filldraw (-1,-1) circle (1pt);
+\filldraw (0,-1) circle (1pt);
+\filldraw (1,-1) circle (1pt);
+\filldraw[color=red] (-2,-2) circle (1pt);
+\filldraw[color=red] (-1,-2) circle (1pt);
+\filldraw[color=red] (0,-2) circle (1pt);
+\filldraw[color=red] (1,-2) circle (1pt);
+\filldraw[color=red] (2,-2) circle (1pt);
+\filldraw[color=red] (-2,-3) circle (1pt);
+\filldraw[color=red] (-1,-3) circle (1pt);
+\filldraw[color=red] (0,-3) circle (1pt);
+\filldraw[color=red] (1,-3) circle (1pt);
+\filldraw[color=red] (2,-3) circle (1pt);
+\filldraw (-1,-4) circle (1pt);
+\filldraw (0,-4) circle (1pt);
+\filldraw (1,-4) circle (1pt);
+\filldraw (0,-5) circle (1pt);
+\end{tikzpicture}
+\\[\baselineskip]
+\textit{Red dots cannot have a bishop on them, because the outer two columns already have bishops.}
+\end{center}
+
+By similar reasoning to above, there are two ways to choose the bishops in the remaining outer rows. So the final row is just left with two dots, so there's $2$ more choices there. Thus, there are $2^3=8$ total ways to arrange the black bishops.
+
+\begin{center}
+\begin{tikzpicture}
+\filldraw (0,0) circle (1pt);
+\filldraw[color=red] (-1,-1) circle (1pt);
+\filldraw[color=red] (0,-1) circle (1pt);
+\filldraw[color=red] (1,-1) circle (1pt);
+\filldraw[color=red] (-2,-2) circle (1pt);
+\filldraw[color=red] (-1,-2) circle (1pt);
+\filldraw[color=red] (0,-2) circle (1pt);
+\filldraw[color=red] (1,-2) circle (1pt);
+\filldraw[color=red] (2,-2) circle (1pt);
+\filldraw[color=red] (-2,-3) circle (1pt);
+\filldraw[color=red] (-1,-3) circle (1pt);
+\filldraw[color=red] (0,-3) circle (1pt);
+\filldraw[color=red] (1,-3) circle (1pt);
+\filldraw[color=red] (2,-3) circle (1pt);
+\filldraw[color=red] (-1,-4) circle (1pt);
+\filldraw[color=red] (0,-4) circle (1pt);
+\filldraw[color=red] (1,-4) circle (1pt);
+\filldraw (0,-5) circle (1pt);
+\end{tikzpicture}
+\\[\baselineskip]
+\textit{Red dots cannot have a bishop on them, because all columns except the center already have bishops.}
+\end{center}
+
+Now remember that there are also white bishops. So $n=2\cdot 5$ and $k=8^2,$ and $n+k=2\cdot 5+8^2=10+64=74.$
+\pagebreak\section{AIME 1990/8}
+In a shooting match, eight clay targets are arranged in two hanging columns of three targets each and one column of two targets. A marksman is to break all the targets according to the following rules:
+
+    \begin{itemize}
+         \Item The marksman first chooses a column from which a target is to be broken.
+
+         \Item The marksman must then break the lowest remaining target in the chosen column.
+    \end{itemize}
+
+    If the rules are followed, in how many different orders can the eight targets be broken?
+
+\subsection{Solution}
+
+We can treat each column's targets as indistinguishable as they correspond to exactly one order of breaking, so the problem is the same as permuting $AAABBBCC.$ Thus the answer is $\frac{8!}{3!3!2!}=560.$
+
+\pagebreak\section{AIME I 2010/7}
+
+Define an ordered triple $(A, B, C)$ of sets to be minimally intersecting if $|A \cap B| = |B \cap C| = |C \cap A| = 1$ and $ A \cap B \cap C = \emptyset$. For example, $(\{1,2\},\{2,3\},\{1,3,4\})$ is a minimally intersecting triple. Let $N$ be the number of minimally intersecting ordered triples of sets for which each set is a subset of $\{1,2,3,4,5,6,7\}$. Find the remainder when $N$ is divided by $1000$.
+
+Note: $|S|$ represents the number of elements in the set $S.$
+
+\subsection{Solution}
+We first pick the common elements. There are $7\cdot 6\cdot 5$ ways to do this. Then we have $4$ terms left, each with $4$ options. We can either put it in set $A,B,C,$ or we can put it in no set. So the amount of ways to do this is $7\cdot 6\cdot 5\cdot 4^4=53760,$ so the answer is $760.$
+
+\end{document}

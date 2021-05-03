@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage[mast]{dennis}
+
+\title{Approximate and Check}
+\author{Dennis Chen}
+\date{MQU}
+
+\begin{document}
+
+\maketitle
+
+\section{A Story}
+
+\db{This is mostly an AMC unit.} In the AMCs, you will commonly see problems that suggest you want to make some estimation, and the answer choices will aid you in the estimation. I will explicitly state the following: the goal of this unit is to teach you a lesson, and that lesson is to \db{check your approximations are correct}. Take Year 4 CMC 10B as an example: the only nontrivial\footnote{Other than CMC 10B 12/18, I got problem $4$ wrong because I was being careless and somehow managed to misbubble 8 and 9. BofBofBof.} problems I missed were 12 and 18. I will reproduce the statements below.
+
+\begin{exam}[CMC 10B 2021/12]
+On the $31^{\text{st}}$ December 2020, Andre realizes that the number of days until his $21^{\text{st}}$ birthday is the square of the number of entire months leading to it. When does his birthday fall?\footnote{I made the (troll) observation that December $31^{\text{st}}$ is a valid answer; however, in math contests, assume good faith from the problem writers. (It's also not an answer choice anyways.)}
+
+\answer{\text{May }16^{\text{th}}}{\text{Jun }17^{\text{th}}}{\text{Jul }18^{\text{th}}}{\text{Aug }19^{\text{th}}}{\text{Sep }20^{\text{th}}}
+\end{exam}
+
+\begin{sol}[(Bogus)]
+Note that each month has around $30$ days, so the equation is $m^2=30m+d,$ where $m$ and $d$ are the months and days that pass, respectively. Rearranging yields
+\[(m-15)^2=d+225,\]
+and since the answer choices have $d\leq 16,$ we have
+\[(m-15)^2\geq 241.\]
+Since we cannot have $m$ be negative, we have $m\geq 31,$ and $31\equiv 7\pmod{12},$ so the month is July, and the answer is $C.$
+\end{sol}
+
+If you actually bother to check, you will note that after $7$ \db{full} months have passed, it will be the beginning of the $8$th month, or August. It is far more likely you catch this if you \textit{attempt} to check, which is why it's worth checking; even if the error you catch is different from what you expected, it'll still let you know something's up, at which point you should be able to get the correct answer -- as this isn't a very hard problem.
+
+\begin{exer}[CMC 10B 2021/18]
+For a positive integer $n,$ let $f(n)$ be the product of the nonzero digits of $n.$ Find the least $n$ so that $f(1)+f(2)+f(3)+\cdots+f(n)\geq 2021.$
+
+\answer{89}{96}{97}{98}{99}
+\end{exer}
+
+I just ended up botching the calculation here (specifically $1+2+\cdots+9=55$); however, I still think it's an appropriate problem to include in the unit.
+
+This unit is like ``Careful!'' in which it is easy to mess up. I originally considered including this as a subset of Careful; however, given that I believe this topic and idea are so crucial to late-stage AMC 10/12 preparation, I am going to emphasize this by making this its own separate unit.\footnote{Sidenote: I had this ephiphany two days before the AMC 10A in 2021. What if I had it afterwards?} The goal is, through the examples and problems, to highlight how easy it is to screw up an estimation problem, and to make you mess up in practice so you avoid doing it in the real thing.
+
+\section{Generic Examples}
+
+Here are some generic examples of estimation problems, and (possibly exaggerated) examples of how not checking the estimation is correct may lead to failure. But do not dismiss the potential for this kind of error -- it is easy to say that the mistakes you're seeing here are incredibly stupid when they're being laid out to you; however, when taking the real AMCs, time pressure will make it so your thought process is not going to be as organized, and there is still the constant potential for arithmetic mistakes. Eliminate these risks; take the minute or two to check, because even if you might not get to some hard question, the probability you get one of these wrong is so high it's worth it anyways.
+
+\begin{remark}
+Possibly an anectodal opinion: if you're in the position to care about 120 vs. 130, then you're probably at the point where you roll through the easy parts of the last 5 and just get stuck sitting with nothing to do. I sat for about two minutes basically doing nothing on Year 4 CMC 10B; who's to say those two minutes wouldn't have caught one, or both, of these errors? And who's to say that the increased time pressure wouldn't make me solve the difficult but not \textit{tricky} problems faster? It's also really hard to motivate yourself to check your answers after the fact, which is \textit{why} you sit around doing nothing anyways. In short, you don't have to go back and check your approximations (or work in general for tricky problems) immediately, but it is good to do so \textit{soon after}.
+\end{remark}
+
+\begin{exam}[Triangular Numbers]
+Find the smallest positive integer $n$ such that $1+2+3+\cdots+n>1000.$
+\end{exam}
+
+There are a decent number of problems on the AMC that just reduce to something like this -- which is why it's worth having the mentality of ``just take the 10 seconds to check.''
+
+\begin{exam}[P-adic Valuation]
+Find the smallest integer $n$ such that $2^{197}\mid n!$
+\end{exam}
+
+\pagebreak
+
+\subsection{Solutions to Generic Examples}
+
+We present a bogus example to the first problem for illustrative purposes.
+
+\begin{sol}[to Triangular Numbers (Bogus)]
+Note this is equivalent to
+\[n(n+1)>2000,\]
+and we approximate as $(n+1)^2>2000;$ note that the smallest perfect square larger than $2000$ is $45^2=2025,$ so we have $n+1=45$ and $n=44.$\footnote{The correct answer is $n=45;$ checking, you will see that $44\cdot 45=1980<2000.$}
+\end{sol}
+
+\begin{sol}[to P-adic Valuation]
+Note that
+\[\nu_2(n!)=\lfloor\frac{n}{2}\rfloor+\lfloor\frac{n}{4}\rfloor+\cdots\approx \frac{n}{2}+\frac{n}{4}+\frac{n}{8}+\cdots=n.\]
+Thus we want $n\approx 197;$ since we rounded up as we removed the floors, we can assume the answer is probably $198$ or $200.$ \db{Checking will remove the ambiguity}; the correct answer is $200.$
+\end{sol}
+
+For Triangular Numbers, you might ask, ``why use $n+1$ in the approximation instead of $n?$ Doesn't the choice seem a bit arbitrary?'' But I'm sure there are cases where $n+1$ is the correct approximation and $n$ is not, which is why checking is so important. More importantly, these approximation problems will \db{rarely be naked}; by the time you get to this point, you probably would already have done a couple of rounds of algebraic manipulation, possibly following a shift in perspectives. This mistake seems obvious when you have full presence of mind, but do not underestimate the power of exhaustion.
+
+\pagebreak
+
+\section{Problems}
+
+\minpt{}
+
+\psetquote{}{}
+
+\prob{2}{CMC 10B 2020/4}{A group of $k$ children are playing with a $52$-card deck.  The deck is split so that every child receives a different number of cards, and each child receives at least one card. What is the maximum possible value of $k$?}
+
+\req{3}{AMC 10B 2020/12}{The decimal representation of \[\frac{1}{20^{20}}\] consists of a string of zeros after the decimal point, followed by a $9$ and then several more digits. How many zeros are in that initial string of zeros after the decimal point?
+
+\answer{23}{24}{25}{26}{27}}
+
+\prob{4}{AMC 10A 2021/16}{In the following list of numbers, the integer $n$ appears $n$ times in the list for $1 \leq n \leq 200$.
+$$1, 2, 2, 3, 3, 3, 4, 4, 4, 4, \cdot, 200, 200, \cdot , 200$$What is the median of the numbers in this list?
+
+\answer{100.5}{134}{142}{150.5}{167}}
+
+\end{document}

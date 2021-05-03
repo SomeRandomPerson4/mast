@@ -1,0 +1,167 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{Solutions to Invariants}
+\author{Dennis Chen}
+\date{CRU1}
+
+\begin{document}
+
+\maketitle
+
+{\hypersetup{
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black}\tableofcontents
+}
+
+\pagebreak\section{e-dchen Mock MATHCOUNTS Sprint/21}
+
+Bill has 7 rods, with lengths $1,2,3,\dots,7.$ He repeatedly takes two rods of length $a,b,$ and makes them the legs of a right triangle. He gets a new rod with the length of the hypotenuse of the right triangle and uses it to replace the rods of length $a$ and $b.$ At the end, when he only has two rods left, he forms the right triangle with those two rods as legs. What is the maximum possible area of this right triangle?
+
+\subsection{Solution}
+
+Note that the sum of the squares of all the numbers remains invariant, and that this sum is $\displaystyle \sum_{i=1}^7 i^2 = 140$. If the final legs have lengths $a$ and $b,$ then $a^2+b^2=140.$ The QM-GM inequality implies $\sqrt{\frac{a^2+b^2}{2}}=70 \ge \sqrt{ab},$ with equality at $a=b$. Hence, the maximum possible area of the right triangle will be $\frac{\sqrt{70}^2}{2} = 35.$
+
+All that is left is to show this is possible. Note that $1^2 + 2^2 + 4^2 + 7^2 = 70$ so it is possible to let each of the legs be $\sqrt{70}.$
+
+\pagebreak\section{Unsourced}
+
+Alice writes the numbers $1,$ $2,$ $3,$ $4,$ $5,$ and $6$ on a blackboard. Bob selects two of these numbers, erases both of them, and writes down their positive difference on the blackboard. For example, if Bob chose the numbers $3$ and $4,$ the blackboard would contain the numbers $1,$ $1,$ $2,$ $5,$ and $6.$ Bob continues until there is only one number left on the board. Is it possible for Bob to have $4$ as the only number left on the board?
+
+\subsection{Solution}
+
+No. Note that the parity of the sum of all the numbers is invariant, and $4\not\equiv21\pmod{2}.$
+
+\pagebreak\section{Unsourced}
+
+Consider an $8\times 8$ grid with opposite corners tiled by $1\times 1$ blocks. Is it possible to tile the rest of the grid with dominoes such that every square is filled and there is no overlap?
+
+\subsection{Solution}
+
+No. Color the $8\times 8$ grid alternating black and white like checkerboard, and notice that the opposite corners are of same color. Without loss of generality, assume that the opposite corner that is tiled with $1\times 1$ blocks are white. Also note that each domino will tile a black square and a white square, so the invariant is the difference between the untiled black squares and untiled white squares. But note that $32-30\neq 0-0,$ so this is impossible.
+
+\pagebreak\section{Unsourced}
+
+A set of real numbers $\{a, b, c\}$ is given. You may change any two of the numbers, say $a$ and $b,$ to $\frac{a+b}{\sqrt{2}}$ and $\frac{a-b}{\sqrt{2}} .$ Is it possible to go from $\{1, \sqrt{2}, 1+\sqrt{2}\}$ to $\left\{2, \sqrt{2}, \frac{1}{\sqrt{2}}\right\} ?$
+
+\subsection{Solution}
+
+The answer is no. Notice that the sum of squares of all the numbers remains invariant. Since $2^2+ \sqrt{2}^2 + \frac{1}{\sqrt{2}}^2 = \frac{13}{2} \neq 1^2 + \sqrt{2}^2 + \left(1+\sqrt{2}\right)^2 = 6+2\sqrt{2},$ it is impossible.
+
+\pagebreak\section{AMC 10B 2020/16}
+
+Bela and Jenn play the following game on the closed interval $[0, n]$ of the real number line, where $n$ is a fixed integer greater than $4$. They take turns playing, with Bela going first. At his first turn, Bela chooses any real number in the interval $[0, n]$. Thereafter, the player whose turn it is chooses a real number that is more than one unit away from all numbers previously chosen by either player. A player unable to choose such a number loses. Using optimal strategy, which player will win the game?
+
+\subsection{Solution}
+
+The answer is Bela wins. We use a nice symmetry argument here. First, Bela picks $\frac{n}{2}$ and splits the real number line into two equal intervals. Now, whatever number Jenn chooses, Bela will mirror her in the opposite interval. So as long as Jenn has a move, Bela has a move too.
+
+\pagebreak\section{OMCC 2019/2}
+
+We have a regular polygon $P$ with 2019 vertices, and in each vertex there is a coin. Two players Azul and Rojo take turns alternately, beginning with Azul, in the following way: first, Azul chooses a triangle with vertices in $P$ and colors its interior with blue, then Rojo selects a triangle with vertices in $P$ and colors its interior with red, so that the triangles formed in each move don't intersect internally the previous colored triangles. They continue playing until it's not possible to choose another triangle to be colored. Then, a player wins the coin of a vertex if he colored the greater quantity of triangles incident to that vertex (if the quantities of triangles colored with blue or red incident to the vertex are the same, then no one wins that coin and the coin is deleted). The player with the greater quantity of coins wins the game. Find a winning strategy for one of the players.
+
+Note. Two triangles can share vertices or sides.
+
+\subsection{Solution}
+
+Azul wins.
+
+We will once again use the trick of splitting and mirroring. First, Azul picks the triangle with vertices $V_1, V_{1010}, V_{1011}.$ With this move, he splits the vertices into two equal sets $V' = \{V_2, V_3, \cdots, V_{1009} \}$ and $V'' =\{V_{1012}, V_{1013,} \cdots, V_{2019}\} $ of cardinality $1008.$ Now, whatever triangle Rojo chooses, Azul mirrors his triangle in the opposite set. Now it is easy to finish. Azul and Rojo has same number of coins in $V'$ and $V''.$ Rojo can get only one of $V_{1010}$ and $V_{1011},$ and $V_1$ is occupied for Azul. Hence, Azul gets $2$ from $V_1, V_{1010}, V_{1011}$ and he is the winner.
+
+\pagebreak\section{Problem Solving Strategies}
+
+Eduardo writes the polynomial $x^2-x-2$ on a whiteboard. For any quadratic $ax^2+bx+c$ on the whiteboard, Eduardo can erase the polynomial and
+\begin{itemize}
+        \Item replace it with $cx^2 + bx + a,$ or
+        
+        \Item pick a real number $t,$ then replace his quadratic with (the expanded form of)
+$a(x + t)^2 + b(x + t) + c.$
+\end{itemize}
+
+\subsection{Solution}
+
+Note that the discriminant is invariant, so the answer is no.
+
+\pagebreak\section{RMM 2019/1}
+
+Alice and Bob play a game on a whiteboard. First, Alice writes down a positive integer on the board. Then the players take turns: Bob chooses an integer $a$ and replaces the number $n$ on the whiteboard with $n-a^2,$ while Alice chooses a positive integer $k$ and replaces the number $n$ with $n^k.$ Bob wins if the number on the board becomes zero. Can Alice prevent Bob from winning?
+
+\subsection{Solution}
+ 
+The main idea is that the squarefree portion is invariant.
+
+The answer is no. Bob always wins. Notice that Alice has to always choose an odd $k$ as otherwise it will be an immediate win for Bob. For a positive integer n, we define its square-free part
+$S(n)$ to be the smallest positive integer $a$ such that $\frac{n}{a}$ is a square of an integer. In other words,
+$S(n)$ is the product of all primes having odd exponents in the prime expansion of $n$.
+Now we show that \begin{itemize}
+    \Item on any move of hers, Alice does not increase the square-free part of the positive integer on the board.
+    \Item on any move of his, Bob always can replace a positive integer $n$ with a non-negative integer $k$ with $S(k) < S(n)$. Thus, if the game starts by a positive integer $N$, Bob can win in at most $S(N)$ moves.
+\end{itemize}  
+The first part is trivial, as the definition of the square-part yields $S(n^k) = S(n)$ whenever k is odd, and $S(n^k) = 1 \leq S(n)$ whenever k is even, for any positive integer $n$.
+The second part is also easy. If, before Bob’s move, the board contains a number $n = S(n)\cdot b^2$, then Bob may replace it with $n' = n - b^2 = (S(n) - 1)b^2$ , where $S(n') \leq S(n) - 1.$ 
+ 
+\pagebreak\section{Unsourced}
+
+Given any arrangement of white and black tokens along the circumference of a circle, we're allowed the following operations:
+    \begin{itemize}
+        \Item Take out a white token and change the colour of both its neighbours.
+        
+        \Item Put in a white token and change the colour of both its neighbours.
+    \end{itemize}
+    Is it possible to go from a configuration with just two tokens, both white, to a configuration with two tokens, both black?
+
+\subsection{Solution}
+
+We claim the answer is no.
+
+Note that these moves are equivalent to adding $3$ white tokens anywhere, $2$ black tokens anywhere, or $2$ white tokens on each side of any black token, and its inverses.
+
+Now ignore all runs of black tokens with an even length. We start from any odd run of black tokens then go around the circle, adding up whites until we reach another odd run of black tokens, then subtracting whites until we reach another odd run of black tokens, and so on. Take the number mod $3$ and let the remainder be $f(n),$ and notice that $f(n)$ only changes sign when we start at different runs.
+
+Note that $f(n)$ for $WW$ is non-zero and $f(n)$ for $BB$ is zero. So this is impossible.
+
+\pagebreak\section{USAMTS 2019 (5/1/31)}
+
+A group of $100$ friends stands in a circle. Initially, one person has $2019$ mangos, and
+no one else has mangos. The friends split the mangos according to the following rules:
+
+\begin{itemize}
+     \Item Sharing: to share, a friend passes two mangos to the left and one mango to the right.
+
+     \Item Eating: the mangos must also be eaten and enjoyed. However, no friend wants to be
+selfish and eat too many mangos. Every time a person eats a mango, they must also
+pass another mango to the right.
+\end{itemize}
+
+A person may only share if they have at least three mangos, and they may only eat if they
+have at least two mangos. The friends continue sharing and eating, until so many mangos
+have been eaten that no one is able to share or eat anymore.
+
+Show that there are exactly eight people stuck with mangos, which can no longer be shared or eaten.
+
+\subsection{Solution}
+ 
+\pagebreak\section{IMO 2000/4} 
+
+A magician has one hundred cards numbered 1 to 100. He puts them into three boxes, a red one, a white one and a blue one, so that each box contains at least one card. A member of the audience draws two cards from two different boxes and announces the sum of numbers on those cards. Given this information, the magician locates the box from which no card has been drawn.
+
+How many ways are there to put the cards in the three boxes so that the trick works?
+
+\subsection{Solution}
+
+We show that the answer is $12$. Let the colour of the number $i$ be the colour of the box which contains it. All numbers considered are assumed to be integers between $1$ and $100$.
+
+We split this into two cases.
+
+\begin{itemize}
+    \Item There is an $i$ such that $i, i + 1, i + 2$ have three different colours, say rwb. Then, since $i + (i + 3) = (i + 1) + (i + 2),$ the colour of $i + 3$ can be neither w(the colour of $i + 1$) nor b(the colour of $i + 2$). It follows that $i + 3$ is $r$. Using the same argument, we see that the next numbers are also rwb. In fact the argument works backwards as well: the previous three numbers are also rwb. Thus we have $1, 2$ and $3$ in different boxes and two numbers are in the same box if there are congruent mod $3$. Such an arrangement is good as $1 + 2, 2 + 3$ and $1 + 3 $ are all different mod $3$ There are $6$ such arrangements.
+
+    \Item There are no three neighbouring numbers of different colours. Let $1$ be red. Let $i$ be the smallest non-red number, say white. Let the smallest blue number be $k$. Since there is no $rwb$, we have $i + 1 < k.$ Suppose that $k < 100$. Since $i + k = (i - 1) + (k + 1), k + 1$ should be red. However, in view  $i + (k + 1) = (i + 1) + k, i + 1$ has to be blue, which draws a contradiction to the fact that the smallest blue is $ k$. This implies that $k$ can only be $100$.
+
+Since $(i - 1) + 100 = i + 99,$ we see that $99$ is white. We now show that $1$ is red, $100$ is blue, all the others are white. If $t > 1$ were red, then in view of $t + 99 = (t - 1) + 100$, $t - 1$ should be blue, but the smallest blue is $100.$ So the colouring is $rww\ldots wwb,$ and this is indeed good. If the sum is at most $100$, then the missing box is blue; if the sum is $101$, then it is white and if the sum is greater than $101$, then it is red. The number of such arrangements is $6$.
+\end{itemize}
+ 
+\end{document}

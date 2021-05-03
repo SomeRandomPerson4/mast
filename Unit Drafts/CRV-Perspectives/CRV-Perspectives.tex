@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage[mast]{dennis}
+
+\title{Perspectives}
+\author{Dennis}
+\date{CRV}
+
+\begin{document}
+\maketitle
+
+%theory
+
+\section{Pointers}
+
+In the easier version of this handout (\db{CQV-Perspectives}), the bijections you need to make are mostly studied and the aim is to familiarize the reader with basic combinatorial theorems, tying them together with the pedagogy of ``perspectives.'' Aside from Freedom problems, the techniques you needed to use were mostly handed to you on a platter. But there are a large section of perspectives-style problems that do not cleanly fit into a category, and in those cases only intuition and experience will help. You should know everything from \db{CQV-Perspectives} and should be able to feel when a problem or argument is ``perspectives-style,'' even if you can't articulate why.
+
+Because you are expected to know basic theory and it's already covered in CQV anyway, we just present a couple of flagship examples.
+
+\begin{exam}[AMC 12A 2014/19]
+There are exactly $N$ distinct rational numbers $k$ such that $|k|<200$ and \[5x^2+kx+12=0\] has at least one integer solution for $x$. What is $N$?
+\end{exam}
+
+\begin{sol}
+We know basically nothing about $k.$ But we do know a lot about $x$; for instance, it is an integer. Thus we can instead solve for $k$, noting that
+\[k=-\left(5x+\frac{12}{x}\right).\]
+Things would get a little dicey if there were two integer values of $x$ that gave the same value of $k$, but we do not need to worry about that since by AM-GM, the function is strictly decreasing. (Note the negative sign.)
+
+Since $\frac{12}{x}$ is small for large $|x|$, $x$ can be any integer between $-39$ and $39$ inclusive, except for $0.$ Thus the anwser is $78.$
+\end{sol}
+
+This is a flagship Perspectives problem because instead of counting something that's difficult to keep track of, you count something \textit{else} you know a lot about. Make sure in these types of problems you don't miss ``edge cases'' -- there are going to be times when the Perspectives argument doesn't entirely hold, and figuring out these exceptions is going to be part of solving the problem.
+
+\pagebreak
+
+\section{Problems}
+
+\minpt{TBD}
+
+\psetquote{Doubt them. Question them, suspect them... and take a good, long look into their hearts. Humans are the kind of beings that can't put their pain into words, after all.}{Liar Game}
+
+\req{3}{IMO 1987/1}{Let $p_n (k)$ be the number of permutations of the set $\{ 1, \ldots , n \} , \; n \ge 1$, which have exactly $k$ fixed points. Prove that
+
+\[\sum_{k=0}^{n} k \cdot p_n (k) = n!.\]}
+
+\prob{9}{ISL 2018/C1}{Let $n\geq 3$ be an integer. Prove that there exists a set $S$ of $2n$ positive integers satisfying the following property: For every $m=2,3,...,n$ the set $S$ can be partitioned into two subsets with equal sums of elements, with one of subsets of cardinality $m.$}
+
+\prob{9}{IMO 2002/1}{Let $n$ be a positive integer. Each point $(x,y)$ in the plane, where $x$ and $y$ are non-negative integers with $x+y<n$, is coloured red or blue, subject to the following condition: if a point $(x,y)$ is red, then so are all points $(x',y')$ with $x'\leq x$ and $y'\leq y$. Let $A$ be the number of ways to choose $n$ blue points with distinct $x$-coordinates, and let $B$ be the number of ways to choose $n$ blue points with distinct $y$-coordinates. Prove that $A=B$.}
+
+\prob{13}{CMO 2019/3}{Let $m$ and $n$ be positive integers. A $2m\times 2n$ grid of squares is colored in the usual chessboard fashion. Determine the number of ways to place $mn$ counters on the white squares, at most one counter per square, so that no two counters are diagonally adjacent.}
+
+\prob{13}{USAMO 2015/4}{Steve is piling $m \geq 1$ indistinguishable stones on the squares of an $n \times n$ grid. Each square can have an arbitrarily high pile of stones. After he finished piling his stones in some manner, he can then perform stone moves, defined as follows. Consider any four grid squares, which are corners of a rectangle, i.e. in positions $(i, k),(i, l),(j, k),(j, l)$ for some $1 \leq i, j, k, l \leq n,$ such that $i<j$ and $k<l .$ A stone move consists of either removing one stone from each of $(i, k)$ and $(j, l)$ and moving them to $(i, l)$ and $(j, k)$ respectively, or removing one stone from each of $(i, l)$ and $(j, k)$ and moving them to $(i, k)$ and $(j, l)$ respectively.
+
+Two ways of piling the stones are equivalent if they can be obtained from one another by a sequence of stone moves. How many different non-equivalent ways can Steve pile the stones on the grid?}
+\end{document}

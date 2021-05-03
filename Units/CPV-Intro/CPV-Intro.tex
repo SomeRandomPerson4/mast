@@ -1,0 +1,289 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{Introduction to Counting}
+\author{Dennis Chen}
+\date{CPV}
+
+\begin{document}
+\maketitle
+
+We discuss independent choices, basic bijections, and combinations and permutations.
+
+\section{Independent Choices}
+
+We examine independent choices, and how many ways you can make all of these choices.
+
+\begin{defi}[Independent Choices]
+Two choices $C_1$ and $C_2$ are independent if and only if the outcome of $C_1$ does not affect the outcome of $C_2,$ and vice versa.
+\end{defi}
+
+This can be interpreted combinatorially and probabilisitcally.
+
+\begin{exam}[Combinatoric Independent Choices]
+If there are three types of pizza you can buy and you want to buy two pizzas, the first type of pizza you buy does not influence your choices for the second type of pizza you buy. The order of the choices doesn't matter either.
+\end{exam}
+
+Commonly you'll see this referred to as ``choosing without restriction,'' which means that the choices are independent by definition.
+
+\begin{exam}[Probabilistic Indepdendent Choices]
+If you flip a coin twice, the two flips are independent since the first flip does not affect the second.
+\end{exam}
+
+\begin{theo}[Independent Choices]
+If you have \textbf{independent} choices $C_1,C_2\dots C_n$ with $o_1,o_2\dots o_n$ options respectively, the amount of distinct ways to make all of these choices is $o_1\cdot o_2\cdot\dots\cdot o_n.$
+\end{theo}
+
+Let's say you want to know how many sets of clothes you can wear, where a set of clothes has a shirt and pants. How many total options do we have considering a certain amount of individual choices with a certain amount of options? Not everyone will use the same terminology, so let's define a choice and an option.
+
+\begin{defi}
+A \textbf{choice} is the reason an option matters (we have $x$ options for this choice), and an \textbf{option} is an option for a choice. For clarity we present an example.
+\end{defi}
+
+\begin{exam}
+If you have $5$ shirts and $7$ pairs of pants, how many suits, consisting of a shirt and a pair of pants, can you wear?
+\end{exam}
+
+\begin{sol}
+We have two \textbf{choices}: what shirt to wear, and what pants to wear. For the shirts, we have $5$ \textbf{options}, and for the pants, we have $7$ \textbf{options}.
+\end{sol}
+
+\section{Basic Bijections}
+
+It's well-known that there are $n$ terms in the sequence $\{1,2,3\cdots n\}.$ We can use this to count the amount of terms in an arithmetic sequence, geometric sequence, etc. This is because no matter how we transform the individual terms, the size of each set stays the same.
+
+\begin{theo}[Terms in an Arithmetic Sequence]
+In an arithmetic sequence with beginning term $a,$ ending term $z,$ and with common difference $d,$ there are $\frac{z-a}{d}+1$ terms.
+\end{theo}
+
+\begin{pro}
+Let the set be denoted as $S.$ Applying $f(x)=x+(d-a)$ to all members of $S$ yields another set $S_{f(x)}.$ Notice that the members of $S_{f(x)}$ are $\{d,2d,3d\dots d+z-a\}.$ Then applying $g(x)=\frac{x}{d}$ to all members of $S_{f(x)}$ yields another set $S_{g(x)},$ whose members are $\{1,2,3\dots \frac{z-a}{d}+1\}.$ Thus, $S$ has $\frac{z-a}{d}+1$ members, as desired.
+\end{pro}
+
+\begin{theo}[Terms in a Geometric Sequence]
+In a geometric sequence with beginning term $a,$ ending term $z,$ and common ratio $r,$ there are $\log_r(\frac{z}{a})+1$ terms.
+\end{theo}
+
+\begin{pro}
+Let the set be denoted as $S.$ Applying $f(x)=\frac{rx}{a}$ to all members of $S$ yields another set $S_{f(x)}$ with members $r,r^2,r^3\dots r\frac{z}{a}.$ Then applying $g(x)=\log_r{x}$ to all members of $S_{f(x)}$ yields another set $S_{g(x)},$ whose members are $\{1,2,3\dots\log_r(\frac{z}{a})+1\}.$ Thus, $S$ has $\log_r(\frac{z}{a})+1$ members, as desired.
+\end{pro}
+
+Even though the notation for each theorem and its proof are different, they contain the same idea. (This is evident due to the nearly-identical structure.) Keep in mind that it is fine to forget the theorems if you remember the main idea - a clever use of bijections to get the set $\{1,2,3\dots n\}.$
+
+\section{Permutations and Combinations}
+
+When we discuss Combinations and Permutations, there are two standard examples to refer to.
+
+\begin{exam}[Permutations]
+Out of a group of $n$ distinguishable objects, how many ways are there to line $k$ of them up (order matters)?
+\end{exam}
+
+\begin{exam}[Combinations]
+Out of a group of $n$ people, how many ways are there to choose $k?$
+\end{exam}
+
+\begin{theo}[Permutations]
+Let $P(n,r)$ denote the amount of ways to permute $n$ objects in a line of length $r.$ If $n\geq r,$ then $P(n,r)=\frac{n!}{(n-r)!}.$ If $n<r,$ then $P(n,r)=0.$
+\end{theo}
+
+\begin{pro}
+For the first object in line, we have $n$ choices as to what it is. For the next, we have $n-1$ choices, and so on, until we have $n-r+1$ choices for the last one. Notice that this gives us a total of $n(n-1)(n-2)\dots(n-r+1)$ ways to line them up. If $n\geq r,$ then this expression is equal to $\frac{n!}{(n-r)!}.$ However, if $n<r,$ then the expression is equal to $n(n-1)(n-2)\cdots(n-n)(n-(n+1))\cdots(n-r)=0$ (as $n-n=0$).
+\end{pro}
+
+\begin{theo}[Combinations]
+Let $\binom{n}{r}$ denote the amount of ways to choose $r$ objects out of $n.$ Then for all $n\geq r,$ $\binom{n}{r}=\frac{n!}{r!(n-r)!},$ an for all $n<r,$ $\binom{n}{r}=0.$
+\end{theo}
+
+\begin{pro}
+The result is obvious for $n<r.$
+
+If $n\geq r,$ then notice that $P(n,r)=\frac{n!}{(n-r)!}.$ But notice that when we count combinations, \textbf{order doesn't matter}. As we've counted each combination $r!$ times (due to the $r!$ possible permutations), $\binom{n}{r}=\frac{P(n,r)}{r!}=\frac{n!}{r!(n-r)!},$ as desired.
+\end{pro}
+
+In competition math, combinations is used more commonly than permutations simply because the idea of combinations is more interesting. (This can be seen with the study of combinatorial identities, which nearly exclusively use combinations.)
+
+\subsection{Permuting with Restrictions}
+Sometimes we'll have to permute with restrictions. In this case, \textbf{take care of restrictions first}.
+
+\begin{exam}
+How many $4$ digit numbers have distinct digits?
+\end{exam}
+
+\begin{sol}
+There are $9$ choices for the first digit, $9$ choices for the second, $8$ for the third, and $7$ for the fourth. So the answer is $9\cdot 9\cdot 8\cdot 7=4536.$
+\end{sol}
+
+If we tried to take care of anything other than the first digit first, we'd have to deal with annoying casework.
+
+\begin{exam}
+Find the number of ways to put $8$ rooks on a chessboard such that
+\begin{itemize}
+\Item no two rooks are attacking each other, and
+\Item no rook is in one of the four corners of the chessboard.
+\end{itemize}
+\end{exam}
+\begin{sol}
+Note that we are putting a rook in each row such that no two rooks are in the same column, and the rooks in the first and eigth row are restricted. There are $6$ ways to choose the column of the rook in the first row and $5$ ways to choose the column of the rook in the second row. For the other $6$ rooks, there are $6$ available columns and no restrictions, so there are $6!$ ways to arrange them. Thus the answer is $6\cdot 5\cdot 6!=21600.$
+\begin{center}
+\begin{asy}
+size(4cm);
+for (int i=0; i<=7; ++i) {
+for (int j=0; j<=7; ++j) {
+draw((i,j)--(i+1,j)--(i+1,j+1)--(i,j+1)--cycle);
+}
+}
+fill((0,0)--(1,0)--(1,1)--(0,1)--cycle,black);
+fill((7,0)--(8,0)--(8,1)--(7,1)--cycle,black);
+fill((7,7)--(8,7)--(8,8)--(7,8)--cycle,black);
+fill((0,7)--(1,7)--(1,8)--(0,8)--cycle,black);
+\end{asy}
+\end{center}
+\end{sol}
+
+\section{Block Walking}
+Commonly in MATHCOUNTS, you'll see a problem where you have something on a grid and you want to move it somewhere else, typically with restrictions. This type of problem is known as a block walking problem.
+
+\begin{exam}[MATHCOUNTS 2020]
+A checker starts at square $4$ of the checkerboard shown here. At any time, it can move to any diagonally adjacent square below its current position. How many possible ways are there for the checker to move from square $4$ to square $32?$
+
+\begin{center}
+\begin{asy}
+import olympiad;
+unitsize(0.5 cm);
+
+int i, j, n, r;
+real x, y;
+
+for (i = 0; i <= 7; ++i) {
+for (j = 0; j <= 7; ++j) {
+  if ((i + j) % 2 == 0) {
+    fill(shift((i,j))*((0,0)--(1,0)--(1,1)--(0,1)--cycle),black);
+  }
+}}
+
+for (i = 0; i <= 8; ++i) {
+  draw((i,0)--(i,8));
+  draw((0,i)--(8,i));
+}
+
+for (n = 0; n <= 31; ++n) {
+  r = n % 8;
+  if (r <= 3) {
+    x = 2*r - 0.5 + 2;
+    y = 7 - floor(n/4) + 0.5;
+    label("$" + string(n + 1) + "$", (x,y), white);
+  }
+  if (r >= 4) {
+    x = 2*r - 0.5 - 7;
+    y = 7 - floor(n/4) + 0.5;
+    label("$" + string(n + 1) + "$", (x,y), white);
+  }
+}
+\end{asy}
+\end{center}
+\end{exam}
+
+\begin{sol}
+Fill in the grid with the number of ways to get to each number. Notice that the number of ways to get to a number is the sum of the number of ways to get to the two numbers diagonally above it.
+
+\begin{center}
+\begin{asy}
+import olympiad;
+unitsize(0.5 cm);
+
+int i, j, n, r;
+real x, y;
+
+for (i = 0; i <= 7; ++i) {
+for (j = 0; j <= 7; ++j) {
+  if ((i + j) % 2 == 0) {
+    fill(shift((i,j))*((0,0)--(1,0)--(1,1)--(0,1)--cycle),black);
+  }
+}}
+
+for (i = 0; i <= 8; ++i) {
+  draw((i,0)--(i,8));
+  draw((0,i)--(8,i));
+}
+
+label("1",(7.5,7.5),white);
+label("1",(6.5,6.5),white);
+label("1",(5.5,5.5),white);
+label("1",(7.5,5.5),white);
+label("1",(4.5,4.5),white);
+label("2",(6.5,4.5),white);
+label("1",(3.5,3.5),white);
+label("3",(5.5,3.5),white);
+label("2",(7.5,3.5),white);
+label("4",(4.5,2.5),white);
+label("5",(6.5,2.5),white);
+label("9",(5.5,1.5),white);
+label("5",(7.5,1.5),white);
+label("14",(6.5,0.5),white);
+\end{asy}
+\end{center}
+\end{sol}
+
+\pagebreak
+
+\section{Problems}
+
+\minpt{30}
+
+\psetquote{Then what is living to you?'' \newline ``Hmm... Perhaps redemption.}{Oyasumi, Punpun}
+
+\prob{1}{}{The Committee of MAST needs to split $3$ unique jobs among $8$ students. If each student can do as many jobs as they please, how many ways are there to assign the jobs?}
+    
+\prob{1}{}{There are $52$ postal abbreviations for the $50$ states of America, D.C. and Puerto Rico. If we choose a two-letter "word" at random (such as $AA$), what is the probability that we choose one of the $52$ postal abbreviations?}
+
+\prob{2}{}{Jim is getting an ice cream cone. He can get either $1,$ $2,$ or $3$ scoops. For each scoop, he can get $3$ different flavors. How many different ice creams can he get? (Order of the scoops matter!)}
+    
+\prob{1}{}{Find the amount of terms in the set $\{5,7,9\cdots 39\}.$ (This is an arithmetic sequence.)}
+    
+\prob{1}{}{Find the amount of terms in the set $\{3,6,12,24,48,96\}.$ (This is a geometric sequence.)}
+    
+\prob{1}{}{How many ways can you arrange the letters in TARGET?}
+
+\prob{1}{}{How many ways are there to arrange the letters in MATHCOUNTS?}
+
+\prob{3}{}{How many positive integers less than $1000$ only have even digits?}
+
+\prob{3}{}{We want to choose two disjoint committees of $4$ people from a class of $12.$ How many ways can we do this, if the committees are distinct?}
+    
+\prob{2}{}{What if the committees are indistinguishable?}
+
+\prob{4}{AMC 12 2001/16}{A spider has one sock and one shoe for each of its eight legs. In how many different orders can the spider put on its socks and shoes, assuming that, on each leg, the sock must be put on before the shoe?}
+    
+\prob{4}{AMC 10A 2019/17}{A child builds towers using identically shaped cubes of different color. How many different towers with a height $8$ cubes can the child build with $2$ red cubes, $3$ blue cubes, and $4$ green cubes? (One cube will be left out.)}
+
+\req{4}{AMC 10A 2021/25}{How many ways are there to place $3$ indistinguishable red chips, $3$ indistinguishable blue chips, and $3$ indistinguishable green chips in the squares of a $3 \times 3$ grid so that no two chips of the same color are directly adjacent to each other, either vertically or horizontally.}
+
+\prob{4}{MATHCOUNTS State 2020}{Iris is playing a game that has a $5 \times 5$ gameboard like the one shown. The goal is to get her game piece from the square labeled $\star$ to the square labeled $\circ$ using a series of moves any positive integer number of squares up or any positive integer number of squares to the right. Note that moving two squares up in a single move is different than moving two squares up in two moves. How many unique sequences of moves can Iris make to get her game piece from $\star$ to $\circ?$}
+\begin{center}
+\begin{asy}
+import olympiad;
+unitsize(0.5 cm);pair A, B, C, D, E, F, G, H, I, J;A = dir(90);B = dir(90 + 360/5);C = dir(90 + 2*360/5);D = dir(90 + 3*360/5);E = dir(90 + 4*360/5);F = extension(A,C,B,E);G = rotate(360/5)*(F);H = rotate(360/5)*(G);I = rotate(360/5)*(H);J = rotate(360/5)*(I);int i;for (i = 0; i <= 5; ++i) {  draw((i,0)--(i,5));  draw((0,i)--(5,i));}draw(circle((4.5,4.5),0.25));label("$\star$",(.5,0.5));
+\end{asy}
+\end{center}
+
+\req{6}{}{How many 4 digit falling numbers are there? (A falling number is a number whose last digit is strictly smaller than its second-to last digit, and so on, such as $4321.$)}
+
+\prob{6}{AMC 10A 2021/21}{In how many ways can the sequence $1, 2, 3, 4, 5$ be rearranged so that no three consecutive terms are increasing and no three consecutive terms are decreasing?}
+
+\prob{6}{HMMT Feb. Guts 2012/20}{Let $n$ be the maximum numbers of bishops that can be placed on the squares of a $6\times 6$ chessboard such that no two bishops are attacking each other. Find $n+k.$\footnote{\href{https://www.ichess.net/blog/chess-pieces-moves/}{Rules of chess}}}
+
+\prob{9}{AIME 1990/8}{In a shooting match, eight clay targets are arranged in two hanging columns of three targets each and one column of two targets. A marksman is to break all the targets according to the following rules:
+
+    \begin{itemize}
+         \Item The marksman first chooses a column from which a target is to be broken.
+
+         \Item The marksman must then break the lowest remaining target in the chosen column.
+    \end{itemize}
+
+    If the rules are followed, in how many different orders can the eight targets be broken?}
+    
+\prob{13}{AIME I 2010/7}{Define an ordered triple $(A, B, C)$ of sets to be minimally intersecting if $|A \cap B| = |B \cap C| = |C \cap A| = 1$ and $ A \cap B \cap C = \emptyset$. For example, $(\{1,2\},\{2,3\},\{1,3,4\})$ is a minimally intersecting triple. Let $N$ be the number of minimally intersecting ordered triples of sets for which each set is a subset of $\{1,2,3,4,5,6,7\}$. Find the remainder when $N$ is divided by $1000$.
+
+Note: $|S|$ represents the number of elements in the set $S.$}
+\end{document}

@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage[mast]{dennis}
+
+%\usepackage{epigraph}
+%\setlength{\epigraphwidth}{0.8\textwidth}
+\title{Invariants and Symmetry}
+\author{Dennis Chen}
+\date{CRU}
+
+\begin{document}
+\maketitle
+
+\input{CRU-Invariants}
+
+\pagebreak
+
+\section{Problems}
+
+%\epigraph{\textit{Harry had always been frightened of ending up as one of those child prodigies that never amounted to anything and spent the rest of their
+%lives boasting about how far ahead they’d been at age ten. But then most
+%adult geniuses never amounted to anything either. There were probably
+%a thousand people as intelligent as Einstein for every actual Einstein in
+%history. Because those other geniuses hadn’t gotten their hands on the one thing you absolutely needed to achieve greatness. They’d never found an important problem.} 
+%}{\emph{Harry Potter and the Methods of Rationality} \\ \textbf{Eliezer Yudkowski}}
+
+\minpt{TBD}
+
+\prob{2}{USSR Problem Book}{Is it possible for a knight on a standard chessboard to go from the bottom left corner of the board to the upper right corner of the board, while visiting each square on the board exactly once?}
+
+\prob{2}{USAMTS 2019}{Let $n>1$ be an integer. There are $n$ orangutoads, conveniently numbered $1,2,\dots{},n$, each sitting at an integer position on the number line. They take turns moving in the order $1,2,\dots{},n$, and then going back to $1$ to start the process over; they stop if any orangutoad is ever unable to move. To move, an orangutoad chooses another orangutoad who is at least $2$ units away from her towards them by a a distance of $1$ unit. (Multiple orangutoads can be at the same position.) Show that eventually some orangutoad will be unable to move.}
+
+\req{2}{PUMaC 2020}{Given the graph $G$ and cycle $C$ in it, we can perform the following operation: add another vertex $v$ to the graph, connect it to all vertices in $C$ and erase all the edges from $C.$ Prove that we cannot perform the operation indefinitely on a given graph.}
+
+\prob{3}{NIMO Winter 2014/3}{The numbers $1, 2,\ldots , 10$ are written on a board. Every minute, one can select three numbers $a, b, c$ on the board, erase them, and write $\sqrt{a^{2}+b^{2}+c^{2}}$ in their place. This process continues until no more numbers can be erased. What is the largest possible number that can remain on the board at this point?}
+
+
+\prob{3}{ELMO 1999/2}{Mr. Fat moves around on the lattice points according to the following rules: From point $(x,y)$ he may move to any of the points $(y,x)$, $(3x,-2y)$, $(-2x,3y)$, $(x+1,y+4)$ and $(x-1,y-4)$. Show that if he starts at $(0,1)$ he can never get to $(0,0)$.}
+
+
+\req{3}{ELMO SL 2019/C1}{Elmo and Elmo's clone are playing a game. Initially, $n\geq 3$ points are given on a circle. On a player's turn, that player must draw a triangle using three unused points as vertices, without creating any crossing edges. The first player who cannot move loses. If Elmo's clone goes first and players alternate turns, who wins? (Your answer may be in terms of $n$.)}
+
+
+\prob{6}{ISL 2017/C1}{A rectangle $\mathcal{R}$ with odd integer side lengths is divided into small rectangles with integer side lengths. Prove that there is at least one among the small rectangles whose distances from the four sides of $\mathcal{R}$ are either all odd or all even.}
+
+\prob{13}{USAMO 2015/4}{Steve is piling $m \geq 1$ indistinguishable stones on the squares of an $n \times n$ grid. Each square can have an arbitrarily high pile of stones. After he finished piling his stones in some manner, he can then perform stone moves, defined as follows. Consider any four grid squares, which are corners of a rectangle, i.e. in positions $(i, k),(i, l),(j, k),(j, l)$ for some $1 \leq i, j, k, l \leq n,$ such that $i<j$ and $k<l .$ A stone move consists of either removing one stone from each of $(i, k)$ and $(j, l)$ and moving them to $(i, l)$ and $(j, k)$ respectively, or removing one stone from each of $(i, l)$ and $(j, k)$ and moving them to $(i, k)$ and $(j, l)$ respectively.
+
+Two ways of piling the stones are equivalent if they can be obtained from one another by a sequence of stone moves. How many different non-equivalent ways can Steve pile the stones on the grid?} 
+
+\end{document}

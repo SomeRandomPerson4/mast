@@ -1,0 +1,230 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{Transformations}
+\author{Dennis Chen}
+\date{GQT}
+
+\begin{document}
+\maketitle
+
+There are three types of transformations, and each of them is used to solve different types of problems. We jump into each type headfirst and provide some heuristics after.
+
+\section{Reflection}
+There's a couple of properties that make this the most important section. Some of these are exercises, such as the property of the tangent to an ellipse.
+
+\begin{theo}[Running the River]
+Consider points $A,B$ on the same side of line $\ell$ and point $P$ on $\ell.$ Then $\min(AP+BP)=AB',$ where $B'$ is the reflection of $B$ about $\ell.$
+\end{theo}
+
+\begin{pro}
+Note that by the definition of a reflection, $AP+BP=AP+PB'.$ By the Triangle Inequality, $AP+PB'\geq AB',$ with equality when $P$ is the intersection of $AB'$ and $\ell.$
+\end{pro}
+
+\begin{exam}
+If $AB=BC=CA=2,$ $M$ is the midpoint of $AB,$ and $P$ lies on $BC,$ find the minimum value of $PA+PM.$
+\end{exam}
+
+\begin{sol}
+Reflect $A$ about $BC$ to get $A'.$ Then $MP+PA=MP+PA'\leq MA'=\sqrt{(\frac{1}{2}^2+\frac{3\sqrt{3}}{2})^2}=\sqrt{7}.$
+    
+    \begin{asy}
+    size(4cm);
+
+dot((0,sqrt(3)));
+label("$A$", (0,sqrt(3)), N);
+
+dot((0,-sqrt(3)));
+label("$A'$", (0,-sqrt(3)), S);
+
+dot((-1,0));
+label("$B$", (-1,0), W);
+
+dot((1,0));
+label("$C$", (1,0), E);
+
+dot((-1/2,sqrt(3)/2));
+label("$M$", (-1/2,sqrt(3)/2), NW);
+
+dot((-1/3,0));
+label("$P$", (-1/3,0), NE);
+
+draw((0,sqrt(3))--(-1,0));
+draw((0,sqrt(3))--(1,0));
+draw((0,-sqrt(3))--(-1,0));
+
+draw((0,-sqrt(3))--(1,0));
+draw((1,0)--(-1,0));
+
+draw((-1/2,sqrt(3)/2)--(0,-sqrt(3)));
+    \end{asy}
+\end{sol}
+
+Now for an example of a deceptively difficult problem.
+
+\begin{exam}[AMC 12B 2020/12]
+Let $\overline{AB}$ be a diameter in a circle of radius $5\sqrt2.$ Let $\overline{CD}$ be a chord in the circle that intersects $\overline{AB}$ at a point $E$ such that $BE=2\sqrt5$ and $\angle AEC = 45^{\circ}.$ What is $CE^2+DE^2?$
+\end{exam}
+
+\begin{sol}
+Reflect $D$ about $AB$ to get $D'.$ Then note $\angle CED'=90^{\circ}.$
+
+Now note $CE^2+ED^2=CE^2+ED'^2=CD'^2.$
+
+Note $2\angle CEA=90^{\circ}=\widehat{CA}+\widehat{BD}=\widehat{CA}+\widehat{BD'},$ so $\widehat{CD'}=90^{\circ}.$ Thus $CD'^2=2r^2=100.$
+
+(Diagram taken from djmathman's post in the problem thread.)
+
+\begin{asy}
+size(5cm);
+import olympiad;
+
+pair A = (-1,0), B = (1,0), E = (-0.3,0), Xp = E + dir(135), Xq = E - 2*dir(135);
+pair[] X = intersectionpoints(Xp--Xq,unitcircle);
+pair C = X[0], D = X[1], Dp = (D.x,-D.y);
+draw(A--B);
+draw(unitcircle);
+draw(C--D^^E--Dp^^rightanglemark(C,E,Dp,3));
+dot("$A$",A,dir(180));
+dot("$B$",B,dir(0));
+dot("$C$",C,dir(135));
+dot("$D$",D,dir(-45));
+dot("$E$",E,dir(315));
+dot("$D'$",Dp,NE);
+\end{asy}
+\end{sol}
+
+\subsection{Heuristics}
+$\bullet$ Use this when you want to minimize the sum of some distances, with points moving on lines.
+
+$\bullet$ This only works if you preserve all the lengths in some way and the endpoints of the line segment you're constructing are both constant (i.e. cannot move).
+
+$\bullet$ More concretely, \textbf{only reflect the involved point(s) that are stationary.}
+
+$\bullet$ There are some edge cases of problems where reflection helps and none of the above apply. But "don't reflect background points" (points which are not directly involved in the desired segments) is still a good rule of thumb.
+\section{Rotation}
+We start with a generic example.
+
+\begin{exam}[Autumn Mock AMC 10]
+Let $ABCD$ be a square and point $P$ be placed in $ABCD$ such that $AP=3$, $BP=6$, and $CP=9$. Find the side length of $ABCD.$
+\end{exam}
+
+\begin{sol}
+Rotate $\triangle APB$ about $B$ such that $A$ coincides with $C.$ Then note $BP'=6$ and $CP'=3.$ Since $\angle PBP'=90^{\circ},$ $PP'=6\sqrt{2}.$ Thus $\angle PP'C=90^{\circ}$ by the Pythagorean Theorem, so $\angle BP'C=45^{\circ}+90^{\circ}=135^{\circ}.$ By Law of Cosines, $BC=\sqrt{6^2+3^2-2\cdot 6\cdot 3\cdot \cos(135^{\circ})}=3\sqrt{5+2\sqrt{2}}.$
+\end{sol}
+
+These types of problems often have their difficulty overestimated. For example, see AMC 12A 2020/24.
+
+\subsection{Heuristics}
+\begin{itemize}
+\Item When you have a regular polygon and some point $P$ inside and you're given the distances from $P$ to the vertices, rotate.
+
+\Item You're probably going to be using Law of Cosines. Remember that $\cos(a+b)=\cos a\cos b-\sin a\sin b.$
+
+\Item Preserve and create nice angles. These include but are not limited to $30^{\circ},45^{\circ},60^{\circ},90^{\circ}.$
+\end{itemize}
+
+\section{Translation}
+This is probably one of the most beautiful classical geometry problems.
+
+\begin{exam}[Area of Triangle with Lengths of Medians]
+Consider $\triangle ABC$ with medians $AD,BE,CF.$ Then construct $\triangle XYZ$ such that $XY=AD,YZ=BE,ZX=CF.$ Prove that $[XYZ]=\frac{3}{4}[ABC].$
+\end{exam}
+
+\begin{sol}
+This is equivalent to proving that the triangle with side lengths $AG,BG,CG$ has area $\frac{3}{4}\cdot (\frac{2}{3})^2[ABC]=\frac{1}{3}[ABC].$ Then construct parallelogram $BGCA'.$
+    
+    If $M$ is the midpoint of $BC,$ then $GA'=2GM=AG,$ by the properties of the centroid. So $\triangle BGA'$ has all of the necessary side lengths. But note that $[BGA']=[BGM]+[BMA']=[BGM]+[MGC]=[BGC]=\frac{2}{6}[ABC],$ as desired.
+    
+    \begin{asy}
+    size(4cm);
+    dot((-1,4));
+    label("$A$", (-1,4), NW);
+    dot((-2,-2));
+    label("$B$", (-2,-2), SW);
+    dot((3,-2));
+    label("$C$", (3,-2), SE);
+    dot((1,-4));
+    label("$A'$", (1,-4), SE);
+    dot((0,0));
+    label("$G$", (0,0), NE);
+    draw((-1,4)--(1,-4));
+    draw((-2,-2)--(0,0)--(3,-2)--(1,-4)--cycle);
+    draw((-1,4)--(-2,-2)--(3,-2)--cycle);
+    \end{asy}
+\end{sol}
+
+\subsection{Heuristics}
+\begin{itemize}
+\Item This is also known as "constructing a parallelogram."
+
+\Item Geometry conditions that feel weird but don't fit into reflections or rotations.
+\end{itemize}
+
+\pagebreak
+
+\section{Problems}
+
+\minpt{90}
+
+\psetquote{When you come out of the storm you won’t be the same person who walked in. That’s what this storm’s all about.}{Kafka on the Shore}
+
+    \prob{3}{AMC 12A 2021/11}{A laser is placed at the point $(3,5)$. The laser beam travels in a straight line. Larry wants the beam to hit and bounce off the $y$-axis, then hit and bounce off the $x$-axis, then hit the point $(7,5)$. What is the total distance the beam will travel along this path?}
+
+    \prob{3}{AMC 10A 2021/21} {Let $ABCDEF$ be an equiangular hexagon. The lines $AB, CD,$ and $EF$ determine a triangle with area $192\sqrt{3}$, and the lines $BC, DE,$ and $FA$ determine a triangle with area $324\sqrt{3}$. The perimeter of hexagon $ABCDEF$ can be expressed as $m = n\sqrt{p}$, where $m, n,$ and $p$ are positive integers and $p$ is not divisible by the square of any prime. What is $m + n + p$?}
+    
+    \prob{4}{}{Given a square $ABCD$ and a point $P$ in its interior such that $AP=\sqrt{7},$ $BP=1,$ and $CP=3,$ find the side length of $ABCD.$}
+
+	 \prob{4}{}{Find the area of a square $ABCD$ containing a point $P$ such that $PA=3,$ $PB=7,$ and $PD=5.$}
+
+    \prob{4}{ART 2019/3}{Consider $\triangle ABC$ with $AB=5,$ $BC=7,$ and $CA=4\sqrt{2}.$ Let $H$ be the foot of the altitude from $A$ to $BC.$ If $P$ is a point on $AC,$ find the minimum value of $BP+HP.$}
+    
+    \prob{4}{ART 2020/2} {Consider equilateral triangle $\triangle ABC.$ Let the reflection of $A$ about $BC$ be $D.$ Let the midpoint of $AB$ be $M.$ Then let $MC$ intersect the circumcircle of $\triangle BCD$ at $N.$ Then there is some point $P$ on $BC$ such that $MP+NP$ is minimized. Find $\frac{BP}{CP}.$}
+
+    \prob{4}{MOP}{Consider rectangle $ABCD$ with point $M$ in its interior. If $\angle BMC+\angle AMD=180^{\circ},$ find $\angle BCM+\angle DAM.$}
+
+    \prob{4}{}{Isosceles $\triangle ABC$ has $40^\circ$ base angles at $B$ and $C$. Let $M$ be the intersection of the angle bisector of $C$ with $\overline{AB}$. Let $G$ be on the extension of $\overrightarrow{CM}$ such that $AM = GM$. Calculate $\angle GBC$.}
+
+    \prob{4}{Given equilateral $\triangle ABC$ with point $O$ in its interior such that $\angle AOB=115^{\circ}$ and $\angle BOC=125^{\circ},$ find the angles of the triangle with side lengths $OA,OB,OC.$}
+    
+    \prob{4}{Consider rectangle $ABCD$ with $AB=20$ and $BC=10.$ If $M$ is on $AC$ and $N$ is on $AB,$ find the minimum value of $BM+MN.$}
+
+    \prob{4}{Consider $\triangle ABC.$ Let $\angle A<60^{\circ},$ $P$ lie on $AB,$ and $Q$ lie on $AC.$ Construct a line segment such that its length is equal to the minimum value of $BQ+QP+PC.$}
+
+    \prob{6}{}{Let ellipse $\omega$ with focii $A,B$ be tangent to line $\ell$ at $P.$ Let $\alpha$ be the acute angle between $AP$ and $\ell,$ and let $\beta$ be the acute angle between $BP$ and $\ell.$ Prove that $\alpha=\beta.$}
+    
+    \prob{6}{}{Find the area of an equilateral triangle containing in its interior a point $P,$ whose distances from the vertices of the triangle are $3,4,$ and $5.$}  
+    
+    \prob{6}{AMC 12A 2020/24}{Suppose that $\triangle ABC$ is an equilateral triangle of side length $s$, with the property that there is a unique point $P$ inside the triangle such that $AP = 1$, $BP = \sqrt{3}$, and $CP = 2$. What is $s?$}
+    
+    \prob{6}{GGMT Speed 2020/20}{ There exists a point $P$ inside regular hexagon $ABCDEF$ such that $AP=\sqrt{3},BP=2,CP=3.$ If the area of the hexagon can be expressed as $\frac{a\sqrt{b}}{c},$ where $b$ is not divisible by the square of a prime, find $a+b+c.$}
+
+    \prob{6}{China}{Consider isosceles right triangle $\triangle ABC$ with $AB=AC=2.$ Let $X$ be the midpoint of $AC,$ and let $Y$ and $Z$ be points on $AB$ and $BC,$ respectively. Find the minimum perimeter of $\triangle XYZ.$}
+    
+    \prob{6}{AMC 12A 2014/20}{In $\triangle BAC$, $\angle BAC=40^\circ$, $AB=10$, and $AC=6$. Points $D$ and $E$ lie on $\overline{AB}$ and $\overline{AC}$ respectively. What is the minimum possible value of $BE+DE+CD$?}
+    
+    \prob{6}{AIME I 2012/13}{ Three concentric circles have radii $3$, $4$, and $5$.  An equilateral triangle with one vertex on each circle has side length $s$.  The largest possible area of the triangle can be written as $a+\frac{b}{c}\sqrt{d}$, where $a,b,c$ and $d$ are positive integers, $b$ and $c$ are relatively prime, and $d$ is not divisible by the square of any prime.  Find $a+b+c+d$.}
+    
+    \prob{6}{HMMT 2019}{Let $ABCD$ be an isosceles trapezoid with $AD=BC= 255$ and $AB= 128.$ Let $M$ be the midpoint of $CD$ and let $N$ be the foot of the perpendicular from $A$ to $CD.$ If $\angle MBC= 90^{\circ},$ compute $\tan\angle NBM.$}
+    
+    \prob{6}{}{If $\frac{BD}{DC}=\frac{CE}{EA}=\frac{AF}{FB}=n,$ find the area of the triangle with side lengths $AD,BE,CF.$}
+
+    \prob{6}{China}{Consider $\triangle BAC$ such that $\angle A=45^{\circ}.$ Let $H$ be the foot of the $A$ altitude. If $BH=2$ and $CH=3,$ find $[ABC].$}
+
+	 \prob{6}{}{Consider isosceles triangle with $AC=BC,$ $\angle ACB=80^{\circ},$ and point $M$ in the interior of $\triangle ABC$ such that $\angle MAB=10^{\circ}$ and $\angle MBA=30^{\circ}.$ Find $\angle AMC.$}
+    
+    \prob{6}{}{ Consider unit square $ABCD$ with $P$ on $AD$ and $Q$ on $AB$ such that the perimeter of $\triangle APQ$ is $2.$ Find $\angle PCQ.$}
+
+    \prob{9}{CIME 2020}{\ Let $ABCD$ be a cyclic quadrilateral with $AB=6,AC=8,BD=5,CD=2.$ Let $P$ be the point on $\overline{AD}$ such that $\angle APB=\angle CPD.$ Then $\frac{BP}{CP}$ can be expressed in the form $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m+n.$}
+    
+    \prob{9}{}{Consider the hexagon $A_1A_2A_3A_4A_5A_6$ with $A_1A_2=A_2A_3,$ $A_3A_4=A_4A_5,$ $A_5A_6=A_6A_1,$ and $\angle A_1+\angle A_3+\angle A_5 = \angle A_2+\angle A_4+\angle A_6.$ Find $\frac{[A_2A_4A_6]}{[A_1A_2A_3A_4A_5A_6]}$ and $\frac{\angle A_6A_2A_4}{\angle A_2}.$}
+    
+	 \prob{9}{}{Consider $\triangle ABC$ with point $O$ in its interior such that $\angle AOB=\angle BOC=\angle COA=120^{\circ}.$ Then consider equilateral $\triangle XYZ$ with point $P$ in its interior such that $XP=a,$ $YP=b,$ and $ZP=c.$ Prove that the side length of $\triangle XYZ$ is equivalent to $AO+BO+CO.$}
+    
+    \prob{13}{}{Consider unit square $ABCD$ and points $P,Q$ in its interior. If $\angle PAQ=\angle PCQ=45^{\circ},$ find $[PAB]+[PCQ]+[AQD].$}
+
+    \prob{13}{IMO 1993/2}{Let $A$, $B$, $C$, $D$ be four points in the plane, with $C$ and $D$ on the same side of the line $AB$, such that $AC \cdot BD = AD \cdot BC$ and $\angle ADB = 90^{\circ}+\angle ACB$. Find the ratio
+\[\frac{AB \cdot CD}{AC \cdot BD}, \]
+and prove that the circumcircles of the triangles $ACD$ and $BCD$ are orthogonal.}
+\end{document}

@@ -1,0 +1,252 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{P-adic Valuation}
+\author{Raymond Feng}
+\date{NRU}
+
+\begin{document}
+\maketitle
+
+These are problems where you want to look at the highest power of a prime that divides a number. This is the $\nu_p$ function. 
+
+\section{Introduction}
+Formally, we define the $p$-adic valuation of $n$, or $\nu_p(n)$ as follows:
+\begin{defi}[$p$-adic valuation]
+    For a positive integer $n$, $\nu_p(n)$ is the largest integer that satisfies $p^{\nu_p(n)}\mid n$.
+\end{defi}
+
+Now we introduce some useful facts about the $\nu_p$ function.
+
+\begin{fact}[Properties of $\nu_p$]
+    The following properties of $\nu_p$ follow readily from the definition. It is important to know these well in order to understand why this function is useful.
+    \begin{itemize}
+        \Item If $a\mid b$, then $\nu_p(a)\leq\nu_p(b)$ for all primes $p$.
+        \Item $\nu_p(ab)=\nu_p(a)+\nu_p(b)$.
+        \Item $\nu_p(\gcd(a,b))=\min(\nu_p(a),\nu_p(b))$.
+        \Item $\nu_p(\lcm(a,b))=\max(\nu_p(a),\nu_p(b))$.
+        \Item $\nu_p(a+b)\geq\min(\nu_p(a),\nu_p(b))$. Equality \emph{always holds} if $\nu_p(a)\neq\nu_p(b)$, but \emph{does not necessarily hold} when $\nu_p(a)=\nu_p(b)$. For example $\nu_2(2+6)\neq\min(\nu_2(2),\nu_2(6))$.
+    \end{itemize}
+\end{fact}
+
+\begin{pro}
+    The first four facts follow immediately from the definition of $\nu_p$ and unique prime factorizations. The interesting result is the last fact: it follows from $\gcd(a,b)\mid a+b$ in combination with the first fact. The equality cases can be easily verified.
+\end{pro}
+
+So why do we care so much about the $\nu_p$ function? It all lies in the following (possibly obvious) lemma:
+
+\begin{lemma}
+    If $m,n$ are integers such that $\nu_p(m)=\nu_p(n)$ for all primes $p$, then $m=n$.
+\end{lemma}
+
+\begin{pro}
+    This is just a restatement of natural numbers having unique prime factorization!
+\end{pro}
+
+Using the above properties we are already able to solve the following problem:
+
+\begin{exam}
+    Prove that for positive integers $a$ and $b$ we have \[\gcd(a+b,\text{lcm}(a,b))=\gcd(a,b).\]
+\end{exam}
+
+\begin{sol}
+    It suffices to verify that $\nu_p$ of both sides are equal for all $p$. Fix a certain value of $p$, and WLOG suppose $\nu_p(a) \geq \nu_p(b)$. Then the desired equation is \[\min(\nu_p(a+b), \max(\nu_p(a), \nu_p(b))) = \min(\nu_p(a), \nu_p(b)).\] If $\nu_p(a) = \nu_p(b)$ the equation reduces to $\nu_p(a) = \nu_p(a)$, which is true. If $\nu_p(a) > \nu_p(b)$ then the equation reduces to $\nu_p(b)=\nu_p(b)$, which is also true. Therefore, for any $p$ we have shown that the $\nu_p$ of both sides are equal, i.e. the two sides are actually the same natural number.
+\end{sol}
+
+\bigskip
+We can even extend the notion of $\nu_p$ to the rational numbers, by applying $\nu_p(ab)=\nu_p(a)+\nu_p(b)$ to rational inputs. For example $\nu_5\left( \frac23 \right)=0$ while $\nu_7\left( \frac6{49} \right)=-2$. As you might expect, we can distinguish integers from generic rational numbers using $\nu_p$.
+
+\begin{fact}
+    If $q\in\mathbb Q$, then $q\in\mathbb Z$ if and only if for all primes $p$, $\nu_p(q)\geq 0$.
+\end{fact}
+
+Furthermore, the fifth property from earlier also hold for all rationals $a,b$. The proof is only slightly different from the proof from earlier and so will be omitted (hint: use the second property to first clear denominators, and then bring them back). Using this extended definition of $\nu_p$ we can tackle the following classic.
+
+\begin{exam}[Classic]
+    Prove that for all $n>1$, $\sum_{i=1}^n\frac1i$ is not an integer.
+\end{exam}
+
+\begin{walk}
+    \begin{enumerate}
+        \item Take $\nu_2$ of the sum.
+        \item There is a unique minimum among \[\nu_2\left( \frac11 \right),\nu_2\left( \frac12 \right),\dots,\nu_2\left( \frac1n \right).\]\
+        \item Repeatedly apply the fifth property of $\nu_p$.
+        \item Conclude that $\nu_2\left( \sum_{i=1}^n\frac1i \right)<0$.
+    \end{enumerate}
+\end{walk}
+
+\begin{exam}[Wolstenholme's Theorem]
+    For primes $p>3$ show that \[\nu_p\left( \sum_{i=1}^{p-1}\frac1i \right)\geq 2.\]
+\end{exam}
+
+\begin{walk}
+    \begin{enumerate}
+        \item Proving things mod $p^2$ is hard, so do some wishful thinking: is there an easy way to rearrange the sum and factor out a factor $p$?
+        \item Once the above step is done, it suffices to show what's left is 0 mod $p$. This should be straightforward after noting inverses are a bijection on $\left\{ 1,2,\dots,p-1 \right\}$.
+        \item Where did we need $p>3$?
+    \end{enumerate}
+\end{walk}
+
+\section{Common targets of $\nu_p$}
+It is often useful to know the $p$-adic valuation of various numbers or expressions, so we give an overview of common techniques involving them.
+\subsection{Factorials}
+The following theorem is the heart of finding $\nu_p$ of both factorials and binomial coefficients.
+\begin{theo}[Legendre]
+    For a positive integer $n$ and prime $p$, we have \[\nu_p(n!)=\sum_{k=1}^{\infty}\left\lfloor \frac n{p^k} \right\rfloor.\]
+\end{theo}
+
+\begin{pro}[1]
+    Switching the order of summation: \[\nu_p(n!)=\sum_{i=1}^n \nu_p(i)=\sum_{i=1}^n\sum_{k=1}^{\nu_p(i)}1=\sum_{k=1}^{\infty}\left[\sum_{\substack{i\in\left\{ 1,2,\dots,n \right\}\\ p^k\mid i}}1\right]=\sum_{k=1}^\infty\left\lfloor \frac n{p^k} \right\rfloor.\]
+\end{pro}
+
+\begin{pro}[2]
+    Note that $\left\lfloor \frac np \right\rfloor$ counts the number of multiples of $p$ between 1 and $n$. For each multiple of $p^2$, we must add 1 more to the sum (since they contribute at least 2 factors of $p$, and only 1 has been counted so far), so add on $\left\lfloor \frac n{p^2} \right\rfloor$. Similarly, for each multiple of $p^3$, we must add 1 more to the sum, so add on $\left\lfloor \frac n{p^3} \right\rfloor$. Continuing this reasoning shows that \[\nu_p(n!)=\sum_{k=1}^{\infty}\left\lfloor \frac n{p^k} \right\rfloor,\] as desired.
+\end{pro}
+
+\begin{remark}
+    Do you understand how the first algebraic proof encapsulates the reasoning explained in English in the second proof?
+\end{remark}
+
+Using Legendre's theorem, we can prove the following corollary, which is just as useful (and will be used to prove Kummer's theorem in the next section).
+
+\begin{corollary}
+    We also have \[\nu_p(n!)=\frac{n-s_p(n)}{p-1},\] where $s_p(n)$ is the sum of the digits of $n$ in base $p$.
+\end{corollary}
+
+\begin{walk}
+    \begin{enumerate}
+        \item Write $n=\sum_{i=0}^k a_ip^i=\left( \overline{a_ka_{k-1}\dots a_0} \right)_p$ for integers $0\leq a_i<p$; then what are \[\left\lfloor \frac np \right\rfloor,\left\lfloor \frac n{p^2} \right\rfloor,\left\lfloor \frac n{p^3} \right\rfloor,\dots\] in terms of the $a_i$?
+        \item Use Legendre's theorem to calculate $\nu_p(n!)$, and do some algebra to finish.
+    \end{enumerate}
+\end{walk}
+
+\begin{exam}[USSR Math Olympiad]
+    Show that $\binom{1000}{500}$ is not divisible by 7.
+\end{exam}
+
+\begin{sol}
+    Note by Legendre, we have $\nu_7(1000!)=142+20+2=164$ while $\nu_2(500!)=71+10+1=82$, so \[\nu_7\left( \binom{1000}{500} \right)=\nu_7\left( \frac{1000!}{(500!)^2} \right)=\nu_7(1000!)-2\nu_7(500!)=0\implies 7\nmid \binom{1000}{500},\] as desired.
+\end{sol}
+
+\subsection{Binomial Coefficients}
+Using the corollary from above, we can actually determine the $\nu_p$ of any binomial coefficient (which isn't too surprising, given that binomial coefficients can be written in terms of factorials, which we found $nu_p$ for earlier).
+
+\begin{theo}[Kummer]
+    If $c$ is the number of carries that must be made when adding $n$ to $m-n$ in base $p$, then \[\nu_p\left( \binom mn \right)=c.\]
+\end{theo}
+
+\begin{walk}
+    \begin{enumerate}
+        \item Show that the number of carries when adding $n$ to $m-n$ in base $p$ is precisely \[\frac{s_p(n)+s_p(m-n)-s_p(m)}{p-1}.\]
+        \item Recall the earlier corollary, and conclude.
+    \end{enumerate}
+\end{walk}
+
+We solve the earlier USSR Math Olympiad problem in a different way now:
+\begin{exam}[USSR Math Olympiad]
+    Show that $\binom{1000}{500}$ is not divisible by 7.
+\end{exam}
+
+\begin{sol}
+    Note that $500_{10}=1313_7$, and no carries occur when adding $1313_7$ to itself. By Kummer's theorem, this implies that \[\nu_p\left( \binom{1000}{500} \right)=0\implies 7\nmid \binom{1000}{500},\] as desired.
+\end{sol}
+\subsection{Lifting the Exponent}
+This section will cover the extremely useful lemma, Lifting the Exponent (LTE), which allows us to evaluate $\nu_p$ on the difference of powers. It has seen an increase in usage in the past few years of AIME.\\
+
+\begin{theo}[LTE]
+    Let $p$ be an \emph{odd prime} and $a,b$ integers such that \emph{all of the following hold}: \[p\nmid a,\quad p\nmid b,\quad p\mid a-b.\] Then for any positive integer $n$, we have \[\nu_p(a^n-b^n)=\nu_p(a-b)+\nu_p(n).\]
+\end{theo}
+
+\begin{walk}
+    \begin{enumerate}
+        \item Prove the statement for $\nu_p(n)=0$. You will need to use \[x^n-y^n=(x-y)\left(x^{n-1}+x^{n-2}y+\dots+xy^{n-2}+y^{n-1}\right).\]
+        \item Use induction to prove the statement for $n=p^m$ for some positive integer $m$. You will need to use \[x^p-y^p=(x-y)\left(x^{p-1}+x^{p-2}y+\dots+xy^{p-2}+y^{p-1}\right).\]
+        \item Let $m=\nu_p(n)$ and suppose $n=p^m\cdot k$ where $p\nmid k$ by definition. How can we rewrite $a^n-b^n$ so that the new exponent is a power of $p$?
+        \item Finish by applying the first two steps.
+        \item Where does the proof go wrong if $p=2$?
+        \item Can you derive an alternate form for LTE for when $p=2$?
+    \end{enumerate}
+\end{walk}
+
+\begin{fact}
+    The following cases resolve LTE for $p=2$.
+    \begin{itemize}
+        \Item For odd integers $a,b$ such that $4\mid a-b$ and any positive integer $n$, we have \[\nu_2(a^n-b^n)=\nu_2(a-b)+\nu_2(n).\]
+        \Item For odd integers $a,b$ such that $4\nmid a-b$ and any \emph{even} positive integer $n$, we have \[\nu_2(a^n-b^n)=\nu_2(a-b)+\nu_2(a+b)+\nu_2(n)-1.\]
+        \Item For odd integers $a,b$ such that $4\nmid a-b$ and any \emph{odd} positive integer $n$, we have \[\nu_2(a^n-b^n)=1.\]
+    \end{itemize}
+\end{fact}
+
+These cases are quite cumbersome to commit to memory; it is therefore \emph{highly recommended} that you understand the proof of LTE for odd primes well and just repeat a similar induction argument to rederive it when needed. Another equivalent reformulation that may be easier to remember/use is the following:
+
+\begin{fact}
+    For odd integers $a,b$ and any positive integer $n$, we have \[\nu_2(a^n-b^n)=1\quad\text{ or }\quad\nu_2(a^n-b^n)=\nu_2(a-b)+\nu_2(a+b)+\nu_2(n)-1.\]
+\end{fact}
+
+\begin{corollary}
+    Let $p$ be an \emph{odd prime} and $a,b$ integers such that \emph{all of the following hold}: \[p\nmid a,\quad p\nmid b,\quad p\mid a+b.\] Then for any positive \emph{odd} integer $n$, we have \[\nu_p(a^n+b^n)=\nu_p(a+b)+\nu_p(n).\]
+\end{corollary}
+
+Let's tackle the following problem using LTE! Hopefully the example will emphasize just how important each condition is.
+
+\begin{exam}
+    Evaluate $\nu_5\left( 10^{100}-5^{100} \right)$.
+\end{exam}
+
+\begin{walk}
+    \begin{enumerate}
+        \item We can't apply LTE directly since $5\mid 10,5$. Factor out some obvious factors of 5 to fix this issue.
+        \item You should be left with $2^{100}-1$. We can't apply LTE directly since $5\nmid 2-1$. Fix this issue by writing $100=m\cdot\frac{100}m$ for some $m$ and noting $2^{100}-1=\left( 2^m \right)^{\frac{100}m}-1$.
+        \item Finish the problem.
+    \end{enumerate}
+\end{walk}
+
+\pagebreak
+\section{Problems}
+
+\minpt{50}
+
+\psetquote{I try to show the schemers how pathetic their attempts to control things really are.}{Joker}
+
+\prob{1}{}{Determine $\nu_3(2021!)$.}
+
+\prob{1}{}{Find the smallest integer $n$ such that $43\nmid \binom{2021}n$.}
+
+\req{2}{Classic}{If $2^{n-1}\mid n!$, prove that $n$ is a power of 2.}
+
+\prob{2}{Classic}{Prove that for all $n>1$, $\sum_{i=1}^n\frac1{2i-1}$ is not an integer.}
+
+\prob{3}{AIME I 2018/11}{Find the least positive integer $n$ such that when $3^n$ is written in base $143$, its two right-most digits in base $143$ are $01$.}
+
+\prob{3}{Proposed by Columbia to IMO 1989}{Show that there are infinitely many positive integers $n$ for which $n-\nu_2(n!)=1989$.}
+
+\req{4}{AIME I 2020/12}{Let $n$ be the least positive integer for which $149^n - 2^n$ is divisible by $3^3 \cdot 5^5 \cdot 7^7$. Find the number of positive divisors of $n$.}
+
+\prob{4}{brilliant.org}{Show that 2 is a primitive root mod $3^k$ for all positive integers $k$.}
+
+\prob{4}{Classic}{For positive integers $n$, determine all possible values of \[\gcd\left( \binom n1,\binom n2,\dots,\binom n{n-1} \right).\]}
+
+\req{6}{CMC 12B 2021/23}{Let $\varphi(n)$ denote the number of positive integers less than or equal to $n$ that are relatively prime to $n.$ For example, $\varphi(6)=2$ and $\varphi(15)=8.$ Find all integers $n>1$ such that $\varphi(n) \mid (5^n+1)$.}
+
+\req{6}{BAMO 2018/4}{Let $a, b, c$ be positive integers. Show that if $\frac ab+\frac bc+\frac ca$ is an integer, then $\sqrt[3]{abc}$ is an integer as well.}
+
+\prob{6}{RMM TST 2010/1/5}{Let $a$ and $n$ be two positive integers such that the prime factors of $a$ are all greater than $n$. Prove that \[n!\mid (a-1)(a^2-1)\cdots (a^{n-1}-1).\]}
+
+\prob{6}{USAMO 1985/1}{Determine whether or not there are any positive integral solutions of the simultaneous equations \[x_1^2+x_2^2+\dots+x_{1985}^2=y^3,\] \[x_1^3+x_2^3+\dots+x_{1985}^3=z^2\] with distinct integers $x_1,x_2,\dots,x_{1985}$.}
+
+\req{9}{USEMO 2020/1}{Which positive integers can be written in the form \[\frac{\operatorname{lcm}(x, y) + \operatorname{lcm}(y, z)}{\operatorname{lcm}(x, z)}\]for positive integers $x$, $y$, $z$?}
+
+\req{9}{China 2015/4}{Determine all integers $k$ such that there exists infinitely many positive integers $n$ not satisfying \[n+k \mid\binom{2n}{n}.\]}
+
+\prob{9}{Kosovo 2020/12.4}{Let $a_0$ be a fixed positive integer. We define an infinite sequence of positive integers $\{a_n\}_{n\ge 1}$ in an inductive way as follows: if we are given the terms $a_0,a_1,...a_{n-1}$ , then $a_n$ is the smallest positive integer such that $\sqrt[n]{a_0\cdot a_1\cdot ...\cdot a_n}$ is a positive integer. Show that the sequence $\{a_n\}_{n\ge 1}$ is eventually constant.}
+
+\prob{9}{Dospinescu}{Prove that \[\nu_p\left(2\cdot\sum_{k=1}^{p-1}\frac1k+p\cdot\sum_{k=1}^{p-1}\frac1{k^2}\right)\geq4.\]}
+
+\prob{9}{Alternate Version of Wolstenholme's Theorem}{For positive integers $a,b$ and a prime $p>3$ prove that \[\nu_p\left( \binom{ap}{bp}-\binom ab \right)\geq 3.\]}
+
+\prob{13}{ISL 2013 N4}{Determine whether there exists an infinite sequence of nonzero digits $a_1 , a_2 , a_3 , \cdots $ and a positive integer $N$ such that for every integer $k > N$, the number $\overline{a_k a_{k-1}\cdots a_1 }$ is a perfect square.}
+
+\prob{13}{IMO 2015/2}{Find all postive integers $(a,b,c)$ such that \[ab-c,\quad bc-a,\quad ca-b\] are all powers of $2$.}
+
+\end{document}

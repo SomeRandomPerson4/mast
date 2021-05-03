@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage[mast]{dennis}
+
+\title{Polynomial Sturcures}
+\author{Dennis Chen}
+\date{ARU}
+
+\begin{document}
+\maketitle
+
+\section{Constructing a Polynomial}
+
+Some polynomial structures can be solved by explicitly constructing a polynomial.
+
+\begin{exam}[AIME 1989/8]
+Assume that $x_1,x_2,\ldots,x_7$ are real numbers such that
+
+\begin{align*}
+x_1+4x_2+9x_3+16x_4+25x_5+36x_6+49x_7&=1\\
+4x_1+9x_2+16x_3+25x_4+36x_5+49x_6+64x_7&=12\\
+9x_1+16x_2+25x_3+36x_4+49x_5+64x_6+81x_7&=123.
+\end{align*}
+
+Find the value of $16x_1+25x_2+36x_3+49x_4+64x_5+81x_6+100x_7$.
+\end{exam}
+
+\begin{sol}
+Notice the quadratic nature of the left hand sides of the equations. This suggests letting
+\[P(x)=x_1(x+1)^2+x_2(x+2)^2+\cdots+x_7(x+7)^2.\]
+We know $P(0)=1,$ $P(1)=12,$ and $P(2)=123.$ By finite differences, $P(3)=123+(123-12)+(123-12-(12-1))=344.$ (Alternatively, you can just solve for the coefficients of the quadratic.)
+\end{sol}
+
+\begin{exam}[AIME 1984/15]
+Determine $x^2+y^2+z^2+w^2$ if
+\begin{align*}
+\frac{x^2}{2^2-1}+\frac{y^2}{2^2-3^2}+\frac{z^2}{2^2-5^2}+\frac{w^2}{2^2-7^2}&=1 \\
+\frac{x^2}{4^2-1}+\frac{y^2}{4^2-3^2}+\frac{z^2}{4^2-5^2}+\frac{w^2}{4^2-7^2}&=1 \\
+\frac{x^2}{6^2-1}+\frac{y^2}{6^2-3^2}+\frac{z^2}{6^2-5^2}+\frac{w^2}{6^2-7^2}&=1 \\
+\frac{x^2}{8^2-1}+\frac{y^2}{8^2-3^2}+\frac{z^2}{8^2-5^2}+\frac{w^2}{8^2-7^2}&=1.
+\end{align*}
+\end{exam}
+
+\begin{sol}
+The fact that the denominator changes in such a predictable and symmetric way suggests this problem is ripe for constructing a polynomial. The symmetric structure of $x^2+y^2+z^2+w^2$ also suggests that we should treat them as constants rather than variables.
+
+Indeed, in general the expression looks something like
+\[\frac{x^2}{t-1^2}+\frac{y^2}{t-3^2}+\frac{z^2}{t-5^2}+\frac{w^2}{t-7^2}-1,\]
+and we know the zeroes of this function are at $t=2^2,4^2,6^2,8^2.$ However, this function isn't a polynomial. Clearing the denominator by multiplying by $(t-1^2)(t-3^2)(t-5^2)(t-7^2)$ will not change the zeroes, since we know that the polynomial will be a quartic. Note that clearing the denominator gives
+\[P(t)=x^2(t-3^2)(t-5^2)(t-7^2)+y^2(t-5^2)(t-7^2)(t-1^2)+z^2(t-7^2)(t-1^2)(t-3^2)\]
+\[+w^2(t-1^2)(t-3^2)(t-5^2)-(t-1^2)(t-3^2)(t-5^2)(t-7^2).\]
+But also recall that $P$ has roots $2^2,4^2,6^2,8^2,$ and has a leading coefficient of $-1,$ so
+\[P(t)=-(t-2^2)(t-4^2)(t-6^2)(t-8^2).\]
+Thus coefficient matching gives us that the coefficients of $t^3$ are equal, or
+\[x^2+y^2+z^2+w^2+1^2+3^2+5^2+7^2=2^2+4^2+6^2+8^2\]
+\[x^2+y^2+z^2+w^2=36.\]
+\end{sol}
+
+At the end, we're motivated to take the coefficients of $t^3$ because it gives us $x^2+y^2+z^2+w^2.$ In fact, the squares are red herrings; the structure is still preserved if we don't use them.\footnote{An easy way to see that the squares are red herrings is to just note that substituting $a=x^2$, et cetera, does not change the problem statement whatsoever. (It does force each of the variables to be positive, which is something worth keeping in mind when first solving.)}
+
+\section{Root Analysis}
+
+Here we want to analyze the \textit{structure} of a polynomial and its roots. Recall from \db{AQU-Factorize} that two polynomials are identical if and only if they have the same leading coefficient and the same roots with the same multiplicities. Note this implies the weaker statement that it is necessary (though not sufficient) for two polynomials to have the same degree and same roots (not necessarily with multiplicity). It is often this weaker statement that is more useful.
+
+\begin{exam}[Canada]
+Let $ k$ be a positive integer. Find all polynomials
+
+\[ P(x) = a_0 + a_1 x + \cdots + a_n x^n,\]
+
+where the $ a_i$ are real, which satisfy the equation
+
+\[P(P(x)) = \{ P(x) \}^k.\]
+\end{exam}
+
+\begin{sol}
+We first deal with $n=0,$ or constant polynomials. Note that $P(x)=0$ and $P(x)=1$ works, and if $k$ is odd, $P(x)=-1$ works as well. In what follows, we assume that $P(x)$ is non-constant.
+
+Note that $P(P(x))$ has degree $k^2,$ since for $P(P(x))=P(x)^k$ to be true, we must have $\deg P = k.$ But now note $P(y)-y^k$ has more than $k^2$ roots, so it must be identically $0$ -- all you have to do to verify this is plug in $y=P(x)$ and get more than $k^2$ distinct values, which must be possible if $P$ is non-constant.
+\end{sol}
+
+\pagebreak
+
+\section{Problems}
+
+\minpt{TBD}
+
+\prob{2}{USAMO 1973/4}{Determine all the roots, real or complex, of the system of simultaneous equations
+\[x+y+z=3,\]
+\[x^2+y^2+z^2=3,\]
+\[x^3+y^3+z^3=3.\]}
+\end{document}

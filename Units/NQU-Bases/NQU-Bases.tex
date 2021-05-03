@@ -1,0 +1,98 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{Bases}
+\author{Dennis Chen}
+\date{NQU}
+
+\begin{document}
+
+\maketitle
+
+We examine problems either explicitly or implicitly using different base systems.
+
+\section{What is a Base?}
+The numerical system we use is commonly known as base $10.$ For example, $1234$ in base $10$ is $1\cdot 10^3+2\cdot 10^2+3\cdot 10^1+4\cdot 10^0.$ But there's nothing special about $10.$ We could choose to represent numbers like $1\cdot 8^3+2\cdot 8^2+3\cdot 8^1+4\cdot 8^0,$ or really like $1\cdot n^3+2\cdot n^2+3\cdot n^1+4\cdot n^0.$ Remember that the base must be greater than the value of the largest digit. (For example, $658_7$ is absurd because $7\leq 8.$)
+
+\begin{defi}[Base $b$]
+In general, the number $\overline{a_na_{n-1}\ldots a_{1}a_{0}}_b=a_n\cdot b^n+a_{n-1}\cdot b^{n-1}+\cdots+a_1\cdot b^1+a_0\cdot b^0.$ We say that this number is written in base $b.$
+\end{defi}
+
+\section{Period of a Repeating Decimal}
+You may know that $\frac{1}{7}=0.\overline{142857}$ has a period of $6$ digits. But what if I asked you to find the period of, say, $\frac{1}{997}?$ You probably wouldn't want to divide it by hand. So how would you find it?
+
+\begin{exam}[Period of $\frac{1}{13}$]
+Find the period of the decimal expansion of $\frac{1}{13}.$
+\end{exam}
+
+\begin{sol}
+We use some number theory concepts and a little bit of clever algebra here.
+
+Let the decimal expansion of $\frac{1}{13}$ be $0.\overline{a_1a_2\cdots a_n}.$ Then note that $\frac{10^n}{13}=a_1a_2\cdots a_n.\overline{a_1a_2\cdots a_n}.$ Thus $\frac{10^n-1}{13}=a_1a_2\cdots a_n,$ implying that $13|10^n-1,$ so we want to find the smallest $n$ such that $13|10^n-1.$ Note that $13|10^6-1,$ since $10^6-1=999\cdot 1001,$ and $13|1001.$ (We can check the proper divisors of $6$ and note none of them work.)
+\end{sol}
+
+Sometimes expressing a recursively defined sequence in some nice base can yield useful information about the sequence. This is best explained through an example. 
+
+\begin{exam}[2014 HMMT Feb]
+We have a calculator with two buttons that displays an integer $x$. Pressing the first button replaces $x$ by $\left\lfloor \frac x2\right\rfloor$, while pressing the second button replaces $x$ with $4x+1$. Initially, the calculator displays $0$. How many integers less than or equal to $2014$ can be achieved through a sequence of arbitrary button presses? (It is permitted for the number displayed to exceed $2014$ during the sequence.)
+\end{exam}
+
+\begin{sol}
+Write the number displayed in base $2$; the first button deletes the rightmost digit while the second button adds the string $01$ to the right of the number. Note that we thus may achieve any number that has no consecutive $1$'s in its binary representation; call a number with this property a \textit{nice number}. Since $2014_{10}=11111011110_2$, and because all such nice numbers that have $11$ digits are at most $10101010101_2$, the problem is equivalent to finding all nice numbers that have $11$ or fewer digits. The last part is a combinatorics problem; by considering the last digit of each nice number, we may find by recursion that the number of nice numbers with $n$ or fewer digits is $F_{n+2}$ where $F_i$ is the $i$-th Fibonacci number - we quickly find that our answer is $F_{13}=233$. 
+\end{sol}
+
+\pagebreak
+
+\section{Problems}
+
+\minpt{34}
+
+\psetquote{A person is smart. People are dumb.}{Kaguya-sama}
+
+\req{1}{AMC 10A 2021/11}{For which of the following integers $b$ is the base-$b$ number $2021_b - 221_b$ not divisible by $3$?
+
+\answer34678}
+
+\prob{2}{SMT 2012}{Find the sum of all integers $x\ge 3$ such that \[201020112012_x\] is divisible by $x-1$.}
+
+\prob{2}{PAMO 2003/3}{Does there exists a base in which the numbers of the form:
+\[ 10101, 101010101, 1010101010101,\cdots \]
+are all prime numbers?}
+
+\prob{2}{AIME I 2020/3}{A positive integer $N$ has base-eleven representation $\underline{a}\kern 0.1em\underline{b}\kern 0.1em\underline{c}$ and base-eight representation $\underline1\kern 0.1em\underline{b}\kern 0.1em\underline{c}\kern 0.1em\underline{a},$ where $a,b,$ and $c$ represent (not necessarily distinct) digits. Find the least such $N$ expressed in base ten.}
+
+\prob{3}{ARML 2000}{For an integer $k$ in base $10$, let $z(k)$ be the number of zeros that appear in the binary representation of $k$. Let $S_n=\sum_{k=1}^n x(k)$. Find $S_{256}$. }
+
+\prob{3}{AIME 2008 II/4}{There exist $ r$ unique nonnegative integers $ n_1 > n_2 > \cdots > n_r$ and $ r$ unique integers $ a_k$ ($ 1\le k\le r$) with each $ a_k$ either $ 1$ or $ - 1$ such that
+\[ a_13^{n_1} + a_23^{n_2} + \cdots + a_r3^{n_r} = 2008.
+\]Find $ n_1 + n_2 + \cdots + n_r$.}
+
+\prob{3}{AIME I 2001/8}{Call a positive integer $N$ a \textit{7-10 double} if the digits of the base-$7$ representation of $N$ form a base-$10$ number that is twice $N$. For example, $51$ is a 7-10 double because its base-$7$ representation is $102$. What is the largest 7-10 double?}
+
+\prob{4}{AMC 10A 2018/25}{For a positive integer $n$ and nonzero digits $a$, $b$, and $c$, let $A_n$ be the $n$-digit integer each of whose digits is equal to $a$; let $B_n$ be the $n$-digit integer each of whose digits is equal to $b$, and let $C_n$ be the $2n$-digit (not $n$-digit) integer each of whose digits is equal to $c$. What is the greatest possible value of $a + b + c$ for which there are at least two values of $n$ such that $C_n - B_n = A_n^2$?}
+
+
+\prob{6}{AHSME 1993/30}{Given $0 \le x_0 <1$, let
+\[ x_n= 
+     \begin{cases}
+       2x_{n-1} & \text{if}\ 2x_{n-1} <1 \\
+       2x_{n-1}-1 & \text{if}\ 2x_{n-1} \ge 1
+     \end{cases} \]for all integers $n>0$. For how many $x_0$ is it true that $x_0=x_5$?}
+
+\prob{6}{e-dchen Mock MATHCOUNTS}{Find the sum of all odd $n$ such that $\frac{1}{n}$ expressed in base $8$ is a repeating decimal with period $4.$}
+
+\prob{6}{HMMT 2002}{A sequence $s_0,s_1,\cdots $is defined by $s_0=s_1=1$ and the following relations: $s_{2n}=s_n, s_{4n+1}=s_{2n+1},$ and $s_{4n-1}=s_{2n-1}+s_{2n-1}^2/s_{n-1}$. What is the value of $s_{1000}$?}
+
+\prob{6}{AIME II 2014/15}{For any integer $k\ge 1$, let $p(k)$ be the smallest prime witch does not divide $k$. Define the integer function $X(k)$ to be the product of all primes less than $p(k)$ if $p(k)>2$, and $X(k)=1$ if $p(k)=2$. Let $\{x_n\}$ be the sequence defined by $x_0=1$ and $x_{n+1}X(x_n)=x_np(x_n)$ for $n\ge 0$. Find the smallest positive integer $t$ such that $x_t=2090$.}
+
+\prob{9}{SMT 2018}{A sequence is defined as follows. Given a term $a_n$, we define the next term $a_{n+1}$ as \[\begin{cases} 
+      \frac{a_n}2 & 2|a_n \\
+      a_n-1 & 2\nmid a_n 
+   \end{cases}\]The sequence terminates when $a_n=1$. Let $P(x)$ be the number of terms in such a sequence with initial term $x$. For instance, $P(7)=5$ because its corredsponding sequence is $7,6,3,2,1$. Evaluate $P(2^{2018}-2018).$}
+
+\prob{13}{AIME II 2000/14}{Every positive integer $k$ has a unique factorial base expansion 
+
+$(f_1,f_2,f_3,\ldots,f_m)$, meaning that $k=1!\cdot f_1+2!\cdot f_2+3!\cdot f_3+\cdots+m!\cdot f_m$, where each $f_i$ is an integer, $0\le f_i\le i$, and $0<f_m$. Given that $(f_1,f_2,f_3,\ldots,f_j)$ is the factorial base expansion of $16!-32!+48!-64!+\cdots+1968!-1984!+2000!$, find the value of $f_1-f_2+f_3-f_4+\cdots+(-1)^{j+1}f_j$.}
+
+\end{document}

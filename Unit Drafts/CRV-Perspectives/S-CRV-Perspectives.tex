@@ -1,0 +1,80 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{Solutions to Perspectives-2}
+\author{Dennis Chen}
+\date{CQV2}
+
+\begin{document}
+
+\maketitle
+
+\toc
+
+\pagebreak\section{ISL 2018/C1}
+Let $n\geq 3$ be an integer. Prove that there exists a set $S$ of $2n$ positive integers satisfying the following property: For every $m=2,3,...,n$ the set $S$ can be partitioned into two subsets with equal sums of elements, with one of subsets of cardinality $m.$
+
+\subsection{Solution}
+This solution is motivated by the following idea: If $a,b,a+b$ are in $S,$ then we can swap $a,b$ for $a+b$.
+
+For $n=3,$ the set $\{1,2,3,4,5,7\}$ suffices.
+
+For $n>3$ the set $S$ is $\{F_1,F_2,\ldots,F_{2n-2},F_{2n-1},F_{1}+F_{2}+\ldots+F_{2n-4}\}.$ Let $F_1+F_2+\ldots+F_{2n-4}=X.$ Then the construction is letting one of the subsets be $\{X,F_{2(n-1)},F_{2(n-2)},F_{2(n-3)},\ldots,F_{2(n-m+1)},F_{2(n-m)+1}\}.$
+
+\pagebreak\section{IMO 2002/2}
+Let $n$ be a positive integer. Each point $(x,y)$ in the plane, where $x$ and $y$ are non-negative integers with $x+y<n$, is coloured red or blue, subject to the following condition: if a point $(x,y)$ is red, then so are all points $(x',y')$ with $x'\leq x$ and $y'\leq y$. Let $A$ be the number of ways to choose $n$ blue points with distinct $x$-coordinates, and let $B$ be the number of ways to choose $n$ blue points with distinct $y$-coordinates. Prove that $A=B$.
+
+\subsection{Solution}
+
+\pagebreak\section{USAMO 2015/4}
+
+Steve is piling $m \geq 1$ indistinguishable stones on the squares of an $n \times n$ grid. Each square can have an arbitrarily high pile of stones. After he finished piling his stones in some manner, he can then perform stone moves, defined as follows. Consider any four grid squares, which are corners of a rectangle, i.e. in positions $(i, k),(i, l),(j, k),(j, l)$ for some $1 \leq i, j, k, l \leq n,$ such that $i<j$ and $k<l .$ A stone move consists of either removing one stone from each of $(i, k)$ and $(j, l)$ and moving them to $(i, l)$ and $(j, k)$ respectively, or removing one stone from each of $(i, l)$ and $(j, k)$ and moving them to $(i, k)$ and $(j, l)$ respectively.
+
+Two ways of piling the stones are equivalent if they can be obtained from one another by a sequence of stone moves. How many different non-equivalent ways can Steve pile the stones on the grid?
+
+\subsection{Solution}
+
+We claim that the answer is $\binom{m+n-1}{m}^2.$
+
+Note that each move preserves the sum of the number of rocks in each row and column. We claim that two ways of piling stones are equivalent by taking one board $A$ to another board $B$ in a greedy algorithm. The rules of the algorithm are as follows:
+
+\begin{itemize}
+\Item We take the uppermost square, which we call $P_A$ and $P_B$ for squares $A$ and $B$ from this point onwards, in the leftmost row of $A$ such that its corresponding square in $B$ does not have the same number of stones as it does.
+\Item We make moves with no regard to the rest of the grid to make $P_A$ identical to $P_B$, as long as it does not disrupt any squares above it.
+\Item Whenever a row of $A$ is identical to a row of $B,$ we delete it and restart the process.
+\end{itemize}
+
+We need only prove that the second step is always possible. To do this, we take two cases:
+\begin{itemize}
+\Item If $P_A$ has less rocks than $P_B,$ then it follows that there are rocks below it since the rocks above are identical and $P_B$ has more rocks, and that there are also rocks to the right for a similar reason.
+
+\Item If the square in $A$ has more rocks than the desired square in $B,$ and $P_A$ is not identical to $P_B,$ there must always be a square not in the same row or column with a rock. We prove this by contradiction: if it was possible to put all rocks in the row and column of $P_A,$ then the sums of each row and column uniquely determine the number of rocks in the squares that are not $P_A$, which then uniquely determines the number of rocks in $P_A.$ This implies that $P_A$ and $P_B$ are identical, in which case we were done in the first place.
+\end{itemize}
+
+Now we show that every arrangement of row-sums and column-sums has a solution. We prove the stronger claim that any arrangement of row and column sums in a grid such that the sum of the row sums and the sum of the column sums is the same has at least one arrangement of stones. To do this, we take a similar greedy algorithm:
+
+\begin{itemize}
+\Item We fill out the leftmost row in any way we feel like, noting that since the sum of the column sums is obviously at least the row sum, we will always have somewhere to put stones until we have enough.
+\Item We delete the leftmost row, adjusting the column sums accordingly.
+\end{itemize}
+
+Now note that by Stars and Bars, there are $\binom{n+m-1}{m}$ ways to arrange the row sums and $\binom{n+m-1}{m}$ ways to arrange the column sums, leading to a total of $\binom{n+m-1}{m}^2$ ways.
+
+\pagebreak\section{CMO 2019/3}
+
+Let $m$ and $n$ be positive integers. A $2m\times 2n$ grid of squares is colored in the usual chessboard fashion. Determine the number of ways to place $mn$ counters on the white squares, at most one counter per square, so that no two counters are diagonally adjacent.
+
+\subsection{Solution}
+
+Split the $2m\times 2n$ grid into an $m\times n$ grid of $2\times 2$ squares. Note that there must be exactly one counter in each $2\times 2$ square (we cannot have more than one for obvious reasons).
+    
+Now any square northwest of a square with a counter in the top left must have a counter in the top left. Then we construct some arrangement of squares with their counters in the top left and note for all of these arrangements, it is possible to fill the rest of the squares with counters in the bottom right.
+    
+Let the first column have $a_1$ squares with top-left counters, the second column have $a_2,$ etc, the $mth$ column have $a_m.$ Then note that we want to pick these $a_i$ such that
+\[n\geq a_1\geq a_2\geq\cdots\geq a_m\geq 0.\]
+We do a bijection and note this is the same as picking $a_i$ such that
+\[n+m-1\geq a_1>a_2>\cdots>a_m\geq 0.\]
+We are picking $m$ numbers out of $n+m.$ There are $\binom{m+n}{m}$ ways to do this.
+
+\end{document}

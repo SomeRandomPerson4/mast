@@ -1,0 +1,337 @@
+\documentclass[11pt]{article}
+\usepackage[mast]{dennis}
+
+\title{Combinatorial Recursions}
+\author{Abrar Fiaz}
+\date{CQU}
+
+\begin{document}
+\maketitle
+
+The common theme is that we break down each problem into smaller versions of the same problem.
+
+
+
+
+
+\section{Lecture Notes}
+
+
+\begin{exam}[USAJMO 2018/1]
+For each positive integer $n$, find the number of $n$-digit positive integers that satisfy both of the following conditions:
+\begin{itemize}
+\Item no two consecutive digits are equal, and
+\Item the last digit is a prime.
+\end{itemize}
+\end{exam}
+
+\begin{walk}
+%We will solve this problem in the $\textit{other}$ way that Brian didn't do it in the induction lecture. 
+Let $a_n$ be the number of $n$ digit positive integers satisying both conditions.
+
+\begin{enumerate}
+\item What happens when the $n-1$th digit is a prime? Use this to get a recursion for $a_n.$
+\item Now that you have got a recursion, but in a bad form that you can't straight use routine characteristic equations to get a closed form, compute the first few 
+values of $a_n$ and analyze $a_{n+1}/a_n$ for them.
+\item Approximate the value of $a_n$ and get a closed form for it.
+\item Tweak the closed form so that it becomes accurate.
+\item Prove it using a straightforward induction. 
+\end{enumerate}
+\end{walk}
+
+If you are uncomfortable with characteristic equations, it might be a good time to learn that, you may consult  \href{}{\url{https://math.berkeley.edu/~arash/55/8_2.pdf}}
+
+
+\begin{exam}[AIME 2015 II/10]
+Call a permutation $a_1,a_2,\ldots,a_n$ quasi-increasing if $a_k\le a_{k+1}+2$ for each $1\le k\le n-1$. For example, $54321$ and $14253$ are quasi-increasing permutations of the integers $1,2,3,4,5$, but $45123$ is not. Find the number of quasi-increasing permutations of the integers $1,2,\ldots,7$.
+\end{exam}
+
+
+\begin{walk}
+Let $q_n$ be the number of quasi-increasing sequences of the numbers $1, 2, \ldots, n.$
+
+\begin{enumerate}
+\item Manually list all the cases for $n=2, 3$ and find $q_2, q_3$.
+\item Take a valid permutation of $n = 2,$ and try to place $3$ in the permutation, how many ways can you do it?
+\item Now take  a valid permuation of $n= 3$ and try to place $4$ in the permutation, how many ways can you do it?
+\item  Write a recursion using $1$ and $2$ and find $q_7=486.$
+\end{enumerate}
+\end{walk}
+
+
+\begin{exam}[AIME 2013 II/9]
+A $7 \times 1$ board is completely covered by $m \times 1$ tiles without overlap; each tile may cover any number of consecutive squares, and each tile lies completely on the board. Each tile is either red, blue, or green. Let $N$ be the number of tilings of the $7 \times 1$ board in which all three colors are used at least once. For example, a $1 \times 1$ red tile followed by a $2 \times 1$ green tile, a $1 \times 1$ green tile, a $2 \times 1$ blue tile, and a $1 \times 1$ green tile is a valid tiling. Note that if the $2 \times 1$ blue tile is replaced by two $1 \times 1$ blue tiles, this results in a different tiling. Find the remainder when $N$ is divided by $1000$.
+\end{exam}
+
+
+\begin{walk}
+\begin{enumerate}
+\item Why does this problem look hard? Isn't the condition that all three colors are used at least once annoying to deal with?
+\item Drop the condition, let $a_n$ be the number of ways to tile a $n \times 1$ board such that any tile can be of any three color.
+\item Write a recursion in terms of $a_n$ and find $a_7.$
+\item But we are not done, because we need to subtract the cases where at most $2$ or at most $1$ colors were used; to meet the problem conditions.
+Define $b_n, c_n$ similarly of $a_n$ where any tile can be of any $2$ or only one color respectively. 
+\item Use PIE to get $a_n - 3b_n + 3c_n,$ once you compute this, you will get $8106 \equiv 106 \pmod{1000.}$
+\end{enumerate}
+\end{walk}
+
+
+
+\begin{exam}
+Find the number of $5$-digit ternary sequences (that is, sequences with digits 0, 1, or 2) where no ``$012$" and ``$21$" subsequences are allowed.
+\end{exam}
+
+\begin{walk}
+Let $a_n$ be the number of $n$ digit ternary sequences following the conditions.
+\begin{enumerate}
+\item Find $a_1, a_2, a_3$ manually.
+\item The first digit can be any of $0, 1, 2.$ So we have $3a_{n-1}$ sequences, but we have counted some stuff that we don't want, let's fix them case by case.
+\item Is there any problem if the first digit is $1$? 
+\item Then what happens when the first digit is $2$?
+If the first digit is $0,$ then we can't let the next two digits be $12$. So we want to subtract the number of $n-1$ digit sequences that satisfy conditions and start with $12$ i.e., $012\underbrace{\text{stuff}}.$
+\item The ``stuff" can be any $n-3$ digit sequence satisfying conditions that doesn't start with $1$. So, we need to subtract the associated $n-4$ digit sequence to find the number of such strings, hence we have $a_{n-3} - a_{n-4}$ such sequences.
+So, we need to subtract a total of $a_{n-3} - a_{n-4}$ from $3a_{n-1}.$  
+\item Conclude and write the final recursion, finding $a_5 = 125.$
+\end{enumerate}
+\end{walk}
+
+
+
+
+
+
+
+
+%\begin{exam}[PUMaC 2016 A/6]
+%A weak binary representation of a nonnegative integer $n$ is a representation $n=a_0+2\cdot a_1+2^2\cdot a_2+\dots$ such that $a_i\in\{0,1,2,3,4,5\}$. Determine the number of such representations for $513$.
+%\end{exam}
+%
+%
+%\begin{walk}
+%\end{walk}
+
+
+\begin{exam}
+[USAJMO 2019/5] Let $n$ be a nonnegative integer. Determine the number of ways to choose $(n+1)^2$ sets $S_{i,j} \subseteq \{1, 2, . . . , 2n\},$
+for all $0 \leq i \leq n$ and $0 \leq j \leq n$ (not necessarily distinct), such that
+\begin{itemize}
+\Item $|S_{i,j}| = i + j,$ and
+\Item $S_{i,j} \subseteq S_{k,l}$ if $0 \leq i \leq k \leq n$ and $0 \leq j \leq l \leq n.$
+\end{itemize}
+\end{exam}
+
+
+\begin{walk}
+\begin{enumerate}
+    \item Notice that there are $n+1$ chocies for $i$ and $n+1$ choices for $j,$ so the choice of $(n+1)^2$ makes sense. 
+    \item How can we structure the sets? Start by placing the sets in a $(n+1) \times (n+1)$ 
+    matrix where the intersection of row $i$ and column $j$ represents $S_{i,j}.$
+    \begin{align*}
+     \begin{bmatrix}
+\emptyset&S_{0,1}&\ldots\ldots&S_{0, n-1}&S_{0,n}\\
+S_{1,0}&S_{1,1}&\ldots\ldots&S_{1,n-1}&S_{1,n}\\
+\vdots&\vdots&\vdots&\vdots&\vdots\\
+S_{n-1, 0}&S_{n-1, 1}&\ldots\ldots&S_{n-1,n-1}&S_{n-1,n}\\
+S_{n, 0}&S_{n, 1}&\ldots\ldots&S_{n, n-1}&\{1, 2, \ldots, n\}
+\end{bmatrix}   
+    \end{align*}
+\item Can we sense some sort of recursion? we can do a recursion using the 
+top left $n\times n$ submatrix. How many ways can we choose $S_{n-1, n-1}?$ write out the 
+recursion, where we haven't still have taken care of the bottom row and the right-most column.
+\item Now, how can we take care of the cases of $S_{n, j}$ and $S_{i,n}$ where $0 \leq i \leq n$ and $0 \leq j \leq n$? How many ways can we choose $S_{n-1, n}$ given $S_{n, n}$ and 
+$S_{n-1, n-1}$? what about $S_{n, n-1}$?
+\item How many ways are there to determine $S_{n-2, n}$ and $S_{n, n-2}$?
+\item Prove what you see and come up with a recursion.
+\item Multiply the recursions and notice that stuff cancels out nicely, the desired answer is answer $(2n)!\cdot2^{n^2}.$
+
+\end{enumerate}
+\end{walk}
+
+
+\subsection{Catalan Numbers}
+
+You should check out \href{}{\url{https://www.youtube.com/watch?v=z_75zzqXVnM}}, there are $2$
+parts of the lecture.
+
+
+\pagebreak
+
+\section{Practice Problems}
+
+\minpt{38}
+
+\psetquote{Others of you will say yes, my education was worth it. Not because of what I learned about eukaryotes or Ukraine or whatever, but because formal education in the school system \textit{taught me how to think.}
+
+And to… sorry, one second, HAHAHAHAHAHHAHAAAHAH AHHAHAHAHAHA hahaha haha heh heh heh okay.}{SSC gives a graduation speech, Slate Star Codex}
+
+\prob{1}{}{Find the number of ways to tile a $2\times n$ rectangle with dominoes.}
+
+\prob{1}{Tower of Hanoi}{ The puzzle consists of three rods and a number of disks of different sizes, which can slide onto any rod. The puzzle starts with the disks in a neat stack in ascending order of size on one rod, the smallest at the top, thus making a conical shape. The objective of the puzzle is to move the entire stack to another rod, obeying the following simple rules:
+\begin{itemize}
+\item Only one disk can be moved at a time.
+\item Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod.
+\item No larger disk may be placed on top of a smaller disk.
+\end{itemize} 
+Find the minimum number of moves needed to solve this puzzle with $n$ disks.}
+
+\prob{2}{AIME 2015 II/12}{There are $2^{10}=1024$ possible 10-letter strings in which each letter is either an A or a B. Find the number of such strings that do not have more than 3 adjacent letters that are identical.}
+
+\prob{2}{AMC 12A 2007/25}{Call a set of integers spacy if it contains no more than one out of any three consecutive integers. How many subsets of $\{1,2,3,\ldots,12\},$ including the empty set, are spacy?}
+
+\prob{3}{AIME I 2001/14}{A mail carrier delivers mail to the nineteen houses on the east side of Elm Street. The carrier notices that no two adjacent houses ever get mail on the same day, but that there are never more than two houses in a row that get no mail on the same day. How many different patterns of mail delivery are possible?}
+
+\prob{3}{AMC 12B 2019/23}{How many sequences of $0$s and $1$s of length $19$ are there that begin with a $0$, end with a $0$, contain no two consecutive $0$s, and contain no three consecutive $1$s?}
+
+\prob{3}{MAST Diagnostic 2020}{A secret spy organization needs to spread some secret knowledge to all of its members. In the beginning, only $1$ member is \textit{informed}. Every informed spy will call an uninformed spy such that every informed spy is calling a different uninformed spy. After being called, an uninformed spy becomes informed. The call takes $1$ minute, but since the spies are running low on time, they call the next spy directly afterward. However, to avoid being caught, after the third call an informed spy makes, the spy stops calling. How many minutes will it take for every spy to be informed, provided that the organization has $600$ spies?}
+
+
+\prob{3}{AIME 2008 I/11}{Consider sequences that consist entirely of $ A$'s and $ B$'s and that have the property that every run of consecutive $ A$'s has even length, and every run of consecutive $ B$'s has odd length. Examples of such sequences are $ AA$, $ B$, and $ AABAA$, while $ BBAB$ is not such a sequence. How many such sequences have length 14?}
+
+
+\prob{3}{AIME I 2006/11}{
+A collection of $8$ cubes consists of one cube with edge-length $k$ for each integer $k, 1 \le k \le 8.$ A tower is to be built using all $8$ cubes according to the rules:
+\begin{itemize}
+    \Item Any cube may be the bottom cube in the tower.
+    \Item The cube immediately on top of a cube with edge-length $k$ must have edge-length at most $k+2.$
+\end{itemize}
+Let $T$ be the number of different towers than can be constructed. What is the remainder when $T$ is divided by $1000?$}
+
+\prob{3}{}{How many $5$-digit numbers are such that the digits, as read left-to-right, are non decreasing, and that the $i$th digit from the left is at most $i$?}
+
+
+\prob{3}{AIME 2016 II/12}T\hspace{-0.2cm}he figure  \vspace{-0.2cm} below shows a ring made of six small sections which you are to paint on a wall. You have four paint colors available and will paint 
+each of the six sections a solid color. Find the number of ways you can choose to paint each of the six sections if no two adjacent section can be painted with the same color.
+\begin{center}
+
+\begin{asy}
+import olympiad;
+import cse5;
+size(3cm);
+draw(unitcircle);
+draw(scale(0.6)*unitcircle);
+for(int i = 0; i < 6; ++i){
+	draw(dir(60*i)--0.6*dir(60*i));
+}
+\end{asy}
+
+\end{center}
+
+
+
+
+
+\prob{3}{AIME 2018 I/14}{Let $SP_1P_2P_3EP_4P_5$ be a heptagon. A frog starts jumping at vertex $S$. From any vertex of the heptagon except $E$, the frog may jump to either of the two adjacent vertices. When it reaches vertex $E$, the frog stops and stays there. Find the number of distinct sequences of jumps of no more than $12$ jumps that end at $E$.}
+
+\prob{6}{OMO 2019}{Susan is presented with six boxes $B_1, \dots, B_6$, each of which is initially empty, and two identical coins of denomination $2^k$ for each $k = 0, \dots, 5$. Compute the number of ways for Susan to place the coins in the boxes such that each box $B_k$ contains coins of total value $2^k.$}
+
+
+\prob{6}{The Josephus Problem}{
+Josephus Flavius was a famous Jewish historian of the first century. According to legend,
+he and some others were trapped in a cave surrounded by Romans. The group resolved
+that suicide was preferable to capture. So they decided to form a circle and go around it,
+killing every second person until no one was left. Josephus himself preferred to live. If he
+could figure out where to stand, then he could be the last one alive, surrender himself to the
+Romans, and write some more history. where should Josephus stand if
+there are $n$ people in the cave? 
+}
+
+
+\prob{9}{HMMT 2016 T6}{A nonempty set $S$ is called well-filled if for every $m \in S$, there are fewer than $\frac{1}{2} m$ elements of $S$ which are less than $m$. Determine the number of well-filled subsets of $\{1,2, \ldots, 42\}$.}
+
+\prob{9}{China 2001 Day 2/2}{Let $P_1P_2\ldots P_{24}$ be
+a regular $24$-sided polygon inscribed in a circle $\omega$ with circumference 
+$24.$ Determine the number of ways in which we can choose sets of
+eight distinct vertices $\{P_{i_1} , P_{i_2}
+,\ldots , P_{i_a }\}$ such that none of the arcs
+$P_{i_j}P_{i_k}$ has length $3$ or $8.$ }
+
+\prob{13}{PUMaC 2019 A/6}{
+A weak binary representation of a nonnegative integer $n$ is a representation $n=a_0+2\cdot a_1+2^2\cdot a_2+\dots$ such that $a_i\in\{0,1,2,3,4,5\}$. Determine the number of such representations for $513$.}
+
+
+\prob{13}{USAMO 2013/2}
+{For a positive integer $n\geq 3$ plot $n$ equally spaced points around a circle.  Label one of them $A$, and place a marker at $A$.  One may move the marker forward in a clockwise direction to either the next point or the point after that.  Hence there are a total of $2n$ distinct moves available; two from each point.  Let $a_n$ count the number of ways to advance around the circle exactly twice, beginning and ending at $A$, without repeating a move.  Prove that $a_{n-1}+a_n=2^n$ for all $n\geq 4$.}
+
+%\prob{9}{Mock AIME 2020}{Define a sequence of positive integers with $6$ terms, $(a_1,a_2,a_3,a_4,a_5,a_6),$ to be \textit{crazy} if:
+%	\begin{itemize}
+%		\Item $a_1=2016$
+%        
+%		\Item $a_6=1$
+%        
+%		\Item $a_{k+1}$ is a proper divisor of $a_k$ for $k\in \{1,2,3,4,5\}.$
+%	\end{itemize}
+%Compute the last three digits of the number of crazy sequences.}
+
+
+
+
+
+
+
+
+
+
+
+%\pagebreak
+%
+%\section{Solutions to the walkthroughs}
+%
+%\subsection{Solution 1, USAJMO 2018/1}
+%
+%
+%First, we claim that $a_n = 4\cdot 9^{n-1} - a_{n-1}.$  We can come to this conclusion by analyzing the $n-1$th position. Let $a_n$ be the number of strings meeting the 
+%desired criteria for a string of length $n.$ If the $n-1$th digit is a prime, then there is $3a_{n-1}$ ways to construct such a string. On the other case, 
+%we have $(9^{n-1} - a_{n-1} )\cdot4$ ways to construct such a string by complementary counting. Finally, we get that $a_n = 4\cdot 9^{n-1} -a_{n-1}.$
+%
+%But unfortunately, our recursion is not very comfortable for working with characteristic equations. So, we compute the first few values of the 
+%sequence and try to guess the solution.  So $a_1 =4, a_2 = 32, a_3 = 292, a_4 = 2624, a_5 = 23620.$ Because we are dumb, we will now get the 
+%ratios $a_{n+1}/a_n$ and see if we get lucky. Notice notice that $a_{n+1}/a_n \approx 9$ and it converges to $9$ as $n$ gets larger.
+%
+%Anyways, this gives us a pretty good idea, that $a_n \approx a_{n+1}/9.$ If we plug that in, we get $a_{n+1} \approx 4\cdot 9^n - \frac{a_{n+1}}{9} \implies a_{n} \approx \frac{2\cdot 9^n}{5}.$  Sadly we are not done, because our closed form is not accurate, let's see how we can fix it. 
+%Upon inspection, we notice that we can get the right answer by slightly tweaking the closed form, that is add $2/5$ for $n$ odd and subtract $2/5$ for 
+%$n$ even. So, we conjecture that the closed form is $a_n = \frac{2\cdot 9^n +(-1)^{n-1} \cdot 2}5.$   
+%
+%The proof is actually trivial induction, so It'll just get omitted. Thus we are done. \\
+%
+%
+%
+%
+%\subsection{Solution 2, AIME 2015 II/10}
+%
+%Notice the recursion $q_n = 3q_{n-1}$ and conclude the answer $q_7 = 486.$
+%
+%
+%\subsection{Solution 3, AIME 2013 II/9}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

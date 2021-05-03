@@ -1,0 +1,83 @@
+\documentclass{article}
+\usepackage[mast]{dennis}
+
+\title{Pairs}
+\author{Dennis Chen}
+\date{AQU}
+
+\begin{document}
+\maketitle
+
+We take a look at some problems that can be solved by pairing things up together.
+
+\section{Examples}
+Perhaps it'd be best if I just gave some examples of pairing problems.
+
+\begin{exam}
+If $f(x)=\frac{2x}{1+x},$ then find $\sum\limits_{p=1}^{100}\sum\limits_{q=1}^{100}f(\frac{p}{q}).$
+\end{exam}
+
+\begin{sol}
+Note that $f(x)+f(\frac{1}{x})=\frac{x}{1+x}+\frac{\frac{2}{x}}{1+\frac{1}{x}}=\frac{2x}{1+x}+\frac{2}{1+x}=2.$
+
+So pair up $f(\dfrac{p}{q})$ with $f(\dfrac{q}{p}),$ and note that there are $\frac{100^2}{2}=5000$ pairs of numbers, each of which sum up to $2,$ so the total is $5000\cdot 2=10000.$
+\end{sol}
+
+\begin{exam}[Wolstenholme's Theorem]
+Prove that for all prime $p\ge5$, we have $p^2\mid (p-1)!\left(\sum\limits_{i=1}^{p-1}\frac1{i}\right)$.
+\end{exam}
+
+\begin{sol}
+We pair up the sum as
+\[(p-1)!((\frac{1}{1}+\frac{1}{p-1})+(\frac{1}{2}+\frac{1}{p-2})+\cdots+(\frac{1}{\frac{p-1}{2}}+\frac{1}{\frac{p+1}{2}}))=(p-1)!(\frac{p}{1(p-1)}+\frac{p}{2(2-p)}+\cdots+\frac{p}{\frac{p-1}{2}(\frac{p+1}{2})}).\]
+Now divide by $p$; we only need
+\[p\mid (p-1)!(\frac{1}{1(p-1)}+\frac{1}{2(2-p)}+\cdots+\frac{1}{\frac{p-1}{2}(\frac{p+1}{2})})\]
+now. But note that
+\[\frac{1}{1(p-1)}+\frac{1}{2(2-p)}+\cdots+\frac{1}{\frac{p-1}{2}(\frac{p+1}{2})}\equiv -(\frac{1}{1^2}+\frac{1}{2^2}+\cdots+\frac{1}{(\frac{p-1}{2})^2}).\]
+Note that this can be bijected to
+\[-(1^2+2^2+\cdots+(\frac{p-1}{2})^2),\]
+or $-\frac{1}{2}(1^2+2^2+3^2+\cdots+(p-1)^2),$ which is obviously divisible by $p.$
+\end{sol}
+
+\begin{exam}[Complex Numbers]
+Let $z$ be a complex number such that $z^7=1.$ Find all possible values of $z+z^2+z^4.$
+\end{exam}
+
+\begin{sol}
+If $z=1$ then the value is obviously $3.$
+
+Say that $z\neq 1.$ Let $a=z+z^2+z^4$ and $b=z^3+z^5+z^6.$ Then note $a+b=-1$ and $ab=2,$ so either $a=-1$ or $a=2$, depending on the value of $z.$
+
+So the only possible values are $-1,2,3.$
+\end{sol}
+
+\pagebreak
+
+\section{Problems}
+
+\minpt{TBD}
+
+\psetquote{I, for one, have never said anything stupid in my life.}{Kaguya-sama}
+
+\prob{2}{}{Find the remainder of $1^{2017}+2^{2017}+3^{2017}+\cdots+2017^{2017}$ when divided by $2019.$}
+
+\prob{2}{AIME 1985/1}{Let $x_1=97$, and for $n>1$, let $x_n=\frac{n}{x_{n-1}}$. Calculate the product $x_1x_2x_3x_4x_5x_6x_7x_8$.}
+
+\prob{3}{TrinMaC 2020/16}{Given that $f(x)=\frac{2020}{2020+2020^{2x}},$ compute \[\sum\limits_{n=1}^{2020}f\left(\frac{n}{2021}\right).\]}
+
+\prob{3}{}{If $f(x)=\frac{4^x}{2+4^x},$ find $f(-2018)+f(-2017)+\cdots+f(2019).$}
+
+\prob{3}{AIME I 2006/6}{Let $\mathcal{S}$ be the set of real numbers that can be represented as repeating decimals of the form $0.\overline{abc}$ where $a, b, c$ are distinct digits. Find the sum of the elements of $\mathcal{S}.$}
+
+\req{3}{HMMT Feb. Guts 2011/22}{Find the number of ordered triples $(a,b,c)$ of pairwise distinct integers such that $-31\leq a,b,c\leq 31$ and $a+b+c >0.$}
+
+\prob{4}{AIME 1983/13}{For $\{1, 2, 3, \ldots, n\}$ and each of its non-empty subsets a unique alternating sum sum is defined as follows. Arrange the numbers in the subset in decreasing order and then, beginning with the largest, alternately add and subtract successive numbers. For example, the alternating sum for $\{1, 2, 3, 6,9\}$ is $9-6+3-2+1=5$ and for $\{5\}$ it is simply $5$. Find the sum of all such alternating sums for $n=7$.}
+
+\req{4}{}{Show that the product of the $2^{100}$ numbers of the form
+\[\pm\sqrt{1}\pm\sqrt{2}\pm\sqrt{3}\pm\cdots\pm\sqrt{100}\]
+is the square of an integer number.}
+
+\prob{6}{}{Find $\max\left(\sqrt{x}+\frac{1}{\sqrt{x}}-\sqrt{x+\frac{1}{x}+1}\right).$}
+
+\prob{6}{}{Let $A=\{\frac{1}{2},\frac{1}{3},\ldots,\frac{1}{100}\}$ and let $f(X)$ be the product of the elements of $X.$ Find $\sum f(X),$ where $X$ spans all of the subsets of $A$ with an even number of elements.}
+\end{document}

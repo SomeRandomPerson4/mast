@@ -1,0 +1,79 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{Invariants and Symmetry}
+\author{Dennis Chen}
+\date{CRU}
+
+\begin{document}
+\maketitle
+
+\input{CRU-Invariants}
+
+\pagebreak
+
+\section{Problems}
+\psetquote{You take the blue pill - the story ends, you wake up in your bed and believe whatever you want to believe. You take the red pill - you stay in Wonderland and I show you how deep the rabbit-hole goes.}{Morpheus on The Matrix}
+\minpt{32}
+
+\prob{2}{e-dchen Mock MATHCOUNTS}{Bill has 7 rods, with lengths $1,2,3,\dots,7.$ He repeatedly takes two rods of length $a,b,$ and makes them the legs of a right triangle. He gets a new rod with the length of the hypotenuse of the right triangle and uses it to replace the rods of length $a$ and $b.$ At the end, when he only has two rods left, he forms the right triangle with those two rods as legs. What is the maximum possible area of this right triangle?}
+
+\prob{2}{}{Alice writes the numbers $1,$ $2,$ $3,$ $4,$ $5,$ and $6$ on a blackboard. Bob selects two of these numbers, erases both of them, and writes down their positive difference on the blackboard. For example, if Bob chose the numbers $3$ and $4,$ the blackboard would contain the numbers $1,$ $1,$ $2,$ $5,$ and $6.$ Bob continues until there is only one number left on the board. Is it possible for Bob to have $4$ as the only number left on the board?}
+
+\prob{3}{}{Consider an $8\times 8$ grid with opposite corners tiled by $1\times 1$ blocks. Is it possible to tile the rest of the grid with dominoes such that every square is filled and there is no overlap?}
+
+\prob{3}{}{A set of real numbers $\{a,b,c\}$ is given. You may change any two of the numbers, say $a$ and $b,$ to $\frac{a+b}{\sqrt{2}}$ and $\frac{a-b}{\sqrt{2}}.$ Is it possible to go from $\{1,\sqrt{2},1+\sqrt{2}\}$ to $\{2,\sqrt{2},\frac{1}{\sqrt{2}}\}?$}
+
+\prob{3}{USAJMO 2020/1}{Let $n \geq 2$ be an integer. Carl has $n$ books arranged on a bookshelf. Each book has a height and a width. No two books have the same height, and no two books have the same width. Initially, the books are arranged in increasing order of height from left to right. In a move, Carl picks any two adjacent books where the left book is wider and shorter than the right book, and swaps their locations. Carl does this repeatedly until no further moves are possible. Prove that regardless of how Carl makes his moves, he must stop after a finite number of moves, and when he does stop, the books are sorted in increasing order of width from left to right.}
+
+\prob{4}{AMC 10B 2020/16}{Bela and Jenn play the following game on the closed interval $[0, n]$ of the real number line, where $n$ is a fixed integer greater than $4$. They take turns playing, with Bela going first. At his first turn, Bela chooses any real number in the interval $[0, n]$. Thereafter, the player whose turn it is chooses a real number that is more than one unit away from all numbers previously chosen by either player. A player unable to choose such a number loses. Using optimal strategy, which player will win the game?}
+
+\prob{4}{AIME II 2005/11}{Let $m$ be a positive integer, and let $a_0, a_1,\ldots,a_m$ be a sequence of reals such that $a_0 = 37, a_1 = 72, a_m = 0,$ and $a_{k+1} = a_{k-1} - \frac 3{a_k}$ for $k = 1,2,\ldots, m-1.$ Find $m.$}
+
+\req{4}{OMCC 2019/2}{We have a regular polygon $P$ with 2019 vertices, and in each vertex there is a coin. Two players Azul and Rojo take turns alternately, beginning with Azul, in the following way: first, Azul chooses a triangle with vertices in $P$ and colors its interior with blue, then Rojo selects a triangle with vertices in $P$ and colors its interior with red, so that the triangles formed in each move don't intersect internally the previous colored triangles. They continue playing until it's not possible to choose another triangle to be colored. Then, a player wins the coin of a vertex if he colored the greater quantity of triangles incident to that vertex (if the quantities of triangles colored with blue or red incident to the vertex are the same, then no one wins that coin and the coin is deleted). The player with the greater quantity of coins wins the game. Find a winning strategy for one of the players.
+
+Note. Two triangles can share vertices or sides.}
+
+\prob{6}{Problem Solving Strategies}{Eduardo writes the polynomial $x^2-x-2$ on a whiteboard. For any quadratic $ax^2+bx+c$ on the whiteboard, Eduardo can erase the polynomial and
+\begin{itemize}
+        \Item replace it with $cx^2 + bx + a,$ or
+        
+        \Item pick a real number $t,$ then replace his quadratic with (the expanded form of)
+$a(x + t)^2 + b(x + t) + c.$
+\end{itemize}
+
+Using these operations, can Eduardo ever reach the polynomial $x^2 - x - 1?$}
+
+\req{6}{RMM 2019/1}{Alice and Bob play a game on a whiteboard. First, Alice writes down a positive integer on the board. Then the players take turns: Bob chooses an integer $a$ and replaces the number $n$ on the whiteboard with $n-a^2,$ while Alice chooses a positive integer $k$ and replaces the number $n$ with $n^k.$ Bob wins if the number on the board becomes zero. Can Alice prevent Bob from winning?}
+
+\prob{9}{}{Given any arrangement of white and black tokens along the circumference of a circle, we're allowed the following operations:
+    \begin{itemize}
+        \Item Take out a white token and change the colour of both its neighbours.
+        
+        \Item Put in a white token and change the colour of both its neighbours.
+    \end{itemize}
+    Is it possible to go from a configuration with just two tokens, both white, to a configuration with two tokens, both black?}
+    
+\prob{9}{USAMTS 2019}{A group of $100$ friends stands in a circle. Initially, one person has $2019$ mangos, and
+no one else has mangos. The friends split the mangos according to the following rules:
+
+\begin{itemize}
+     \Item Sharing: to share, a friend passes two mangos to the left and one mango to the right.
+
+     \Item Eating: the mangos must also be eaten and enjoyed. However, no friend wants to be
+selfish and eat too many mangos. Every time a person eats a mango, they must also
+pass another mango to the right.
+\end{itemize}
+
+A person may only share if they have at least three mangos, and they may only eat if they
+have at least two mangos. The friends continue sharing and eating, until so many mangos
+have been eaten that no one is able to share or eat anymore.
+
+Show that there are exactly eight people stuck with mangos, which can no longer be shared or eaten.}
+%
+%\prob{13}{IMO 2000/4}{A magician has one hundred cards numbered 1 to 100. He puts them into three boxes, a red one, a white one and a blue one, so that each box contains at least one card. A member of the audience draws two cards from two different boxes and announces the sum of numbers on those cards. Given this information, the magician locates the box from which no card has been drawn.
+%
+%How many ways are there to put the cards in the three boxes so that the trick works?}
+
+\end{document}

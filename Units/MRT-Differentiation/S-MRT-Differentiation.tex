@@ -1,0 +1,343 @@
+\documentclass{article}
+\usepackage[mast]{dennis}
+
+\title{Solutions to Differentiation}
+\author{Dennis Chen}
+\date{MRT}
+
+\begin{document}
+\maketitle
+
+\toc
+
+\pagebreak\section{Exercises}
+
+\subsection{The Fundamentals}
+
+\begin{exer}
+Find the equation of the line tangent to $x^4+3x^2$ at $(2,28).$
+\end{exer}
+
+\begin{sol}
+Note that $f'(x)=3x^3+6x,$ so $f'(2)=36.$ Thus the point-slope equation of the line is
+\[y-28=44(x-2).\]
+\end{sol}
+
+\begin{exam}
+Find $\lim\limits_{x\to 0}\frac{\sin (2x)}{x+x^2}.$
+\end{exam}
+
+\begin{sol}[1 (Maclaurin Series)]
+Note that the Maclaurin Series of $\sin(2x)$ is $2x+O(x^3).$ Because the denominator has degree $2,$ and $x$ approaches $0,$ we don't care about $O(x^3).$ So the limit is equivalent to
+\[\lim\limits_{x\to 0}\frac{2x}{x+x^2}=\lim\limits_{x\to 0}\frac{2}{1+x}=2.\]
+\end{sol}
+
+\begin{sol}[2 (Factoring)]
+Note that this expression is equivalent to
+\[\lim_{x\to 0}\frac{\sin 2x}{2x}\cdot\frac{2}{1+x}=1\cdot \frac{2}{1}=2.\]
+\end{sol}
+
+\begin{sol}[3 (L'Hopital's)]
+Note that $1$ is the smallest number such that $g^{(1)}(x)\neq 0,$ where $g(x)=x+x^2,$ so
+\[\lim_{x\to 0}\frac{\sin (2x)}{x+x^2}=\frac{2\cos(2\cdot 0)}{1+2\cdot 0}=2.\]
+\end{sol}
+
+\subsection{Laws of Differentiation}
+
+\begin{exer}[AoPS Calculus, 3.6.3]
+Find $\frac{dy}{dx}$ if $x^2+y=\ln(y^2-1).$
+\end{exer}
+
+\begin{sol}
+We implicitly differentiate. Note that
+\[2x+\frac{dy}{dx}=\frac{1}{y^2-1}2y\frac{dy}{dx}\]
+\[2x=\frac{dy}{dx}\frac{2y-(y^2-1)}{y^2-1}=\frac{dy}{dx}\frac{-y^2+2y+1}{y^2-1}\]
+\[\frac{2x(y^2-1)}{-y^2+2y+1}=\frac{dy}{dx}.\]
+\end{sol}
+
+\begin{exer}[AoPS Calculus, 3.6.4]
+Find the slope of the tangent line to the curve $x\sin (x+y)=y\cos (x-y)$ at the point $(0,\frac{\pi}{2}).$
+\end{exer}
+
+\begin{sol}
+We implicitly differentiate. First use the product rule and note that
+\[\sin(x+y)+x(\cos(x+y))'=y'\cos(x-y)+y(\cos(x-y))'.\]
+By the Chain Rule, this implies
+\[\sin(x+y)+x\cos(x+y)(x+y)'=y'\cos(x-y)-y\sin(x-y)(x-y)'.\]
+Now the linearity of derivatives implies
+\[\sin(x+y)+x\cos(x+y)(1+y')=y'\cos(x-y)-y\sin(x-y)(1-y').\]
+Plug in $(x,y)=(0,\frac{\pi}{2})$ to get
+\[\sin(\frac{\pi}{2})=y'\cos(-\frac{\pi}{2})-\frac{\pi}{2}\sin(-\frac{\pi}{2})(1-y')\]
+\[1=\frac{\pi}{2}(1-y')\]
+\[\frac{\pi}{2}y'=\frac{\pi}{2}-1\]
+\[y'=1-\frac{2}{\pi}.\]
+Thus the slope is $1-\frac{2}{\pi}.$
+\end{sol}
+
+\subsection{Derivatives of Certain Functions}
+
+\begin{exer}[Periodic Derivatives]
+If $f(x)=\sin x,$ find $f'(x),f''(x),f'''(x),$ and $f''''(x).$ Do the same for $f(x)=\cos x.$
+\end{exer}
+
+\begin{sol}
+We already know from before that $f'(x)=\cos x.$ Thus $f''(x)=-\sin x,f'''(x)=-\cos x,$ and $f''''(x)=\sin x.$
+
+A good way to think of this is that $f'(x)=\sin(x+\frac{\pi}{2}).$ Then $f^{(n)}(x)=\sin(x+\frac{n\pi}{2}),$ which intuitively explains why $f^{(n)}(x)$ has period $4.$
+\end{sol}
+
+\begin{exer}[Derivatives of Reciprocal Functions]
+Given how the trigonometric derivatives for sin, cos, and tan were derived, determine and prove the derivatives of csc, sec, and cot.
+\end{exer}
+
+\begin{sol}
+The reciprocal rule solves the first two straightforwardly:
+\begin{align*}
+(\csc x)'=\left(\frac{1}{\sin x}\right)'&=-\frac{\cos x}{\sin^2x}=-\csc x\cot x 
+(\sec x)'=\left(\frac{1}{\cos x}\right)'&=\frac{\sin x}{\cos^2x}=\sec x\tan x.
+\end{align*}
+We could also use the reciprocal rule on $\cot x,$ but it's more convenient to just use the quotient rule:
+\[(\cot x)'=\left(\frac{\cos x}{\sin x}\right)'=\frac{\cos^2x+\sin^2x}{\sin^2x}=\frac{1}{\sin^2x}=\csc^2x.\]
+\end{sol}
+
+\begin{exer}
+Find the Maclaurin Series of $x\cos x.$
+\end{exer}
+
+\begin{sol}
+Note that the Maclaurin Series of $x$ is $x,$ and the Maclaurin Series of $\cos x$ is $1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots.$ Multiplying the two yields
+\[x\cos x=x-\frac{x^3}{2!}+\frac{x^5}{4!}-\cdots.\]
+\end{sol}
+
+\begin{exer}[Derivative of Inverse of Reciprocal Trigonometric Functions]
+Find the derivative of $\arccsc x,$ $\arcsec x,$ and $\arccot x.$
+\end{exer}
+
+\begin{sol}
+We implicitly differentiate for all of these.
+
+For the first one, let $f(x)=\arccsc x,$ and note this implies $\csc y=x.$ Then differentiating with respect to $x$ gives
+\[\left(\frac{1}{\sin y}\right)'y'=1\]
+\[-\frac{\cos y}{\sin^2 y}y'=1\]
+\[y'=-\frac{\sin^2y}{\cos y}.\]
+Since $\sin y=\frac{1}{x}$ and $\cos y=\sqrt{1-\frac{1}{x^2}},$
+\[y'=-\frac{1}{x^2\sqrt{1-\frac{1}{x^2}}}=-\frac{1}{|x|\sqrt{x^2-1}}.\footnote{The absolute value appears because $x^2\geq 0$ for obvious reasons, and we need to preserve this even after factoring out an $x.$}\]
+
+For the second one, let $f(x)=\arcsec x,$ and note that this implies $\sec y=x.$ Then differentiating with respect to $x$ gives
+\[\left(\frac{1}{\cos x}\right)y'=1\]
+\[\frac{\sin y}{\cos^2y}y'=1\]
+\[y'=\frac{\cos^2y}{\sin y}.\]
+Since $\cos y = \frac{1}{x}$ and $\sin y=\sqrt{1-\frac{1}{x^2}},$
+\[y'=\frac{1}{x^2\sqrt{1-\frac{1}{x^2}}}=\frac{1}{|x|\sqrt{x^2-1}}.\footnote{See above.}\]
+
+For the last one, let $f(x)=\arccot x,$ and note that this implies $\cot y=x.$ Then differentiating with respect to $x$ gives
+\[\left(\frac{\cos y}{\sin y}\right)y'=1\]
+\[\frac{-\sin^2y-cos^2y}{\sin y}y'=\frac{1}{\sin y}y'=1\]
+\[y'=\sin y.\]
+Since $x=\cot y,$
+\[y'=\frac{1}{\sqrt{x^2+1}}.\]
+\end{sol}
+
+\begin{exer}
+Find the derivative of $f(x)=\log_a(g(x)).$
+\end{exer}
+
+\begin{sol}
+Note that $f(x)=\frac{\ln(g(x))}{\ln a},$ so
+\[f'(x)=\frac{(\ln(g(x)))'}{\ln a}=\frac{\frac{1}{g(x)}g'(x)}{\ln a}=\frac{g'(x)}{g(x)\ln a}.\]
+\end{sol}
+
+\pagebreak\section{Problems}
+
+\subsection{Unsourced}
+
+Prove that the derivative of $f(x)=e^{g(x)}$ is $e^{g(x)}g'(x).$
+
+\subsubsection{Solution}
+This follows directly from the chain rule.
+
+\subsection{HMMT Calculus 2005/1}
+
+Let $f(x)=x^3+ax+b,$ with $a\neq b,$ and suppose that the tangent lines to the graph of $f$ at $x=a$ and $x=b$ are parallel. Find $f(1).$
+
+\subsubsection{Solution}
+Note that $f'(x)=3x^2+a,$ so $f'(a)=f'(b)$ implies $3a^2+a=3b^2+a,$ or that $a=-b.$ Thus $f(1)=1+a+b=1.$
+
+
+\subsection{HMMT Calculus 2010/1}
+
+Suppose that $p(x)$ is a polynomial and that $p(x)-p'(x)=x^2+2x+1.$ Compute $p(5).$
+
+\subsubsection{Solution}
+Note that $p(x)$ must have leading term $x^2,$ because by the Power Rule $\deg(p(x)-p'(x))=\deg(p(x)),$ and furthermore the leading coefficients are the same. So we have
+\begin{align*}
+p(x)&=x^2+ax+b 
+p'(x)&=2x+a
+\end{align*}
+and we want $p(x)-p'(x)=x^2+x(a-2)+(b-a)=x^2+2x+1,$ or
+\begin{align*}
+a-2&=2 
+b-a&= 1,
+\end{align*}
+implying that $a=4$ and $b=5.$ Therefore, $p(5)=5^2+4\cdot 5+5=50.$
+
+
+\subsection{HMMT Calculus 2010/3}
+Let $p$ be a monic cubic polynomial such that $p(0)=1$ and such that all the zeroes of $p'(x)$ are also zeros of $p(x).$ Find $p.$ Note: monic means that the leading coefficient is $1.$ 
+
+\subsubsection{Solution}
+There are either three distinct roots, two distinct roots, or one root. We look at all three cases.
+
+If there are three distinct roots, then $p(x)=(x-r_1)(x-r_2)(x-r_3)$ and $p'(x)=3x^2-2x(r_1+r_2+r_3)+(r_1r_2+r_2r_3+r_3r_1).$ We can verify that this function has zeroes and that none of them are $r_1,r_2,r_3,$ since the roots are distinct.
+
+If there are two distinct roots, there are two copies of one root and one copy of another. So $p(x)=(x-r_1)^2(x-r_2),$ and by the Product Rule,
+\[p'(x)=2(x-r_1)(x-r_2)+(x-r_1)^2=(x-r_1)(3x-r_1-2r_2).\]
+Since $r_1\neq r_2,$ $\frac{r_1+2r_2}{3}$ cannot be either $r_1$ or $r_2,$ since it is a weighted mean.
+
+If there is one distinct root, then $p(x)=(x-r)^3.$ Note that $p'(x)=3(x-r)^2,$ and the only root is $x=r,$ so this satisfies the condition. Since $p(0)=1,$ we must have $r=-1,$ or $p(x)=(x+1)^3.$
+
+
+\subsection{Two-Term AM-GM}
+
+Determine the minimum value $f(x)=x+\frac{1}{x}$ can take over positive $x.$
+
+\subsubsection{Solution}
+Note that $f'(x)=1-\frac{1}{x^2}.$ We claim that the minimum occurs at $x=1,$ and to prove it, note that $f'(x)<0$ when $x<1$ and $f'(x)>0$ when $x>1.$ Thus $f(0)=2$ is the minimum value it can take, and this minimum \textbf{is only achieved at} $x=1$.
+
+
+\subsection{Unsourced}
+
+Find the derivative of $\frac{4^x}{4^x+1}.$ 
+
+\subsubsection{Solution}
+Let this function be $f(x).$ Note that $f(x)=1-\frac{1}{4^x+1},$ so $f'(x)=-\frac{d}{dx}(\frac{1}{4^x+1}).$ By the Reciprocal Rule,
+\[-\frac{d}{dx}(\frac{1}{4^x+1})=\frac{\frac{d}{dx}(4^x+1)}{(4^x+1)^2}=\frac{4^x\ln 4}{(4^x+1)^2}.\]
+
+
+\subsection{Dennis Chen}
+
+Find the equation of the line tangent to
+\[\tan x+\sin x=y\cos x-1\]
+at $(\frac{\pi}{4},2\sqrt{2}+1).$ 
+
+\subsubsection{Solution}
+Differentiate both sides to get
+\[\sec^2 x + \cos x = -y\sin x+y'\cos x.\]
+Now plug in $(\frac{\pi}{4},2\sqrt{2}+1)$ to get
+\[2+\frac{\sqrt{2}}{2}=-2-\frac{\sqrt{2}}{2}+y'\frac{\sqrt{2}}{2}\]
+\[4+\sqrt{2}=y'\frac{\sqrt{2}}{2}\]
+\[4\sqrt{2}+2=y'.\]
+
+
+\subsection{MIT OCW}
+
+Given that $f'(a)$ exists, show that $g(h) = \frac{f(a+h) - f(a)}{h}$ has a removable discontinuity at $h = 0$. 
+
+\subsubsection{Solution}
+In order for g(h) to have a removable discontinuity at h = 0 it must follow two different rules. Firstly the $\lim_{h \to 0}$ for g(h) must exist. As the g(h) when evaluated for the limit leads to the equation $\lim_{h \to 0} g(h) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h}$ it is therefore shown, through the limit definition of a limit that $\lim_{h \to 0} g(h) = f'(a)$. As we know, therefore, that $f'(a)$ exists at $a$ we therefore know that the $\lim_{h \to 0} g(h)$ exists. When paired with the structure of the equation, with $\frac{f(a+h) - f(a)}{h}$ demonstrating a rational equation and when evaluated for $\lim_{h \to 0}$ giving $\frac{0}{0}$ there is clearly a removable discontinuity. Therefore based on the structure of the equation and what g(h) represents it can be surmised that at h = 0, $g(h)$ has a removable discontinuity.
+
+
+\subsection{HMMT Calculus 2007/2}
+
+Determine the real number $a$ having the property that $f(a)=a$ is a relative minimum of $f(x)=x^4-x^3-x^2+ax+1.$
+
+\subsubsection{Solution}
+Note that it is necessary (but not sufficient) for $f'(a)=0.$ Note that $f'(x)=4x^3-3x^2-2x+a,$ so
+\[f'(a)=4a^3-3a^2-2a+a=4a^3-3a^2-a=(a-1)a(4a+1).\]
+Thus the possible values of $a$ are $-\frac{1}{4},0,1.$
+
+Note that we require $a=f(a),$ so the only case left to check is $a=1.$ For $a=1,$ we have
+\[f'(x)=4x^3-3x^2-2x-1=(x+1)(4(x+\frac{1}{8})^2-\frac{17}{16}),\]
+so the other roots of $f'(x)$ are $x=-\frac{1\pm\sqrt{17}}{8}.$ Since both of these roots are less than $1,$ and the leading coefficient of $f'(x)$ is positive, $f(1-\epsilon)<0$ and $f(1+\epsilon)>0$ for small $\epsilon>0,$ which are necessary for a minimum to be achieved.
+
+So the answer is just $a=1.$
+
+
+\subsection{HMMT Calculus 2006/2}
+
+Compute $\lim\limits_{x\to 0}\frac{e^{x\cos x}-1-x}{\sin(x^2)}.$ 
+
+\subsubsection{Solution}
+We use L'Hopital's Rule to completely butcher this problem. Note that
+\[\lim_{x\to 0}\frac{e^{x\cos x}-1-x}{\sin(x^2)}=\lim_{x\to 0}\frac{e^{x\cos x}(\cos x-x\sin x)-1}{2x\cos(x^2)}\footnote{We took the derivative of both sides of the fraction.}=\lim_{x\to 0}\frac{1-x\sin x-1}{2x}=\lim_{x\to 0}\frac{\sin x}{2x}=\frac{1}{2}.\]
+
+
+\subsection{MAST Diagnostic 2020/C10}
+Find the maximum value of $k$ such that $(x+1)^4\geq kx^3$ for all $x.$ 
+
+We solve this problem in two separate ways: one with calculus and another with \href{https://artofproblemsolving.com/wiki/index.php/Arithmetic_Mean-Geometric_Mean_Inequality}{AM-GM}. 
+
+\subsubsection{Solution}[1 (Calculus)]
+Note that obviously $k\geq 0$, so $x\leq 0$ is not even a case worth considering since the left-hand side will be non-negative and the right-hand side will be non-positive.
+
+This is equivalent to finding the minimum value of $f(x)=\frac{(x+1)^4}{x^3}$ over positive $x.$ Note that the derivative of this function is, by the quotient/chain rules,
+\[f'(x)=\frac{4(x+1)^3x^3-3(x+1)^4x^2}{x^6}=\frac{(x+1)^3(4x-3(x+1))}{x^4}=\frac{(x+1)^3(x-3)}{x^4}.\]
+Note that $f'(x)>0$ when $x>3$ and $f'(x)<0$ when $0<x<3,$ so on the domain $(0,\infty),$ $f(x)$ is minimized when $x=3$.
+
+It is easy to verify that $x=3$ gives $f(x)=\frac{64}{27},$ so that is our answer.
+
+
+\subsubsection{Solution}[2 (AM-GM)]
+Note that by AM-GM, $(\frac{x}{3}+\frac{x}{3}+\frac{x}{3}+1)^4\geq 64\cdot\frac{x^3}{27}$ with equality at $\frac{x}{3}=1,$ so our maximum is $k=\frac{64}{27}.$\footnote{The case where $x$ is non-positive is not addressed in this solution, but it is completely trivial.}
+
+
+\subsection{Extension of C10}
+Find the range of values $k$ such that $(x+1)^4\geq kx^3$ for all $x.$
+
+\subsubsection{Solution}
+As we can probably infer from the solution above, the problem behaves differently for $k\geq 0$ and $k\leq 0,$ and each of these cases only care about $x\geq 0$ and $x\leq 0,$ respectively.
+
+We have already done $x\geq 0$ -- in that case, $k\leq \frac{64}{27}$ will work. So we do $x\leq 0.$
+
+The extension is really not hard; when $x=-1$ we have $0\geq k\cdot -1^3,$ so we must have $k\geq 0.$ Thus the range is $k\in [0,\frac{64}{27}].$
+
+\subsection{AMC 12B 2020/22}
+
+What is the maximum value of $\frac{(2^t-3t)t}{4^t}$ for real values of $t?$
+
+\subsubsection{Solution}
+
+Note this function is equivalent to
+\[\frac{t}{2^t}-\frac{3t^2}{4^t}.\]
+By the Quotient Rule, the derivative of this function is
+\begin{align*}
+\frac{2^t-t2^t\ln 2}{4^t}-\frac{6t4^t-3t^24^t\ln 4}{16^t}&= \\
+\frac{1}{4^t}\left(2^t-t2^t\ln 2-(6t-3t^2\ln4)\right)&= \\
+\frac{(2^t-t2^t\ln 2)-(6t-6t^2\ln 2)}{4^t}&= \\
+\frac{(1-t\ln 2)(2^t-6t)}{4^t}.
+\end{align*}
+
+By definition, the function reaches its maximum when the derivative is $0.$ This means we either have $1-t\ln 2=0$ or $2^t=6t;$ note that both have solutions. Plugging in the former gives $t=\frac{1}{\ln 2}=\log_2e,$ and the expression is equal to
+\[\frac{e\log_2e-3(\log_2e)^2}{e^2},\]
+which is negative; we can obviously do better. Let's try $2^t=6t;$ then the function is equal to
+\[\frac{(6t-3t)t}{36t^2}=\frac{1}{12},\]
+which is our maximum.
+
+\subsection{Leibniz Rule}
+
+Given two $n$th differentiable functions $f,g,$ prove that
+\[(fg)^{(n)}(x)=\sum_{k=0}^{n}\binom{n}{k}f^{(k)}(x)g^{(n-k)}(x).\]
+
+\subsubsection{Solution}
+This is just algebraic manipulation with Taylor Series.
+
+Note that the Taylor Series of $f(x)$ is $f(x+\epsilon)=f(x)+f'(x)\epsilon+\frac{f''(x)\epsilon^2}{2!}+\cdots.$ A similar equation holds for $g(x+\epsilon).$ Take the product of the Taylor Series and note that the coefficient of the $\epsilon^n$ term can be expressed as
+\[\sum_{k=0}^{n}\frac{f^{(k)}(x)\epsilon^k}{k!}\cdot\frac{g^{(n-k)}(x)\epsilon^{n-k}}{(n-k)!},\]
+and since \[\epsilon^n\sum_{k=0}^{n}\frac{f^{(k)}(x)}{k!}\cdot\frac{g^{(n-k)}(x)}{(n-k)!}=\frac{(fg)^{(n)}(x)\epsilon^n}{n!},\]
+\[(fg)^{(n)}(x)=\sum_{k=0}^{n}\binom{n}{k}f^{(k)}(x)g^{(n-k)}(x).\]
+
+%\subsection{Hong Kong TST 2021/1/1}
+%
+%Find, \db{with proof}, all real triples $(a,b,c)$ satisfying
+%\[(2^{2a}+1)(2^{2b}+2)(2^{2c}+8)=2^{a+b+c+5}.\]
+%
+%\subsubsection{Solution}
+%We would like to make this expression symmetric to make it easier to work with; factoring out powers of $2$ from the second and third terms in the left-hand side would make the problem a lot easier to work with. So note this expression is equivalent to
+%\[(2^{2a}+1)(2^{2b-1}+1)(2^{2c-3}+1)=2^{a+b+c+1}.\]
+%Now we want to actually make this problem symmetric, so we substitute $y=b-\frac{1}{2}$ and $z=c-\frac{3}{2}$ to get
+%\[(2^{2a}+1)(2^{2y}+1)(2^{2z}+1)=2^{a+y+z+3}\]
+%\[(2^a+\frac{1}{2^a})(2^y+\frac{1}{2^y})(2^z+\frac{1}{2^z})=2^3.\]
+%By \db{Two-Term AM-GM}, the minimum value of $2^a+\frac{1}{2^a}$ is $2,$ achieved only when $a=0.$\footnote{Note that you may directly let $x=2^a;$ then $x$ is restricted to the positives, then $x=1$ achieves the minimum of $2.$}\footnote{Alternatively, you may cite AM-GM. Actually, I will directly prove this: $(\sqrt{2}^a-\frac{1}{\sqrt{2}^a})^2\geq 0$ with equality at $\sqrt{2}^a-\frac{1}{\sqrt{2}^a}=0,$ or $a=0$ -- expanding the inequality and rearranging gives the desired $2^a+\frac{1}{2^a}\geq 2.$} So we must have $a=y=z=0,$ or $(a,b,c)=(0,\frac{1}{2},\frac{3}{2}).$
+
+
+\end{document}

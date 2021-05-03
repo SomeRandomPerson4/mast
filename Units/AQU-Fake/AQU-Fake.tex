@@ -1,0 +1,220 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{Fake Algebra}
+\author{Dennis Chen}
+\date{AQU}
+
+\begin{document}
+\maketitle
+Thanks to Valentio Iverson for many of the problems in this handout.
+
+Sometimes we have algebraic identities or problems that suggest a geometric structure. Examples of such will be in the list of what to look for and demonstrated in the problem set.
+
+\section{What to Look For}
+Here's a list of identities that suggest something geometric.
+\begin{enumerate}
+    \item Stewart's Theorem - $man+dad=bmb+cnc.$
+    \begin{itemize}
+    \Item In particular, the Appolonius Theorem - if $x$ is the length of the median through $A,$ then $x=\sqrt{\frac{b^2}{2}+\frac{c^2}{2}-\frac{a^2}{4}}.$
+    \Item Also of note, $\sqrt{ab-xy}$ - if $\triangle ABC$ has angle bisector $AD,$ and we label $AB=a,$ $AC=b,$ $BD=x,$ $CD=y,$ then $AD=\sqrt{ab-xy}.$
+    \end{itemize}
+    \item Sine Area Formula
+	\begin{itemize}
+	\Item $[ABC]=\frac{1}{2}ab\sin \theta.$ This can be used in many places.
+	\end{itemize}
+    \item Heron's Formula
+    \begin{itemize}
+    \Item $[ABC]=\sqrt{s(s-a)(s-b)(s-c)}.$ Be on the lookout for suspicious factorizations like $(a+b+c)(-a+b+c)(a-b+c)(a+b-c).$
+    \end{itemize}
+    \item Trig Identities
+    \begin{itemize}
+	\Item Know the angle addition formulas; $\sin(x+y)=\sin x\cos y+\cos x\sin y.$
+	\Item By Pythagorean Identities, anything of the form $1\pm x^2,$ \db{particularly in the denominator}, suggest trig substitutions.
+    \Item $x+\frac{1}{x}$ suggests the following; if $x=\tan\frac{\alpha}{2},$ then $\sin \alpha = \frac{2}{x+1/x}.$
+    \end{itemize}
+    \item Law of Cosines - Look for certain proportions or tell-tale signs of "sort of symmetrical but not quite" of the form of $x^2+y^2+axy.$ 
+\end{enumerate}
+
+\subsection{Tangent Angle Addition}
+
+Tangent angle addition is closely related with complex numbers.
+
+\begin{theo}[Tangent Addition in the Complex Plane]
+Given reals $a,b,$
+\[\tan(\arctan a + \arctan b)=\frac{\Im\left((1+ai)(1+bi)\right)}{\Re\left((1+ai)(1+bi)\right)}.\]
+\end{theo}
+
+This is just another way to state the tangent addition formula, so why is it so powerful? It is because of the following corollary.
+
+\begin{corollary}
+Given reals $a_1,a_2,\ldots,a_n,$
+\[\tan\left(\sum_{k=1}^n \arctan a_k\right) = \frac{\Im\left(\prod\limits_{k=1}^n (1+a_ki)\right)}{\Re\left(\prod\limits_{k=1}^n (1+a_ki)\right)}.\]
+\end{corollary}
+
+We did not prove the two-variable case before for two reasons: one, it follows easily after expanding $(1+ai)(1+bi),$ and secondly, the general proof is more informative.
+
+\begin{pro}
+We use the first half of the mantra from complex numbers: \db{angles add}. For $1\leq k\leq n,$ define $z_k=1+a_ki.$ Then note that
+\[\sum_{k=1}^n\arg z_k=\arg\left(\prod\limits_{k=1}^n z_k\right)\]
+by said mantra. Now note $\arg z_k=\arctan a_k$ and $z_k=1+a_ki$ by definition; this gives us the very obvious equation
+\[\left(\sum_{k=1}^n \arctan a_k\right) = (\arg\left(\prod\limits_{k=1}^n (1+a_ki)\right).\]
+Taking the tangent of both sides gives
+\[\tan\left(\sum_{k=1}^n \arctan a_k\right) = \frac{\Im\left(\prod\limits_{k=1}^n (1+a_ki)\right)}{\Re\left(\prod\limits_{k=1}^n (1+a_ki)\right)},\]
+as desired.
+\end{pro}
+
+\pagebreak
+
+\section{Examples}
+The problems in this unit fall into two categories - geometric and trigonometric.
+
+\subsection{Geometric}
+Geometric problems are fake algebra problems that can be expressed geometrically. One such famous class of problems is the ``implicit Law of Cosines.''
+
+\begin{exam}[Implicit Law of Cosines]
+Given
+\[x^2+xy+y^2=a^2\]
+\[y^2+yz+z^2=b^2\]
+\[z^2+zx+x^2=c^2\]
+for constants $a,b,c,$ find the value of
+\[xy+yz+xz.\]
+\end{exam}
+
+\begin{sol}
+Consider $\triangle ABC$ with point $P$ in its interior satisfying
+\[\angle APB=\angle BPC=\angle CPA=120^{\circ}.\]
+Then let $PA=x, PB=y,$ and $PC=z.$ By the Law of Cosines,
+\[BC^2=x^2+xy+y^2=a^2\]
+\[CA^2=y^2+yz+z^2=b^2\]
+\[AB^2=z^2+zx+x^2=c^2,\]
+so the side lengths of $\triangle ABC$ are $a,b,c.$ Now note that by the Sine Area Formula,
+\[[ABC]=[PBC]+[PCA]+[PAB]=\frac{1}{2}\cdot \frac{\sqrt{3}}{2}yz+\frac{1}{2}\cdot \frac{\sqrt{3}}{2}zx+\frac{1}{2}\cdot \frac{\sqrt{3}}{2}xy,\]
+so the requested sum is $\frac{4}{\sqrt{3}}[ABC],$ where the specific values $a,b,c$ can be used to determine the area. (Generally $a,b,c$ will be contrived to give an easily computable area.)
+\begin{center}
+\begin{asy}
+size(5cm);
+draw((0,0)--(3,0)--(1,2)--cycle);
+draw((0,0)--(1,1)--(3,0));
+draw((1,1)--(1,2));
+
+dot("$A$", (1,2), N);
+dot("$B$", (0,0), SW);
+dot("$C$", (3,0), SE);
+dot("$P$", (1,1), NE);
+
+label("$x$", (1,1.5), SW);
+label("$y$", (0.5,0.5), 2*E);
+label("$z$", (2,0.5), W+2*N);
+\end{asy}
+\end{center}
+\end{sol}
+
+The coefficients of $xy,yz,zx$ need not be $1;$ they need only correspond to cosines of angles that add up to $360^{\circ}.$\footnote{To be more exact, $-\frac{1}{2}$ times the coefficients should correspond to cosines of angles that add to $360^{\circ}.$}
+
+\subsection{Trigonometric}
+Trigonometric problems are algebra problems that can be expressed trigonometrically. They are not ``fake'' algebra, despite the name of the unit.
+
+\begin{exam}[HMMT Feb. Guts 2012/18]
+Let $x$ and $y$ be positive real numbers such that $x^2+y^2=1$ and $(3x-4x^3)(3y-4y^3)=-\frac{1}{2}.$ Compute $x+y.$
+\end{exam}
+
+\begin{sol}
+Let $x=\sin\alpha$ and $y=\cos\alpha=\sin(90^{\circ}-\alpha).$ Note that
+\[(3x-4x^3)(3y-4y^3)=(4x^3-3x)(4y^3-3y)=\cos(3\alpha)\cos(3(90^{\circ}-\alpha))=-\cos(3\alpha)\sin(3\alpha)=-\frac{1}{2}\sin(6\alpha)=-\frac{1}{2},\]
+implying that $\alpha=15^{\circ},$ so
+\[x+y=\sin15^{\circ}+\cos15^{\circ}=\frac{\sqrt{6}+\sqrt{2}}{4}+\frac{\sqrt{6}-\sqrt{2}}{4}=\frac{\sqrt{6}}{2}.\]
+\end{sol}
+
+\begin{exam}[CNCM R1/5]
+Positive reals $a,b,c\leq 1$ satisfy $\frac{a+b+c-abc}{1-ab-bc-ca}=1.$ Find the minimum value of
+\[(\frac{a+b}{1-ab}+\frac{b+c}{1-bc}+\frac{c+a}{1-ca})^2.\]
+\end{exam}
+
+\begin{sol}
+Note that $\frac{a+b}{1-ab}$ looks suspiciously similar to $\tan(\alpha+\beta)=\frac{\tan\alpha+\tan\beta}{1-\tan\alpha\tan\beta}.$\footnote{Alternatively, just recall the identity with the complex numbers representation of tangent angle addition.} This motivates substituting $a=\tan\alpha,$ $b=\tan\beta,$ and $c=\tan\gamma.$ Now note that we want to maximize
+\[|\tan(\alpha+\beta)+\tan(\beta+\gamma)+\tan(\gamma+\alpha),|\]
+under the conditions that $0<\alpha,\beta,\gamma\leq\frac{\pi}{4}$ and $\frac{\tan\alpha+\tan\beta+\tan\gamma-\tan\alpha\tan\beta\tan\gamma}{1-\tan\alpha\tan\beta-\tan\beta\tan\gamma-\tan\gamma\tan\alpha}=1.$ But also note that
+\[\tan(\alpha+\beta+\gamma)=\frac{\tan\alpha+\tan\beta+\tan\gamma-\tan\alpha\tan\beta\tan\gamma}{1-\tan\alpha\tan\beta-\tan\beta\tan\gamma-\tan\gamma\tan\alpha},\] so $\tan(\alpha+\beta+\gamma)=1,$ implying $\alpha+\gamma+\beta=\frac{\pi}{4}.$
+
+Now say $\alpha+\beta=x,\beta+\gamma=y,\gamma+\alpha=z.$ Then we want to minimize $\tan x+\tan y+\tan z,$ with the condition that $x+y+z=\frac{\pi}{2}$ and $0<x,y,z\leq \frac{\pi}{4}.$ By Jensen's, $\tan x+\tan y+\tan z\geq 3\tan\left(\frac{x+y+z}{3}\right)=3\tan\frac{\pi}{6}=\sqrt{3}.$ So the answer is $(\sqrt{3})^2=3.$ 
+\end{sol}
+The motivation for trying to expand $\tan(\alpha+\beta+\gamma)$ is that it seems likely to work, and nothing else seems workable. At this point the minimum is guessable.
+
+\pagebreak
+
+\section{Problems}
+
+\minpt{40}
+
+\psetquote{Will there ever come a day when all my sins are forgiven?}{My Home Hero}
+
+\prob{2}{}{If $a<b<c<a+b,$ order $\frac{b^2+c^2-a^2}{bc},\frac{c^2+a^2-b^2}{ca},\frac{a^2+b^2-c^2}{ab}$ in ascending order.}
+
+\prob{2}{}{Prove that the $A$ and $B$ angle bisectors of a triangle are equal in length if and only if $BC=CA.$}
+ 
+\prob{3}{AIME 1986/2}{Evaluate the product $(\sqrt 5+\sqrt6+\sqrt7)(-\sqrt 5+\sqrt6+\sqrt7)(\sqrt 5-\sqrt6+\sqrt7)(\sqrt 5+\sqrt6-\sqrt7).$}
+
+\prob{3}{}{Let $x$ and $y$ be real numbers such that $(x - 5)^2 + (y - 5)^2 = 18.$ Determine the maximum value of $\frac{y}{x}.$}
+    
+\prob{3}{}{Let $a,b,c$ be positive reals. Prove that $\sqrt{a^2 - ab + b^2} + \sqrt{b^2 - bc + c^2} \geq \sqrt{a^2 + ac + c^2}.$}
+    
+\prob{3}{}{Minimze $\sqrt{x^2-3x+3}+\sqrt{y^2-3y+3}+\sqrt{x^2-\sqrt{3}xy+y^2}$ over the reals.}
+
+\prob{3}{}{Prove that for reals $a,b\geq 1,$
+\[\sqrt{a^2-1}+\sqrt{b^2-1}\leq ab.\]}
+
+\prob{3}{}{What value of $x$ maximizes $(21+x)(1+x)(x-1)(21-x),$ if $x$ must be positive?}
+
+\prob{4}{TrinMaC 2020/19}{Compute
+\[\sum\limits_{n=0}^{\infty}\cos^{-1}\left(\frac{\sqrt{n(n+1)(n+2)(n+3)}+1}{(n+1)(n+2)}\right).\]}
+
+\req{4}{}{Let $a,b,c,d$ be real numbers such that $a^2 - b^2 - c^2 + d^2 = ad + bc$ and $a^2 + b^2 - c^2 - d^2 = 0.$ Determine the value of $\frac{ab + cd}{ad + bc}.$}
+    
+\req{4}{AIME II 2006/15}{Given that $x, y,$ and $z$ are real numbers that satisfy:
+\[x = \sqrt{y^2-\frac{1}{16}}+\sqrt{z^2-\frac{1}{16}}\]
+\[y = \sqrt{z^2-\frac{1}{25}}+\sqrt{x^2-\frac{1}{25}}\]
+\[z = \sqrt{x^2-\frac{1}{36}}+\sqrt{y^2-\frac{1}{36}}\]
+and that $x+y+z = \frac{m}{\sqrt{n}},$ where $m$ and $n$ are positive integers and $n$ is not divisible by the square of any prime, find $m+n.$}
+
+%\prob{4}{HMMT Feb. Guts 2012/18}{Let $x$ and $y$ be positive real numbers such that $x^2+y^2=1$ and $(3x-4x^3)(3y-4y^3)=-\frac{1}{2}.$ Compute $x+y.$}
+% used as example
+
+\prob{4}{}{Consider sequence $a_n$ with $a_1=\sqrt{3}$ and $a_na_{n-1}^2+2a_{n-1}-a_n=0$ for $n\geq 2.$ Find $a_{1000}.$}
+
+\prob{6}{AIME 1991/15}{For positive integer $n$, define $S_n$ to be the minimum value of the sum\[ \sum_{k=1}^n \sqrt{(2k-1)^2+a_k^2}, \]where $a_1,a_2,\ldots,a_n$ are positive real numbers whose sum is 17. There is a unique positive integer $n$ for which $S_n$ is also an integer. Find this $n$.}
+
+%\prob{6}{}{Consider real numbers $x,y,z$ such that $\frac{3}{2}x^2,\frac{3}{2}y^2,\frac{3}{2}z^2<x^2+y^2+z^2.$ Let $n=\frac{\sqrt{2x^2+2y^2-z^2}}{3}+\frac{\sqrt{2y^2+2z^2-x^2}}{6}+\frac{x}{2}$ and let $m=\frac{\sqrt{2y^2+2z^2-x^2}}{3}+\frac{\sqrt{2z^2+2x^2-y^2}}{6}+\frac{y}{2}.$ Prove that the quantities $n(n-x)(n-\frac{2\sqrt{2x^2+2y^2-z^2}}{3})(n-\frac{\sqrt{2y^2+2z^2-x^2}}{3})$ and $m(m-y)(m-\frac{2\sqrt{2y^2+2z^2-x^2}}{3})(m-\frac{\sqrt{2z^2+2x^2-y^2}}{3}+\frac{y}{2})$ are equal.}
+    
+\prob{6}{}{If $x,y,z$ are positive numbers such that
+    \[x^2+xy+\frac{1}{3}y^2=25\]
+    \[\frac{1}{3}y^2+z^2=9\]
+    \[z^2+zx+x^2=16,\]
+    find $xy+2yz+3zx.$}
+
+\prob{9}{HMMT 2014}{Given $a$, $b$, and $c$ are complex numbers satisfying
+
+\[ a^2+ab+b^2=1+i \]
+\[ b^2+bc+c^2=-2 \]
+\[ c^2+ca+a^2=1, \]
+
+compute $(ab+bc+ca)^2$. (Here, $i=\sqrt{-1}$.)}
+
+\prob{9}{}{Find all triples $(x,y,z)$ such that $xy+yz+zx=1$ and $5(x+\frac{1}{x})=12(y+\frac{1}{y})=13(z+\frac{1}{z}).$}
+
+\prob{9}{rd123/tworigami Mock AIME 2020/13}{If $a,b,c,d$ are positive real numbers such that
+\begin{align*} ab + cd &= 90, \\ ad + bc &= 108, \\ ac + bd &= 120, \\ a^2+b^2 &= c^2+d^2, \end{align*}and $a+b+c+d=\sqrt{n}$ for some integer $n$, find $n$.}
+
+\prob{13}{PUMaC 2018}{Let $a,b,c$ be nonzero reals such that $\frac{1}{abc}+\frac{1}{a}+\frac{1}{c}=\frac{1}{b}.$ The maximum possible value of $$\frac{4}{a^2+1}+\frac{4}{b^2+1}+\frac{7}{c^2+1}$$ is $\frac{m}{n}$ for relatively prime positive integers $m$ and $n.$ Find $m+n.$}
+
+\prob{13}{2018 Mock AIME, by TheUltimate123}{Let $a$,$b$,$c$,$d$ be positive real numbers such that \[195=a^2+b^2=c^2+d^2=\frac{13(ac+bd)^2}{13b^2-10bc+13c^2}=\frac{5(ad+bc)^2}{5a^2-8ac+5c^2}\] Then $a+b+c+d$ can be expressed in the form $m\sqrt{n}$, where $m$ and $n$ are positive integers and $n$ is not divisible by the square of any prime. Find $m+n$.}
+    
+\prob{13}{Mildorf AIME}{Let $\Omega$ denote the value of the sum
+
+\[\sum\limits_{k=1}^{40} \cos^{-1}\left(\frac{k^2 + k + 1}{\sqrt{k^4 + 2k^3 + 3k^2 + 2k + 2}}\right).\]
+
+The value of $\tan\left(\Omega\right)$ can be expressed as $\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Compute $m + n$.}
+
+\req{13}{IMO 2001/6}{Let $a > b > c > d$ be positive integers and suppose that \[ ac + bd = (b+d+a-c)(b+d-a+c). \] Prove that $ab + cd$ is not prime.}
+\end{document}

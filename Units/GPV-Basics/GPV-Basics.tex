@@ -1,0 +1,551 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{Basics of Geometry}
+\author{Dennis Chen}
+\date{GPV}
+
+\begin{document}
+
+\maketitle
+
+This is geometry lite - just similarity and angle chasing. Things that you should keep in mind include similarity/congruence criterion, collinearity/concurrency angle conditions, parallel line angle conditions, and the fact that a tangent is perpendicular to the radius.
+
+\section{Theory}
+Here are two theorems to keep in mind.
+
+\begin{theo}[Inscribed Angle]
+Let $A,B$ be points on a circle with center $O.$
+
+If $C$ is a point on major arc $AB,$ then $\angle ACB=\frac{\angle AOB}{2}.$
+
+If $C$ is a point on minor arc $AB,$ then $\angle ACB=180^{\circ}-\frac{\angle AOB}{2}.$
+\end{theo}
+
+\begin{pro}
+Let $D$ be the antipode of $C.$ Then $\angle ACD=\frac{180^{\circ}-\angle AOC}{2}=\frac{\angle AOD}{2}.$ Thus addition or subtraction, depending on whether $O$ is inside acute angle $\angle ACB,$ of $\angle ACD$ and $\angle BCD$ will yield the result.
+\end{pro}
+\begin{center}
+    \begin{asy}
+    import olympiad;
+    size(4cm);
+    draw(circle((0,0), 1)); 
+draw((-sqrt(2)/2,-sqrt(2)/2)--(0,1)); 
+draw((-sqrt(2)/2,-sqrt(2)/2)--(0,0)); 
+draw((0,1)--(0,-1)); 
+draw((0,1)--((sqrt(6)+sqrt(2))/4,(-sqrt(6)+sqrt(2))/4)); 
+draw((0,0)--((sqrt(6)+sqrt(2))/4,(-sqrt(6)+sqrt(2))/4));
+
+draw(arc((0,0),0.2,225,270));
+draw(arc((0,1),0.2,247.5,270));
+
+dot((0,0)); 
+label("$O$", (0,0), NE); 
+dot((-sqrt(2)/2,-sqrt(2)/2)); 
+label("$A$", (-sqrt(2)/2,-sqrt(2)/2), SW); 
+dot(((sqrt(6)+sqrt(2))/4,(-sqrt(6)+sqrt(2))/4));
+label("$B$", ((sqrt(6)+sqrt(2))/4,(-sqrt(6)+sqrt(2))/4), SE); 
+dot((0,1)); 
+label("$C$", (0,1), N); 
+dot((0,-1)); 
+label("$D$", (0,-1), S);
+    \end{asy}
+\end{center}
+
+
+\begin{theo}[Tangent Angle]
+Consider circle $\omega$ with center $O$ and points $A,B$ on $\omega.$ Let $\ell$ be the tangent to $\omega$ through $B$ and let $\theta$ be the acute angle between $AB$ and $\ell.$ Then $\theta=\frac{\angle AOB}{2}.$
+\end{theo}
+
+\begin{pro}
+Let $B'$ be the antipode of $B.$ Then note that $\theta=90^{\circ}-\angle ABB'=\frac{180^{\circ}-\angle AOB'}{2}=\frac{\angle AOB}{2}.$
+\end{pro}
+\begin{center}
+    \begin{asy}
+    import olympiad;
+    size(4cm);
+    draw(circle((0,0), 1));
+    dot((0,-1));
+    dot((0.8,-0.6));
+    dot((0,1));
+    draw((0.8,-0.6)--(0,-1));
+    draw((-2,-1)--(2,-1));
+    draw((0,-1)--(0,1));
+    
+    label("$B$",(0,-1),S);
+    label("$B'$",(0,1),N);
+    label("$A$",(0.8,-0.6),NW);
+    \end{asy}
+\end{center}
+
+A corollary of this theorem is that if $C$ is some point on $\overarc{AB},$ then $\theta=\angle ACB.$
+
+With the Inscribed Angle Theorem in mind, try to prove these two theorems.
+
+\begin{theo}[Angle of Secants/Tangents]
+Let lines $AX$ and $BY$ intersect at $P$ such that $A,X,P$ and $B,Y,P$ are collinear in that order. Then $\angle APB=\frac{\angle AOB-\angle XOY}{2}.$
+
+\begin{center}
+    \begin{asy}
+    import olympiad;
+    size(4cm);
+    draw(circle((0,0), 1)); 
+draw((-1.5137699061468413,-0.5200439036267299)--(0.5006080051165431,0.8656740871790233)); 
+draw((-1.5137699061468413,-0.5200439036267299)--(0.8698306996792652,-0.49335033586233623)); 
+
+dot((-1.5137699061468413,-0.5200439036267299)); 
+label("$P$", (-1.5137699061468413,-0.5200439036267299), NW); 
+dot((0.5006080051165431,0.8656740871790233)); 
+label("$A$", (0.5006080051165431,0.8656740871790233), NE); 
+dot((0.8698306996792652,-0.49335033586233623)); 
+label("$B$", (0.8698306996792652,-0.49335033586233623), NW); 
+dot((-0.98744289059587,-0.15797638371501177)); 
+label("$X$", (-0.98744289059587,-0.15797638371501177), NW); 
+dot((-0.858564029240042,-0.5127063562070442)); 
+label("$Y$", (-0.858564029240042,-0.5127063562070442), NE); 
+    \end{asy}
+\end{center}
+\end{theo}
+
+\begin{theo}[Angle of Chords]
+Let chords $AC,BD$ intersect at $P.$ Then $\angle APB=\frac{\angle AOB+\angle COD}{2}.$
+\begin{center}
+    \begin{asy}
+    import olympiad;
+    size(3.5cm);
+    draw(arc((-0.002944953385821347,0.1945321088804997),0.25,396.63059336924744,499.02864317828227)); 
+
+draw(circle((0,0), 1)); 
+draw((-0.6520239138456277,0.758198401326084)--(0.8421035046648182,-0.5393159439801781)); 
+draw((0.6982426762645825,0.7158611353068928)--(-0.8866287744814202,-0.462481801005807)); 
+
+dot((-0.6520239138456277,0.758198401326084)); 
+label("$A$", (-0.6520239138456277,0.758198401326084), NW); 
+dot((0.6982426762645825,0.7158611353068928)); 
+label("$B$", (0.6982426762645825,0.7158611353068928), NE); 
+dot((0.8421035046648182,-0.5393159439801781)); 
+label("$C$", (0.8421035046648182,-0.5393159439801781), SE); 
+dot((-0.8866287744814202,-0.462481801005807)); 
+label("$D$", (-0.8866287744814202,-0.462481801005807), SW); 
+dot((-0.002944953385821347,0.1945321088804997)); 
+label("$P$", (-0.002944953385821347,0.1945321088804997), S); 
+\end{asy}
+\end{center}
+\end{theo}
+
+Here's a very important application of Inscribed Angle.
+
+\begin{theo}[Cyclic Quadrilaterals]
+Any one of the three implies the other two:
+\begin{enumerate}
+    \item Quadrilateral $ABCD$ is cyclic.
+    
+    \item $\angle ABC+\angle ADC=180^{\circ}.$
+    
+    \item $\angle BAC=\angle BDC.$
+\end{enumerate}
+\begin{center}
+\begin{asy}
+import olympiad;
+size(3.5cm);
+
+draw(circle((0,0), 1)); 
+
+dot((-0.6520239138456277,0.758198401326084)); 
+label("$A$", (-0.6520239138456277,0.758198401326084), NW); 
+dot((0.6982426762645825,0.7158611353068928)); 
+label("$B$", (0.6982426762645825,0.7158611353068928), NE); 
+dot((0.8421035046648182,-0.5393159439801781)); 
+label("$C$", (0.8421035046648182,-0.5393159439801781), SE); 
+dot((-0.8866287744814202,-0.462481801005807)); 
+label("$D$", (-0.8866287744814202,-0.462481801005807), SW); 
+
+draw((-0.6520239138456277,0.758198401326084)--(0.6982426762645825,0.7158611353068928)--(0.8421035046648182,-0.5393159439801781)--(-0.8866287744814202,-0.462481801005807)--cycle);
+\end{asy}
+\begin{asy}
+import olympiad;
+size(3.5cm);
+draw(arc((-0.6520239138456277,0.758198401326084),0.3352236296243588,319.02864317828227,358.2040937604978)); 
+draw(arc((-0.8866287744814202,-0.462481801005807),0.3352236296243588,357.45514278703183,396.63059336924744)); 
+
+draw(circle((0,0), 1)); 
+draw((0.6982426762645825,0.7158611353068928)--(-0.6520239138456277,0.758198401326084)); 
+draw((-0.6520239138456277,0.758198401326084)--(0.8421035046648182,-0.5393159439801781)); 
+draw((0.6982426762645825,0.7158611353068928)--(-0.8866287744814202,-0.462481801005807)); 
+draw((-0.8866287744814202,-0.462481801005807)--(0.8421035046648182,-0.5393159439801781)); 
+draw(arc((-0.6520239138456277,0.758198401326084),0.3352236296243588,319.02864317828227,358.2040937604978)); 
+draw((-0.3762942045336219,0.650231969055075)--(-0.3034599416964878,0.6217125341155632)); 
+draw(arc((-0.8866287744814202,-0.462481801005807),0.3352236296243588,357.45514278703183,396.63059336924744)); 
+draw((-0.6035182048501434,-0.37569454123994417)--(-0.5287342807965981,-0.35276960469801844));
+
+dot((-0.6520239138456277,0.758198401326084)); 
+label("$A$", (-0.6520239138456277,0.758198401326084), NW); 
+dot((0.6982426762645825,0.7158611353068928)); 
+label("$B$", (0.6982426762645825,0.7158611353068928), NE); 
+dot((0.8421035046648182,-0.5393159439801781)); 
+label("$C$", (0.8421035046648182,-0.5393159439801781), SE); 
+dot((-0.8866287744814202,-0.462481801005807)); 
+label("$D$", (-0.8866287744814202,-0.462481801005807), SW);
+\end{asy}
+\end{center}
+\end{theo}
+
+\section{Examples}
+We present several examples of angle chasing problems, sorted by ``flavor.''
+
+\subsection{Computational Problems}
+This is a compilation of computational problems meant to serve as low-level examples for first-time readers. If this is your first time encountering the material, I strongly suggest you focus on this section.
+\begin{exam}[AMC 10B 2011/18]
+Rectangle $ABCD$ has $AB = 6$ and $BC = 3$. Point $M$ is chosen on side $AB$ so that $\angle AMD = \angle CMD$. What is the degree measure of $\angle AMD?$
+\end{exam}
+
+\begin{sol}
+Note that $\angle CMD=\angle AMD=\angle AMD=\angle MDC,$ implying that $CM=CD=6.$ Thus $\angle BMC=30^{\circ},$ implying that $\angle AMD=75^{\circ}.$
+\begin{center}
+\begin{asy}
+size(4cm);
+
+pair A=(0,3), B=(6,3), C=(6,0), D=(0,0);
+pair M=(0.80385,3);
+
+draw(A--B--C--D--cycle);
+draw(M--C);
+draw(M--D);
+
+dot("$A$",A,NW);
+dot("$B$",B,NE);
+dot("$C$",C,SE);
+dot("$D$",D,SW);
+dot("$M$",M,N);
+\end{asy}
+\end{center}
+\end{sol}
+
+\begin{exam}
+Two circles $\omega_1,\omega_2$ intersect at $P,Q.$ If a line intersects $\omega_1$ at $A,B$ and $\omega_2$ at $C,D$ such that $A,B,C,D$ lie on the lie in that order, and $P$ and $Q$ lie on the same side of the line, compute the value of $\angle APC+\angle BQD.$
+\end{exam}
+
+\begin{sol}
+Without loss of generality, let $P$ be closer to $\ell$ than $Q.$ Note
+\[\angle APC=180-\angle PAB-\angle BCP=\angle DCP-\angle PAB\]\[\angle BQD=\angle BQP+\angle DQP.\]Since $\angle PAB=\angle BDP,$ the sum is $\angle DCP+\angle DQP=180.$
+\end{sol}
+
+\subsection{Construct the Diagram}
+These problems are very simple; just construct the diagram and the problem will solve itself for you.
+
+\begin{exam}[USA EGMO TST 2020/4]
+Let $ABC$ be a triangle. Distinct points $D$, $E$, $F$ lie on sides $BC$, $AC$, and $AB$, respectively, such that quadrilaterals $ABDE$ and $ACDF$ are cyclic. Line $AD$ meets the circumcircle of $\triangle ABC$ again at $P$. Let $Q$ denote the reflection of $P$ across $BC$. Show that $Q$ lies on the circumcircle of $\triangle AEF$.
+\end{exam}
+
+\begin{sol}
+Note that $Q$ is the intersection of $BE$ and $CF,$ since $\angle EBD=\angle CAP=\angle CBP$ and $\angle FCB=\angle BAP=\angle BCP.$ Now note that $\angle BQC=\angle BPC=180^{\circ}-\angle A.$
+
+\begin{center}
+\begin{asy}
+size(6cm);
+//import geometry;
+
+point A=(0.5,3);
+point B=(0,0);
+point C=(4,0);
+point D=(B+C)/2.5;
+
+circle O1=circle(A,B,D);
+circle O2=circle(A,C,D);
+circle cABC=circle(A,B,C);
+
+point E_=intersectionpoints(O1, line(A,C))[0];
+point F=intersectionpoints(O2, line(A,B))[0];
+point P=intersectionpoints(cABC, line(A,D))[0];
+point Q=reflect(B,C)*P ;
+point M=(P+Q)/2 ;
+
+draw(A--B--C-- cycle );
+draw(O1 ^^ O2 ^^ cABC);
+draw(B--Q--C,blue);
+draw(B--P--C);
+draw(F--Q--E_, blue);
+//draw(A--P ^^ P--Q , gray);
+
+dot("$A$", A, N+W);
+dot("$B$", B, S+W);
+dot("$C$", C, E+S);
+dot("$D$", D, 2*S+W);
+dot("$E$", E_, E+N);
+dot("$F$", F, W);
+dot("$P$", P, S);
+dot("$Q$", Q, N);
+\end{asy}
+\end{center}
+\end{sol}
+
+The motivation is just drawing the diagram -- as soon as you figure out that $Q$ lies on $BE$ and $CF,$ the problem solves itself from there.
+
+Here's a slightly harder example.
+
+\begin{exam}[KJMO 2015/1]
+In an acute, scalene triangle $\triangle ABC$, let $O$ be the circumcenter. Let $M$ be the midpoint of $AC$. Let the perpendicular from $A$ to $BC$ be $D$. Let the circumcircle of $\triangle OAM$ hit $DM$ at $P\neq M$. Prove that $B, O, P$ are colinear.
+\end{exam}
+
+\begin{sol}
+Instead we show that the intersection of $MD$ and $BO,$ which we will call $P',$ lies on $(MAO).$ The central claim is that $PABD$ is cyclic.
+
+Note $\angle PDA=\angle MDA=90^{\circ}-\angle C,$ and also note that $\angle PAD=\angle PAB-\angle DAB.$ Note that $\angle PAB=\angle C$ since $\angle APB=90^{\circ}$ and $\angle ABP=\angle ABO=90^{\circ}-\angle C$ and $\angle BAD=90^{\circ}-\angle B.$ Thus $\angle PAD=\angle B+\angle C-90^{\circ}.$
+
+Now consider $\triangle PAD.$ Note $\angle DPA=180^{\circ}-(\angle PDA+\angle PAD)=180^{\circ}-\angle B.$ Thus $PABD$ is cyclic.
+
+This implies that $\angle APO=\angle APB=\angle ADB=90^{\circ}.$ Since $\angle AMO=90^{\circ}$ as well, we are done.
+\begin{center}
+\begin{asy}
+size(6cm);
+pair A = dir(110);
+pair B = dir(-40);
+pair C = dir(220);
+pair O = circumcenter(A,B,C);
+pair M;
+M=(A+C)/2;
+pair D;
+D=foot(A,B,C);
+pair P=extension(D,M,B,O);
+
+draw(A--B--C--cycle);
+draw(D--P);
+draw(P--B,dotted);
+draw(circumcircle(P,A,B),blue);
+draw(circumcircle(A,B,C));
+draw(circumcircle(O,A,M));
+
+dot("$A$",A,N);
+dot("$B$",B,SE);
+dot("$C$",C,SW);
+dot("$D$",D,S);
+dot("$M$",M,W);
+dot("$O$",O,S);
+dot("$P$",P,dir(190));
+\end{asy}
+\end{center}
+\end{sol}
+
+This final example demonstrates the power of wishful thinking.
+
+\begin{exam}[ISL 2010/G1]
+Let $ABC$ be an acute triangle with $D, E, F$ the feet of the altitudes lying on $BC, CA, AB$ respectively. One of the intersection points of the line $EF$ and the circumcircle is $P.$ The lines $BP$ and $DF$ meet at point $Q.$ Prove that $AP = AQ.$
+\end{exam}
+
+\begin{sol}
+We work in directed angles because there are plenty of configuration issues. (If you don't know what directed angles are, consult the chapter on them.)
+
+Note that $AFPQ$ is cyclic, as
+\[\measuredangle AFQ=\measuredangle BFD=\measuredangle ACB=\measuredangle APB=\measuredangle APQ.\]
+
+Now note that
+\[\measuredangle APQ=\measuredangle AFQ=\measuredangle BFD=\measuredangle ACB\]
+\[\measuredangle PQA=\measuredangle PFA=\measuredangle EFA=\measuredangle ACB,\]
+implying that $\angle APQ=\angle PQA,$ or that $AP=AQ.$
+
+\begin{center}
+\begin{asy}
+size(6cm);
+pair C=origin,
+A=(5,12),
+B=(14,0),
+D=foot(A,B,C),
+E=foot(B,A,C),
+F=foot(C,A,B),
+H=orthocenter(A,B,C),
+om=extension(E,F,C,B),
+nom=extension(E,F,D,(9,3));
+path circ = circumcircle(A,B,C);
+pair P1=intersectionpoint(F--om, circ),
+P2=intersectionpoint(E--nom, circ),
+Q1=intersectionpoint(D--F, B--P1),
+Q2=extension(B,P2,D,F),
+Ep=reflect(A,B)*E,
+Cp=reflect(A,B)*C,
+Hp=reflect(A,B)*H,
+Dp=reflect(A,B)*D;
+draw(A--B--C--cycle);
+draw(D--F);
+draw(P1--F);
+draw(P1--B);
+dot(A^^B^^C^^D^^E^^F^^Q1^^P1);
+draw(circumcircle(A,P1,Q1),dotted);
+draw(circ);
+label("$A$", A, N);
+label("$B$", B, SE);
+label("$C$", C, SW);
+label("$D$", D, S);
+label("$E$", E, NW);
+label("$F$", F, dir(60));
+label("$P$", P1, W);
+label("$Q$", Q1, dir(290));
+\end{asy}
+\end{center}
+\end{sol}
+
+I personally thought this problem was harder than the other two, especially since the cyclic quadrilateral had an asymmetric structure with respect to the whole diagram.\footnote{This is explain by the entire diagram being asymmetric.} We're inclined to look for cyclic quadrilaterals involving $A,P,Q$ in some way because the problem is essentially equivalent to showing that $\angle AQP=\angle APQ,$ and a little bit of experimentation shows that it's hard to show directly. The motivation for trying to prove $F$ is the point on $(APQ)$ is drawing in the circumcircles for both configurations, and noting that the second intersection point of them is $F.$
+
+The rest of the motivation is quite straightforward -- all you have to do afterwards is try to solve the problem with the assumption that $AFPQ$ is cyclic, and that part is fairly easy if you have any knowledge about the \hyperref[itm:orthicBCEFcyclic]{orthic triangle}.
+
+\subsection{Tangent Angle Criterion}
+When tangent lines are given, you have to pay close attention the the tangent angle criterion.
+
+\begin{exam}[British Math Olympiad Round 1 2000/1]
+Two intersecting circles $C_1$ and $C_2$ have a common tangent which touches $C_1$ at $P$ and $C_2$ at $Q.$ The two circles intersect at $M$ and $N,$ where $N$ is nearer to $PQ$ than $M$ is. The line $PN$ meets the circle $C_2$ again at $R.$ Prove that $MQ$ bisects angle $PMR.$
+\end{exam}
+
+\begin{sol}
+Note that $\angle RMQ=180^{\circ}-\angle RNQ=180^{\circ}-(\angle PNM+\angle QNM)=180^{\circ}-(\angle QPM+\angle PQM)=\angle PMQ.$
+
+(This actually only takes care of the case where $R$ is in between $P$ and $N.$ Can you show this is true for the other configuration as well?)
+\end{sol}
+Let's expound on the motivation for this. We want to prove that $PQ$ bisects $\angle PMN,$ but it's quite hard to find the supplement of $\angle PMQ$ and $\angle RMQ.$ This then motivates showing that $\angle PMQ=\angle RMQ,$ because those angles seem more workable. We start by manipulating $\angle RMQ$ because it seems more unwieldy, and it feels like there are more ways to get to $\angle PMQ$ than $\angle RMQ.$ (This part is personal preference, but a good rule of thumb is to try to manipulate the least independently defined points into the most independently defined points.\footnote{A heuristic for the independence of a point is how much it would affect the diagram on GeoGebra if it was deleted.})
+
+The cyclic quadrilateral $RMNQ$ is the source of the only useful manipulation we can do with $\angle RMQ,$ so we're pretty much forced into using it. Now looking at $\triangle PNQ$ as a whole motivates $\angle RNQ=180^{\circ}-(\angle PNM+\angle QNM),$ and at this point we want to start manipulating $\angle PMQ.$ We're forced into doing $180^{\circ}-(\angle QPM+\angle PQM)=\angle PMQ,$ because tangent lines have lots of potential for angle chasing and it's the only place to go.
+
+Now the rest of the problem will just come naturally by just trying things.
+
+\subsection{Orthocenter}
+Sometimes a problem will ask you to prove that $AH\perp BC$ for some point $H$ not on $BC.$ This is generally difficult to do directly, and one of the more elementary methods used is to show that $H$ is the orthocenter of $\triangle ABC,$ or $BH\perp CA$ and $CH\perp AB.$
+
+This is obviously not always going to be true, so make sure that this actually seems true before you try too hard to prove it.
+
+\begin{exam}[Swiss Math Olympiad 2007/4]
+Let $ABC$ be an acute-angled triangle with $AB> AC$ and orthocenter $H$. Let $D$ be the projection of $A$ on $BC$. Let $E$ be the reflection of $C$ about $D$. The lines $AE$ and $BH$ intersect at point $S$. Let $N$ be the midpoint of $AE$ and let $M$ be the midpoint of $BH$. Prove that $MN$ is perpendicular to $DS$.
+\end{exam}
+
+\begin{sol}
+We claim $S$ is the orthocenter of $\triangle DEM.$ To do this, it suffices to show that $SN\perp DM$ and $SM\perp DN.$ Let $H'$ be the second intersection of $AH$ with $(ABC).$
+
+Note that $DM\parallel BH'$ by a \hyperref[section:homothety]{homothety} about $H,$ $\angle MAE=\angle DAC=90^{\circ}-\angle C,$ and $\angle AMB=\angle C,$ proving $SN\perp DM.$
+
+Now note that $DN\parallel AC$ by a \hyperref[section:homothety]{homothety} about $E,$ proving $SM\perp DN.$
+\end{sol}
+
+\pagebreak
+
+\section{Problems}
+
+\minpt{40}
+
+\psetquote{How arrogant. The life of each human is worth one, that's it. Nothing more, nothing less.}{Fullmetal Alchemist: Brotherhood}
+
+\prob{2}{AMC 10A 2020/12}{Triangle $AMC$ is isosceles with $AM = AC$. Medians $\overline{MV}$ and $\overline{CU}$ are perpendicular to each other, and $MV=CU=12$. What is the area of $\triangle AMC?$}
+
+\begin{center}
+\begin{asy}
+import olympiad;
+size(4cm);
+draw((-4,0)--(4,0)--(0,12)--cycle);
+draw((-2,6)--(4,0));
+draw((2,6)--(-4,0));
+label("M", (-4,0), W);
+label("C", (4,0), E);
+label("A", (0, 12), N);
+label("V", (2, 6), NE);
+label("U", (-2, 6), NW);
+label("P", (0, 3.6), S);
+\end{asy}
+\end{center}
+
+    \prob{2}{Brazil 2004}{In the figure, $ABC$ and $DAE$ are isosceles triangles ($AB = AC = AD = DE$) and the angles $BAC$ and $ADE$ have measures $36^{\circ}$.}
+\begin{enumerate}
+    \item Using geometric properties, calculate the measure of angle $\angle EDC$.
+    \item Knowing that $BC = 2$, calculate the length of segment $DC$.
+    \item Calculate the length of segment $AC$.
+\end{enumerate}
+\begin{center}
+\begin{asy}
+import olympiad;
+size(4cm);
+pair A=(0,0),B=dir(0),C=dir(36),D=dir(72),E=(2cos(0.4pi),0);
+dot(A^^B^^C^^D^^E);
+draw(A--B--C--cycle);
+draw(A--D--E);
+draw(D--C,dotted);
+label("A",A,dir(-90));
+label("B",B,dir(-90));
+label("C",C,dir(40));
+label("D",D,dir(90));
+label("E",E,dir(-90));
+\end{asy}
+\end{center}
+
+\prob{2}{}{Let circles $\omega_1$ and $\omega_2$ intersect at $X,Y.$ Let line $\ell_1$ passing through $X$ intersect $\omega_1$ at $A$ and $\omega_2$ at $C,$ and let line $\ell_2$ passing through $Y$ intersect $\omega_1$ at $B$ and $\omega_2$ at $D.$ If $\ell_1$ intersects $\ell_2$ at $P,$ prove that $\triangle PAB\sim \triangle PCD.$}
+    
+\prob{2}{AMC 10B 2011/17}{In the given circle, the diameter $\overline{EB}$ is parallel to $\overline{DC}$, and $\overline{AB}$ is parallel to $\overline{ED}$. The angles $AEB$ and $ABE$ are in the ratio $4 : 5$. What is the degree measure of angle $BCD?$}
+    
+\begin{center}
+\begin{asy}
+import olympiad;
+
+size(4cm);
+
+real r=3;
+pair A=(-3cos(80),-3sin(80));
+pair D=(3cos(80),3sin(80)), C=(-3cos(80),3sin(80));
+pair O=(0,0), E=(-3,0), B=(3,0);
+path outer=Circle(O,r);
+draw(outer);
+draw(E--B);
+draw(E--A);
+draw(B--A);
+draw(E--D);
+draw(C--D);
+draw(B--C);
+
+pair[] ps={A,B,C,D,E,O};
+dot(ps);
+
+label("$A$",A,N);
+label("$B$",B,NE);
+label("$C$",C,S);
+label("$D$",D,S);
+label("$E$",E,NW);
+\end{asy}
+\end{center}
+
+\prob{3}{Dennis Chen}{Consider rectangle $ABCD$ with $AB = 6,$ $BC = 8.$ Let $M$ be the midpoint of $AD$ and let $N$ be the midpoint of $CD.$ Let $BM$ and $BN$ intersect $AC$ at $X$ and $Y$ respectively. Find $XY.$}
+    
+\prob{3}{AMC 10A 2019/13}{Let $\triangle ABC$ be an isosceles triangle with $BC = AC$ and $\angle ACB = 40^{\circ}$. Construct the circle with diameter $\overline{BC}$, and let $D$ and $E$ be the other intersection points of the circle with the sides $\overline{AC}$ and $\overline{AB}$, respectively. Let $F$ be the intersection of the diagonals of the quadrilateral $BCDE$. What is the degree measure of $\angle BFC?$}
+    
+\req{3}{Miquel's Theorem}{Consider $\triangle ABC$ with $D$ on $BC,$ $E$ on $CA,$ and $F$ on $AB.$ Prove that $(AEF),$ $(BFD),$ and $(CDE)$ concur.}
+
+\prob{2}{}{Consider $\triangle ABC$ with $D$ on segment $BC,$ $E$ on segment $CA,$ and $F$ on segment $AB.$ Let the circumcircles of $\triangle FBD$ and $\triangle DCE$ intersect at $P\neq D.$ If $\angle A=50^{\circ},\angle B=35^{\circ},$ find $\angle DPE.$}
+
+\prob{3}{AIME II 2018/4}{In equiangular octagon $CAROLINE$, $CA = RO = LI = NE =$ $\sqrt{2}$ and $AR = OL = IN = EC = 1$. The self-intersecting octagon $CORNELIA$ encloses six non-overlapping triangular regions. Let $K$ be the area enclosed by $CORNELIA$, that is, the total area of the six triangular regions. Then $K =$ $\dfrac{a}{b}$, where $a$ and $b$ are relatively prime positive integers. Find $a + b$.}
+
+\req{4}{Brazil 2007}{Let $ABC$ be a triangle with circumcenter $O$. Let $P$ be the intersection of straight lines $BO$ and $AC$ and $\omega$ be the circumcircle of triangle $AOP$. Suppose that $BO = AP$ and that the measure of the arc $OP$ in $\omega$, that does not contain $A$, is $40^{\circ}$. Determine the measure of the angle $\angle OBC$.}
+
+\prob{4}{}{Consider square $ABCD$ and some point $P$ outside $ABCD$ such that $\angle APB=90^{\circ}.$ Prove that the angle bisector of $\angle APB$ also bisects the area of $ABCD.$}
+ 
+\req{4}{AMC 10B 2018/12}{Line segment $\overline{AB}$ is a diameter of a circle with $AB=24$. Point $C$, not equal to $A$ or $B$, lies on the circle. As point $C$ moves around the circle, the centroid (center of mass) of $\triangle{ABC}$ traces out a closed curve missing two points. To the nearest positive integer, what is the area of the region bounded by this curve?}
+
+\prob{6}{Formula of Unity 2018}{A point $O$ is the center of an equilateral triangle $ABC.$ A circle that passes through points $A$ and $O$ intersects the sides $AB$ and $AC$ at points $M$ and $N$ respectively. Prove that $AN = BM.$}
+
+\req{6}{AMC 10A 2021/17}{Trapezoid $ABCD$ has $\overline{AB} \parallel \overline{CD}$, $BC = CD = 43$, and $\overline{AD} \perp \overline{BD}$. Let $O$ be the intersection of the diagonals $\overline{AC}$ and $\overline{BD}$, and let $P$ be the midpoint of $\overline{BD}$. GIven that $OP = 11$, the length $AD$ can be written in the form $m\sqrt{n}$, where $m$ and $n$ are positive integers and $n$ is not divisible by the square of any prime. What is $m + n$?}
+    
+\prob{6}{Memorial Day Mock AMC 10 2018/21}{In the following diagram, $m\angle BAC=m\angle BFC=40^{\circ}$, $m\angle ABF=80^{\circ}$, and $m\angle FEB=2m\angle DBE=2m\angle FBE$. What is $m\angle ADB$?}
+    
+    \begin{center}
+    \begin{asy}
+    size(4cm);
+    draw((0,0)--(-14,0)--(2,8)--(0,0)--(-9,2.5)--(-5.5,0)--(-6,4)--cycle);
+    draw((-5.5,0)--(2,8));
+    label("A", (2,8), NE);
+    label("B", (0,0), SE);
+    label("C", (-5.5,0), S);
+    label("D", (-14,0), SW);
+    label("E", (-9,2.5), NNW);
+    label("F", (-6,4), NNW);
+    \end{asy}
+    \end{center}
+    
+\prob{6}{FARML 2012/6}{In triangle $ABC,$ $AB=7,$ $AC=8,$ and $BC=10.$ $D$ is on $AC$ and $E$ is on $BC$ such that $\angle AEC=\angle BED=\angle B+\angle C.$ Compute the length $AD.$}
+
+\prob{9}{USAJMO 2020/4}{Let $ABCD$ be a convex quadrilateral inscribed in a circle and satisfying $DA < AB = BC < CD$. Points $E$ and $F$ are chosen on sides $CD$ and $AB$ such that $BE \perp AC$ and $EF \parallel BC$. Prove that $FB = FD$.}
+    
+\prob{13}{MAST Diagnostic 2020}{Consider $\triangle ABC$ with $D$ on line $BC.$ Let the circumcenters of $\triangle ABD$ and $\triangle ACD$ be $M,N,$ respectively. Let the circumcircle of $\triangle MND$ intersect the circumcircle of $\triangle ACD$ again at $H\neq D.$ Prove that $A,M,H$ are collinear.}
+
+\end{document}

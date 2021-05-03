@@ -1,0 +1,39 @@
+\section{Invariants}
+When we want to prove something isn't possible, we can use things that don't change across all operations - otherwise known as \textit{invariants}. We recommend reading the \href{https://www.math.cmu.edu/~mlavrov/arml/12-13/invariants-12-09-12.pdf}{ARML 2012 presentation} on invariants.
+
+\begin{exam}[Parity]
+Bob starts with $15$ coins. He may either deposit $4$ coins, or withdraw $6$ coins. Can he ever get $0$ coins?
+\end{exam}
+
+\begin{sol}The answer is quite obviously no - $15$ is not an odd number. The operations preserve the parity of Bob's coins, and $15$ and $0$ have different parities.\end{sol}
+
+This idea of \textit{something} that is preserved - it doesn't necessarily have to be parity - can be very powerful for proving non-existence.
+
+\begin{exam}[Not the Other Way]
+Claire starts with $16$ coins. He may either deposit $6$ coins or withdraw $12$ coins. Can he ever get $2$ coins?
+\end{exam}
+
+Once again, an obvious no (consider mod $6$). But this problem is perfect for making a point: \textit{invariants can only disprove existence, not prove existence}. If we considered mod $2$ the invariant would seem fine as $16\equiv 2\pmod {2}.$ But existence (as is obvious in this case) is not possible. Thus a problem that asks you to find whether something is possible or not usually has an answer of "no," unless finding the construction itself is interesting.
+
+The thing doesn't even necessarily have to be preserved. As long as its behavior is predictable enough in some manner, the idea of invariants applies.
+
+\begin{exam}[Knight Attaching Piece]
+Say a knight is currently attacking a piece on a chessboard. Prove that, after it moves, it is no longer attacking the piece.
+\end{exam}
+
+\begin{sol}
+Note that the knight always changes color as it moves, and that it can only attack squares of one color at any time. So after moving, the knight is no longer attacking that piece because it is no longer attacking the square of the color the piece is on.
+\end{sol}
+
+Consult a chess rulebook if you do not know how a knight moves or how the board is colored.
+
+\section{Symmetry}
+What stays the same?
+
+This is sort of similar to invariants - look for things that stay identical.
+
+\begin{exam}[HMMT 2019]
+Reimu and Sanae play a game using $4$ fair coins. Initially both sides of each coin are white. Starting with Reimu, they take turns to color one of the white sides either red or green. After all sides are colored, the $4$ coins are tossed. If there are more red sides showing up, then Reimu wins, and if there are more green sides showing up, then Sanae wins. However, if there is an equal number of red sides and green sides, then neither of them wins. Given that both of them play optimally to maximize the probability of winning, what is the probability that Reimu wins?
+\end{exam}
+
+\begin{sol}Notice that the chance Reimu wins is necessarily the same as Sanae's chance of winning - any coin with both sides red must be able to be paired with a coin with both sides green. Thus we want to minimize the probability of a tie. It's quite intuitive from here - we want the largest possible amount of coins to have an undecided outcome, so we will just have four fair coins. The probability of a tie is $T=\frac{\binom{4}{2}}{16}=\frac{6}{16}.$ Thus, the probability that Reimu wins is $p=\frac{1-T}{2}=\frac{\frac{10}{16}}{2}=\frac{5}{16}.$\end{sol}

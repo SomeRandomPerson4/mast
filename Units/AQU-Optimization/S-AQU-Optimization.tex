@@ -1,0 +1,176 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{Solutions to Optimization and Inequalities}
+\author{Dennis Chen}
+\date{AQU}
+
+\begin{document}
+
+\maketitle
+
+\toc
+
+\pagebreak\section{WOOT}
+
+In Example 7 we showed that the maximum value of $f(x)=x^3(4-x)$ is 27. However, we could have manipulated the inequality in many different ways. For instance, we could have written \[f(x)=\frac 1{36}[x(2x)(3x)(24-6x)]\le\frac1{36}\left[\frac{x+2x+3x+24-6x}4\right]^4=36.\] So why is $\max(f(x))=27$ and not 36?
+
+\subsection{Solution}
+
+The key is to look if 36 can actually be achieved. To do this, we consider the equality case in AM-GM, which requires $x=2x=3x=24-6x$; clear contradiction, whereas the correct maximum of 27 is actually achievable. 
+
+\pagebreak\section{Unsourced}
+
+Find $\frac{1999^3-1000^3-999^3}{1999\cdot 1000\cdot 999}.$
+
+\subsection{Solution}
+
+Note that as $n$ increases, the expression strictly increases. Then we set $n\to\infty$ and let the expression be equal to $x$. Solving the equation $x=\sqrt{6+x}$, we find that $x=3$ (the other root is extraneous), and so this is the upper bound on finite $n$. 
+
+\pagebreak\section{AIME II 2004/6}
+Three clever monkeys divide a pile of bananas. The first monkey takes some bananas from the pile, keeps three-fourths of them, and divides the rest equally between the other two. The second monkey takes some bananas from the pile, keeps one-fourth of them, and divides the rest equally between the other two. The third monkey takes the remaining bananas from the pile, keeps one-twelfth of them, and divides the rest equally between the other two. Given that each monkey receives a whole number of bananas whenever the bananas are divided, and the numbers of bananas the first, second, and third monkeys have at the end of the process are in the ratio $3: 2: 1,$what is the least possible total for the number of bananas?
+\subsection{Solution}
+Let the first monkey take $b_1$ bananas, the second $b_2$ and the third $b_3$ from the pile of bananas. Then the first monkey receives $\frac34b_1+\frac38b_2+\frac{11}{24}b_3$ bananas, the second monkey $\frac 18 b_1+\frac14b_2+\frac{11}{24}b_3$, and the third monkey $\frac18b_1+\frac38b_2+\frac1{12}b_3$. Note that by these equations, $8|b_1,8|b_2,$ and $24|b_3$. Using the extra information that these three numbers are in $3:2:1$ ratio, we have $\frac{b_1}{11}=\frac{b_2}{13}+\frac{b_3}{27}$. The minimum value of $b_1+b_2+b_3$ is then $8(11+13+27)=408$. 
+
+\pagebreak\section{AMC 10A 2019/19}
+What is the least possible value of\[(x+1)(x+2)(x+3)(x+4)+2019\]where $x$ is a real number?
+\subsection{Solution}
+Note that 
+\begin{align*}
+    (x+1)(x+2)(x+3)(x+4)+2019&=(x^2+5x+4)(x^2+5x+6)+2019\\&=(x^2+5x+5)^2-1+2019\\&\ge 2018
+\end{align*}
+Where first we grouped the first and last expressions and then the middle two terms, and last we used the trivial inequality. 
+\pagebreak\section{AIME I 2010/5}
+Positive integers $a$, $b$, $c$, and $d$ satisfy $a > b > c > d$, $a + b + c + d = 2010$, and $a^2 - b^2 + c^2 - d^2 = 2010$. Find the number of possible values of $a$.
+\subsection{Solution}
+Factoring, we have 
+$2010 = (a^2 - b^2) + (c^2 - d^2) = (a + b)(a - b) + (c + d)(c - d) \ge a + b + c + d = 2010$, where equality must hold so $b = a - 1$ and $d = c - 1$. Then we see $a = 1004$ is maximal and $a = 504$ is minimal, so the answer is $\boxed{501}$.
+\pagebreak\section{AIME I 2004/5}
+Alpha and Beta both took part in a two-day problem-solving competition. At the end of the second day, each had attempted questions worth a total of 500 points. Alpha scored 160 points out of 300 points attempted on the first day, and scored 140 points out of 200 points attempted on the second day. Beta who did not attempt 300 points on the first day, had a positive integer score on each of the two days, and Beta's daily success rate (points scored divided by points attempted) on each day was less than Alpha's on that day. Alpha's two-day success ratio was 300/500 = 3/5. The largest possible two-day success ratio that Beta could achieve is $m/n,$ where $m$ and $n$ are relatively prime positive integers. What is $m+n$?
+\subsection{Solution}
+Let $q$ be the number of questions Beta takes on day 1 and $a$ be the number it gets right. Let $b$ be the number it gets right on day 2.
+
+These inequalities follow:\[\frac{a}{q} < \frac{160}{300} = \frac{8}{15}\]\[\frac{b}{500-q} < \frac{140}{200} = \frac{7}{10}\]Solving for a and b and adding the two inequalities:\[a + b < \frac{8}{15}q + (350 - \frac{7}{10}q)\]\[a + b < 350 - \frac{1}{6}q\]From here, we see the largest possible value of $a+b$ is $349$.
+
+Checking our conditions, we know that $a$ must be positive so therefore $q$ must be positive. A quick check shows that for $2\le q \le 5$, $q$ follows all the conditions and results in $a+b=349$.
+
+This makes Beta's success ratio $\frac{349}{500}$. Thus, the answer is $m+n = 349 + 500 = \boxed{849}$.
+
+\pagebreak\section{Alphastar}
+Let $\mathcal{S}$ be the set of all real numbers $x$ such that $\lfloor x^2\rfloor=\lfloor x\rfloor\lfloor x+1\rfloor$. Let $m$ be the minimum positive integer for which $m+0.51$ is not in $\mathcal{S}$. Find $m$.
+\subsection{Solution}
+
+
+\pagebreak\section{Titu Andreescu}
+Let $P$ be a polynomial with positive coefficients. Show that if \[P\left(\frac1x\right)\ge \frac1{P(x)}\] holds for $x=1$, it holds for all $x>0$.
+\subsection{Solution}
+Let $P(x)=a_1x^{n}+a_2x^{n-1}+\cdots+a_{n+1}.$ By Cauchy Schwarz, \[P\left(\frac1x\right)P(x)\ge (a_1+a_2+\cdots+a_{n+1})=P(1)\ge 1,\] as desired.
+\pagebreak\section{AIME 1990/11}
+Someone observed that $6! = 8 \cdot 9 \cdot 10$. Find the largest positive integer $n^{}_{}$ for which $n^{}_{}!$ can be expressed as the product of $n - 3_{}^{}$ consecutive positive integers.
+\subsection{Solution}
+Let the largest of the $n-3$ consecutive positive integers be $k$. Clearly $k$ cannot be less than or equal to $n$, else the product of $n-3$ consecutive positive integers will be less than $n!$.
+
+For our key observation: for $n$ to be maximum the smallest number (or starting number) of the $n-3$ consecutive positive integers must be minimum, implying that $k$ needs to be minimum. But the least $k > n$ is $n+1$.
+
+So the $n-3$ consecutive positive integers are $5, 6, 7…, n+1$
+
+So we have $\frac{(n+1)!}{4!} = n!$ $\Longrightarrow  n+1 = 24$ $\Longrightarrow  n = 23$
+\pagebreak\section{AIME II 2011/9}
+Let $x_1, x_2, ... , x_6$ be non-negative real numbers such that $x_1 +x_2 +x_3 +x_4 +x_5 +x_6 =1$, and $x_1 x_3 x_5 +x_2 x_4 x_6 \ge {\scriptstyle\frac{1}{540}}$. Let $p$ and $q$ be positive relatively prime integers such that $\frac{p}{q}$ is the maximum possible value of $x_1 x_2 x_3 + x_2 x_3 x_4 +x_3 x_4 x_5 +x_4 x_5 x_6 +x_5 x_6 x_1 +x_6 x_1 x_2$. Find $p+q$.
+\subsection{Solution}
+Note that neither the constraint nor the expression we need to maximize involves products $x_i x_j$ with $i \equiv j \pmod 3$. Factoring out say $x_1$ and $x_4$ we see that the constraint is $x_1(x_3x_5) + x_4(x_2x_6) \ge {\scriptstyle\frac1{540}}$, while the expression we want to maximize is $x_1(x_2x_3 + x_5x_6 + x_6x_2) + x_4(x_2x_3 + x_5x_6 + x_3x_5)$. Adding the left side of the constraint to the expression, we get: $(x_1 + x_4)(x_2x_3 + x_5x_6 + x_6x_2 + x_3x_5) = (x_1 + x_4)(x_2 + x_5)(x_3 + x_6)$. This new expression is the product of three non-negative terms whose sum is equal to 1. By AM-GM this product is at most $\scriptstyle\frac1{27}$. Since we have added at least $\scriptstyle\frac1{540}$ the desired maximum is at most $\scriptstyle\frac1{27} - \frac1{540} = \frac{19}{540}$. It is easy to see that this upper bound can in fact be achieved by ensuring that the constraint expression is equal to $\scriptstyle\frac1{540}$ with $x_1 + x_4 = x_2 + x_5 = x_3 + x_6 = \scriptstyle\frac13$—for example, by choosing $x_1$ and $x_2$ small enough—so our answer is $540 + 19 = \fbox{559}.$
+\pagebreak\section{AIME I 2008/12}
+On a long straight stretch of one-way single-lane highway, cars all travel at the same speed and all obey the safety rule: the distance from the back of the car ahead to the front of the car behind is exactly one car length for each 15 kilometers per hour of speed or fraction thereof (Thus the front of a car traveling 52 kilometers per hour will be four car lengths behind the back of the car in front of it.) A photoelectric eye by the side of the road counts the number of cars that pass in one hour. Assuming that each car is 4 meters long and that the cars can travel at any speed, let $M$ be the maximum whole number of cars that can pass the photoelectric eye in one hour. Find the quotient when $M$ is divided by $10$.
+\subsection{Solution}
+Let $n$ be the number of car lengths that separates each car. Then their speed is at most $15n$. Let a unit be the distance between the cars (front to front). Then the length of each unit is $4(n + 1)$. To maximize, in a unit, the CAR comes first, THEN the empty space. So at time zero, the car is right at the eye.
+
+Hence, we count the number of units that pass the eye in an hour: $\frac {15,000n\frac{\text{meters}}{\text{hour}}}{4(n + 1)\frac{\text{meters}}{\text{unit}}} = \frac {15,000n}{4(n + 1)}\frac{\text{units}}{\text{hour}}$. We wish to maximize this.
+
+Observe that as $n$ gets larger, the $+ 1$ gets less and less significant, so we take the limit as $n$ approaches infinity
+
+$\lim_{n\rightarrow \infty}\frac {15,000n}{4(n + 1)} = \lim_{n\rightarrow \infty}\frac {15,000}{4} = 3750$
+Now, as the speeds are clearly finite, we can never actually reach $3750$ full UNITs. However, we only need to find the number of CARS. We can increase their speed so that the camera stops (one hour goes by) after the car part of the $3750$th unit has passed, but not all of the space behind it. Hence, $3750$ cars is possible, and the answer is $\boxed {375}$.
+\pagebreak\section{AIME II 2009/11}
+For certain pairs $(m,n)$ of positive integers with $m\geq n$ there are exactly $50$ distinct positive integers $k$ such that $|\log m - \log k| < \log n$. Find the sum of all possible values of the product $mn$.
+\subsection{Solution}
+We have $\log m - \log k = \log \left( \frac mk \right)$, hence we can rewrite the inequality as follows:\[- \log n < \log \left( \frac mk \right) < \log n\]We can now get rid of the logarithms, obtaining:\[\frac 1n < \frac mk < n\]And this can be rewritten in terms of $k$ as\[\frac mn < k < mn\]
+From $k<mn$ it follows that the $50$ solutions for $k$ must be the integers $mn-1, mn-2, \dots, mn-50$. This will happen if and only if the lower bound on $k$ is in a suitable range -- we must have $mn-51 \leq \frac mn < mn-50$.
+
+Obviously there is no solution for $n=1$. For $n>1$ the left inequality can be rewritten as $m\leq\dfrac{51n}{n^2-1}$, and the right one as $m > \dfrac{50n}{n^2-1}$.
+
+Remember that we must have $m\geq n$. However, for $n\geq 8$ we have $\dfrac{51n}{n^2-1} < n$, and hence $m<n$, which is a contradiction. This only leaves us with the cases $n\in\{2,3,4,5,6\}$.
+
+For $n=2$ we have $\dfrac{100}3 < m \leq \dfrac{102}3$ with a single integer solution $m=\dfrac{102}3=34$.
+For $n=3$ we have $\dfrac{150}8 < m \leq \dfrac{153}8$ with a single integer solution $m=\dfrac{152}8=19$.
+For $n=4,5,6$ our inequality has no integer solutions for $m$.
+Therefore the answer is $34\cdot 2 + 19\cdot 3 = 68 + 57 = \boxed{125}$.
+\pagebreak\section{Unsourced}
+A cubic polynomial has the property that all its roots are rational and its coefficients are positive prime integers. If $p(1)=144$, compute the value of $p(2)$.
+\subsection{Solution}
+Since the roots are rational, we factor \[p(z)=(ax+b)(cx+d)(ex+f)\] where $a,b,c,d,e,f$ are positive integers. Now $ace$ and $bdf$ are prime. One of $a,c,e$ is prime, and the other two are prime. The same can be said of $b,d,f$. Then we have two cases: \[p(x)=(qx+1)(x+r)(x+1)=qx^3+(qr+q+1)x^2+(qr+r+1)x+r\]
+or
+\[q(x)=(qx+r)(x+1)^2=qx^3+(2q+r)x^2+(q+2r)x+r.\]
+By the given conditions, the middle coefficients must be prime in both cases. 
+\vspace{2mm}
+With the conditions that $p(1)=144$ and that the coefficients are prime, we deduce that in the first variety of $p(x)$ outlined above we can have \[(q,r)=(2,23),(3,17),(17,3),(23,2).\] Testing each, the least value of $p(2)$ is $429$. 
+\vspace{2mm}
+Testing the second variety of $p(x)$, the cases we can have \[(q,r)=(7,29),(13,23),(17,19),(19,17),(23,13),(29,7).\] The smallest value of $p(2)$ is $369$ in this case, which is our answer. 
+\pagebreak\section{AIME 1998/14}
+An $m\times n\times p$ rectangular box has half the volume of an $(m + 2)\times(n + 2)\times(p + 2)$ rectangular box, where $m, n,$ and $p$ are integers, and $m\le n\le p.$ What is the largest possible value of $p$?
+\subsection{Solution}
+Similarly as above, we solve for $p,$ but we express the denominator differently:
+
+\[p=\dfrac{2(m+2)(n+2)}{(m+2)(n+2)-4(m+n+2)} \implies \dfrac{1}{p}=\dfrac{1}{2}-\dfrac{2(m+n+2)}{(m+2)(n+2)}.\]Hence, it suffices to maximize $\dfrac{m+n+2}{(m+2)(n+2)},$ under the conditions that $p$ is a positive integer.
+
+Then since $\dfrac{m+n+2}{(m+2)(n+2)}>\dfrac{1}{2}$ for $m=1,2,$ we fix $m=3.$\[\implies \dfrac{1}{p}=\dfrac{1}{2}-\dfrac{2(n+2)}{5(n+2)}=\dfrac{n-10}{10(n+2)},\]where we simply let $n=11$ to achieve $p=\boxed{130}.$
+\pagebreak\section{Unsourced}
+Triangle $ABC$ has sides $a$, $b$, and $c$, and circumradius $R$. Prove that
+\[b^2 + c^2 \ge a^2 - R^2.\]
+When does equality occur?
+\subsection{Solution}
+We can re-write the given inequality as $b^2 + c^2 - a^2 \ge -R^2$. By the law of cosines, $b^2 + c^2 - a^2 = 2bc \cos A$, so we get
+\[2bc \cos A \ge -R^2.\]
+By the extended law of sines, $b = 2R \sin B$ and $c = 2R \sin C$. Substituting, our inequality becomes
+\[\cos A \sin B \sin C \ge -\frac{1}{8}.\]
+
+Since $B$ and $C$ are the angles of a triangle, $\sin B$ and $\sin C$ are positive. If $A \le 90^\circ$, then $\cos A \ge 0$, so the inequality is satisfied. Hence, assume that $A$ is obtuse.
+
+Considering $A$ as a fixed angle, we try to minimize $\cos A \sin B \sin C$. Note that
+\[\sin B \sin C = \frac{1}{2} [\cos (B - C) - \cos (B + C)],\]
+so
+\begin{align*}
+\cos A \sin B \sin C &= \cos A \cdot \frac{1}{2} [\cos (B - C) - \cos (B + C)] \\
+&= \frac{1}{2} \cos A \cos (B - C) - \frac{1}{2} \cos A \cos (B + C) \\
+&= \frac{1}{2} \cos A \cos (B - C) - \frac{1}{2} \cos A \cos (180^\circ - A) \\
+&= \frac{1}{2} \cos A \cos (B - C) + \frac{1}{2} \cos^2 A.
+\end{align*}
+
+Since $A$ is obtuse, $\cos A$ is negative, so minimizing this expression is equivalent to maximizing $\cos (B - C)$. Note that $\cos (B - C) \le 1$, with equality if and only if $B - C$ is a multiple of $360^\circ$. Furthermore, this is achievable when $B = C = 90^\circ - A/2$. Hence,
+\[\cos A \sin B \sin C \ge \frac{1}{2} \cos A + \frac{1}{2} \cos^2 A.\]
+Thus, it suffices to prove that
+\[\frac{1}{2} \cos A + \frac{1}{2} \cos^2 A \ge -\frac{1}{8}.\]
+Multiplying both sides by 8 and adding 1 to both sides, this inequality becomes
+\[4 \cos^2 A + 4 \cos A + 1 \ge 0,\]
+or $(2 \cos A + 1)^2 \ge 0$, which is clearly true. Therefore, the given inequality holds.
+
+Furthermore, equality holds if and only if $\cos A = -1/2$ and $B = C$. In other words, equality holds if and only if $A = 120^\circ$ and $B = C = 30^\circ$.
+
+%\pagebreak\section{ISL 2005/A1}
+%Find all pairs of integers $a,b$ for which there exists a polynomial $P(x) \in \mathbb{Z}[X]$ such that product $(x^2+ax+b)\cdot P(x)$ is a polynomial of a form\[ x^n+c_{n-1}x^{n-1}+\cdots+c_1x+c_0  \]where each of $c_0,c_1,\ldots,c_{n-1}$ is equal to $1$ or $-1$.
+%
+%\subsection{Solution}
+%We claim that the only solutions are $(0,\pm 1),$ $(\pm 1,\pm 1),$ and $(\pm 2,1).$ The constructions are $P(x)=x+1,$ $P(x)=x^3+1,$ and $P(x)=x-\frac{a}{2},$ respectively.
+%
+%Note $|b|=1,$ since $|c_0|=1.$ Now we claim that $|a|\leq 2.$ Assume otherwise. Then the roots of $x^2+ax\pm 1$ are
+%\[\frac{-a\pm\sqrt{a^2\mp 4}}{2}.\]
+%Say $r$ is the root with the largest absolute value. Note that $|r|\geq \frac{|a|+\sqrt{a^2-4}}{2}.$
+%
+%Also note that we need $|x^n|=|c_{n-1}x^{n-1}+\cdots+c_1x+c_0|,$ or $|\frac{c_{n-1}}{x}+\frac{c_{n_2}}{x^2}+\cdots+\frac{c_0}{x^n}|=1.$ But note that if $|x|>1,$
+%\[|\frac{c_{n-1}}{x}+\frac{c_{n-2}}{x^2}+\cdots+\frac{c_0}{x^n}|\leq \frac{1}{|x|}+\frac{1}{|x|^2}+\cdots+\frac{1}{|x|^n}<\frac{1}{|x|}+\frac{1}{|x|^2}+\cdots=\frac{1}{|x|-1}.\]
+%But note that $1>\frac{1}{|x|-1}$ when $|x|>2.$ But for some root of $x^2+ax+b,$
+%\[|x|\geq\frac{|a|+\sqrt{a^2-4}}{2}>2\]
+%when $|a|>2.$ Thus $r$ cannot be a root of $x^n+c_{n-1}x^{n-1}+\cdots+c_1x+c_0.$
+%
+%Now the only possible pairs $(a,b)$ are $(0,\pm 1),$ $(\pm 1,\pm 1),$ $(\pm 2, 1),$ and $(\pm 2, -1).$ We've proved that the first three work, so we just want to show that $(\pm 2, -1)$ don't work. It doesn't work because $|r|=|\frac{\pm 2\pm \sqrt{4+4}}{2}|=\frac{2+2\sqrt{2}}{2}=1+\sqrt{2}>2.$
+\end{document}

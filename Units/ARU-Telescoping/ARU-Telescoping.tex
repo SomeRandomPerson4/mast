@@ -1,0 +1,351 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis} % why would you even WANT to use dennis.sty
+
+\title{Telescoping}
+\author{Dennis Chen}
+\date{ARU}
+
+\begin{document}
+\maketitle
+
+\section{Theory}
+
+\subsection{Philosophy and Prerequisites}
+
+It is necessary to know summation notation and partial fraction decomposition, and it is helpful to have prior experience in them. If you don't know either of them, there is an appendix at the end explaining them.
+
+The philosophy of this handout is about expressing sums in a way such that terms cancel out. Shifts in perspectives will be crucial -- in fact, you can think of this sort of as the algebraic version of \db{CQV-Perspectives}.
+
+\subsection{Examples}
+If you don't know summation notation or partial fraction decomposition by now, you will have a difficult time.
+
+\begin{exam}
+Find $\prod\limits_{i=3}^{10}\frac{i}{i+2}.$
+\end{exam}
+
+\begin{sol}
+Solution: We see this is $\frac{3}{5}\cdot \frac{4}{6}\cdot \frac{5}{7}\cdot \dots \frac{10}{12}.$ Canceling the numbers from $5$ to $10$ yields our answer as \[\frac{3\cdot 4}{11\cdot 12}=\ansbold{\frac{1}{11}}.\]
+\end{sol}
+
+\begin{exam}
+Find $\sum\limits_{i=1}^{19} \frac{1}{i(i+1)}.$
+\end{exam}
+
+\begin{sol}
+It would be really stupid to find this using arithmetic; we are all already good enough at it. Instead we use the fact that $\frac{1}{i(i+1)}=\frac{1}{i}-\frac{1}{i+1}$ and get \[\sum\limits_{i=1}^{19} \frac{1}{i(i+1)}=\sum\limits_{i=1}^{19} \frac{1}{i}-\sum\limits_{i=2}^{20}\frac{1}{i}=1-\frac{1}{20}=\ansbold{\frac{19}{20}}.\]
+\end{sol}
+
+\begin{exam}
+Find $\sum\limits_{n=1}^{23} \frac{1}{n(n+2)}$ to the nearest integer.
+\end{exam}
+
+\begin{sol}
+We will use the fact that $\frac{1}{n(n+2)}=\frac{1}{2}(\frac{1}{n}-\frac{1}{n+2}).$ The rest of the solution is just details.
+
+This gives us \[\sum\limits_{n=1}^{23} \frac{1}{n(n+2)}=\frac{1}{2}(1+1/2-1/24-1/25).\] Since $1/24,1/25$ are sufficiently small, we can state with confidence that $1+1/2-1/24-1/25\geq 1,$ or that $\frac{1}{2}(1+1/2-1/24-1/25) \geq 1/2,$ implying that this sum rounds to $\ansbold{1}.$
+\end{sol}
+
+\begin{exam}
+Find $\sum\limits_{n=2}^{1000} \frac{1}{n^2-1}.$
+\end{exam}
+
+\begin{sol}
+This can be rewritten as \[\sum\limits_{n=1}^{999}\frac{1}{n(n+2)},$$ which simplifies to $$\frac{1}{2}(\sum\limits_{n=1}^{999}\frac{1}{n}-\sum\limits_{n=3}^{1001}\frac{1}{n})=\frac{1}{2}(1+1/2-1/1000-1/1001)=\ansbold{\frac{1499499}{2002000}}.\]
+\end{sol}
+
+\begin{exam}
+Simplify $(1+x)(1+x^2)(1+x^4)(1+x^8)(1+x^{16}).$
+\end{exam}
+
+\begin{sol}
+Note that in general, $1+a=\frac{1-a^2}{1-a}.$ This means that this expression is condensed into \[\frac{1-x^2}{1-x}\cdot \frac{1-x^4}{1-x^2}\cdot \frac{1-x^8}{1-x^4}\cdot \frac{1-x^{16}}{1-x^8} \cdot \frac {1-x^{32}}{1-x^{16}}=\frac{1-{x^{32}}}{1-x}.\] Some basic knowledge of division yields our answer as \[\sum\limits_{n=0}^{31} x^n.\]
+\end{sol}
+
+Telescoping isn't always straightforward! Be on the lookout for clever manipulations.
+
+\begin{exer}[AMC 10A 2021/10]
+Evaluate
+\[(2+3)(2^2+3^2)(2^4+3^4)(2^8+3^8)(2^{16}+3^{16})(2^{32}+3^{32})(2^{64}+3^{64}).\]
+\end{exer}
+
+\begin{exer}[CMIMC 2021/T3]
+Evaluate \[\sum_{i=0}^{\infty}\frac{7^i}{(7^i+1)(7^i+7)}.\]
+\end{exer}
+
+\begin{exam}
+Find $\sum\limits_{n=0}^{\infty} \frac{1}{2^n}.$
+\end{exam}
+
+We end this section with a bit of a weird example; while it may not directly relate to telescoping, it is part of the broader ``sums'' picture.
+
+\begin{sol}
+We see that this is equivalent to $1+1/2+1/4+\dots.$ Note that $1=2-1,1/2=1-1/2,1/4=1/2-1/4\dots.$ Substituting yields \[\sum\limits_{n=0}^{\infty}\frac{1}{2^n}=\sum\limits_{n=-1}^{\infty} \frac{1}{2^n}-\sum\limits_{n=0}^{\infty}\frac{1}{2^n}=\ansbold{2}.\]
+
+With a little bit of creativity, you should be able to do this for other infinite geometric series.
+\end{sol}
+
+Telescoping does not always have a summation sign; all that matters is the idea of manipulating the sum to cancel with itself.
+
+\begin{exam}[AIME 1983/13]
+For $\{1, 2, 3, \ldots, n\}$ and each of its non-empty subsets a unique alternating sum is defined as follows. Arrange the numbers in the subset in decreasing order and then, beginning with the largest, alternately add and subtract successive numbers. For example, the alternating sum for $\{1, 2, 3, 6,9\}$ is $9-6+3-2+1=5$ and for $\{5\}$ it is simply $5$. Find the sum of all such alternating sums for $n=7$. 
+\end{exam}
+
+\begin{sol}
+Consider any subset $S$ that does not have $7$ in it, and let $f(S)$ be the alternating sum of $S$. If $S^{*}$ is the subset $S$ along with $7,$ then by definition, $f(S^*)=7-f(S).$ Since there are $2^6-1$ such subsets $S,$ then the sum of all subsets \db{except for $\{7\}$} is $63\cdot 7.$\footnote{$7$ was not included in this count because $S$ cannot be the empty set, as $f(S)$ would then be undefined. Alternatively, you can define $f(\varnothing)=0$, as that doesn't change the final answer.} Now adding in $7,$ our sum is $63\cdot 7+7=\ansbold{448}.$
+\end{sol}
+
+\begin{exam}[LMT 2014/I15]
+Evaluate
+\[\sum_{i=1}^{2013} i\cdot i!.\]
+\end{exam}
+
+\begin{sol}
+Note that
+\[i\cdot i! = -i!+(i+1)!.\]
+Thus, the sum is equivalent to
+\[-1!+2!-2!+3!-\ldots-2013!+2014! = \ansbold{2014!-1}.\]
+\end{sol}
+
+\pagebreak
+
+\section{Problems}
+
+\minpt{45}
+
+\psetquote{This place is not a place of honor. No highly esteemed deed is commemorated here. Nothing valued is here. What is here was dangerous and repulsive to us. This message is a warning about danger.}{Nuclear Waste Warning Message}
+
+\prob{2}{TrinMaC 2020/14}{Compute \[\sum\limits_{n=1}^{255}\left(\frac{1}{\sqrt[4]{n}+\sqrt[4]{n+1}}-\sqrt{n}\cdot \sqrt[4]{n+1}+\sqrt[4]{n}\cdot \sqrt{n+1}\right).\]}
+
+\prob{2}{AIME II 2002/6}{Find the integer that is closest to $1000\sum\limits_{n=3}^{10000}\frac{1}{n^2-4}$.}
+
+% its a pretty terrible problem but on the other hand, having aime problems on an aime pset is ideal...
+
+\prob{2}{Alcumus}{Find \[\sum_{n = 1}^\infty \frac{n^2 + n - 1}{(n + 2)!}.\]}
+
+% n/(n+1)! - (n+1)/(n+2)!
+
+\req{3}{HMMT 2008}{Evaluate the infinite sum $\sum\limits_{n=1}^{\infty}\frac{n}{n^4+4}$.}
+
+% thanks pog! feb guts 14, sophie germain kills
+
+\prob{3}{USAMTS 1999}{Determine the value of
+\[S=\sqrt{1+\frac{1}{1^2}+\frac{1}{2^2}}+\sqrt{1+\frac{1}{2^2}+\frac{1}{3^2}}+\cdots+\sqrt{1+\frac{1}{1999^2}+\frac{1}{2000^2}}.\]}
+% Round 4 Problem 3
+
+% first term is equivalent to 1+1/1-1/2, then second term is 1+1/2-1/3, etc
+
+\prob{3}{CHMMC 2016/4}{Compute $\sum\limits_{n=1}^{\infty} \frac{2^{n+1}}{8\cdot 4^n-6\cdot 2^n+1}.$}
+
+\prob{4}{}{Evaluate \[\sum\limits_{k=1}^{\infty} \frac{6^k}{(3^k-2^k)(3^{k+1}-2^{k+1})}.\]}
+
+\prob{6}{Mock AIME II 2015/5}{How many trailing zeroes are in the decimal representation of $n=1+\sum_{k=1}^{2014} k!\cdot (k^3+2k^2+3k+1)$?}
+
+\prob{6}{CIME I 2020/12}{Define a sequence $a_0,a_1,a_2,\cdots$ by
+\[a_i=\underbrace{1\cdots 1}_{2^i \text{ 1's}} \underbrace{0\cdots 0}_{(2^i-1) \text{ 0's}} 1_2,\]
+where $a_i$ is expressed in binary. Let $S$ be the sum of the digits when $a_0a_1\cdots a_{10}$ is expressed in binary. Find the remainder when $S$ is divided by $1000.$}
+
+\req{6}{MAST Diagnostic 2020/C7}{Find $\sum\limits_{a=1}^{\infty}\frac{32a}{16a^4+24a^2+25}.$}
+
+\prob{6}{NARML 5}{Let $a_1,a_2,a_3,\ldots$ be a sequence that satisfies $a_1=a_2=1$ and $4a_n=9a_{n-2}-a_{n-1}.$ Compute
+\[\sum_{n=1}^{\infty}a_n\cdot \left(\frac{2}{3}\right)^n.\]}
+
+\prob{6}{IMO 1966/4}{Prove that for every natural number $n$, and for every real number $x \neq \frac{k\pi}{2^t}$ ($t=0,1, \dots, n$; $k$ any integer)
+\[\frac{1}{\sin{2x}}+\frac{1}{\sin{4x}}+\dots+\frac{1}{\sin{2^nx}}=\cot{x}-\cot{2^nx}.\]}
+
+\prob{9}{Mildorf AIME 3/6}{Compute \[\sum_{n = 1}^{9800} \frac{1}{\sqrt{n + \sqrt{n^2 - 1}}}.\]}
+
+% denominator is 1/sqrt(2) * (sqrt(n+1)+sqrt(n-1))
+
+\prob{9}{AIME II 2000/15}{Find the least positive integer $n$ such that
+\[\frac 1{\sin 45^\circ\sin 46^\circ}+\frac 1{\sin 47^\circ\sin 48^\circ}+\cdots+\frac 1{\sin 133^\circ\sin 134^\circ}=\frac 1{\sin n^\circ}.\]}
+
+\prob{13}{AIME II 2008/8}{Let $a = \pi/2008$. Find the smallest positive integer $n$ such that\[2[\cos(a)\sin(a) + \cos(4a)\sin(2a) + \cos(9a)\sin(3a) + \cdots + \cos(n^2a)\sin(na)]\]is an integer.}
+
+\prob{13}{PUMaC Algebra/A 2017/7}{The sum
+\[\sum_{k=0}^{\infty} \frac{2^{k}}{5^{2^{k}}+1}\]can be written in the form $\frac{p}{q}$ where $p$ and $q$ are relatively prime positive integers. Find $p+q$.}
+
+\pagebreak
+
+\section{Appendix}
+
+\subsection{Summation and Product Notation}
+
+For the definitions below, $c$ is constant, $i$ is meant to represent the initial term, and $n$ can either be varying or constant, depending on the problem.
+
+\begin{defi}[Summation Notation]
+The expression $$\sum\limits_{i=c}^n f(i)$$ is equivalent to $$f(c)+f(c+1)+f(c+2)+\dots+f(n-1)+f(n).$$
+\end{defi}
+
+\begin{defi}[Product Notation]
+The expression $$\prod\limits_{i=c}^n f(i)$$ is equivalent to $$f(c)f(c+1)f(c+2)\dots f(n-1)f(n).$$
+\end{defi}
+
+The $f(i)$ might be intimidating, but it really just generally covers all functions of $i,$ or all expressions in terms of $i.$\footnote{Actually, there need not even be an $i$ in the function; it can be constant. As an example, $\left(\sum\limits_{i=1}^n 1\right)=n.$}
+
+\begin{exam}[Summation Notation]
+Expand $\sum\limits_{i=1}^{10} i.$
+\end{exam}
+
+\begin{sol}
+Since $f(i)$ is just $i,$ $c=1,$ and $n=10,$ we have $$\sum\limits_{i=1}^{10}i=f(1)+f(2)+\dots+f(10)=1+2+\dots+10=55.$$
+\end{sol}
+
+Examples in $\prod\limits$ notation should basically be equivalent to summation notation in terms of understandability, so we'll only present one example.
+
+\begin{exam}[Product Notation]
+Expand $\prod\limits_{i=1}^{10} i.$
+\end{exam}
+
+\begin{sol}
+It's basically the same; instead, we have $$\prod\limits_{i=1}^{10} i=1\cdot 2\cdot 3\cdot \dots \cdot 10=10!$$ Note that we just swapped the addition signs for multiplication signs.
+\end{sol}
+
+\begin{exer}[Notational Exercises]\hfill
+\begin{enumerate}
+    \item Write out the summation $$\sum\limits_{i=1}^{n} i,$$ and provide a general formula for this value in terms of $n.$
+    
+    \item Write $n!$ in product notation.
+
+    \item Expand $\sum\limits_{i=0}^{\infty} \frac{1}{2^i}.$ (Use a trailing $\dots$ after giving two or three terms, as the series goes on infinitely.)
+\end{enumerate}
+\end{exer}
+
+\subsection{Partial Fraction Decomposition}
+
+We mostly took knowledge of partial fraction decomposition (henceforth abbreviated \db{PFD}) for granted in the handout and omitted the process of finding the PFD in our solutions. In the American schooling system, PFD is a calculus topic and is not commonly used in introductory American contests.\footnote{The latter may be too strong a claim.} Therefore, we demonstrate the process of PFD here for those who might find it helpful.
+
+\begin{defi}[Partial Fraction Decomposition]
+The partial fraction decomposition of a fraction
+\[\frac{f(x)}{(x-r_1)^{c_1}(x-r_2)^{c_2}\cdots (x-r_n)^{c_n}}\]
+is of the form
+\[\sum_{i=1}\frac{f_i(x)}{(x-r_i)^{c_i}}=\frac{f_1(x)}{(x-r_1)^{c_1}}+\frac{f_2(x)}{(x-r_2)^{c_2}}+\cdots+\frac{f_n(x)}{(x-r_n)^{c_n}}.\]
+\end{defi}
+
+The traditional way to solve this is by setting a system of equations. We take the well-known $\frac{1}{x}-\frac{1}{x+1}$ partial fraction decomposition as an example.
+
+\begin{exam}
+Find the partial fraction decomposition of $\frac{1}{x(x+1)}.$
+\end{exam}
+
+\begin{sol}
+Note that the partial fraction decomposition is of the form
+\[\frac{1}{x(x+1)}=\frac{A}{x}+\frac{B}{x+1}.\footnote{We can use $A$ and $B$ as constants because the degree of $x$ and $x+1$ is one less than the degree of $x(x+1).$}\]
+Now we multiply out the fraction to get
+\[1=A(x+1)+Bx.\]
+This implies that $A+B=0$ and that $A=1.$ Thus $B=-1,$ and the PFD is
+\[\frac{1}{x}-\frac{1}{x+1}.\]
+\end{sol}
+
+We proceed with a harder example.
+
+\begin{exam}[Three Terms]
+Find the partial fraction decomposition of $\frac{1}{n(n+1)(n+2)}.$
+\end{exam}
+\begin{sol}
+Let the decomposition be $\frac{1}{n(n+1)(n+2)}=\frac{I}{n}+\frac{J}{n+1}+\frac{K}{n+2}.$ This implies that \[I(n+1)(n+2)+J(n)(n+2)+K(n)(n+1)=1.\]
+We see that the following system of equations results from coefficient matching: $$n^2(I+J+K)=0\implies I+J+K=0$$ $$n(3I+2J+K)=0\implies 3I+2J+K=0$$ $$2I=1.$$ Solving gives us $I=1/2, J=-1, K=1/2,$ which means our partial fraction decomposition is $\frac{1/2}{n}-\frac{1}{n+1}+\frac{1/2}{n+2}.$
+\end{sol}
+
+In calculus classes, the forbidden values method is taught, though usually with little explanation given as to why it should be true or why it should work. My goal is to give the reader a feeling for why this should be true, give concrete examples as to when it works, and show when it doesn't.
+
+\begin{theo}[Forbidden Values]
+Given some partial fraction decomposition
+\[\frac{f(x)}{g_1(x)g_2(x)\cdots g_n(x)}=\frac{f_1(x)}{g_1(x)}+\frac{f_2(x)}{g_2(x)}+\cdots+\frac{f_n(x)}{g_n(x)},\]
+the functions $f_1,f_2,\ldots, f_n$ can be determined via substituting the roots of $g_i(x)$ for all $1\leq i\leq n$ into
+\[f(x)=f_1(x)g_2(x)\cdots g_n(x)+\cdots+f_n(x)g_1(x)\cdots g_{n-1}(x).\]
+\end{theo}
+
+The natural instinct to have after using this `trick' a couple times is, ``Wait, why does this actually work?'' and it is very easy to just relegate this to a trick that you don't think about. However, there is a well-founded reason that this works, and it is rooted in polynomial and root analysis. We remind the reader of the following theorem from \db{AQU-Factorize}.
+
+\begin{theo}[Infinite Roots]
+If a degree $n$ polynomial has more than $n$ roots, it must have infinite roots.
+\end{theo}
+
+Now the proof follows naturally.
+
+\begin{pro}[of Forbidden Values]
+Note that as
+\[\frac{f(x)}{g_1(x)g_2(x)\cdots g_n(x)}=\frac{f_1(x)}{g_1(x)}+\frac{f_2(x)}{g_2(x)}+\cdots+\frac{f_n(x)}{g_n(x)}\]
+has infinite roots, so must 
+\[f(x)=f_1(x)g_2(x)\cdots g_n(x)+\cdots+f_n(x)g_1(x)\cdots g_{n-1}(x).\]
+This implies that
+\[f(x)-(f_1(x)g_2(x)\cdots g_n(x)+\cdots+f_n(x)g_1(x)\cdots g_{n-1}(x))=0\]
+for all values of $x,$ even the roots of $g_i(x).$
+\end{pro}
+
+Forbidden values can instantly tell us how a fraction decomposes. We present the following corollary that eliminates most algebraic manipulation from PFD, aside from the initial factorization of the denominator.
+
+\begin{corollary}
+Given some partial fraction decomposition
+\[\frac{f(x)}{g_1(x)g_2(x)\cdots g_n(x)}=\frac{f_1(x)}{g_1(x)}+\frac{f_2(x)}{g_2(x)}+\cdots+\frac{f_n(x)}{g_n(x)},\] where $g_i$ is of the form $(x-r_i)^{c_i},$
+\[f_i(r_i)=\frac{f(r_i)}{\prod\limits_{1\leq k\leq n, k\neq i}g_i(r_i)},\] where $r_i$ is the root of $g_i.$
+
+In the case where all $g_i$ are linear, $f_i$ are all constant, so \[f_i=\frac{f(r_i)}{\prod\limits_{1\leq k\leq n,k\neq i}g_i(r_i)}.\]
+\end{corollary}
+
+Keep in mind that this only explicitly describes the values achieved from forbidden values; you should almost always clear the fractions and substitute the forbidden values yourself instead of trying to recall the exact formula. The corollary does little good especially when some $g_i$ is not linear. If no $g_i$ are linear, the forbidden values method is completely useless, since no $f_i$ will be linear. In fact, forbidden values works exactly when $g_i$ is linear, even if other $g$ are not.
+
+Let me state it more explicitly: \db{substituting forbidden values only works for linear $g_i$}.
+
+\begin{exam}
+Find the partial fraction decomposition of $\frac{1}{x(x+1)}.$
+\end{exam}
+
+\begin{sol}
+With our new forbidden values method in hand, we set
+\[\frac{1}{x(x+1)}=\frac{f_1}{x}+\frac{f_2}{x+1}\]
+and multiply out to get
+\[1=f_1\cdot (x+1)+f_2\cdot (x).\]
+Since $x$ and $x+1$ are both linear, $f_1$ and $f_2$ are both constants. Substituting $x=0$ gives $f_1=1$ and $x=-1$ gives $f_2=-1,$ so our PFD is
+\[\frac{1}{x(x+1)}=\frac{1}{x}-\frac{1}{x+1}.\]
+\end{sol}
+
+Here's a partial forbidden values solution of a PFD; one of the terms in the denominator is linear while the other is not.
+
+\begin{exam}
+Find the partial fraction decomposition of $\frac{2x^2-4x+1}{(x-1)^2(x-2)}.$
+\end{exam}
+
+\begin{sol}
+Note that the fraction decomposes into the form
+\[\frac{2x^2-4x+1}{(x-1)^2(x-2)}=\frac{f_1(x)}{(x-1)^2}+\frac{f_2(x)}{x-2},\]
+which is equivalent to
+\[2x^2-4x+1=f_1(x)(x-2)+f_2(x)(x-1)^2.\]
+Plugging in $x=1$ yields $-1=-f_1(1)$ or $1=f_1(1),$ and $x=2$ yields $1=f_2(2).$ Degree analysis only tells us that $f_2$ is constant, or $f_2(x)=1.$ Now we have
+\[2x^2-4x+1=f_1(x)(x-2)+(x-1)^2.\]
+Now we directly solve for $f_1.$ Note that the equation is equivalent to
+\[x^2-2x=f_1(x)(x-2)\]
+\[f_1(x)=x.\]
+Thus, the PFD is
+\[\frac{2x^2-4x+1}{(x-1)^2(x-2)}=\frac{x}{(x-1)^2}+\frac{1}{x-2}.\]
+\end{sol}
+
+Here is a crown example of the forbidden values method.
+
+\begin{exam}[AMC 10A 2019/24]
+Let $p$, $q$, and $r$ be the distinct roots of the polynomial $x^3 - 22x^2 + 80x - 67$. It is given that there exist real numbers $A$, $B$, and $C$ such that\[\dfrac{1}{s^3 - 22s^2 + 80s - 67} = \dfrac{A}{s-p} + \dfrac{B}{s-q} + \frac{C}{s-r}\]for all $s\not\in\{p,q,r\}$. What is $\tfrac1A+\tfrac1B+\tfrac1C$?
+\end{exam}
+
+\begin{sol}
+This is the same as solving for $A,B,C$ such that
+\[1=A(s-q)(s-r)+B(s-r)(s-p)+C(s-p)(s-q).\]
+Substitute the forbidden values of $s=p,q,r$ to get
+\begin{align*}
+1&=A(p-q)(p-r) \\
+1&=B(q-r)(q-p) \\
+1&=C(r-p)(r-q),
+\end{align*}
+which we get from substituting $s=p,q,r,$ respectively. This then implies
+\begin{align*}
+\frac{1}{A}&=(p-q)(q-r) \\
+\frac{1}{B}&=(q-r)(q-p) \\
+\frac{1}{C}&=(r-p)(r-q).
+\end{align*}
+At this point we can just finish with Vieta's Formulas. Note that
+\[\frac{1}{A}+\frac{1}{B}+\frac{1}{C}=(p-q)(p-r)+(q-r)(q-p)+(r-p)(r-q)=\]
+\[p^2-pq-pr+qr+q^2-qr-qp+rp+r^2-rp-rq+pq=\]
+\[(p+q+r)^2-3(pq+qr+rp)=22^2-3\cdot 80=244.\]
+\end{sol}
+
+\end{document}

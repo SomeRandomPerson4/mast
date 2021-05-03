@@ -1,0 +1,166 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{Solutions to Perspectives-2}
+\author{Dennis Chen}
+\date{CQV2}
+
+\begin{document}
+
+\maketitle
+
+\toc
+
+
+\pagebreak\section{Unsourced}
+
+Katie is teaching a class of thirty pupils, of which fourteen are girls. She knows that there are twenty-two pupils who are right-handed. What is the minimum amount of girls that are right-handed?
+
+\subsection{Solution}
+Note that we want to make as many girls as possible left handed. There are $8$ left-handed people, so we can only make $8$ of the girls left-handed. Thus the remaining $6$ must be right handed.
+
+\pagebreak\section{Unsourced}
+In a higher secondary examination $80\%$ of the examinees have passed in English and $85\%$ in Mathematics, while $75\%$ passed in both English and Mathematics. If $45$ candidates failed in both the subjects, find the total number of candidates.
+
+\subsection{Solution}
+By the Principle of Inclusion-Exclusion, $|E\cup M|=80\%+85\%-75\%=90\%,$ where $|E\cup M|$ denotes the union of people who succeeded in English and Math, or the number of people that did not fail both subjects. Thus $10\%$ of the candidates failed, so the answer is $\frac{45}{10\%}=450.$
+
+\pagebreak\section{Unsourced}
+We have $10$ students taking Spanish, $12$ students taking French, and $16$ people taking German. We also have $4$ people taking Spanish and French, $5$ people taking French and German, and $7$ people taking German and Spanish. Then we have $3$ very brave souls who are taking, Spanish, French, and German! How many students are taking at least one language?
+
+\subsection{Solution}
+By PIE, $|S\cup F\cup G|=(10+12+16)-(4+5+7)+3=25.$
+
+
+\pagebreak\section{AIME I 2002/1}
+Many states use a sequence of three letters followed by a sequence of three digits as their standard license-plate pattern. Given that each three-letter three-digit arrangement is equally likely, the probability that such a license plate will contain at least one palindrome (a three-letter arrangement or a three-digit arrangement that reads the same left-to-right as it does right-to-left) is $\dfrac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m+n.$
+
+\subsection{Solution}
+Let $L$ denote the set of three-letter palindromes and $N$ denote the set of three-digit palindromes. By the Principle of Inclusion-Exclusion, $|L\cup N|=|L|+|N|-|L\cap N|=\frac{1}{26}+\frac{1}{10}-\frac{1}{260}=\frac{7}{52}.$ Thus $m+n=59.$
+
+
+
+\pagebreak\section{MATHCOUNTS State Sprint 2020/27}
+
+How many of the first $2019$ positive integers have no odd single-digit prime factors?
+
+\subsection{Solution}
+
+By PIE, the number of positive integers with an odd single-digit prime factor is
+\[\lfloor\frac{2019}{3}\rfloor+\lfloor\frac{2019}{5}\rfloor+\lfloor\frac{2019}{7}\rfloor-\lfloor\frac{2019}{15}\rfloor-\lfloor\frac{2019}{35}\rfloor-\lfloor\frac{2019}{21}\rfloor+\lfloor\frac{2019}{105}\rfloor=1096,\]
+so by complementary counting, the answer is $2019-1096=923.$
+
+
+\pagebreak\section{AMC 10A 2020/23}
+
+Let $T$ be the triangle in the coordinate plane with vertices $(0,0), (4,0),$ and $(0,3).$ Consider the following five isometries (rigid transformations) of the plane: rotations of $90^{\circ}, 180^{\circ},$ and $270^{\circ}$ counterclockwise around the origin, reflection across the $x$-axis, and reflection across the $y$-axis. How many of the $125$ sequences of three of these transformations (not necessarily distinct) will return $T$ to its original position? (For example, a $180^{\circ}$ rotation, followed by a reflection across the $x$-axis, followed by a reflection across the $y$-axis will return $T$ to its original position, but a $90^{\circ}$ rotation, followed by a reflection across the $x$-axis, followed by another reflection across the $x$-axis will not return $T$ to its original position.)
+
+\subsection{Solution}
+We must have an even number of reflections for orientation reasons. Also notice that any order of the same transformations yields the same result.
+    
+If there are $0$ reflections, then the first two rotations cannot transform the triangle back to its original position since there is no $0^{\circ}$ rotation. Thus the first rotation has $3$ choices, the second has $3-1=2$ choices, and the last one is fixed. So there are $3\cdot 2=6$ ways for this case.
+    
+If there are $2$ reflections, they must be an $x$ and a $y$ reflection since two reflections about the same axis would send it back to the beginning, and there is rotation of $0^{\circ}.$ Then we must rotate by $180^{\circ}$ since an $x$ and $y$ reflection is the same as a $180^{\circ}$ rotation. There are $3!=6$ ways to order the three transformations in this case.
+    
+Thus the answer is $6+6=12.$
+
+\pagebreak\section{Scrabbler AMC 10}
+
+Robert writes all positive divisors of the number $216$ on separate slips of paper, then places the slips into a hat. He randomly selects three slips from the hat, with replacement. What is the probability that the product of the numbers on the three slips Robert selects is a divisor of $216$?
+
+\subsection{Solution}
+
+Since $216=2^3\cdot 3^3,$ we only need to consider the probability that the power of $2$ of the product is less than $3,$ and then square this probability as we want to find a symmetric probability for the power of $3.$
+
+Note that the number of solutions for $a+b+c\leq 3$ for non-negative integers $a,b,c$ is
+\[\binom{5}{2}+\binom{4}{2}+\binom{3}{2}+\binom{2}{2}=\binom{6}{3}=20\]
+by Stars and Bars and Hockeystick.
+
+Now note that are $4^3$ ways to pick the power of $2$ of each divisor, so the probability is $\frac{5}{16}.$ Squaring yields our answer of $\frac{25}{256}.$
+
+\pagebreak\section{AIME 1993/8}
+
+Let $S$ be a set with six elements. In how many different ways can one select two not necessarily distinct subsets of $S$ so that the union of the two subsets is $S$? The order of selection does not matter; for example, the pair of subsets $\{a, c\}$, $\{b, c, d, e, f\}$ represents the same selection as the pair $\{b, c, d, e, f\}$, $\{a, c\}$.
+
+\subsection{Solution}
+
+Note that each element can either be put into set $A$, set $B$, or both sets. Now note that each arrangement is double-counted except for the one where every element is in both sets, so the answer is
+\[\frac{3^6-1}{2}+1=365.\]
+
+\pagebreak\section{AIME 1999/13}
+Forty teams play a tournament in which every team plays every other team exactly once. No ties occur, and each team has a $50 \%$ chance of winning any game it plays. The probability that no two teams win the same number of games is $\frac mn,$ where $m_{}$ and $n_{}$ are relatively prime positive integers. Find $\log_2 n.$
+
+\subsection{Solution}
+Note that the teams must have $1,2,\ldots,39$ wins. We claim that a team beats all teams with less wins than it. The argument for this is of an inductive nature; consider the team with $39$ wins. This is obviously true, and we can then ignore that team. Similarly, the team with $38$ wins must have beat all of the teams (remember we ignore the team with $39$ wins), and the argument continues.
+
+Thus the number of wins each team has uniquely determines the tournament's results. So there are $40!$ valid tournaments, since there are $40!$ ways to rank the teams. Thus the answer is $\nu_2{2^780}-\nu_2{40!}=780-\lfloor\frac{40}{2}\rfloor-\lfloor\frac{40}{4}\rfloor-\lfloor\frac{40}{8}\rfloor-\lfloor\frac{40}{16}\rfloor-\lfloor\frac{40}{32}\rfloor=742.$
+
+\pagebreak\section{AIME II 2017/9}{A special deck of cards contains $49$ cards, each labeled with a number from $1$ to $7$ and colored with one of seven colors. Each number-color combination appears on exactly one card. Sharon will select a set of eight cards from the deck at random. Given that she gets at least one card of each color and at least one card with each number, the probability that Sharon can discard one of her cards and still have at least one card of each color and at least one card with each number is $\frac{p}{q}$, where $p$ and $q$ are relatively prime positive integers. Find $p+q$.}
+\subsection{Solution}
+Assume there are two cards with $1$ and two black cards. Note that therea re $\binom{8}{2}-1=27$ ways to assign the black colors to the numbered cards, since we cannot have two black ones. We must have a black one for the condition to be fulfilled, and there are $2\cdot 6=12$ ways to do this since we can choose from $2$ of the black cards and $6$ of the other colored cards. Thus the probability is $\frac{12}{27}=\frac{4}{9},$ and the answer is $4+9=13.$
+
+
+
+
+
+\pagebreak\section{AIME I 2017/7}{For nonnegative integers $a$ and $b$ with $a + b \leq 6$, let $T(a, b) = \binom{6}{a} \binom{6}{b} \binom{6}{a + b}$. Let $S$ denote the sum of all $T(a, b)$, where $a$ and $b$ are nonnegative integers with $a + b \leq 6$. Find the remainder when $S$ is divided by $1000$.}
+\subsection{Solution}
+Note that $T(a,b)=\binom{6}{a}\binom{6}{b}\binom{6}{6-(a+b)}.$ This is the same as choosing $a$ items from a set of $6$ items, $b$ items from a set of $6$ items, and $6-(a+b)$ items from a set of $6$ items. But note that this is identical to choosing $6$ items from a set of $18,$ so the sum of all $T(a,b)$ is $\binom{18}{6}=18564,$ so the answer is $564.$
+
+\pagebreak\section{AIME 1992/12}{In a game of \textit{Chomp}, two players alternately take bites from a 5-by-7 grid of unit squares. To take a bite, a player chooses one of the remaining squares, then removes ("eats'') all squares in the quadrant defined by the left edge (extended upward) and the lower edge (extended rightward) of the chosen square. For example, the bite determined by the shaded square in the diagram would remove the shaded square and the four squares marked by $\times.$ (The squares with two or more dotted edges have been removed from the original board in previous moves.)}
+
+\begin{center}
+\begin{asy}
+size(6cm);
+defaultpen(linewidth(0.7));
+fill((2,2)--(2,3)--(3,3)--(3,2)--cycle, mediumgray);
+int[] array={5, 5, 5, 4, 2, 2, 2, 0};
+pair[] ex = {(2,3), (2,4), (3,2), (3,3)};
+draw((3,5)--(7,5)^^(4,4)--(7,4)^^(4,3)--(7,3), linetype("3 3"));
+draw((4,4)--(4,5)^^(5,2)--(5,5)^^(6,2)--(6,5)^^(7,2)--(7,5), linetype("3 3"));
+int i, j;
+for(i=0; i<7; i=i+1) {
+for(j=0; j<array[i]; j=j+1) {
+draw((i,j+1)--(i,j)--(i+1,j));
+}
+draw((i,array[i])--(i+1,array[i]));
+if(array[i]>array[i+1]) {
+draw((i+1,array[i])--(i+1,array[i+1]));
+}}
+for(i=0; i<4; i=i+1) {
+draw(ex[i]--(ex[i].x+1, ex[i].y+1), linewidth(1.2));
+draw((ex[i].x+1, ex[i].y)--(ex[i].x, ex[i].y+1), linewidth(1.2));
+}
+\end{asy}
+\end{center}
+
+The object of the game is to make one's opponent take the last bite. The diagram shows one of the many subsets of the set of 35 unit squares that can occur during the game of Chomp. How many different subsets are there in all? Include the full board and empty board in your count.
+\subsection{Solution}
+This bijects to the number of paths from the top left corner to the bottom right corner, so the answer is $\binom{12}5=792.$
+
+\pagebreak\section{Scrabbler AMC 12}{A positive integer is monotone if its digits, when read left-to-right, are either in strictly increasing or strictly decreasing order. For example, 7, 540, and 24578 are monotone numbers, while 0 and 9986 are not. How many monotone numbers leave a remainder of 1 when divided by 3?}
+\subsection{Solution}
+
+\pagebreak\section{USAMO 1990/4}
+Find, with proof, the number of positive integers whose base-$n$ representation consists of distinct digits with the property that, except for the leftmost digit, every digit differs by $\pm 1$ from some digit further to the left. (Your answer should be an explicit function of $n$ in simplest form.)
+
+\subsection{Solution}
+
+Let the leading digit be $m.$ Note there are $m$ numbers less than it and $n-m-1$ numbers greater than it. Then we choose some amount of the $m$ numbers less than $m$ and the $n-m-1$ numbers greater than $m.$ Note that this is essentially the same as making the numbers to the left identical and the numbers to the right identical since their order is fixed, so we want to find
+\[\sum_{a=0}^m\left(\sum_{b=0}^{n-m-1}\binom{a+b}{a}\right).\]This is equal to
+\[\sum_{a=0}^m\binom{a+n-m}{a+1}=\sum_{a=0}^m\binom{a+n-m}{n-m-1}\]by the Hockey Stick Identity, and this further simplifies into
+\[\binom{n+1}{n-m}-1=\binom{n+1}{m+1}-1.\]Now note that
+\[\sum_{m=1}^{n-1}\left(\binom{n+1}{m+1}-1\right)=\sum_{m=1}^{n-1}\binom{n+1}{m+1}-(n-1)=\]
+\[\left(2^{n+1}-\binom{n+1}{0}-\binom{n+1}{1}-\binom{n+1}{n+1}\right)-(n-1)=2^{n+1}-(2n+2),\]which is our answer.
+
+\pagebreak\section{HMMT Guts 2020/15}
+You have six blocks in a row, labeled 1 through 6. Call two blocks $x \le y$ connected when, for all $x \le z \le y$, block $z$ has not been removed. While there is still at least one block remaining, you choose a remaining block uniformly at random and remove it. The cost of this operation is the the number of blocks that are connected to the block being removed, including itself. Compute the expected total cost of removing all the blocks.
+\subsection{Solution}
+The probability that blocks $x$ and $y$ are connected just before block $x$ is removed is simply $\frac1{|x-y|+1}$, since
+all of the $|x-y|+1$ relevant blocks are equally likely to be removed first. Summing over $1 \le x, y \le 6$,
+combining terms with the same value of $|x-y|$, we get
+$$\frac26 + \frac45 + \frac64 + \frac83 + \frac{10}2 + 6 = \frac{163}{10}.$$
+
+
+\end{document}
