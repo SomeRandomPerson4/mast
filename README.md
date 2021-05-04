@@ -31,3 +31,7 @@ You do not need to send an issue for every problem without a solution, but if yo
 You are encouraged to write the solution if you can.
 
 The same applies for diagrams.
+
+## How to emphasize answers
+
+Do not use \boxed. Use \ansbold{answer}.
