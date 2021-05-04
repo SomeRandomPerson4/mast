@@ -23,3 +23,15 @@ is.
 Some examples of sourcings are
 	HMMT Feb. 2004/C10
 	MATHCOUNTS 2008 (adding all information is too long, but please leave a comment with full source so we can add it to solution documents)
+
+# Solutions
+
+For all computational answers, please use
+
+	\ansbold{69}
+
+to highlight the final answer. Do not use
+
+	\boxed
+
+or anything similar.
