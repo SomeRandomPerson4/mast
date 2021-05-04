@@ -14,31 +14,31 @@
 In a town of $351$ adults, every adult owns a car, motorcycle, or both. If $331$ adults own cars and $45$ adults own motorcycles, how many of the car owners do not own a motorcycle?
 
 \subsection{Solution}
-By PIE, $351=331+45-|C \cap M|.$ So $|C\cap M|=25.$ Thus out of the $331$ car owners, $25$ of them own motorcycles, implying $331-25=306$ of them do not.
+By PIE, $351=331+45-|C \cap M|.$ So $|C\cap M|=25.$ Thus out of the $331$ car owners, $25$ of them own motorcycles, implying $331-25=\ansbold{306}$ of them do not.
 
 \pagebreak\section{Unsourced}
 How many integers from $1$ to $100$ (inclusive) are multiples of $2$ or $3?$
 
 \subsection{Solution}
-By PIE, our answer is $\lfloor\frac{100}{2}\rfloor+\lfloor\frac{100}{3}\rfloor-\lfloor\frac{100}{6}\rfloor=67.$
+By PIE, our answer is $\lfloor\frac{100}{2}\rfloor+\lfloor\frac{100}{3}\rfloor-\lfloor\frac{100}{6}\rfloor=\ansbold{67}.$
 
 \pagebreak\section{AMC 10A 2018/11}
 When 7 fair standard 6-sided dice are thrown, the probability that the sum of the numbers on the top faces is 10 can be written as\[\frac{n}{6^7},\]where $n$ is a positive integer. What is $n$?
 
 \subsection{Solution}
-Each die must show at least $1.$ So we distribute the remaining three of the sum to the dice with no restriction (since $3\leq 5$). There are $\binom{7-1+3}{3}=84$ ways to do this. Since there are $6^7$ total ways $7$ dice could be rolled, the answer is $84.$
+Each die must show at least $1.$ So we distribute the remaining three of the sum to the dice with no restriction (since $3\leq 5$). There are $\binom{7-1+3}{3}=\ansbold{84}$ ways to do this. Since there are $6^7$ total ways $7$ dice could be rolled, the answer is $\ansbold{84}.$
 
 \pagebreak\section{Dennis Chen}
 There are $3$ distinct six-sided dice, one red, white, and blue. How many ways can the sum of the $15$ faces showing on the three die equal $56,$ if each die orientation is only considered unique if the sum of its faces that are showing are unique?
 
 \subsection{Solution}
-The sum of all the numbers on a die is $1+2+3+4+5+6=21.$ Thus the sum of the numbers not showing is $63-56=7.$ Then if each of red, blue and white die be $r, b, w,$ then we have $r+b+w=7.$ Then we have $(r-1)+(b-1)+(w-1)=4$. Then it is just $\binom{4+2}{2} = \binom{6}{2} = 15.$  
+The sum of all the numbers on a die is $1+2+3+4+5+6=21.$ Thus the sum of the numbers not showing is $63-56=7.$ Then if each of red, blue and white die be $r, b, w,$ then we have $r+b+w=7.$ Then we have $(r-1)+(b-1)+(w-1)=4$. Then it is just $\binom{4+2}{2} = \binom{6}{2} = \ansbold{15}.$  
 
 \pagebreak\section{AMC 10B 2017/13}
 There are $20$ students participating in an after-school program offering classes in yoga, bridge, and painting. Each student must take at least one of these three classes, but may take two or all three. There are $10$ students taking yoga, $13$ taking bridge, and $9$ taking painting. There are $9$ students taking at least two classes. How many students are taking all three classes?
 
 \subsection{Solution}
-Let the amount of people in all three classes be $x.$ Then the amount of people in exactly two classes is $9-x.$ Then by PIE, $|Y\cup B\cup P|20=(10+13+9)-(9-x+3x)+x=23-x.$ Thus $x=3.$
+Let the amount of people in all three classes be $x.$ Then the amount of people in exactly two classes is $9-x.$ Then by PIE, $|Y\cup B\cup P|=20=(10+13+9)-(9-x+3x)+x=23-x.$ Thus $x=\ansbold{3}.$
 
 \pagebreak\section{AMC 10B 2020/23}
 Square $ABCD$ in the coordinate plane has vertices at the points $A(1,1), B(-1,1), C(-1,-1),$ and $D(1,-1).$ Consider the following four transformations:
@@ -56,7 +56,7 @@ Square $ABCD$ in the coordinate plane has vertices at the points $A(1,1), B(-1,1
 Each of these transformations maps the squares onto itself, but the positions of the labeled vertices will change. For example, applying $R$ and then $V$ would send the vertex $A$ at $(1,1)$ to $(-1,-1)$ and would send the vertex $B$ at $(-1,1)$ to itself. How many sequences of $20$ transformations chosen from $\{L, R, H, V\}$ will send all of the labeled vertices back to their original positions? (For example, $R, R, V, H$ is one sequence of $4$ transformations that will send the vertices back to their original positions.
 
 \subsection{Solution}
-Determine the first $19$ moves. There are $2^{38}$ ways to do this. Then note that for any possible arrangement of the first $19$ moves, there is exactly one final move that maps the square back to its original position.
+Determine the first $19$ moves. There are $\ansbold{2^{38}}$ ways to do this. Then note that for any possible arrangement of the first $19$ moves, there is exactly one final move that maps the square back to its original position.
     
 We outline a proof for this.
     
@@ -72,9 +72,9 @@ Then there are an even amount of rotations and either reflecting about the $x$ a
 A club consisting of $11$ men and $12$ women needs to choose a committee from among its members so that the number of women on the committee is one more than the number of men on the committee. The committee could have as few as $1$ member or as many as $23$ members. Let $N$ be the number of such committees that can be formed. Find the sum of the prime numbers that divide $N.$
 
 \subsection{Solution}
-Note that $\sum_{i=0}^{11}\binom{11}{i}\binom{12}{i}=\sum_{i=0}^{11}\binom{11}{i}\binom{12}{11-i}=\binom{23}{11}=2\cdot 7\cdot 13\cdot 19\cdot 23$ by Vandermonde's. Thus the answer is $2+7+13+19+23=81.$
+Note that $\sum_{i=0}^{11}\binom{11}{i}\binom{12}{i}=\sum_{i=0}^{11}\binom{11}{i}\binom{12}{11-i}=\binom{23}{11}=2\cdot 7\cdot 13\cdot 19\cdot 23$ by Vandermonde's. Thus the answer is $2+7+13+19+23=\ansbold{81}.$
     
-We present a combinatorial argument now. Make a group chat with all of the men in the committee and all of the women not in the committee. Note each committee has a uniquely corresponding group chat. Let $m$ men be in the committee. Then notice that $m+1$ women are in the committee, so $11-m$ women will not be in the committee. Thus the group chat has size $m+11-m=11,$ so the number of ways to make a committee is $\binom{23}{11}=2\cdot 7\cdot 13\cdot 17\cdot 19\cdot 23.$ Thus the answer is $2+7+13+17+19+23=81.$
+We present a combinatorial argument now. Make a group chat with all of the men in the committee and all of the women not in the committee. Note each committee has a uniquely corresponding group chat. Let $m$ men be in the committee. Then notice that $m+1$ women are in the committee, so $11-m$ women will not be in the committee. Thus the group chat has size $m+11-m=11,$ so the number of ways to make a committee is $\binom{23}{11}=2\cdot 7\cdot 13\cdot 17\cdot 19\cdot 23.$ Thus the answer is $2+7+13+17+19+23=\ansbold{81}.$
 
 This combinatorial argument is not special. It is actually just a specific case of Vandermonde's identity, and the proof for Vandermonde's uses the exact same combinatorial argument.
 
@@ -83,7 +83,7 @@ We have $7$ balls each of different colors (red, orange, yellow, green, blue, in
 
 \subsection{Solution}
 
-We use complementary counting. Let $T,C,D$ indicate the sets with no balls in the tetrahedron, cube, and dodecahedron, respectively. Then $|T\cup C\cup D|=(|T|+|C|+|D|)-(|T\cap C|+|C\cap D|+|D\cap T|)+|T\cap C\cap D|.$ Clearly the last is impossible. Note that $|T|=|C|=|D|=2^7,$ and $|T\cap C|=|C\cap D|=|D\cap T|=1,$ so $|T\cup C\cup D|=3(2^7-1).$ Thus the amount of valid ways is $3^7-3(2^7-1)=1806.$
+We use complementary counting. Let $T,C,D$ indicate the sets with no balls in the tetrahedron, cube, and dodecahedron, respectively. Then $|T\cup C\cup D|=(|T|+|C|+|D|)-(|T\cap C|+|C\cap D|+|D\cap T|)+|T\cap C\cap D|.$ Clearly the last is impossible. Note that $|T|=|C|=|D|=2^7,$ and $|T\cap C|=|C\cap D|=|D\cap T|=1,$ so $|T\cup C\cup D|=3(2^7-1).$ Thus the amount of valid ways is $3^7-3(2^7-1)=\ansbold{1806}.$
 
 \pagebreak\section{AIME II 2009/6}
 
@@ -91,19 +91,29 @@ Let $m$ be the number of five-element subsets that can be chosen from the set of
 
 \subsection{Solution}
 
-We will use complementary counting. It is trivial to see that there are $\binom{14}{5}$ ways to choose the $5$ integers. Now, we find the number of ways such that none of the integers are consecutive to each other. Let $a_1< a_2< a_3<a_4<a_5$ be the five integers chosen and define $b_i = a_i - a_{i-1}$ where $a_0$ and $a_6$ are defined to be $1$ and $14$ respectively. For none of the numbers to be consecutive, we require $b_i>1$ for $i = 2,3,4,5$. Since each choice of the $b_i$ corresponds to a choice of the $a_i$, we desire the ways to have have $a + (b+2) + (c+2) + (d+2) + (e+2) + f= 14$ where $a,b,c,d,e,f$ are positive integers. This can be found to be $\binom{10}{5}$ using stars and bars. Thus, $m= \binom{14}{5} - \binom{10}{5} = 1750$ and the desired answer is $\boxed{750}$
+We use complementary counting. It is easy to see that there are $\binom{14}{5}$ ways to choose five integers. Now, we find the number of ways to choose five integers such that none of the integers are consecutive to each other. Let the numbers be $a,a+b,a+b+c,a+b+c+d,a+b+c+d+e.$ By definition, $a$ must be at least $1$ and $b,c,d,e$ must all be at least $2$ as they are the differences between consecutive elements. Also, note that $a+b+c+d+e\leq 14.$ Let $a'=a-1$, $b'=b-2$, $c'=c-2$, $d'=d-2$, and $e'=e-2$. Then we have $a'+b'+c'+d'+e'\leq 5$ for non-negative integers $a',b',c',d',e'$. Now there are two different approaches you can take to finish.
+
+The first is to note that $a'+b'+c'+d'+e'=n$ has $\binom{n+4}{4}$ solutions by Stars and Bars, so the desired result is
+\[\sum\limits_{n=0}^5 \binom{n+4}{4}=\binom{10}{5}\]
+by Hockey-Stick.
+
+The second is to add a variable $f=5-(a'+b'+c'+d'+e')$ and note that
+\[a'+b'+c'+d'+e'+f=5\]
+has $\binom{10}{5}$ solutions by Stars and Bars.
+
+Either way, the total number of subsets is $\binom{14}{5}-\binom{10}{5}=1750$, so the anwser is $\ansbold{750}$.
 
 \pagebreak\section{AIME II 2002/9}
 Let $\mathcal{S}$ be the set $\lbrace1,2,3,\ldots,10\rbrace.$ Let $n$ be the number of sets of two non-empty disjoint subsets of $\mathcal{S}$. (Disjoint sets are defined as sets that have no common elements.) Find the remainder obtained when $n$ is divided by $1000$.
 
 \subsection{Solution}
-We either put an element in set $A,$ in set $B,$ or in neither set. Thus there are $3^{10}$ ways to do this. But both sets are non-empty, so we complementary count the number of ways to have a set be empty. Note that there are $2^{10}$ ways for set $A$ to be empty and also $2^{10}$ ways for set $B$ to be empty, and that there is $1$ way for both set $A$ and $B$ to be empty. Thus the amount of ways to have at least one set empty is $2^{10}+2^{10}-1,$ so the answer is the remainder of $\frac{1}{2}(3^{10}-2^{10}-2^{10}+1)=28501$ when divided by $1000,$ or $501.$ (Remember that order does not matter.)
+We either put an element in set $A,$ in set $B,$ or in neither set. Thus there are $3^{10}$ ways to do this. But both sets are non-empty, so we complementary count the number of ways to have a set be empty. Note that there are $2^{10}$ ways for set $A$ to be empty and also $2^{10}$ ways for set $B$ to be empty, and that there is $1$ way for both set $A$ and $B$ to be empty. Thus the amount of ways to have at least one set empty is $2^{10}+2^{10}-1,$ so the answer is the remainder of $\frac{1}{2}(3^{10}-2^{10}-2^{10}+1)=28501$ when divided by $1000,$ or $\ansbold{501}.$ (Remember that order does not matter in sets.)
 
 \pagebreak\section{Mildorf AIME 3/2}
 Let $N$ denote the number of $7$ digit positive integers have the property that their digits are in increasing order. Determine the remainder obtained when $N$ is divided by $1000$. (Repeated digits are allowed.
 
 \subsection{Solution}
-Note we are picking $7$ numbers $a,b,c,d,e,f,g$ such that $1\leq a\leq b\leq c\leq d\leq e\leq f\leq g\leq 9,$ or picking $7$ distinct numbers $a,b+1,c+2,d+3,e+4,f+5,g+6$ such that $1\leq a< b+1< c+2< d+3< e+4< f+5< g+6\leq 15.$ Since the order is fixed, there are $\binom{15}{7}=6435$ ways to pick the numbers, so the answer is $435.$
+Note we are picking $7$ numbers $a,b,c,d,e,f,g$ such that $1\leq a\leq b\leq c\leq d\leq e\leq f\leq g\leq 9,$ or picking $7$ distinct numbers $a,b+1,c+2,d+3,e+4,f+5,g+6$ such that $1\leq a< b+1< c+2< d+3< e+4< f+5< g+6\leq 15.$ Since the order is fixed, there are $\binom{15}{7}=6435$ ways to pick the numbers, so the answer is $\ansbold{435}.$
 
 \pagebreak\section{AIME I 2020/9}
 Let $S$ be the set of positive integer divisors of $20^9.$ Three numbers are chosen independently and at random with replacement from the set $S$ and labeled $a_1,a_2,$ and $a_3$ in the order they are chosen. The probability that both $a_1$ divides $a_2$ and $a_2$ divides $a_3$ is $\tfrac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m.$
@@ -111,13 +121,13 @@ Let $S$ be the set of positive integer divisors of $20^9.$ Three numbers are cho
 \subsection{Solution}
 Note that $20^9=2^{18}\cdot 5^9,$ and it has $(18+1)(9+1)=190$ total divisors.
     
-Let $a_1=2^a\cdot 5^x,$ $a_2=2^b\cdot 5^y,$ and $a_3=2^c\cdot 5^z.$ Then we want to pick $a,b,c$ such that $0\leq a\leq b\leq c\leq 18$ and $0\leq x\leq y\leq z\leq 9.$ This is the same as $0\leq a<b+1<c+2\leq 20,$ which there are $\binom{21}{3}$ ways to choose, and $0\leq x<y+1<z+2\leq 11,$ which has $\binom{12}{3}$ ways to choose. Then note that $\frac{\binom{21}{3}\cdot\frac{12}{3}}{190^3}=\frac{77}{1805},$ so the answer is $77.$
+Let $a_1=2^a\cdot 5^x,$ $a_2=2^b\cdot 5^y,$ and $a_3=2^c\cdot 5^z.$ Then we want to pick $a,b,c$ such that $0\leq a\leq b\leq c\leq 18$ and $0\leq x\leq y\leq z\leq 9.$ This is the same as $0\leq a<b+1<c+2\leq 20,$ which there are $\binom{21}{3}$ ways to choose, and $0\leq x<y+1<z+2\leq 11,$ which has $\binom{12}{3}$ ways to choose. Then note that $\frac{\binom{21}{3}\cdot\frac{12}{3}}{190^3}=\frac{77}{1805},$ so the answer is $\ansbold{77}.$
 
 \pagebreak\section{AIME II 2013/9}
 A $7\times 1$ board is completely covered by $m\times 1$ tiles without overlap; each tile may cover any number of consecutive squares, and each tile lies completely on the board. Each tile is either red, blue, or green. Let $N$ be the number of tilings of the $7\times 1$ board in which all three colors are used at least once. For example, a $1\times 1$ red tile followed by a $2\times 1$ green tile, a $1\times 1$ green tile, a $2\times 1$ blue tile, and a $1\times 1$ green tile is a valid tiling. Note that if the $2\times 1$ blue tile is replaced by two $1\times 1$ blue tiles, this results in a different tiling. Find the remainder when $N$ is divided by $1000$.
 
 \subsection{Solution}
-We do casework with the number of tiles. Say there are $t$ tiles. Then the amount of ways to split them (uncolored) is $\binom{(7-t)+(t-1)}{t-1}=\binom{6}{t-1},$ and the amount of ways to color $t$ tiles by PIE is $3^n-3\cdot 2^n+3.$ Then we simply compute that $\sum_{i=3}^{7}\binom{6}{i-1}(3^i-3\cdot 2^i+3)\equiv 106\pmod{1000}.$
+We do casework with the number of tiles. Say there are $t$ tiles. Then the amount of ways to split them (uncolored) is $\binom{(7-t)+(t-1)}{t-1}=\binom{6}{t-1},$ and the amount of ways to color $t$ tiles by PIE is $3^n-3\cdot 2^n+3.$ Then we simply compute that $\sum_{i=3}^{7}\binom{6}{i-1}(3^i-3\cdot 2^i+3)\equiv \ansbold{106}\pmod{1000}.$
 
 \pagebreak\section{AIME I 2015/12}
 Consider all 1000-element subsets of the set $\{1, 2, 3,\ldots,2015\}.$ From each such subset choose the least element. The arithmetic mean of all of these least elements is $\frac{p}{q}$, where $p$ and $q$ are relatively prime positive integers. Find $p + q$.
@@ -127,13 +137,13 @@ Note that there are $\binom{2015}{1000}$ subsets, so that is our denominator.
 
 Then note there are $\binom{2014}{999}$ subsets with minimum element $1,$ $\binom{2013}{999}$ subsets with minimum element 2, and so on. Thus we want to find
 \[\sum_{i=1}^{1016}i\binom{2015-i}{999}=\sum_{i=1}^{1016}\sum_{j=i}^{1016}\binom{2015-j}{999}=\sum_{i=1000}^{2015}\binom{2015}{i}=\binom{2016}{1001}.\]
-Thus the fraction is $\frac{\binom{2016}{1001}}{\binom{2015}{1000}}=\frac{288}{143},$ so the answer is $288+143=431.$
+Thus the fraction is $\frac{\binom{2016}{1001}}{\binom{2015}{1000}}=\frac{288}{143},$ so the answer is $288+143=\ansbold{431}.$
 
 \pagebreak\section{AIME 1986/13}
 In a sequence of coin tosses, one can keep a record of instances in which a tail is immediately followed by a head, a head is immediately followed by a head, and etc. We denote these by TH, HH, and etc. For example, in the sequence TTTHHTHTTTHHTTH of 15 coin tosses we observe that there are two HH, three HT, four TH, and five TT subsequences. How many different sequences of 15 coin tosses will contain exactly two HH, three HT, four TH, and five TT subsequences?
 
 \subsection{Solution}
-Note that every time we switch from a run of letters, we either get one more HT or one more TH. This means the amount of HT's can only differ from the amount of TH's by one This motivates the following. Consider sequence THTHTHTH. Then we construct all of our sequences by inserting 5 T's next to existing T's to get the 5 TT's, and inserting 2 H's next to existing H's to get the two HH's. So there are $\binom{5+4-1}{4-1}\cdot\binom{2+4-1}{4-1}=560$ sequences of coin tosses.
+Note that every time we switch from a run of letters, we either get one more HT or one more TH. This means the amount of HT's can only differ from the amount of TH's by one This motivates the following. Consider sequence THTHTHTH. Then we construct all of our sequences by inserting 5 T's next to existing T's to get the 5 TT's, and inserting 2 H's next to existing H's to get the two HH's. So there are $\binom{5+4-1}{4-1}\cdot\binom{2+4-1}{4-1}=\ansbold{560}$ sequences of coin tosses.
 
 \pagebreak\section{CMIMC Combinatorics 2018/9}
 Compute the number of rearrangements $a_1,a_2,\ldots,a_{2018}$ of the sequence $1,2,\ldots,2018$ such that $a_k>k$ for exactly one value of $k.$
@@ -141,6 +151,6 @@ Compute the number of rearrangements $a_1,a_2,\ldots,a_{2018}$ of the sequence $
 \subsection{Solution}
 Label all the terms $i$ such that $i\neq a_i$ as $b_1<b_2<\ldots<b_n.$ Clearly the condition cannot be satisfied for $n=0,n=1.$ For $n\geq 2,$ notice that the only valid permutation is $b_n,b_1,\ldots,b_2,b_{n-1}.$ Assume for contradictions sake that there is some permutation $c_1,c_2,\ldots, c_n$ of $b_1,b_2,\ldots,b_n$ such that as any $c_i\neq b_n$ is the number such that $c_i>b_i.$ Then let $c_j=b_n.$ The only way for $c_j=b_n\leq b_j$ is for $j=n,$ but this means that $b_i=i=a_i,$ contradiction.
     
-The crux move is looking at the sets of numbers that move. Since this construction does not work for sets of size $0,1,$ the answer is $2^{2018}-\binom{2018}{1}-\binom{2018}{0}=2^{2018}-2019.$
+The crux move is looking at the sets of numbers that move. Since this construction does not work for sets of size $0,1,$ the answer is $2^{2018}-\binom{2018}{1}-\binom{2018}{0}=\ansbold{2^{2018}-2019}.$
 \end{document}
 
