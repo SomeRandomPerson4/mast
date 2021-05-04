@@ -76,17 +76,28 @@ Note that $\sum_{i=0}^{11}\binom{11}{i}\binom{12}{i}=\sum_{i=0}^{11}\binom{11}{i
     
 We present a combinatorial argument now. Make a group chat with all of the men in the committee and all of the women not in the committee. Note each committee has a uniquely corresponding group chat. Let $m$ men be in the committee. Then notice that $m+1$ women are in the committee, so $11-m$ women will not be in the committee. Thus the group chat has size $m+11-m=11,$ so the number of ways to make a committee is $\binom{23}{11}=2\cdot 7\cdot 13\cdot 17\cdot 19\cdot 23.$ Thus the answer is $2+7+13+17+19+23=81.$
 
-\pagebreak\section{AIME II 2002/9}
-Let $\mathcal{S}$ be the set $\lbrace1,2,3,\ldots,10\rbrace.$ Let $n$ be the number of sets of two non-empty disjoint subsets of $\mathcal{S}$. (Disjoint sets are defined as sets that have no common elements.) Find the remainder obtained when $n$ is divided by $1000$.
-
-\subsection{Solution}
-We either put an element in set $A,$ in set $B,$ or in neither set. Thus there are $3^{10}$ ways to do this. But both sets are non-empty, so we complementary count the number of ways to have a set be empty. Note that there are $2^{10}$ ways for set $A$ to be empty and also $2^{10}$ ways for set $B$ to be empty, and that there is $1$ way for both set $A$ and $B$ to be empty. Thus the amount of ways to have at least one set empty is $2^{10}+2^{10}-1,$ so the answer is the remainder of $\frac{1}{2}(3^{10}-2^{10}-2^{10}+1)=28501$ when divided by $1000,$ or $501.$ (Remember that order does not matter.)
+This combinatorial argument is not special. It is actually just a specific case of Vandermonde's identity, and the proof for Vandermonde's uses the exact same combinatorial argument.
 
 \pagebreak\section{Unsourced}
 We have $7$ balls each of different colors (red, orange, yellow, green, blue, indigo, violet) and $3$ boxes each of different shapes (tetrahedron, cube, dodecahedron). How many ways are there to place these $7$ balls into the $3$ boxes such that each box contains at least $1$ ball?
 
 \subsection{Solution}
+
 We use complementary counting. Let $T,C,D$ indicate the sets with no balls in the tetrahedron, cube, and dodecahedron, respectively. Then $|T\cup C\cup D|=(|T|+|C|+|D|)-(|T\cap C|+|C\cap D|+|D\cap T|)+|T\cap C\cap D|.$ Clearly the last is impossible. Note that $|T|=|C|=|D|=2^7,$ and $|T\cap C|=|C\cap D|=|D\cap T|=1,$ so $|T\cup C\cup D|=3(2^7-1).$ Thus the amount of valid ways is $3^7-3(2^7-1)=1806.$
+
+\pagebreak\section{AIME II 2009/6}
+
+Let $m$ be the number of five-element subsets that can be chosen from the set of the first $14$ natural numbers so that at least two of the five numbers are consecutive. Find the remainder when $m$ is divided by $1000$.
+
+\subsection{Solution}
+
+We will use complementary counting. It is trivial to see that there are $\binom{14}{5}$ ways to choose the $5$ integers. Now, we find the number of ways such that none of the integers are consecutive to each other. Let $a_1< a_2< a_3<a_4<a_5$ be the five integers chosen and define $b_i = a_i - a_{i-1}$ where $a_0$ and $a_6$ are defined to be $1$ and $14$ respectively. For none of the numbers to be consecutive, we require $b_i>1$ for $i = 2,3,4,5$. Since each choice of the $b_i$ corresponds to a choice of the $a_i$, we desire the ways to have have $a + (b+2) + (c+2) + (d+2) + (e+2) + f= 14$ where $a,b,c,d,e,f$ are positive integers. This can be found to be $\binom{10}{5}$ using stars and bars. Thus, $m= \binom{14}{5} - \binom{10}{5} = 1750$ and the desired answer is $\boxed{750}$
+
+\pagebreak\section{AIME II 2002/9}
+Let $\mathcal{S}$ be the set $\lbrace1,2,3,\ldots,10\rbrace.$ Let $n$ be the number of sets of two non-empty disjoint subsets of $\mathcal{S}$. (Disjoint sets are defined as sets that have no common elements.) Find the remainder obtained when $n$ is divided by $1000$.
+
+\subsection{Solution}
+We either put an element in set $A,$ in set $B,$ or in neither set. Thus there are $3^{10}$ ways to do this. But both sets are non-empty, so we complementary count the number of ways to have a set be empty. Note that there are $2^{10}$ ways for set $A$ to be empty and also $2^{10}$ ways for set $B$ to be empty, and that there is $1$ way for both set $A$ and $B$ to be empty. Thus the amount of ways to have at least one set empty is $2^{10}+2^{10}-1,$ so the answer is the remainder of $\frac{1}{2}(3^{10}-2^{10}-2^{10}+1)=28501$ when divided by $1000,$ or $501.$ (Remember that order does not matter.)
 
 \pagebreak\section{Mildorf AIME 3/2}
 Let $N$ denote the number of $7$ digit positive integers have the property that their digits are in increasing order. Determine the remainder obtained when $N$ is divided by $1000$. (Repeated digits are allowed.
