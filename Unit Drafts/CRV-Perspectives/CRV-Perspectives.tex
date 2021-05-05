@@ -28,7 +28,22 @@ Things would get a little dicey if there were two integer values of $x$ that gav
 Since $\frac{12}{x}$ is small for large $|x|$, $x$ can be any integer between $-39$ and $39$ inclusive, except for $0.$ Thus the anwser is $78.$
 \end{sol}
 
-This is a flagship Perspectives problem because instead of counting something that's difficult to keep track of, you count something \textit{else} you know a lot about. Make sure in these types of problems you don't miss ``edge cases'' -- there are going to be times when the Perspectives argument doesn't entirely hold, and figuring out these exceptions is going to be part of solving the problem.
+This is a flagship Perspectives problem because instead of counting something that's difficult to keep track of, you count something \textit{else} you know a lot about. Make sure in these types of problems you don't miss ``edge cases'' -- there are going to be times when the Perspectives argument doesn't entirely hold, and figuring out these exceptions is going to be part of solving the problem. 
+
+\begin{exam}[AIME 1994/11]
+Ninety-four bricks, each measuring $4''\times10''\times19'',$ are to be stacked one on top of another to form a tower 94 bricks tall. Each brick can be oriented so it contributes $4''\,$ or $10''\,$ or $19''\,$ to the total height of the tower. How many different tower heights can be achieved using all ninety-four of the bricks? 
+\end{exam}
+
+Though Perspectives may seem like a catch-all for bijection, what makes a problem really feel ``Perspectives-like'' is clever uses of restrictions. For instance, in this next example, you will see that while there are multiple ways to construct a height, you only need to consider a set of constructions that covers each height at least once. This is secretly easier than it sounds.
+
+\begin{sol}
+First note we can biject the height of the bricks. Subtracting $4$ from each dimension to get heights of $0, 6, 15$ will reduce the total height by a constant of $4\cdot 94,$ and then dividing each dimension by $3$ to get heights of $0, 2, 5$ will divide the total height by $3$. Thus both processes are bijections, and we can now proceed with dimensions $0, 2, 5$.
+
+Now note that if we have five blocks of height $2$, we can replace it with two blocks of height $5$ and three blocks of height $0$. This implies that if a tower can be constructed, \db{it can be constructed with no more than four blocks of height $2$}, as any extra can just be swapped with blocks of height $5$ and $0$ to achieve the same height.
+
+Thus we only have to consider the cases where there are $0$, $1$, $2$, $3$, or $4$ blocks of height $2$. By mod $5$, none of these cases will overlap. For each case, you just have to consider how many of the remaining blocks have height $5$. (For example, if there are no blocks of height $2$, then there are $94$ blocks left. Since we can have anywhere between $0$ to $94$ blocks of height $5$, this case has $95$ possibilities.) This implies the final answer is
+\[95+94+93+92+91=\ansbold{465}.\]
+\end{sol}
 
 \pagebreak
 
@@ -41,6 +56,10 @@ This is a flagship Perspectives problem because instead of counting something th
 \req{3}{IMO 1987/1}{Let $p_n (k)$ be the number of permutations of the set $\{ 1, \ldots , n \} , \; n \ge 1$, which have exactly $k$ fixed points. Prove that
 
 \[\sum_{k=0}^{n} k \cdot p_n (k) = n!.\]}
+
+\begin{req}[AIME 1994/11]{6}
+
+\end{req}
 
 \prob{9}{ISL 2018/C1}{Let $n\geq 3$ be an integer. Prove that there exists a set $S$ of $2n$ positive integers satisfying the following property: For every $m=2,3,...,n$ the set $S$ can be partitioned into two subsets with equal sums of elements, with one of subsets of cardinality $m.$}
 
