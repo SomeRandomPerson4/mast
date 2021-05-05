@@ -1,0 +1,185 @@
+\documentclass{article}
+\usepackage{dennis}
+
+\title{Complex Numbers}
+\author{Dennis Chen}
+\date{AQU}
+
+\begin{document}
+\maketitle
+
+\section{Definition}
+We define $i$ as the number such that $i^2=-1.$ (This may seem somewhat absurd at first.) The original reason complex numbers were defined is algebraic - not all polynomials with real coefficients have real solutions, but all polynomials with complex coefficients have complex solutions. We call a number complex if it is of the form $a+bi$ where $a,b$ are real.
+
+However, this seems to be somewhat ambiguous. Yes, $i^2=-1,$ but also note that $(-i)^2=-1,$ and we clearly want $i\neq -i.$ So "which direction" is $i?$ To define this, we introduce the complex plane.
+
+\begin{defi}[Complex Plane]
+The complex plane has $x$ axis denoting reals and $y$ axis denoting complex numbers. We \textbf{arbitrarily} define the positive $y$ direction to be positive $i.$
+\end{defi}
+\begin{center}
+    \begin{asy}
+    size(7cm);
+    import graph;
+    Label f;
+    f.p=fontsize(10); 
+xaxis(-2,2);
+yaxis(-2,2);
+xaxis(-8,-2,Ticks(f, 2.0)); 
+xaxis(2,8,Ticks(f, 2.0)); 
+yaxis(-8,-2,Ticks(f, 2.0));
+yaxis(2,8,Ticks(f, 2.0));
+
+dot((4,6));
+label("$4+6i$",(4,6),NE);
+    \end{asy}
+\end{center}
+
+\section{Manipulations}
+
+We can express complex numbers in polar form.
+
+\begin{defi}[Polar Coordinates]
+The point $(r,\theta)$ in polar coordinates is the point $(r,0)$ rotated about $(0,0)$ by an angle of $\theta$ counterclockwise.
+
+The \textit{counterclockwise} part is very important to remember.
+\end{defi}
+\begin{center}
+    \begin{asy}
+    size(4cm);
+    import graph;
+    Label f;
+xaxis(-1.2,1.2);
+yaxis(-1.2,1.2);
+draw(circle((0,0),1));
+dot(dir(50));
+label("$(r,\theta)$",dir(50),dir(50));
+\end{asy}
+\end{center}
+
+From now on in this section, any ordered pair of coordinates is polar unless otherwise specified.
+
+This motivates the definition of magnitude.
+
+\begin{defi}[Magnitude]
+The magnitude of a complex number $z$ is its distance from the origin. This is denoted as $|z|.$
+
+Also note that if $z=(r,\theta),$ then $|z|=r.$
+\end{defi}
+
+\begin{fact}[$|z|=\sqrt{a^2+b^2}$]
+For complex number $z=a+bi,$ $|z|=\sqrt{a^2+b^2}.$
+\end{fact}
+
+This is due to the Pythagorean Theorem.
+
+\begin{corollary}
+This also implies $z\overline{z}=|z|^2,$ where $\overline{z}$ is the conjugate\footnote{The conjugate of a complex number $a+bi$ is $a-bi.$} of $z.$
+\end{corollary}
+
+The following corollary is useful, particularly when you are meant to factor expressions out.
+
+\begin{fact}[Multiplication and Division]
+For complex numbers $a,b,$
+\begin{itemize}
+\Item $|a||b|=|ab|,$ and
+\Item $\frac{|a|}{|b|}=|\frac{a}{b}|.$
+\end{itemize}
+\end{fact}
+
+We do not prove this.
+
+Here is a simple example that illustrates how magnitudes can be manipulated.
+
+\begin{exam}[William Dai]
+If $|x|=2,$ $|y|=3,$ and $|x-y|=4,$ find $|\frac{1}{x}-\frac{1}{y}|.$
+\end{exam}
+
+\begin{sol}
+Note that $|\frac{1}{x}-\frac{1}{y}|=|\frac{x-y}{xy}|=\frac{|x-y|}{|x||y|}=\frac{4}{2\cdot 3}=\frac{2}{3}.$
+\end{sol}
+
+\section{Multiplication}
+
+Complex addition is really easy. But complex multiplication can get tedious, so we present some techniques to multiply complex numbers.
+
+One way to multiply is to just expand. This rarely actually solves the problem by itself, but there are some problems where this is part of answer extraction.
+
+\begin{exam}[AIME 1985/3]
+Find $c$ if $a$, $b$, and $c$ are positive integers which satisfy $c=(a + bi)^3 - 107i$, where $i^2 = -1$.
+\end{exam}
+
+\begin{sol}
+Note
+\[c=a^3+3a^2bi-3ab^2-b^3i-107i.\]
+Since $c$ is a positive integer,
+\[3a^2b-b^3-107=0\]
+\[b(3a^2-b^2)=107.\]
+Thus $b|107,$ so $b=1$ or $b=107.$ We test the latter and see it doesn't work. So $(a,b)=(6,1)$ and
+\[c=a^3-3ab^2=6^3-3\cdot 6\cdot 1^2=198.\]
+\end{sol}
+
+The more useful form is multiplying with polar coordinates.
+
+\begin{theo}[Polar Coordinates]
+Let $z_1=(r_1,\theta_1)$ and $z_2=(r_2,\theta_2).$ Then $z_1z_2=(r_1r_2,\theta_1+\theta_2).$
+\end{theo}
+
+\begin{pro}
+Note
+\[z_1z_2=r_1r_2(\cos\theta_1+i\sin\theta_1)(\cos\theta_2+i\sin\theta_2)=\]
+\[r_1r_2((\cos\theta_1\cos\theta_2-\sin\theta_1\sin\theta_2)+i(\sin\theta_1\cos\theta_2+\sin\theta_2\cos\theta_1)).\]
+By the Angle Addition Formulas,
+\[\cos\theta_1\cos\theta_2-\sin\theta_1\sin\theta_2=\cos(\theta_1+\theta_2)\]
+\[\sin\theta_1\cos\theta_2+\sin\theta_2\cos\theta_1=\sin(\theta_1+\theta_2).\]
+So
+\[z_1z_2=r_1r_2((\cos\theta_1\cos\theta_2-\sin\theta_1\sin\theta_2)+i(\sin\theta_1\cos\theta_2+\sin\theta_2\cos\theta_1))=\]
+\[r_1r_2(\cos(\theta_1+\theta_2)+i\sin(\theta_1+\theta_2)).\]
+\end{pro}
+
+Here's an example of when this might be useful. Surprisingly often you will find problems placed near the end of AMCs or in the middle of AIMEs where this is literally all you need.
+
+\begin{exam}[Dennis Chen]
+The smallest positive integer value that $(\sqrt{6}+\sqrt{2}+i\sqrt{6}-i\sqrt{2})^n,$ where $n$ is a positive integer, can take is $x.$ Find $x.$
+\end{exam}
+
+\begin{sol}
+Note $(\sqrt{6}+\sqrt{2})+i(\sqrt{6}-\sqrt{2})=4\cis 15^{\circ}.$ So $(4\cis 15^{\circ})^n=(4^n,15n^{\circ}).$ We want $360|15n,$ and the smallest positive integer $n$ such that $360|15n$ is $n=24.$ Thus the smallest positive integer that can be achieved is $4^{24}.$
+\end{sol}
+
+\subsection{Euler's Formula}
+We can use complex numbers to represent geometric series. Here's something that isn't strictly \textit{necessary,} but makes it much more natural to think about geometric series.
+
+\begin{theo}[Euler's Formula]
+For some angle $\theta,$
+\[e^{i\theta}=\cis\theta=(1,\theta).\]
+\end{theo}
+
+The proof requires Taylor Series, which we will not get into here. But now we can explicitly represent geometric series.
+
+\begin{exam}[AMC 12B 2015/25]
+A bee starts flying from point $P_0$. She flies $1$ inch due east to point $P_1$. For $j \ge 1$, once the bee reaches point $P_j$, she turns $30^{\circ}$ counterclockwise and then flies $j+1$ inches straight to point $P_{j+1}$. When the bee reaches $P_{2015}$ she is exactly $a \sqrt{b} + c \sqrt{d}$ inches away from $P_0$, where $a$, $b$, $c$ and $d$ are positive integers and $b$ and $d$ are not divisible by the square of any prime. What is $a+b+c+d$ ?
+\end{exam}
+
+\begin{sol}
+Let $x=e^{\frac{i\pi}{6}}.$ Then we want to find the magnitude of $S,$ where
+\[S=1+2x+3x^2+\cdots+2015x^{2014}.\]
+Note
+\[Sx=x+2x^2+3x^3+\cdots+2015x^{2015},\]
+so
+\[S(1-x)=1+x+x^2+\cdots+x^{2014}-2015x^{2015}\]
+\[S=\frac{1-x^{2015}}{(1-x)^2}-\frac{2015x^{2015}}{1-x}.\]
+Note $x^{12}=1.$ So
+\[S=\frac{x^{12}-x^{11}}{(x-1)^2}+\frac{2015x^{11}}{x-1}=\frac{x^{11}+2015x^{11}}{x-1}=\frac{2016}{x(x-1)}.\]
+Since $x=e^{\frac{i\pi}{6}},$
+\[|S|=|\frac{2016}{x(x-1)}|=\frac{2016}{|x-1|}=\frac{2016}{\frac{\sqrt{6}-\sqrt{2}}{2}}=1008\sqrt{2}+1006\sqrt{6}.\]
+Thus the answer is $1008+2+1006+6=2024.$
+\end{sol}
+
+\pagebreak\section{Problems}
+
+\minpt{}
+
+\psetquote{}{}
+
+
+\end{document}
