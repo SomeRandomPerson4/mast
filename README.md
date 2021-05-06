@@ -6,6 +6,8 @@ If it is a code change, label it as "edits." Use other labels as appropriate.
 
 # For people more experienced with git/latex
 
+**Get a copy of dennis.sty, fonts.tex, mathOperators.tex, and tikzMacros.tex from** https://github.com/chennisden/geometryexplorer/tree/gh-pages/texmf/tex/latex. It is also highly recommended you get universal.tex.
+
 You need a working knowledge of TeX Live and Git (as well as both of these installed) in order to do this. If you want help feel free to DM me (Dennis).
 
 You should clone the repo to start, and pull before any "editing sessions."
