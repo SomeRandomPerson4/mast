@@ -130,7 +130,17 @@ In the right triangle $\triangle ACE$, we are given that  $AC=12$, $CE=16$, and 
 \begin{prob}[AMC 10A 2018/23]{3}
 Farmer Kevin has a field of corn in the shape of a right triangle. The right triangle's legs have lengths 3 and 4 units. In the corner where those sides meet at a right angle, he leaves a small unplanted square $S$ so that from the air it looks like the right angle symbol. The rest of the field is planted. The shortest distance from $S$ to the hypotenuse is 2 units. Given that the fraction of the field that is planted can be written as $\frac{m}{n}$ where $\gcd(m,n)=1$, then find the value of $m+n$.
 \begin{center}
-    \input{amc-10a-2018-23}
+    \begin{asy}
+size(4cm);
+draw((0,0)--(4,0)--(0,3)--(0,0));
+draw((0,0)--(0.3,0)--(0.3,0.3)--(0,0.3)--(0,0));
+fill(origin--(0.3,0)--(0.3,0.3)--(0,0.3)--cycle, gray);
+label("$4$", (2,0), N);
+label("$3$", (0,1.5), E);
+label("$2$", (.8,1), E);
+label("$S$", (0,0), NE);
+draw((0.3,0.3)--(1.4,1.9), dashed);
+\end{asy}
 \end{center}
 \end{prob}
 
@@ -141,7 +151,44 @@ In rectangle $ABCD$, $AB=6$ and $BC=3$. Point $E$ between $B$ and $C$, and point
 \begin{prob}[AMC 10A 2014/16]{3}
 n rectangle $ABCD$, $AB=1$, $BC=2$, and points $E$, $F$, and $G$ are midpoints of $\overline{BC}$, $\overline{CD}$, and $\overline{AD}$, respectively. Point $H$ is the midpoint of $\overline{GE}$. What is the area of the shaded region?
 \begin{center}
-    \input{amc-10a-2014-16}
+    \begin{asy}
+import graph;
+size(9cm);
+pen dps = fontsize(10); defaultpen(dps);
+pair D = (0,0);
+pair F = (1/2,0);
+pair C = (1,0);
+pair G = (0,1);
+pair E = (1,1);
+pair A = (0,2);
+pair B = (1,2);
+pair H = (1/2,1);
+
+// do not look
+pair X = (1/3,2/3);
+pair Y = (2/3,2/3);
+
+draw(A--B--C--D--cycle);
+draw(G--E);
+draw(A--F--B);
+draw(D--H--C);
+filldraw(H--X--F--Y--cycle,grey);
+
+label("$A$",A,NW);
+label("$B$",B,NE);
+label("$C$",C,SE);
+label("$D$",D,SW);
+label("$E$",E,E);
+label("$F$",F,S);
+label("$G$",G,W);
+label("$H$",H,N);
+
+label("$\displaystyle\frac12$",(0.25,0),S);
+label("$\displaystyle\frac12$",(0.75,0),S);
+label("$1$",(1,0.5),E);
+label("$1$",(1,1.5),E);
+\end{asy}
+
 \end{center}
 
 \end{prob}
@@ -157,7 +204,45 @@ Point $B$ lies on line segment $\overline{AC}$ with $AB=16$ and $BC=4$. Points $
 \begin{prob}[AIME II 2018/9]{6}
 Octagon $ABCDEFGH$ with side lengths $AB = CD = EF = GH = 10$ and $BC=  DE = FG = HA = 11$ is formed by removing four $6-8-10$ triangles from the corners of a $23\times 27$ rectangle with side $\overline{AH}$ on a short side of the rectangle, as shown. Let $J$ be the midpoint of $\overline{HA}$, and partition the octagon into $7$ triangles by drawing segments $\overline{JB}$, $\overline{JC}$, $\overline{JD}$, $\overline{JE}$, $\overline{JF}$, and $\overline{JG}$. Find the area of the convex polygon whose vertices are the centroids of these $7$ triangles.
 \begin{center}
-    \input{aime-i-2018-9}
+    \begin{asy}
+size(6cm);
+pair P = (0, 0), Q = (0, 23), R = (27, 23), SS = (27, 0);
+pair A = (0, 6), B = (8, 0), C = (19, 0), D = (27, 6), EE = (27, 17), F = (19, 23), G = (8, 23), J = (0, 23/2), H = (0, 17);
+draw(P--Q--R--SS--cycle);
+draw(J--B);
+draw(J--C);
+draw(J--D);
+draw(J--EE);
+draw(J--F);
+draw(J--G);
+draw(A--B);
+draw(H--G);
+real dark = 0.6;
+filldraw(A--B--P--cycle, gray(dark));
+filldraw(H--G--Q--cycle, gray(dark));
+filldraw(F--EE--R--cycle, gray(dark));
+filldraw(D--C--SS--cycle, gray(dark));
+dot(A);
+dot(B);
+dot(C);
+dot(D);
+dot(EE);
+dot(F);
+dot(G);
+dot(H);
+dot(J);
+dot(H);
+real r = 1.3;
+label("$A$", A, W*r);
+label("$B$", B, S*r);
+label("$C$", C, S*r);
+label("$D$", D, E*r);
+label("$E$", EE, E*r);
+label("$F$", F, N*r);
+label("$G$", G, N*r);
+label("$H$", H, W*r);
+label("$J$", J, W*r);
+\end{asy}
 \end{center}
 \end{prob}
 
