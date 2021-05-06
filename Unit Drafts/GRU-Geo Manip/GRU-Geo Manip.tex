@@ -1,0 +1,131 @@
+\documentclass[11pt]{article}
+\usepackage[mast]{dennis}
+\begin{document}
+\title{Manipulation and Construction in Geometry Problems}
+\author{Ethan Liu}
+\date{GRU}
+\maketitle
+\section{Introduction}
+This is a (short-ish) unit about moving stuff around in diagrams. This unit can be thought of as a harder version of GQU-Transform, but has a lot of other stuff that you wouldn't expect to see in that unit. Also includes spiral similarity, because, despite not seeing much use, it is still a very useful tool that will kill many problems.\\
+Many of the problems in this unit may seem rather silly, but I guarantee that these kinds of problems \textit{will} do show up (and quite frequently at that). This is also the kind of handout where progress will probably come in bursts and not linearly.
+\section{Spiral Similarity and the Miquel point}
+\subsection{Disclaimer}
+These notes will look a lot like EGMO chapter 10. Feel free to read that instead of this/skip this if you've read that - I think as highly of EGMO as I do of anything MAST has ever created, and don't particularly care where you learn well-known facts. That being said, for accessibility/completeness reasons, the notes are here (and with a walkthrough you should work through - has much more computational flavor) 
+\subsection{The Base Configuration}
+\begin{defi}[Spiral Similarity]
+
+A spiral similarity is a transformation about a point $P$ that combines a rotation about $P$ and a homothety(dilation) with center $P$. 
+\end{defi}
+The important thing about this is that there is a unique spiral similarity sending any pair of points to any other pair of points. Also, they come in pairs: if spiral sim $\Phi$ sends $A$ to $C$ and $B$ to $D$, then there exists another spiral sim $\Psi$ sending $A$ to $B$ and $C$ to $D$. For those that know complex numbers, spiral sims are simply transformations defined by shifting a point to the origin, multiplying by some arbitrary complex number, and then shifting back. However, most pre-olympiad students may not be familiar with any configuration with a spiral similarity in it. Most spiral sims(but not all!) in geometry problems rise from a single configuration, which you could call the \textit{Base Miquel configuration}.
+\begin{lemma}[Circle Intersections Induce Spiral Similarity]
+Let circles $\omega_1$ and $\omega_2$ intersect at $X,Y$. Let $A,C$ be points on $\omega_1$ and $B,D$ points on $\omega_2$ such that $AB,CD$ pass through $X$. Then there exists a spiral similarity centered at $Y$ sending $AB$ to $CD$. Conversely, if $Y$ is the center of a spiral similarity sending $AB$ to $CD$, and $AB,CD$ intersect at $X$, then $ACXY$ and $BDXY$ are cyclic quadrilaterals.
+\end{lemma}
+\textit{Proof.} Left to the reader as an exercise in angle chasing(find the pair of similar triangles!).\\
+An extension of this is Miquel's Theorem on quadrilaterals.\\
+\begin{theo}[Miquel's Theorem and the Miquel Point]
+Let $ABCD$ be a quadrilateral. Let $AB,CD$ intersect at $E$ and $BC, AD$ intersect at $F$. Then circles $(ABE),(CDE),(BCF),(ADF)$ concur at a point $M$ which we denote as the \textit{Miquel Point} of $ABCD$.
+\end{theo}
+\textit{Proof.} This follows from using the circle intersections lemma twice and the fact that spiral similarities come in pairs. This is also doable with vanilla angle chasing, but that method is isomorphic and finding it is left to the reader. This theorem is admittedly not something you will see used very often on computational contests.\\
+Next, an example showcasing spiral sims that arise from the circle configuration.
+\begin{exam}[AIME I 2010/15]
+	In triangle $ ABC$, $ AC = 13, BC = 14,$ and $ AB=15$. Points $ M$ and $ D$ lie on $ AC$ with $ AM=MC$ and $ \angle ABD = \angle DBC$. Points $ N$ and $ E$ lie on $ AB$ with $ AN=NB$ and $ \angle ACE = \angle ECB$. Let $ P$ be the point, other than $ A$, of intersection of the circumcircles of $ \triangle AMN$ and $ \triangle ADE$. Ray $ AP$ meets $ BC$ at $ Q$. The ratio $ \frac{BQ}{CQ}$ can be written in the form $ \frac{m}{n}$, where $ m$ and $ n$ are relatively prime positive integers. Find $ m-n$.
+\end{exam}
+\begin{walk}
+    \begin{enumerate}
+        \item Forget that this is an AIME 15, and don't be intimidated.
+        \item Find a way to phrase $P$ in terms of spiral similarities. (Hint: Try to apply the circle intersections lemma)
+        \item Use the similar triangles you have now to get $\frac{PM}{PN}$.
+			\item Finish with Law of Sines/Ratio Lemma.
+    \end{enumerate}
+\end{walk}
+\section{Construction, featuring our friends rotation and reflection}
+This next section has some of most pure-intuition ideas, so it will feature mostly just problems and very little "lecture".\\
+\begin{exam}[Traditional proof of the Angle Bisector Theorem]
+Prove that if $D$ is the point on $BC$ such that $\angle DAB = \angle CAD$, then $\frac{AB}{AC} = \frac{BD}{DC}$.
+\end{exam}
+\begin{pro}
+Add the point $E$ on $AD$ such that $EC||AB$. It is easy to see that $\triangle ACE$ is isoceles, and that $\triangle CDE \sim \triangle BDA$, so using ratios finishes.
+\begin{center}
+    \begin{asy}
+    import markers;
+import olympiad;
+size(4cm);
+real a,b,c,d;
+pair A=(1,9), B=(-11,0), C=(4,0), D,E; b = abs(C-A); c = abs(B-A); D = (b*B+c*C)/(b+c); E = ((b+c)*D - b*A)/(c);
+draw(A--B--C--A--D--E--C);
+label("$A$",A,(1,1));label("$B$",B,(-1,-1));label("$C$",C,(1,-1));label("$D$",D,(-1,-1));label("$E$",E,(0,-1)); dot(A^^B^^C^^D^^E);
+markangle(radius=15,n=1,B,A,D,marker(markinterval(stickframe(n=1,2mm),true)));
+markangle(radius=15,n=1,D,A,C,marker(markinterval(stickframe(n=1,2mm),true)));
+markangle(radius=15,n=1,C,E,D,marker(markinterval(stickframe(n=1,2mm),true)));
+\end{asy}
+\end{center}
+\end{pro}
+
+Using $\angle X$ and $180-\angle X$ by adding such an isoceles triangle is a common motif in these kinds of problems.\\
+Finally, one last example, showcasing the power of construction in special triangles:\\
+\begin{exam}[GGMT Speed 2020/20]
+There exists a point $P$ inside regular hexagon $ABCDEF$ such that $AP=\sqrt{3},BP=2,CP=3.$ If the area of the hexagon can be expressed as $\frac{a\sqrt{b}}{c},$ where $b$ is not divisible by the square of a prime, find $a+b+c.$
+\end{exam}
+Yes, this problem is in Transformations. Once again, feel free to skip if you've done it, but the method here will have a slightly different heuristic than the one in Transformations, where we add points first and look at transformations later.\\
+\begin{walk}
+    \begin{enumerate}
+        \item Add a point $P'$ that takes advantage of the fact that $AB = BC$. (Hint: Congruent Triangles)
+        \item This point $P'$ should have some nice angles involved, by rotation; Look at $\triangle CPP'$. 
+        \item Finish however you like.
+    \end{enumerate}
+\end{walk}
+\section{Problems}
+\minpt{60}
+\psetquote{Truth is water. It is not distinguished into separate, countable objects; once mixed with other water, it can never return to what it was. As you try to grasp it, it slips through the gaps between your fingers, and you see only a part of it.}{Aya Shameimaru}
+\req{2}{AIME I 2011/2}{	In rectangle $ABCD$, $AB=12$ and $BC=10$. Points $E$ and $F$ lie inside rectangle $ABCD$ so that $BE=9$, $DF=8$, $\overline{BE} \parallel \overline{DF}$, $\overline{EF} \parallel \overline{AB}$, and line $BE$ intersects segment $\overline{AD}$. The length $EF$ can be expressed in the form $m\sqrt{n}-p$, where $m,n,$ and $p$ are positive integers and $n$ is not divisible by the square of any prime. Find $m+n+p$.}\\
+\prob{3}{AMC 12A 2020/24}{Suppose that $\triangle ABC$ is an equilateral triangle of side length $s$, with the property that there is a unique point $P$ inside the triangle such that $AP = 1$, $BP = \sqrt{3}$, and $CP = 2$. What is $s?$}\\
+\prob{4}{AIME II 2011/13}{Point $P$ lies on the diagonal $AC$ of square $ABCD$ with $AP>CP$. Let $O_1$ and $O_2$ be the circumcenters of triangles $\triangle ABP$ and $\triangle CDP$ respectively. Given that $AB=12$ and $\angle O_1 P O_2 = 120^\circ$, then $AP=\sqrt{a}+\sqrt{b}$ where $a$ and $b$ are positive integers. Find $a+b$.}\\
+\prob{4}{AIME I 2021/9}{Let $ABCD$ be an isosceles trapezoid with $AD=BC$ and $AB<CD.$ Suppose that the distances from $A$ to the lines $BC,CD,$ and $BD$ are $15,18,$ and $10,$ respectively. Let $K$ be the area of $ABCD.$ Find $\sqrt2 \cdot K.$}\\
+\prob{4}{CMC 12A 2020/23}{There exists $\triangle ABC$ with $\angle B = 30^{\circ}$ that satisfies $\frac{b+c}{2\cos C}=a$. Find $\angle A$.}\\
+\prob{6}{AIME II 2021/14}{Let $\triangle ABC$ be an acute triangle with circumcenter $O$ and centroid $G$. Let $X$ be the intersection of the line tangent to the circumcircle of $\triangle ABC$ at $A$ and the line perpendicular to $GO$ at $G$. Let $Y$ be the intersection of lines $XG$ and $BC$. Given that the measures of $\angle ABC, \angle BCA, $ and $\angle XOY$ are in the ratio $13 : 2 : 17, $ the degree measure of $\angle BAC$ can be written as $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m+n$.}
+\begin{center}
+\begin{asy}
+unitsize(5mm);
+pair A,B,C,X,G,O,Y;
+A = (2,8);
+B = (0,0);
+C = (15,0);
+dot(A,5+black); dot(B,5+black); dot(C,5+black);
+draw(A--B--C--A,linewidth(1.3));
+draw(circumcircle(A,B,C));
+O = circumcenter(A,B,C);
+G = (A+B+C)/3;
+dot(O,5+black); dot(G,5+black);
+pair D = bisectorpoint(O,2*A-O);
+pair E = bisectorpoint(O,2*G-O);
+draw(A+(A-D)*6--intersectionpoint(G--G+(E-G)*15,A+(A-D)--A+(D-A)*10));
+draw(intersectionpoint(G--G+(G-E)*10,B--C)--intersectionpoint(G--G+(E-G)*15,A+(A-D)--A+(D-A)*10));
+X = intersectionpoint(G--G+(E-G)*15,A+(A-D)--A+(D-A)*10);
+Y = intersectionpoint(G--G+(G-E)*10,B--C);
+dot(Y,5+black);
+dot(X,5+black);
+label("$A$",A,NW);
+label("$B$",B,SW);
+label("$C$",C,SE);
+label("$O$",O,ESE);
+label("$G$",G,W);
+label("$X$",X,dir(0));
+label("$Y$",Y,NW);
+draw(O--G--O--X--O--Y);
+markscalefactor = 0.07;
+draw(rightanglemark(X,G,O));
+\end{asy}
+\end{center}
+\prob{6}{AMC 12A 2018/23}{In $\triangle PAT,$ $\angle P=36^{\circ},$ $\angle A=56^{\circ},$ and $PA=10.$ Points $U$ and $G$ lie on sides $\overline{TP}$ and $\overline{TA},$ respectively, so that $PU=AG=1.$ Let $M$ and $N$ be the midpoints of segments $\overline{PA}$ and $\overline{UG},$ respectively. What is the degree measure of the acute angle formed by lines $MN$ and $PA?$}\\
+\prob{6}{First Isogonality Lemma}{In $\triangle ABC$ let $\omega$ be a circle passing through $B,C$ intersecting $AB,AC$ at $D,E$ respectively. Let the intersection of $CD$ and $BE$ be $P$. Let $Q$ be the reflection of $P$ over the midpoint of $BC$. Then prove \angle $BAP = \angle CAQ$.}\\
+\prob{9}{CMC 10B 2021/24}{Triangle $\triangle PQR$ with $PQ=3$, $QR=4$, $RP=5$ is drawn inside a regular hexagon $ABCDEF$ with $P$ on segment $FA$, $Q$ the midpoint of segment $AB$, and $R$ on segment $CD$. Given that $AB^2=\frac mn$ for relatively prime positive integers $m$ and $n$, find $m+n$.}\\
+\prob{9}{HMMT Geo 2020/5}{Let $ABCDEF$ be a regular hexagon with side length $2$. A circle with radius $3$ and center at $A$ is drawn. Find the area inside quadrilateral $BCDE$ but outside the circle.}\\
+\prob{9}{USAMO 2020/1}{Let $ABC$ be a fixed acute triangle inscribed in a circle $\omega$ with center $O$. A variable point $X$ is chosen on minor arc $AB$ of $\omega$, and segments $CX$ and $AB$ meet at $D$. Denote by $O_1$ and $O_2$ the circumcenters of triangles $ADX$ and $BDX$, respectively. Determine all points $X$ for which the area of triangle $OO_1O_2$ is minimized.}\\
+\prob{9}{AIME II 2018/12}{Let $ABCD$ be a convex quadrilateral with $AB=CD=10$, $BC=14$, and $AD=2\sqrt{65}$. Assume that the diagonals of $ABCD$ intersect at point $P$, and that the sum of the areas of $\triangle APB$ and $\triangle CPD$ equals the sum of the areas of $\triangle BPC$ and $\triangle APD$. Find the area of quadrilateral $ABCD$.}\\
+(The Geo Manip - style solution to this problem is admittedly very funky and not as smooth as some of the other solutions. For instructive purposes, I'd rather not a trig bash be submitted, but I can't stop you.)\\
+\req{13}{CMIMC Geo 2016/8}{Suppose $ABCD$ is a convex quadrilateral satisfying $AB=BC$, $AC=BD$, $\angle ABD = 80^\circ$, and $\angle CBD = 20^\circ$. What is $\angle BCD$ in degrees?}\\
+\prob{13}{IMO 1975/3}{In the plane of a triangle $ABC,$ in its exterior$,$ we draw the triangles $\triangle ABR, \triangle BCP, \triangle CAQ$ so that $\angle PBC = \angle CAQ = 45^{\circ}$, $\angle BCP = \angle QCA = 30^{\circ}$, $\angle ABR = \angle RAB = 15^{\circ}$.
+Prove that $\triangle QRP$ is an isoceles right triangle with right angle at $Q$.}\\
+\prob{13}{USAMO 2021/1}{Rectangles $BCC_1B_2,$ $CAA_1C_2,$ and $ABB_1A_2$ are erected outside an acute triangle $ABC.$ Suppose that\[\angle BC_1C+\angle CA_1A+\angle AB_1B=180^{\circ}.\]Prove that lines $B_1C_2,$ $C_1A_2,$ and $A_1B_2$ are concurrent.}\\
+(Once again, multiple solutions. Try avoid drawing any circles.)
+\end{document}

@@ -16,7 +16,7 @@ For any "obvious errors" (say I forgot to add a parenthesis, added an extra, the
 
 Please send PRs (Pull requests) for any larger changes so staff can look at them.
 
-TeX includes a bunch of junk whenever you compile so PLEASE make sure your gitignore is correct, it should absolutely not contain any latexmk files or whatever
+TeX includes a bunch of junk whenever you compile so PLEASE make sure your gitignore is correct, it should absolutely not contain any latexmk files or whatever. It's also possible to avoid having these files pushed by not running `git add` on them.
 
 # Quote suggestions
 
@@ -36,4 +36,4 @@ The same applies for diagrams.
 
 ## How to emphasize answers
 
-Do not use \boxed. Use \ansbold{answer}.
+Do not use `\boxed`. Use `\ansbold{answer}`.
