@@ -134,7 +134,7 @@ Then since $\dfrac{m+n+2}{(m+2)(n+2)}>\dfrac{1}{2}$ for $m=1,2,$ we fix $m=3.$\[
 Triangle $ABC$ has sides $a$, $b$, and $c$, and circumradius $R$. Prove that
 \[b^2 + c^2 \ge a^2 - R^2.\]
 When does equality occur?
-\subsection{Solution}
+\subsection{Solution 1}
 We can re-write the given inequality as $b^2 + c^2 - a^2 \ge -R^2$. By the law of cosines, $b^2 + c^2 - a^2 = 2bc \cos A$, so we get
 \[2bc \cos A \ge -R^2.\]
 By the extended law of sines, $b = 2R \sin B$ and $c = 2R \sin C$. Substituting, our inequality becomes
@@ -160,7 +160,23 @@ Multiplying both sides by 8 and adding 1 to both sides, this inequality becomes
 \[4 \cos^2 A + 4 \cos A + 1 \ge 0,\]
 or $(2 \cos A + 1)^2 \ge 0$, which is clearly true. Therefore, the given inequality holds.
 
-Furthermore, equality holds if and only if $\cos A = -1/2$ and $B = C$. In other words, equality holds if and only if $A = 120^\circ$ and $B = C = 30^\circ$.
+Furthermore, equality holds if and only if $\cos A = -1/2$ and $B = C$. In other words, equality holds if and only if $\angle A = 120^\circ$ and $B = C = 30^\circ$.
+
+\subsection{Solution 2}
+First note that by LoC and manipulations, we have $\cos \angle A=\frac{b^2+c^2-a^2}{2bc}$ in $\triangle ABC$. Now note that the inequality rearranges to
+$$R^2 \geq a^2-b^2-c^2.$$
+Dividing both sides by $bc$ and substituting, we get:
+$$\frac{R^2}{bc} \geq -2\cos \angle A.$$
+Now we prove the following lemma:
+
+\noindent\textbf{Lemma:} Given a fixed circle $\Omega$ and two points $A,B$ on the circumference of $\Omega$, the point $P$ on either arc $AB$ of $\Omega$ which maximizes $PA \cdot PB$ is the arc midpoint.\\
+\textbf{Proof:} Let the inscribed angle of $AB$ be $\theta$. From the sine area formula, $[ABP]=\frac{1}{2}(PA)(PB)\sin \theta$. Since $\frac{1}{2}\sin \theta$ is a constant, it suffices to choose $P$ such that $[ABP]$ is maximized. If we define $d(P,\ell)$ to be the distance from a point $P$ to line $\ell$, then since the length of $AB$ is fixed it suffices to maximize $d(P,AB)$. This clearly occurs when $P$ is the arc midpoint.
+
+Applying this, we see that the maximum of $\frac{R^2}{bc}$ occurs when $b=c$. When this is true, we can see by drawing a diagram and applying some angle chase and LoC that $b^2=c^2=bc=2R^2(1+\cos A)$. Therefore we wish to prove:
+$$\frac{1}{1+\cos A} \geq -4\cos \angle A.$$
+Note that $\angle A \in (0^\circ,180^\circ)$ so we don't divide by zero. Since $1+\cos A$ is positive here we can multiply and factor to arrive at:
+$$(2\cos A+1)^2 \geq 0,$$
+which is always true by the trivial inequality. Further we get that equality occurs if and only if $\cos A=-\frac{1}{2}$ and $b=c$; that is $\triangle ABC$ has $\angle A=120^\circ$ and $AB=AC$, which we can manually verify works.
 
 %\pagebreak\section{ISL 2005/A1}
 %Find all pairs of integers $a,b$ for which there exists a polynomial $P(x) \in \mathbb{Z}[X]$ such that product $(x^2+ax+b)\cdot P(x)$ is a polynomial of a form\[ x^n+c_{n-1}x^{n-1}+\cdots+c_1x+c_0  \]where each of $c_0,c_1,\ldots,c_{n-1}$ is equal to $1$ or $-1$.
