@@ -36,4 +36,4 @@ The same applies for diagrams.
 
 ## How to emphasize answers
 
-Do not use \boxed. Use \ansbold{answer}.
+Do not use `\boxed`. Use `\ansbold{answer}`.
