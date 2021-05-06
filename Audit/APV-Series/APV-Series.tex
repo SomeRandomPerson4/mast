@@ -4,7 +4,7 @@
 
 \title{Introduction to Series}
 \author{William Dai}
-\date{APV} 
+\date{APV}
 
 \begin{document}
 
@@ -31,7 +31,7 @@ If $a_{i}$ is $i$th term of an arithmetic sequence with common difference $d$, t
 Now, we'll present some common formulas for arithmetic series and sequences. These all easily follow from the previous formula but it's useful to know them to quickly manipulate arithmetic series.
 
 \begin{theo}[Arithmetic Average]
-In an arithmetic series $a_{i}$, $a_{n}+a_{m}=2a_{\frac{n+m}{2}}$ if $n+m$ is even. 
+In an arithmetic series $a_{i}$, $a_{n}+a_{m}=2a_{\frac{n+m}{2}}$ if $n+m$ is even.
 \end{theo}
 
 \begin{pro}
@@ -45,7 +45,7 @@ For an arithmetic sequence $a_{i}$, $a_{1}+a_{2}\ldots + a_{n}=\frac{a_{1}+a_{n}
 \begin{pro}
 Note that we can pair up $a_{i}$ and $a_{n+1-i}$ to get $a_{1}+(i-1)d+a_{1}+(n-i)d=2a_{1}+(n-1)d$. There is a special case that if $n$ is odd and $i=\frac{n+1}{2}$, we can't pair up that term with itself. However, $a_{\frac{n+1}{2}}=a_{1}+\frac{n-1}{2}d$ so it still averages out as $\frac{1}{2}$ of a pair.
 
-Then, we have $\frac{n}{2}$ pairs (if $n$ is odd, we have that $\frac{1}{2}$ pair). So, our total sum is 
+Then, we have $\frac{n}{2}$ pairs (if $n$ is odd, we have that $\frac{1}{2}$ pair). So, our total sum is
 $\frac{n}{2}\cdot (a_{1}+a_{n})=\frac{a_{1}+a_{n}}{2}\cdot n$.
 \end{pro}
 
@@ -54,7 +54,7 @@ If the common difference is $d$ in arithmetic sequence $a_{i}$, $a_{1}+a_{2}\ldo
 \end{theo}
 
 \begin{pro}
-We use the previous theorem 
+We use the previous theorem
 $$a_{1}+a_{2}\ldots + a_{n}$$
 $$=\frac{a_{1}+a_{n}}{2}\cdot n$$
 $$=\frac{a_{1}+a_{1}+(n-1)d}{2}\cdot n$$
@@ -76,7 +76,7 @@ $$a_{a_{0}}+a_{a_{1}} + \cdots + a_{a_{10}} = 671$$
 $$11a_{0}+(a_{0}+a_{1}\cdots + a_{10})d=671$$
 $$11a_{0}+209d=671$$
 
-Now, using the first equation, $11a_{0}+55d=209$. Then, subtracting from the second equation, $154d=462\implies d =3$. So, $a_{0}=\boxed{4}$.
+Now, using the first equation, $11a_{0}+55d=209$. Then, subtracting from the second equation, $154d=462\implies d =3$. So, $a_{0}=\ansbold{4}$.
 \end{sol}
 
 %%%---------------------------------------------------------------------------------------------------------%%%
@@ -93,9 +93,9 @@ Using this definition, we can now derive some formulas for each term and the ser
 If $a_{i}$ is $i$th term of an arithmetic sequence with common ratio $r$, then $a_{i}=a_{1}r^{i-1}$.
 \end{theo}
 
-Now, we'll present some common formulas for geometric series and sequences. 
+Now, we'll present some common formulas for geometric series and sequences.
 \begin{theo}[Geometric Average]
-In a geometric series $a_{i}$, $a_{n}a_{m}=(a_{\frac{n+m}{2}})^2$ if $n+m$ is even. 
+In a geometric series $a_{i}$, $a_{n}a_{m}=(a_{\frac{n+m}{2}})^2$ if $n+m$ is even.
 \end{theo}
 Notice that this is quite similar to the arithmetic average formula that we looked at before except with multiplying.
 
@@ -103,7 +103,7 @@ Notice that this is quite similar to the arithmetic average formula that we look
 We have $a_{n}=a_{1}r^{n-1}$ and $a_{m}=a_{1}r^{m-1}$. Then, $a_{n}a_{m}=a_{1}^2 r^{n+m-2}=(a_{1}r^{\frac{n+m}{2}-1})^2=(a_{\frac{n+m}{2}})^2$.
 \end{pro}
 
-However, the formulas for geometric series is quite different. 
+However, the formulas for geometric series is quite different.
 \begin{theo}[Geometric Series]
 If the geometric sequence $a_{i}$ has common ratio $r$, then $a_{1}+a_{2}\ldots + a_{n} = a_{1}\frac{r^{n}-1}{r-1}$.
 \end{theo}
@@ -132,7 +132,7 @@ Let $p$ and $q$ be numbers with  $|p| <1$ and $|q| <1$ such that \[p+pq+pq^2+pq^
 \end{exam}
 
 \begin{sol}
-First, $p+pq+pq^2+pq^3 + \dots = \frac{p}{1-q}=2\implies p=2-2q$. Also, $q+qp+qp^2 + \dots = \frac{q}{1-p}=3\implies q=3-3p$. We plug this into the first equation to get $p=2-2(3-3p)=6p-4\implies p = \frac{4}{5}$ and $q=\frac{3}{5}$. Then, $100pq=12\cdot 4=\boxed{48}$.
+First, $p+pq+pq^2+pq^3 + \dots = \frac{p}{1-q}=2\implies p=2-2q$. Also, $q+qp+qp^2 + \dots = \frac{q}{1-p}=3\implies q=3-3p$. We plug this into the first equation to get $p=2-2(3-3p)=6p-4\implies p = \frac{4}{5}$ and $q=\frac{3}{5}$. Then, $100pq=12\cdot 4=\ansbold{48}$.
 \end{sol}
 
 \section{Arithmetico-Geometric Sequence and Series}
@@ -149,22 +149,22 @@ Now, here's an interesting problem: what is $b_{1}+b_{2}\ldots+b_{n}$? When does
 We'll investigate this problem first and give the formula later.
 \begin{pro}
 This series looks very messy so we try to simplify the terms a bit.
-Consider $b_{i}'=b_{i}-a_{1}g_{1}r^{i-1}=(i-1)dg_{1}r^{i-1}$. 
+Consider $b_{i}'=b_{i}-a_{1}g_{1}r^{i-1}=(i-1)dg_{1}r^{i-1}$.
 
 So, $b_{1}+b_{2}\ldots + b_{n}=b_{1}'+b_{2}'\ldots + b_{n}'+a_{1}g_{1}(1+r+\ldots + r^{n-1})$
 
 Now, we can note that $a_{1}g_{1}(1+r+\ldots + r^{n-1})$ is a geometric series. We apply our formula to get $a_{1}g_{1}\cdot (\frac{r^{n}-1}{r-1})$ for this.
 
-Now, $b_{1}'+b_{2}'\ldots + b_{n}'=dg_{1}\cdot (0\cdot 1+1\cdot r+\ldots + (n-1)\cdot r^{n-1})$. Now, let $S=0\cdot 1+1\cdot r \ldots + (n-1)\cdot r^{n-1}$. We want to manipulate $S$ to get basically another copy of $S$ that's missing something we can easily calculate. If we look at $rS=0\cdot r+1\cdot r^2\ldots +(n-1)\cdot r^{n}$, we can notice that it's very similar to our $S$ before except with $(n-1)\cdot r^{n}-r^{n-1}-r^{n-2}\ldots-r=(n-1)\cdot r^{n}-\frac{r^{n}-r}{r-1}$ added. Then, $rS=S+(n-1)\cdot r^{n}-\frac{r^{n}-r}{r-1}\implies S=\frac{(n+1)\cdot r^{n}-\frac{r^{n}-r}{r-1}}{r-1}$.
+Now, $b_{1}'+b_{2}'\ldots + b_{n}'=dg_{1}\cdot (0\cdot 1+1\cdot r+\ldots + (n-1)\cdot r^{n-1})$. Let $S=0\cdot 1+1\cdot r \ldots + (n-1)\cdot r^{n-1}$. We want to manipulate $S$ to get basically another copy of $S$ that's missing something we can easily calculate. If we look at $rS=0\cdot r+1\cdot r^2\ldots +(n-1)\cdot r^{n}$, we can notice that it's very similar to our $S$ before except with $(n-1)\cdot r^{n}-r^{n-1}-r^{n-2}\ldots-r=(n-1)\cdot r^{n}-\frac{r^{n}-r}{r-1}$ added. Then, $rS=S+(n-1)\cdot r^{n}-\frac{r^{n}-r}{r-1}\implies S=\frac{(n+1)\cdot r^{n}-\frac{r^{n}-r}{r-1}}{r-1}$.
 
-So, $b_{1}'+b_{2}'\ldots + b_{n}'=dg_{1}\cdot (\frac{(n+1)\cdot r^{n}-\frac{r^{n}-r}{r-1}}{r-1})$. 
+So, $b_{1}'+b_{2}'\ldots + b_{n}'=dg_{1}\cdot (\frac{(n+1)\cdot r^{n}-\frac{r^{n}-r}{r-1}}{r-1})$.
 
-Now, we add the two series together to get 
+Now, we add the two series together to get
 $$dg_{1}\cdot (\frac{(n+1)\cdot r^{n}-\frac{r^{n}-r}{r-1}}{r-1})+a_{1}g_{1}\cdot (\frac{r^{n}-1}{r-1})$$
 \end{pro}
 
 \begin{theo}[Arithmetico-Geometric Series]
-If $b$ is an arithmetico-geometric sequence such that $b_{i}=a_{i}g_{i}$ for arithmetic sequence $a$ with common difference $d$ and geometric sequence $g$ with common ratio $r$, then 
+If $b$ is an arithmetico-geometric sequence such that $b_{i}=a_{i}g_{i}$ for arithmetic sequence $a$ with common difference $d$ and geometric sequence $g$ with common ratio $r$, then
 $$b_{1}+b_{2}\ldots + b_{n} = dg_{1}\cdot (\frac{(n+1)\cdot r^{n}-\frac{r^{n}-r}{r-1}}{r-1})+a_{1}g_{1}\cdot (\frac{r^{n}-1}{r-1})$$
 \end{theo}
 
@@ -172,7 +172,7 @@ As you can tell, this is a quite hefty formula and certainly not intuitively obv
 
 We can easily derive the infinite version from this.
 \begin{theo}[Arithmetico-Geometric Infinite Series]
-If $b$ is an arithmetico-geometric sequence such that $b_{i}=a_{i}g_{i}$ for arithmetic sequence $a$ with common difference $d$ and geometric sequence $g$ with common ratio $r$ and $|r|<1$, then 
+If $b$ is an arithmetico-geometric sequence such that $b_{i}=a_{i}g_{i}$ for arithmetic sequence $a$ with common difference $d$ and geometric sequence $g$ with common ratio $r$ and $|r|<1$, then
 $b_{1}+b_{2}\ldots  = dg_{1}\cdot \frac{r}{(1-r)^2}+a_{1}g_{1}\cdot \frac{1}{1-r}$
 \end{theo}
 
@@ -182,12 +182,12 @@ $b_{1}+b_{2}\ldots  = dg_{1}\cdot \frac{r}{(1-r)^2}+a_{1}g_{1}\cdot \frac{1}{1-r
 %--------------------------------------------------------------------------------------------------------------------%
 %%%---------------------------------------------------------------------------------------------------------%%%
 \section{The Distributive Property Extended}
-We'll reintroduce Distributive Property as a way to gain a new perspective on series involving combinations. There's no real theorem or theory to learn here, just simply how to reapply the Distributive Property that all of us learned in elementary school. 
+We'll reintroduce Distributive Property as a way to gain a new perspective on series involving combinations. There's no real theorem or theory to learn here, just simply how to reapply the Distributive Property that all of us learned in elementary school.
 
 \begin{theo}[Extended Distributive Property]
 \[(a_{1}+a_{2}\ldots + a_{s_{1}})(b_{1}+b_{2}\ldots + b_{s_{2}})\ldots(z_{1}+z_{2}\ldots + z_{s_{n}})=\sum a_{i}b_{j}\ldots z_{k}\]
 
-In words, when we multiply all these sequences together, we get the sum of the products of all possible combination of terms. 
+In words, when we multiply all these sequences together, we get the sum of the products of all possible combination of terms.
 \end{theo}
 
 We'll begin with a few concrete example problems to elucidate how exactly the Distributive Property is useful.
@@ -198,15 +198,15 @@ $$\sum_{i=1}^{19}\sum_{j=i+1}^{20} ij$$
 \end{exam}
 
 \begin{sol}
-This sum is basically the sum of every possible unordered pair of distinct positive integers from $1$ to $20$. 
+This sum is basically the sum of every possible unordered pair of distinct positive integers from $1$ to $20$.
 
 Now, here is the very crucial step. Then, notice that $(1+2+3\ldots + 20)(1+2+3\ldots + 20)$, by the Distributive Property, is the sum of the every possible ordered pair of positive integers from $1$ to $20$. This is almost exactly what we need! Once, we get rid of terms like $i\cdot i$, we can then divide the sum of every possible ordered pair of distinct integers by $2$ to get the sum of every possible unordered pair of distinct integers.
 
-So, our answer is 
+So, our answer is
 $$\frac{210^2-1^2-2^2\ldots - 20^2}{2}$$
 $$=\frac{210^2-\frac{(20)(21)(41)}{6}}{2}$$
 $$=\frac{210^2-70\cdot 41}{2}$$
-$$=\boxed{20615}$$
+$$=\ansbold{20615}$$
 \end{sol}
 
 We can actually extend this strategy further on into unordered distinct $n$-tuplets though it obviously becomes much more involved as there is a lot more terms to subtract out.
@@ -218,10 +218,10 @@ Let $A$ be the set of positive integers that have no prime factors other than $2
 \end{exam}
 
 \begin{sol}
-Note that such an $i$ can be represented as $2^{a}3^{b}5^{c}$ where $a,b,c$ are integers less than or equal to $0$. Then, the sum of all $i$ would be the sum of all combinations of $2^{0},2^{-1}\ldots$ and $3^{0},3^{-1}\ldots$ and $5^{0},5^{-1}\ldots $. Then, the sum is 
+Note that such an $i$ can be represented as $2^{a}3^{b}5^{c}$ where $a,b,c$ are integers less than or equal to $0$. Then, the sum of all $i$ would be the sum of all combinations of $2^{0},2^{-1}\ldots$ and $3^{0},3^{-1}\ldots$ and $5^{0},5^{-1}\ldots $. Then, the sum is
 $$(1+\frac{1}{2}+\frac{1}{2^2}\ldots)(1+\frac{1}{3}+\frac{1}{3^2}\ldots)(1+\frac{1}{5}+\frac{1}{5^2}\ldots)$$
 $$=2\cdot \frac{3}{2}\cdot \frac{5}{4}$$
-$$=\boxed{\frac{15}{4}}$$
+$$=\ansbold{\frac{15}{4}}$$
 \end{sol}
 
 %%%---------------------------------------------------------------------------------------------------------%%%
@@ -250,7 +250,7 @@ Because just adding things up is such a broad topic, here are a few strategies t
 \begin{enumerate}
 \item When you have a double summation, see if you can reverse the order and if that makes it easier. Also, see if you can use pairing or symmetry.
 \item Let the series be called $S$ and try to manipulate to have get a copy of $S$ plus or minus something.
-\item Split the series into several simpler series that are easier to solve. 
+\item Split the series into several simpler series that are easier to solve.
 \item If everything else fails, try computing the first $n$ terms for small $n$ and see if there is a pattern.
 \end{enumerate}
 
@@ -339,7 +339,7 @@ is either $1$ or $-1$. Find $g(1) + g(2) + \cdots  + g(100)$
 
 \begin{prob}[HMMT February 2004]{4}
 Evaluate the sum
-$$\frac{1}{2\lfloor \sqrt{1} \rfloor + 1} +\frac{1}{2\lfloor \sqrt{2} \rfloor + 1}+\frac{1}{2\lfloor \sqrt{3} \rfloor + 1} + \cdots + \frac{1}{2\lfloor \sqrt{100} \rfloor + 1}$$ 
+$$\frac{1}{2\lfloor \sqrt{1} \rfloor + 1} +\frac{1}{2\lfloor \sqrt{2} \rfloor + 1}+\frac{1}{2\lfloor \sqrt{3} \rfloor + 1} + \cdots + \frac{1}{2\lfloor \sqrt{100} \rfloor + 1}$$
 \end{prob}
 
 \begin{req}[Reun\rq{}s Thanksgiving Mock AMC 10]{4}
