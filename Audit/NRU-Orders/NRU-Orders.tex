@@ -29,7 +29,7 @@ Show that there exists some $x < 400$ such that $$a^x \equiv 1 \pmod{1000}$$ for
 \end{exam}
 
 \begin{sol}
-We claim that $x=100$ is a satisfactory value of $x.$
+We claim that \ansbold{$x=100$} is a satisfactory value of $x.$
 
 Notice that by Euler, $$a^{100} \equiv a^{100 \pmod{\phi(8)}} \equiv a^{100 \pmod{4}} \equiv a^0 \equiv 1 \pmod{8}$$ and that $$a^{100} \equiv a^{\phi (125)} \equiv 1 \pmod{125}$$ whenever $\gcd(a, 1000) = 1.$ Thus, by CRT, $$a^{100} \equiv 1 \pmod{1000}$$ for all $a$ relatively prime to $1000.$
 \end{sol}
@@ -85,13 +85,13 @@ Observe that from Fermat, $\operatorname{ord}_p((a+1)a^{-1}) \mid p-1.$ Thus, $\
 
 Thus, $$(a+1)a^{-1} \equiv 1 \pmod{p} \Longleftrightarrow a+1 \equiv a \pmod{p} \Longleftrightarrow 1 \equiv 0 \pmod{p},$$ a contradiction.
 
-Thus, $n = 1.$ Substituting that into the original expression, we see that $$\frac{(a+1)^n-a^n}{n} = \frac{a+1-a}{1} = 1,$$ so $\frac{(a+1)^n-a^n}{n}$ is an integer whenever $n = 1.$
+Thus, $n = 1.$ Substituting that into the original expression, we see that $$\frac{(a+1)^n-a^n}{n} = \frac{a+1-a}{1} = 1,$$ so $\frac{(a+1)^n-a^n}{n}$ is an integer whenever \ansbold{$n = 1.$}
 \end{sol}
 
 There are two main takeaways from this problem that apply to most order problems.
 
 \begin{itemize}
-\Item The modulus is the most important: Like in the previous example, notice that the method of solving this problem was ``Find $n$`` - not ``find $a$`` (even with primitive roots, the idea is to pick $a$ instead of finding it) It's almost always a better idea to restrict the modulus than restrict the equivalent numbers in problems like these
+\Item The modulus is the most important: Like in the previous example, notice that the method of solving this problem was ``Find $n$" - not ``find $a$" (even with primitive roots, the idea is to pick $a$ instead of finding it) It's almost always a better idea to restrict the modulus than restrict the equivalent numbers in problems like these
 
 \Item Minimality arguments: Notice how important the fact that $p$ was the smallest prime factor of $n$ was. Without it, the problem would be much more difficult.
 \end{itemize}
@@ -132,7 +132,7 @@ $$\sum_{d \mid n} \phi(d) = n.$$
 \end{fact}
 We can now show that primitive roots always exist modulo $p$ where $p$ is prime. In fact, we an prove something much stronger.
 
-\begin{theo}[Amount of Repeating Orders]
+\begin{theo}[Number of Repeating Orders]
 Let $p$ be a prime, and $d \mid p-1.$ Then there are exactly $\phi(d)$ elements with order $d$ modulo $p.$
 \end{theo}
 
@@ -189,14 +189,14 @@ Clearly, we must have either $b = 0$ or $b = 5.$ Since $5 \mid \overline{ab},$ w
 
 \textbf{Case 3:} $3 \mid \overline{ab}$ and $5 \nmid \overline{ab}$ and $7 \nmid \overline{ab}.$
 
-Notice that we have $\overline{ab} = 3^p \dot 2^q,$ where $p>1.$ Thus, we have $\overline{ab} \in \{27, 81, 12, 18, 24, 36, 48, 54, 72, 96\}.$ We can't have $\overline{ab} \in \{27, 81, 12, 18, 36, 54, 72, 96\},$ as then $3 \mid \overline{ab}$ but $2 \nmid a-b.$ Thus, $\overline{ab} \in \{24, 48\}.$ Now, notice that $\overline{ab} \neq 24,$ since whenever $k \equiv 2 \pmod{8},$ $k^2 - k^4 \not\equiv 0 \pmod{8}.$ Thus, we must have $\overline{ab} = 48.$
+Notice that we have $\overline{ab} = 3^p \cdot 2^q,$ where $p>1.$ Thus, we have $\overline{ab} \in \{27, 81, 12, 18, 24, 36, 48, 54, 72, 96\}.$ We can't have $\overline{ab} \in \{27, 81, 12, 18, 36, 54, 72, 96\},$ as then $3 \mid \overline{ab}$ but $2 \nmid a-b.$ Thus, $\overline{ab} \in \{24, 48\}.$ Now, notice that $\overline{ab} \neq 24,$ since whenever $k \equiv 2 \pmod{8},$ $k^2 - k^4 \not\equiv 0 \pmod{8}.$ Thus, we must have $\overline{ab} = 48.$
 Checking (with CRT and Euler), we see $\overline{ab} = 48$ works.
 
 \textbf{Case 4:} $2$ is the only prime that divides $\overline{ab}.$
 
 Notice that we must have $\overline{ab} = 2^a,$ where $a>1.$ Thus, $\overline{ab} \in \{16, 32, 64\},$ but notice that when this is true, $\overline{ab }\nmid 2^a-2^b.$ Thus, this case gives no solutions.
 
-Thus, the solution set is $\overline{ab} \in \{15, 28, 48\}.$
+Thus, the solution set is \ansbold{$\overline{ab} \in \{15, 28, 48\}.$}
 
 \end{sol}
 
