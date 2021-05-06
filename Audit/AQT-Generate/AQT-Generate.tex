@@ -1,1 +1,428 @@
+\documentclass{article}
 
+\usepackage[mast]{dennis}
+
+\usepackage[pages=all]{background}
+
+%\backgroundsetup{
+%scale=1,
+%color=black,
+%opacity=0.4,
+%angle=0,
+%contents={%
+  %\includegraphics[width=\paperwidth,height=\paperheight]{bk5.png}
+  %}%
+%}% i think bk5(original, kinda) or bk3(primeri) is the best idk. bk 6 has some proportions wrong so its a bit squished D: and bk 8 is sponegebob :D 
+
+\title{Generating Functions}
+\author{Aarush Khare}
+\date{AQT}
+
+%\setlength{\parindent}{0pt}
+
+\begin{document}
+\maketitle
+\BgThispage
+\section{Introduction}
+
+The generating function of a sequence $a_n$ is defined as
+
+\[\sum_{i\ge 0} a_ix^i.\]
+For finite sequences $a_i$, this generating function is just a polynomial. Choosing the right sequence $a$ allows us to turn certain combinatorics problems into algebra problems. 
+
+Usually, we let the exponents represent the possible outcomes of a certain variable, and we choose the sequence $a_i$ to represent the number of ways to achieve each of the outcomes. For example, for a single die, we let $a_1 = a_2 = \cdots = a_6 = 1$, and $a_i = 0$ for all other $i$. This is because the only possible outcomes of a dice roll are the numbers $1$ through $6$, and they can each be achieved in only one way. The corresponding generating function is
+\[x + x^2 + x^3 + x^4 + x^5 + x^6.\]
+When we have multiple variables, we multiply the generating functions. For example, the generating function that represents rolling two dice is
+\[(x + x^2 + x^3 + x^4 + x^5 + x^6)^{2}.\]
+This expands as
+\[x^2 + 2x^3 + 3x^4 + 4x^5 + 5x^6 + 6x^7 + 5x^8 + 4x^9 + 3x^{10} + 2x^{11} + x^{12}.\]
+Notice how the coefficient of $x^i$ is the number of ways to roll a sum of $i$.
+
+\section{Theorems}
+
+Before we jump into the problems, here are a few theorems:
+
+\begin{defi}[Generalized Binomials]
+Let $r$ be any real number, and let $n$ be an integer. Then
+\[\binom{r}{n} = \frac{r(r-1)\cdots (r-n+1)}{n!}.\]
+
+\end{defi}
+
+Note that, in particular, we have
+
+\[\binom{-k}{n} = (-1)^k\binom{n+k-1}{n}.\]
+
+\begin{theo}[Generalized Binomial Theorem]
+For all real numbers $r$, we have
+\[(1+x)^r = \sum_{i \ge 0}\binom{r}{i}x^i.\]
+\end{theo}
+
+This will be useful when we use negative and rational exponents.
+
+\section{Basic Examples}
+Let's start with a simple example.
+\begin{exam}
+How many ways are there to roll a $10$ with $3$ dice?
+\end{exam}
+\begin{sol}
+Consider the generating function
+
+\[(x+x^2+x^3+x^4+x^5+x^6)^{3}.\]
+This generating function represents rolling three dice. The coefficient of $x^k$ in the expansion of this generating function represents the number of ways to roll a sum of $k$ with $3$ dice. Therefore, we desire the coefficient of $x^{10}$.
+
+Expanding this polynomial, we get
+\[x^{18} + 3 x^{17} + 6 x^{16} + 10 x^{15} + 15 x^{14} + 21 x^{13} + 25 x^{12} + 27 x^{11} + 27 x^{10} + 25 x^9 + 21 x^8 + 15 x^7 + 10 x^6 + 6 x^5 + 3 x^4 + x^3\]
+which makes the desired answer $27$. $\square$
+\end{sol}
+\bigskip
+
+The last step in the above solution was messy. The following example illustrates a better way to do the computation:
+
+\begin{exam}
+How many ways are there to roll a $20$ with $9$ dice.
+\end{exam}
+
+\begin{sol}
+The generating function \[(x+x^2+x^3+x^4+x^5+x^6)^{9}\] represents rolling $7$ dice. We desire the coefficient of $x^{20}$ in the expansion. Clearly we don't want to expand this polynomial. % maybe change to "we dont want to" idk
+
+Instead, we do something smarter. First, note that we can factor out $x^9$. Then we desire the coefficient of $x^{11}$ in the expansion of
+
+\[(1+x+x^2+x^3+x^4+x^5)^{9} = \frac{(1-x^6)^9}{(1-x)^9}.\]
+The key is to write the right hand side as
+
+\[(1-x^6)^9 \cdot (1-x)^{-9}.\]
+We note that in $(1-x^6)^9$, only the terms $x^0$ and $-9x^6$ will contribute to the coefficient of $x^{11}$. For $(1-x)^{-9}$ latter term, we apply the generalized binomial theorem:
+
+\begin{align*}
+(1-x)^{-9} & = (1 + (-x))^{-9}\\
+& = \sum_{i \ge 0} \binom{-9}{i} (-x)^i\\
+& = \sum_{i \ge 0} (-1)^i\binom{i+9-1}{i} (-1)^ix^i\\
+& = \sum_{i \ge 0} (-1)^{2i} \binom{i+8}{8} x^i\\
+& = \binom{8}{8} + \binom{9}{8}x + \binom{10}{8}x^2 + \binom{11}{8}x^3 + \cdots 
+\end{align*}
+The coefficients of $x^{11}$ and $x^5$ in this generating function are $\tbinom{19}{8}$ and $\tbinom{13}{8}$, respectively, so our final answer is
+
+\[\binom{19}{8} - 9\binom{13}{8}\]
+which equates to $63999$. $\square$
+\end{sol} 
+\bigskip
+
+From this example we derive a useful corollary of the generalized binomial theorem.
+
+\begin{corollary}
+For any real number $r$, we have
+\begin{align*}
+\frac{1}{(1-x)^{r+1}} & = \sum_{i\ge 0} \binom{i+r}{i}x^i\\
+& = \binom{r}{r} + \binom{r+1}{r}x + \binom{r+2}{r}x^2 + \cdots
+\end{align*}
+\end{corollary}
+
+\section{Distributions}
+We begin with a problem you might have seen before
+
+\begin{exam}
+Find the number of solutions to $a+b+c=20$ in nonegative integers.
+\end{exam}
+
+\begin{sol}
+This problem can be done using stars and bars, and is likely more intuitive that way. However, here we will present a solution using generating functions.
+
+We desire the coefficient of $x^{20}$ in the expansion of
+
+\[(1+x+x^2+x^3+\cdots)^{3} = \frac{1}{(1-x)^3} = (1-x)^{-3}\]
+where we have applied the geometric sequence formula in the second step. To find the desired coefficient, we can just use our corollary from earlier. The answer is $\tbinom{22}{2}$. $\square$
+\end{sol}
+
+\begin{exam}
+Three dimes, four nickels, and five pennies are all flipped at the same time. What is the probability that the value of the coins that land heads up is exactly thirty cents?
+\end{exam}
+
+\begin{sol}
+Note the generating function is 
+\[(1+x)^5(1+x^5)^4(1+x^{10})^3.\] 
+Since the total number of outcomes is $2^{12}$, the answer is the coefficient of $x^{30}$ divided by that.
+
+For the $(1+x)^5$ term, since we want the exponent to be divisible by $5,$ the only relevant terms are $1$ and $x^5,$ so we may treat the function as 
+\[(1+x^5)^5(1+x^{10})^3.\] 
+
+As for $(1+x^5)^5,$ we only care about the terms with exponents divisible by $10,$ so removing any terms with odd exponents gives 
+\[(1+10x^{10}+5x^{20})(1+x^{10})^3.\] 
+Thus the answer is
+\[\frac{1\cdot\binom{3}{0}+10\cdot \binom{3}{1}+5\cdot\binom{3}{2}}{2^{12}}=\frac{1+30+15}{2^{12}}\]
+which equates to $\frac{23}{2^{11}}$. $\square$
+\end{sol}
+
+\section{Sequences and Series}
+For many problems involving a sequence $a_i$, it is helpful to consider the generating function
+
+\[A(x) = a_0 + a_1x + a_2x^2 + \cdots\]
+Many times, $A(x)$ will have a nice closed form.
+
+\begin{exam}[Binet's formula]
+Find a closed form for the $i$th Fibonacci number.
+\end{exam}
+\begin{sol}
+Let $F_i$ be the $i$th Fibonacci number. Consider the generating function
+
+\[A(x) = x + x^2 + 2x^3 + 3x^4 + \cdots = \sum_{i \ge 0}F_ix^i.\]
+We can write
+\begin{align*}
+A(x) & = x + x^2 + 2x^3 + 3x^4 + \cdots\\
+xA(x) & = \qquad x^2 + x^3 + 2x^4 + \cdots\\
+x^2A(x) & = \qquad \qquad \; x^3 + x^4 + \cdots
+\end{align*}
+Note that by the definition of Fibonacci we have \[x^2A(x)+(xA(x)-x^2)=A(x)-x-x^2\iff(1-x-x^2)A(x) = x,\] which implies that $A(x) = \tfrac{x}{1-x-x^2}$. 
+Now we apply partial fraction decomposition. We have
+
+\[\frac{x}{1-x-x^2} = \frac{\tfrac{1}{\sqrt{5}}}{1-\sigma x} + \frac{-\tfrac{1}{\sqrt{5}}}{1 - \tau x}\]
+where $\sigma = \tfrac{1+\sqrt{5}}{2}$ and $\tau = \tfrac{1-\sqrt{5}}{2}$. Then we can apply the geometric series formula to get
+
+\begin{align*}
+\frac{\tfrac{1}{\sqrt{5}}}{1-\sigma x} + \frac{-\tfrac{1}{\sqrt{5}}}{1 - \tau x} & = \frac{1}{\sqrt{5}}(1 + \sigma x + \sigma^2 x^2 + \cdots) - \frac{1}{\sqrt{5}}(1 + \tau x + \tau^2 x^2 \cdots)\\
+& = \sum_{i \ge 0} \frac{1}{\sqrt{5}}\left(\sigma^i - \tau^i\right) x^i.
+\end{align*}
+Comparing coefficients, we derive the closed form
+\[F_i = \frac{1}{\sqrt{5}}\left(\left(\frac{1 + \sqrt5}{2}\right)^i - \left(\frac{1-\sqrt5}{2}\right)^i\right). \; \square\]
+\end{sol}
+\bigskip
+
+In general, we can find the closed form for all linear recurrences using generating functions.
+
+\begin{exam}
+Evaluate
+
+\[\sum_{i \ge 0} \frac{F_i}{2^i}.\]
+\end{exam}
+\begin{sol}
+Like before, consider the generating function 
+
+\[A(x) = x + x^2 + 2x^3 + 3x^4 + \cdots\] 
+of the Fibonacci numbers. Then the desired value is just $A(\tfrac{1}{2})$. We know that $A(x) = \tfrac{x}{1-x-x^2}$, so the desired value is $2$. $\square$
+\end{sol}
+\bigskip
+
+We end this section with a very useful application of the generalized binomial theorem.
+
+\begin{exam}
+Find a closed form for the sum
+
+\[\sum_{i \ge 0} \binom{2i}{i} x^i.\]
+\end{exam}
+\begin{sol}
+The idea is to use the generalized binomial theorem with an exponent of $-\tfrac{1}{2}$. We note that
+
+\begin{align*}
+\binom{-\tfrac{1}{2}}{i} & = \frac{\left(-\tfrac{1}{2}\right)\left(-\tfrac{1}{2} - 1\right)\cdots\left(-\tfrac{1}{2}-i+1\right)}{i!}\\
+& = (-1)^i\frac{\left(\tfrac{1}{2}\right)\left(\tfrac{1}{2} + 1\right)\cdots\left(\tfrac{1}{2}+i-1\right)}{i!}\\
+& = \frac{(-1)^i}{2^i}\frac{1\cdot3\cdot5\cdot\cdots\cdot(2i-1)}{i!}\\
+& = \frac{(-1)^i}{4^i}\binom{2i}{i}.\\
+\end{align*}
+Therefore, by the generalized binomial theorem, we have
+\[(1-x)^{-\tfrac{1}{2}} = \sum_{i \ge 0} \binom{-\tfrac12}{i}(-x)^i = \sum_{i \ge 0}\binom{2i}{i}\left(\frac{x}{4}\right)^i\]
+so plugging in $4x$ implies that our desired closed form is $(1-4x)^{-\tfrac12}$. $\square$
+\end{sol}
+\bigskip
+
+This is a very useful result, and is worth remembering:
+
+\begin{theo}
+\[(1-4x)^{-\tfrac12} = \sum_{i \ge 0} \binom{2i}{i}x^i.\]
+\end{theo}
+
+\newpage
+
+\section{Problems}
+
+\minpt{32}
+
+\begin{prob}[Stars and Bars]{1}
+How many ways can we pick $r$ objects out of $n$ distinguishable objects?
+\end{prob}
+
+\begin{prob}[]{2}
+We choose four balls out of $2$ red, $1$ blue, $2$ green, and $1$ yellow. How many ways can we do this?
+\end{prob}
+
+\begin{prob}[]{2}
+If we have infinitely many red, blue, green, and yellow balls, how many ways can we choose $4?$
+\end{prob}
+
+\begin{prob}[]{3}
+Find the coefficient of $x^k$ in the expansion of $(x^3+x^4+\cdots)^6$ for $k\geq 18.$
+\end{prob}
+
+\begin{prob}[]{3}
+There are 25 people at Friday Math Practice. All 25 people agree to leave $\$1$ or $\$2$ as a tip for Alex, except for Naail, who will pay $\$3,$ $\$5,$ or $\$9,$ since he is so impressed with his outstanding work. In how many ways can Alex leave with $\$39$ to pay for his Thanksgiving feast at Friday Math Practice?
+\end{prob}
+
+
+\begin{prob}[]{3}
+How many ways can we throw a red, blue, and white die such that the numbers on top sum to $14?$
+\end{prob}
+
+\begin{req}[AIME 2018]{4} 
+For every subset $T$ of $U = \{ 1,2,3,\ldots,18 \}$, let $s(T)$ be the sum of the elements of $T$, with $s(\emptyset)$ defined to be $0$. If $T$ is chosen at random among all subsets of $U$, the probability that $s(T)$ is divisible by $3$ is $\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m$.
+\end{req}
+
+\begin{prob}[]{4}
+Prove that the amount of ways to partition a number $n$ into distinct numbers is the same as the amount of ways to partition $n$ into odd numbers.
+\end{prob}
+
+
+\begin{prob}[]{4}
+Prove that the amount of ways to partition a number $n$ such that each number is used at most twice if the same as the amount of ways to partition $n$ without using any multiples of $3.$
+\end{prob}
+
+\begin{prob}[HMMT Nov. Team 2020/4]{4}
+Marisa has two identical cubical dice labeled with the numbers $\{1,2,3,4,5,6\}.$ However, the two dice are not fair, meaning that they can land on each face with different probability. Marisa rolls the two dice and calculates their sum. Given that the sum is $2$ with probability $0.04,$ and $12$ with probability $0.01,$ the maximum possible probability of the sum being $7$ is $p.$ Compute $\lfloor 100p\rfloor.$
+\end{prob}
+
+\begin{req}[]{6}
+Prove that the number of partitions of $n$ in which no individual integer appears exactly once is equal to the number of partitions in which no number is congruent to $1$ or $5\pmod{6}.$
+\end{req}
+
+
+\begin{prob}[ART 2020/4]{6}
+Santa Claus is putting $n$ identical toy trains into a red stocking, a green stocking, and a white stocking such that the amount of trains in the green stocking is divisible by $3$ and the amount of trains in the white stocking is even. Mrs. Claus is putting $n$ identical elves into a red stocking, a green stocking, and a white stocking such that the amount of elves in the green stocking is divisible by $3$ and the amount of elves in the white stocking is odd. Find, in terms of $n,$ the positive difference between the amount of ways Santa Claus can put his trains in the stockings and the amount of ways Mrs. Claus can put her elves in the stockings.
+\end{prob}
+
+\begin{prob}[HMMT 2016]{9}
+Kelvin the Frog has a pair of standard fair $8$-sided dice (each labelled from $1$ to $8$). Alex the sketchy Kat also has a pair of fair $8$-sided dice, but whose faces are labelled differently (the integers on each Alex's dice need not be distinct). To Alex's dismay, when both Kelvin and Alex roll their dice, the probability that they get any given sum is equal!
+
+Suppose that Alex's two dice have $a$ and $b$ total dots on them, respectively. Assuming that $a \neq b$, find all possible values of $\min \{a,b\}$.
+\end{prob}
+
+\begin{req}[BMO Round 2 2015/2]{9}
+In Oddesdon Primary School there are an odd number of classes. Each class contains an odd number of pupils. One pupil from each class will be chosen to form the school council. Prove that the following two statements are logically equivalent.
+\begin{enumerate}
+\item There are more ways to form a school council which includes an odd number of boys than ways to form a school council which includes an odd number of girls.
+
+\item There are an odd number of classes which contain more boys than girls.
+\end{enumerate}
+\end{req}
+
+\begin{prob}[NYCMT 2020]{13}
+Compute the value of
+\[\sum_{a+b+c=6}\frac{1}{2^a3^b5^c}\]
+where $a,b,c$ range over all triples of nonnegative integers that sum to $6.$
+\end{prob}
+
+\begin{prob}[IMO 1995/6]{13}
+Let $p$ be an odd prime number. How many $p$-element subsets $A$ of $\{1,2,\dots,2p\}$ are there, the sum of whose elements is divisible by $p$?
+\end{prob}
+
+\newpage
+
+\section{Swapping the Sum (Optional)}
+
+Warning: this section is a bit more challenging. Don't hesitate to reach out to staff if you have any questions.
+
+\vspace{4mm}
+
+Up until now, we have been working with generating functions of the form
+
+\[A(x) = \sum_{i \ge 0}a_ix^i\]
+for sequences $a$ with real terms. In this section, we observe what happens if $a_i$ is a summation in itself.
+Let $a_i$ be $\sum_{k \ge 0} P(i, k)$ for some function $P(i, k)$. Then our generating function can be written as
+\[A(x) = \sum_{i \ge 0}\sum_{k \ge 0} P(i, k)x^i.\]
+The idea is to swap the sums:
+\[\sum_{i \ge 0}\sum_{k \ge 0} P(i, k)x^i = \sum_{k \ge 0}\sum_{i \ge 0} P(i, k)x^i.\]
+This often makes the sum much easier to deal with.
+This is best illustrated with the following classic:
+
+\begin{exam}
+For $n \ge 0$, compute
+
+\[\sum_{i \ge 0}\binom{n+i}{2i}2^{n-i}.\]
+\end{exam}
+\begin{sol}
+Let $a_n$ be the desired value. Consider the generating function
+
+\[A(x) = \sum_{n \ge 0}a_nx^n = \sum_{n \ge 0}\sum_{i \ge 0}\binom{n+i}{2i}2^{n-i}x^n.\]
+Swapping the sums yields
+
+\begin{align*}
+\sum_{n \ge 0}\sum_{i \ge 0}\binom{n+i}{2i}2^{n-i}x^n & = \sum_{i \ge 0}\sum_{n \ge 0}\binom{n+i}{2i}2^{n-i}x^n\\
+& = \sum_{i \ge 0}x^i\sum_{n \ge 0}\binom{(n-i) + 2i}{2i}(2x)^{n-i}.\\
+\end{align*}
+The inner term can be simplified using our first corollary:
+\[\sum_{n \ge 0}\binom{(n-i) + 2i}{2i}(2x)^{n-i} = \frac{1}{(1-2x)^{2i+1}}.\]
+Then
+
+\begin{align*}
+\sum_{i \ge 0}x^i\sum_{n \ge 0}\binom{(n-i) + 2i}{2i}(2x)^{n-i} & = \sum_{i \ge 0}x^i\left(\frac{1}{(1-2x)^{2i+1}}\right)\\
+& = \frac{1}{1-2x} \cdot \sum_{i \ge 0} \left(\frac{x}{(1-2x)^2}\right)^i.
+\end{align*}
+We can now equate this using the geometric series formula. The resulting expression is
+
+\[\frac{1}{1-2x} \cdot \frac{1}{1 - \tfrac{x}{(1-2x)^2}} = \frac{1-2x}{(1-4x)(1-x)}.\]
+Using partial fraction decomposition, we get that
+
+\[\frac{1-2x}{(1-4x)(1-x)} = \frac{\tfrac13}{1-4x} + \frac{\tfrac23}{1-x}.\]
+Finally, applying the geometric series formula and comparing coefficients, we get that
+
+\[a_n = \frac{4^n + 2}{3}. \; \square\]
+\end{sol}
+
+\begin{exam}[Putnam 1990]
+We say a pair $(A, B)$ of subsets of $\{1, \cdots, n\}$ is $\emph{admissible}$ if $x > |B|$ and $y > |A|$ for every $x \in A$ and $y \in B$. Determine the number of admissible pairs.
+\end{exam}
+
+\begin{sol}
+
+Let $a_n$ be the value
+
+\[\left(\sum_{0 \le i, j \le n} \binom{n-i}{j} \cdot \binom{n-j}{i}\right)\]
+
+and define the generating function 
+
+\[A(x) = a_0 + a_1x + a_2x^2 + \cdots.\]
+Then
+
+\begin{align*}
+A(x) = \sum_{n \ge 0} x^n \cdot \left(\sum_{0 \le i, j \le n} \binom{n-i}{j} \cdot \binom{n-j}{i}\right).
+\end{align*}
+We write
+
+\begin{align*}
+\sum_{n \ge 0} x^n\left(\sum_{0 \le i, j \le n} \binom{n-i}{j}\binom{n-j}{i}\right) & = \sum_{n \ge 0} x^n\left(\sum_{k \ge 0} \left(\sum_{i+j=n-k} \binom{n-i}{j}\binom{n-j}{i}\right)\right)\\
+& = \sum_{n \ge 0} x^n\left(\sum_{k \ge 0} \left(\sum_{i+j=n-k} \binom{j+k}{j}\binom{i+k}{i}\right)\right)\\
+& = \sum_{k \ge 0} \left(\sum_{n \ge k} x^n \left(\sum_{i+j=n-k} \binom{j+k}{j} \cdot \binom{i+k}{i}\right)\right)\\
+& = \sum_{k \ge 0} x^k \left(\sum_{n \ge k} \left(\sum_{i+j=n-k} x^j\binom{j+k}{j} x^i\binom{i+k}{i}\right)\right)\\
+& = \sum_{k \ge 0} x^k \left(\sum_{i+j \ge 0} x^j\binom{j+k}{j} x^i\binom{i+k}{i}\right)\\
+& = \sum_{k \ge 0} x^k \left(\sum_{i \ge 0} x^i\binom{i+k}{i}\right)^2\\
+& = \sum_{k \ge 0} x^k \left(\frac{1}{(1-x)^{k+1}}\right)^2\\
+& = \sum_{k \ge 0} \frac{x^k}{(1-x)^{2k+2}}.\\
+\end{align*}
+This sum is a geometric series with first term $\frac{1}{(1-x)^2}$ and common ratio $\frac{x}{(1-x)^2}$, so it equates to
+
+\begin{align*}
+\frac{\left(\frac{1}{(1-x)^2}\right)}{\left(1-\left(\frac{x}{(1-x)^2}\right)\right)} & = \frac{1}{(1-x)^2 - x}\\
+& = \frac{1}{x^2 - 3x + 1}.
+\end{align*}
+Now, all that remains is to find a closed form. We leave this as an exercise to the reader. $\square$
+\end{sol}
+
+\newpage
+
+\section{Problems}
+
+\begin{exer}
+For $n \ge 0$, compute
+
+\[\sum_{k \ge 0}\binom{k}{n-k}.\]
+\end{exer}
+
+\begin{exer}
+Let $m \le n$ be positive integers. Compute
+
+\[\sum_{k=m}^n \binom{n}{k}\binom{k}{m}.\]
+\end{exer}
+
+\begin{exer}
+For $n \ge 0$, compute
+
+\[\sum_{k \ge 0} \binom{2k}{k}\binom{n}{k}\left(-\frac14\right)^k.\]
+\end{exer}
+
+\end{document}
