@@ -13,87 +13,87 @@
 
 \section{Theory}
 \subsection{Motivation}
-Let's say you have an infinitely long line of dominoes, and you want to topple them all.  If you want to knock them over, then you just need to tap the first one, and they will all fall down, right? Wrong. You also need to make sure that if the fist domino is knocked down, the second one will also start to fall. You also need to make sure the second domino falling down implies the third one falling down, the third one falling implies the fourth one falling, and so on. Thus, in order to rigorously prove you can knock all of these dominoes down, you need to prove that you can knock down the first domino, and if the $n$th domino is knocked down, the $n+1$th domino is also knocked down. This is the main idea behind induction. 
+Let's say you have an infinitely long line of dominoes, and you want to topple them all.  If you want to knock them over, then you just need to tap the first one, and they will all fall down, right? Wrong. You also need to make sure that if the fist domino is knocked down, the second one will also start to fall. You also need to make sure the second domino falling down implies the third one falling down, the third one falling implies the fourth one falling, and so on. Thus, in order to rigorously prove you can knock all of these dominoes down, you need to prove that you can knock down the first domino, and if the $n$th domino is knocked down, the $n+1$th domino is also knocked down. This is the main idea behind induction.
 \subsection{Basics}
-Let's say we have a statement $P(n)$ which we want to prove it true for all positive integers $n$. A good way to prove this to be true is by induction. For induction, you need to do the following things:
+Let's say we have a statement $P(n)$ which we want to prove it true for all nonnegative integers $n$. A good way to prove this to be true is by induction. For induction, you need to do the following things:
 \begin{enumerate}
-    \item Show that $P(0)$ is true. This is called the base case. You can think of this step as knocking the first domino down. 
-    \item Prove that if $P(n)$ is true, then $P(n+1)$ is also true. This step is called the inductive step, and this is like showing that if you knock one domino down, the next will also fall. 
+    \item Show that $P(0)$ is true. This is called the base case. You can think of this step as knocking the first domino down.
+    \item Prove that if $P(n)$ is true, then $P(n+1)$ is also true. This step is called the inductive step, and this is like showing that if you knock one domino down, the next will also fall.
 \end{enumerate}
-This allows us to prove a statement to be true for all positive integers. 
+This allows us to prove a statement to be true for all positive integers.
 \begin{exam}[Principle of Weak Induction]
-Prove the principle of induction. That is, if you know some proposition $P(0)$ is true and $P(n)$ being true implies $P(n+1)$ being true, then $P(n)$ is true for all positive integers $n$.   
+Prove the principle of induction. That is, if you know some proposition $P(0)$ is true and $P(n)$ being true implies $P(n+1)$ being true, then $P(n)$ is true for all nonnegative integers $n$.
 \end{exam}
 \skipline
 \noindent
-There are also several variations on the principle of induction, as follows: 
+There are also several variations on the principle of induction, as follows:
 \begin{itemize}
-    \item \textbf{Starting at a number other than 0:} Instead of proving $P(0)$ to be true, you prove $P(i)$ to be true for some integer $i$. 
-    \item \textbf{Proving for $P(n+k)$ instead of $P(n+1)$:} If $P(n)$ does not necessarily imply that $P(n+1)$ is true, you can instead prove that $P(n)$ implies $P(n+k)$ to be true, and check that the base cases $P(1), P(2), \dots P(k)$. You can also use this to prove a statement to be true for all odd numbers, or all multiples of a certain number. 
-    \item \textbf{Strong induction:} Instead of assuming only $P(n)$ to be true, you can assume $P(1), P(2), \dots P(n)$ to be true. This is called \textit{strong induction}, as the induction hypothesis is stronger. Example 2.4 is a good example of this. 
+    \item \textbf{Starting at a number other than 0:} Instead of proving $P(0)$ to be true, you prove $P(i)$ to be true for some integer $i$.
+    \item \textbf{Proving for $P(n+k)$ instead of $P(n+1)$:} If $P(n)$ does not necessarily imply that $P(n+1)$ is true, you can instead prove that $P(n)$ implies $P(n+k)$ to be true, and check that the base cases $P(1), P(2), \dots P(k)$. You can also use this to prove a statement to be true for all odd numbers, or all multiples of a certain number.
+    \item \textbf{Strong induction:} Instead of assuming only $P(n)$ to be true, you can assume $P(1), P(2), \dots P(n)$ to be true. This is called \textit{strong induction}, as the induction hypothesis is stronger. Example 2.4 is a good example of this.
 \end{itemize}
 
 \subsection{Things to be careful about}
-When doing induction, you need to make sure that you actually prove both the base case and the inductive step. 
+When doing induction, you need to make sure that you actually prove both the base case and the inductive step.
 \begin{itemize}
-    \item \textbf{Not proving the base case:} Consider the function $f(x)=2x+1$. If we know that $f(n)$ is an even number, then it is easy to show that $f(n+1)$ is also an even number. This clearly doesn't make sense, as $f(x)=2x+1$ can never be even! This is because you did not prove the base case. Even if knocking down one domino means that the next one will fall, if you never start knocking the dominoes down they will never fall! You need to make sure you check the base case. For this example, proving the base case is impossible, so the statement is false. 
-    \item \textbf{Not proving the inductive step:} Lets say that we wanted to show that $n^2-n+41$ is prime for all positive integers $n$. Upon inspection, we find that it is in fact prime for $n=1, 2, \dots 39$, so this is our base case, so we are done, right? Again, wrong. You need to make sure you do the inductive step, or otherwise it won't necessarily be true for all positive integers. There is this strategy that is useful in computational contests called \textit{engineers induction}, which is where you find a pattern that holds for some small numbers, and assume it is true for all numbers. However, this is not an accepted strategy on olympiads, and I would recommend against using it on computational contests. 
+    \item \textbf{Not proving the base case:} Consider the function $f(x)=2x+1$. If we know that $f(n)$ is an even number, then it is easy to show that $f(n+1)$ is also an even number. This clearly doesn't make sense, as $f(x)=2x+1$ can never be even! This is because you did not prove the base case. Even if knocking down one domino means that the next one will fall, if you never start knocking the dominoes down they will never fall! You need to make sure you check the base case. For this example, proving the base case is impossible, so the statement is false.
+    \item \textbf{Not proving the inductive step:} Lets say that we wanted to show that $n^2-n+41$ is prime for all positive integers $n$. Upon inspection, we find that it is in fact prime for $n=1, 2, \dots 39$, so this is our base case, so we are done, right? Again, wrong. You need to make sure you do the inductive step, or otherwise it won't necessarily be true for all positive integers. There is this strategy that is useful in computational contests called \textit{engineers induction}, which is where you find a pattern that holds for some small numbers, and assume it is true for all numbers. However, this is not an accepted strategy on olympiads, and I would recommend against using it on computational contests.
 \end{itemize}
 
 \section{Examples}
-Let's start with a basic example introducing the idea of induction. If you feel like you already have an understanding of induction, then feel free to skip this example. 
+Let's start with a basic example introducing the idea of induction. If you feel like you already have an understanding of induction, then feel free to skip this example.
 \begin{exam}[Classic]
-Show that $1+2+\dots+n$ is equal to $\frac{n(n+1)}{2}$. 
+Show that $1+2+\dots+n$ is equal to $\frac{n(n+1)}{2}$.
 \end{exam}
 \begin{sol}
-We have a statement, and we want to prove it for all positive integers $n$. This motivates us to think of induction. We want to choose the variable to induct on. In this problem, it's kind of obvious, as there is only 1 variable ($n$). In more involved problems, you may need to be more careful on what to induct on. Anyways, lets get started on the induction. 
+We have a statement, and we want to prove it for all positive integers $n$. This motivates us to think of induction. We want to choose the variable to induct on. In this problem, it's kind of obvious, as there is only 1 variable ($n$). In more involved problems, you may need to be more careful on what to induct on. Anyways, lets get started on the induction.
 
 Lets do the base case first. The base case is just when $n=1$, but this is trivial as $1=\frac{1(1+1)}{2}$. Usually, the base case is a lot easier than the actual inductive step, but this isn't always the case (See exercise 5.4.).
 
 Now, onto the inductive step. We assume that the given statement is true for $n$, or $1+2+\dots+n$ = $\frac{n(n+1)}{2}$. Since we want to show that the given statement is true for $n+1$, so we want to prove that $1+2+\dots+n+(n+1)=\frac{((n)+1)((n+1)+1)}{2}$, or $1+2+\dots+n+n+1=\frac{(n+1)(n+2)}{2}$.
 
-Lets start with something that we already know is true, or $1+2+\dots+n$ = $\frac{n(n+1)}{2}$. From this, we want to somehow get $1+2+\dots+n+(n+1)=$something. But we can just add $n+1$ to both sides of $1+2+\dots+n$ = $\frac{n(n+1)}{2}$ to get 
+Lets start with something that we already know is true, or $1+2+\dots+n$ = $\frac{n(n+1)}{2}$. From this, we want to somehow get $1+2+\dots+n+(n+1)=$something. But we can just add $n+1$ to both sides of $1+2+\dots+n$ = $\frac{n(n+1)}{2}$ to get
 \begin{align*}
     1+2+\dots+n+(n+1)&=\frac{n(n+1)}{2}+(n+1)\\
     &=\frac{n(n+1)+2(n+1)}{2}\\
     &=\frac{(n+1)(n+2)}{2}
 \end{align*}
-as desired. 
+as desired.
 
-Thus, we have proved the inductive step, so we are done by the principle of induction. 
+Thus, we have proved the inductive step, so we are done by the principle of induction.
 \end{sol}
 
 \begin{exam}[Fermat's Little theorem]
-Prove that a prime $p$ divides $n^{p}-n$ for all positive integers $n$. 
+Prove that a prime $p$ divides $n^{p}-n$ for all positive integers $n$.
 \end{exam}
 
 \begin{sol}
-We will need the following lemma. 
+We will need the following lemma.
 \begin{lemma}
 $p$ divides $\binom{p}{k}$ for all integers $k$ such that $0\leq k \leq p$.
 \end{lemma}
 \begin{proof}
-Note that $\binom{p}{k}=\frac{p!}{k!(p-k)!}$. However, the denominator has no factors of $p$ since $p>k, p-k$. But the denominator has a single factor of $p$, so $p|\binom{p}{k}$, as desired. 
+Note that $\binom{p}{k}=\frac{p!}{k!(p-k)!}$. However, the denominator has no factors of $p$ since $p>k, p-k$. But the denominator has a single factor of $p$, so $p|\binom{p}{k}$, as desired.
 \end{proof}
 
-We induct on $n$. 
+We induct on $n$.
 
 The base case is trivial, as $1^{p}-1=0$, which is obviously divisible by $p$.
 
-Assume that $p$ divides $n^{p}-n$ for some number $n$. We wish to show that $p$ divides $(n+1)^{p}-(n+1)$. Note that by the binomial theorem, 
+Assume that $p$ divides $n^{p}-n$ for some number $n$. We wish to show that $p$ divides $(n+1)^{p}-(n+1)$. Note that by the binomial theorem,
 \[(n+1)^{p}=\binom{p}{0}n^p+\binom{p}{1}n^{p-1}+\dots+\binom{p}{p-1}n+\binom{p}{p}\equiv n^p+1\pmod{p}.\]
-Thus, $(n+1)^{p}-(n+1)\equiv n^p+1-(n+1)\equiv n^p-n\equiv 0\pmod{p}$, as desired. 
+Thus, $(n+1)^{p}-(n+1)\equiv n^p+1-(n+1)\equiv n^p-n\equiv 0\pmod{p}$, as desired.
 \end{sol}
 
-Here is an example showcasing the idea of Strong Induction. 
+Here is an example showcasing the idea of Strong Induction.
 \begin{exam}[JMO 2011/4]
 A word is defined as any finite string of letters. A word is a palindrome if it reads the same backwards and forwards. Let a sequence of words $W_0, W_1, W_2,...$ be defined as follows: $W_0 = a, W_1 = b$, and for $n \ge 2$, $W_n$ is the word formed by writing $W_{n-2}$ followed by $W_{n-1}$. Prove that for any $n \ge 1$, the word formed by writing $W_1, W_2, W_3,..., W_n$ in succession is a palindrome.
 \end{exam}
 
 \begin{sol}
-We use strong induction. The base case is easy to see, since $W_1+W_2=bab$. 
+We use strong induction. The base case is easy to see, since $W_1+W_2=bab$.
 
-Now, assume that $W_1+\dots+W_{k}$ is a palidrome for all $k\leq n$, and we WTS $W_1+\dots+W_{n+1}$ is a palindrome. 
+Now, assume that $W_1+\dots+W_{k}$ is a palidrome for all $k\leq n$, and we WTS $W_1+\dots+W_{n+1}$ is a palindrome.
 
 Let $f(W)$ to be the string obtained by reversing $W$. Now, notice that
 \begin{align*}
@@ -101,7 +101,7 @@ Let $f(W)$ to be the string obtained by reversing $W$. Now, notice that
         &= f(W_{n+1}) + W_1+\dots+W_n \\
         &= f(W_n)+f(W_{n-1}) + W_1 + \dots + W_{n-2} + W_{n-1} + W_{n}
 \end{align*}
-The last line is clearly a palindrome, so we are done. 
+The last line is clearly a palindrome, so we are done.
 \end{sol}
 
 \begin{exam}[JMO 2018/1]
@@ -109,18 +109,18 @@ For each positive integer $n$, find the number of $n$-digit positive integers th
 \end{exam}
 
 \begin{sol}
-The answer is $\boxed{\frac{2}{5}(9^n-(-1)^n)}$. 
+The answer is $\ansbold{\frac{2}{5}(9^n-(-1)^n)}$.
 
 Let a number be \textit{good} if it has no two consecutive digits equal and the last digit is prime. Let $f(n)$ be the number ways to make a $n$-digit number that is \textit{good}. We define the $i$th digit to be the digit that is in the $10^{i-1}$ position.
 
-Note that $f(1)=4$, since there is just 4 ways to choose the prime digit. For $f(2)=32$, there are 4 ways to choose the 1st digit, and for the 2nd digit there are 8 choices. 
+Note that $f(1)=4$, since there is just 4 ways to choose the prime digit. For $f(2)=32$, there are 4 ways to choose the 1st digit, and for the 2nd digit there are 8 choices.
 
-We wish to find a recursive sequence for the number of $n$-digit positive integers. There are two cases for a $n$-digit number, as follows:  
+We wish to find a recursive sequence for the number of $n$-digit positive integers. There are two cases for a $n$-digit number, as follows:
 \begin{itemize}
     \item \textbf{The $n-1$th digit is a 0} \\
-     Then, the number of way to make this is number is just taking a $n-2$ digit \textit{good} number, and then adding a 0 as the $n-1$th digit, and any nonzero number as the $n$th digit. Then, there are $9f(n-2)$ ways for this case. 
+     Then, the number of way to make this is number is just taking a $n-2$ digit \textit{good} number, and then adding a 0 as the $n-1$th digit, and any nonzero number as the $n$th digit. Then, there are $9f(n-2)$ ways for this case.
     \item \textbf{The $n-1$th digit is nonzero} \\
-    We can take a $n-1$ digit good number, and then add a nonzero digit that is not equal to the $n-1$th digit. There are 8 ways to choose this digit, so there are $8f(n-1)$ ways for this case. 
+    We can take a $n-1$ digit good number, and then add a nonzero digit that is not equal to the $n-1$th digit. There are 8 ways to choose this digit, so there are $8f(n-1)$ ways for this case.
 \end{itemize}
 Then, the total amount of ways to make a $n$ digit \textit{good} number is $f(n)=8f(n-1)+9f(n-2)$. Solving this recurrence, we have
 \[n^2=8n+9 \Rightarrow n^2-8n-9=0 \Rightarrow n=9, -1\]
@@ -132,11 +132,11 @@ In a finite simple graph $G$, all vertices can be black or red. In a move, you c
 \end{exam}
 
 \begin{sol}
-We induct on $n$. The cases $n=1$, $n=2$ are obvious. 
+We induct on $n$. The cases $n=1$, $n=2$ are obvious.
 
-Now, assume that its possible to toggle everything for all graphs of size $k\leq n$, and we want to show that its possible for a graph of size $n+1$. Now, we let function $f(i)$ be the moves for which we have a vertex $v_i$ and we ``exclude" it, and perform the moves that will toggle everything but $v_i$. If $f(i)$ also toggles $v_i$, then we're done. Thus, we can assume all $f(i)$ does not toggle $v_i$. 
+Now, assume that its possible to toggle everything for all graphs of size $k\leq n$, and we want to show that its possible for a graph of size $n+1$. Now, we let function $f(i)$ be the moves for which we have a vertex $v_i$ and we ``exclude" it, and perform the moves that will toggle everything but $v_i$. If $f(i)$ also toggles $v_i$, then we're done. Thus, we can assume all $f(i)$ does not toggle $v_i$.
 
-If $n+1$ is even, then by applying $f(1),f(2),\dots,f(n+1)$ then we can toggle everything. If $n+1$ is odd, then we can choose some vertex $v$ with some even degree (which must exist since the sum of the degrees is even and we have an odd number of vertices), so we can consider the set that does not include any of it or its neighbors. Now, this new smaller set must have an even number of vertices, so we can use the earlier trick to turn everything in there red also, and then toggle $v$. 
+If $n+1$ is even, then by applying $f(1),f(2),\dots,f(n+1)$ then we can toggle everything. If $n+1$ is odd, then we can choose some vertex $v$ with some even degree (which must exist since the sum of the degrees is even and we have an odd number of vertices), so we can consider the set that does not include any of it or its neighbors. Now, this new smaller set must have an even number of vertices, so we can use the earlier trick to turn everything in there red also, and then toggle $v$.
 
 \end{sol}
 
@@ -147,7 +147,7 @@ Engineer's induction is \textbf{not} allowed.
 \skipline
 
 \begin{prob}[Classic]{1}
-Find the number of ways to tile a $2\times n$ rectangle with dominoes.
+Find the number of ways to tile a $2\times n$ rectangle with dominoes. A domino is a $1\times 2$ or a $2 \times 1$ rectangle.
 \end{prob}
 
 \begin{prob}[AIME 2008]{4}
