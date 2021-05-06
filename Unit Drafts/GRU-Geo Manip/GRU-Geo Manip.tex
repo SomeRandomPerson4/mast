@@ -32,19 +32,19 @@ Next, an example showcasing spiral sims that arise from the circle configuration
 \end{exam}
 \begin{walk}
     \begin{enumerate}
-        \item Forget that this is an AIME 15. Seriously.
-        \item Find a way to phrase $P$ in terms of spiral similarities. (Hint: Try to apply the circle intersections lemma.)
+        \item Forget that this is an AIME 15, and don't be intimidated.
+        \item Find a way to phrase $P$ in terms of spiral similarities. (Hint: Try to apply the circle intersections lemma)
         \item Use the similar triangles you have now to get $\frac{PM}{PN}$.
 			\item Finish with Law of Sines/Ratio Lemma.
     \end{enumerate}
 \end{walk}
 \section{Construction, featuring our friends rotation and reflection}
-This next section has some of most pure-intuition ideas, so it will feature a LOT of problems and very little "lecture".\\
+This next section has some of most pure-intuition ideas, so it will feature mostly just problems and very little "lecture".\\
 \begin{exam}[Traditional proof of the Angle Bisector Theorem]
 Prove that if $D$ is the point on $BC$ such that $\angle DAB = \angle CAD$, then $\frac{AB}{AC} = \frac{BD}{DC}$.
 \end{exam}
 \begin{pro}
-Add the point $E$ on $AD$ such that $EC||AB$. It is easy to see that $ACE$ is isoceles, and that $CDE \sim BDA$, so using ratios finishes.
+Add the point $E$ on $AD$ such that $EC||AB$. It is easy to see that $\triangle ACE$ is isoceles, and that $\triangle CDE \sim \triangle BDA$, so using ratios finishes.
 \begin{center}
     \begin{asy}
     import markers;
@@ -70,7 +70,7 @@ Yes, this problem is in Transformations. Once again, feel free to skip if you've
 \begin{walk}
     \begin{enumerate}
         \item Add a point $P'$ that takes advantage of the fact that $AB = BC$. (Hint: Congruent Triangles)
-        \item This point $P'$ should have some nice angles involved. Look at $CPP'$. 
+        \item This point $P'$ should have some nice angles involved, by rotation; Look at $\triangle CPP'$. 
         \item Finish however you like.
     \end{enumerate}
 \end{walk}
@@ -79,7 +79,7 @@ Yes, this problem is in Transformations. Once again, feel free to skip if you've
 \psetquote{Truth is water. It is not distinguished into separate, countable objects; once mixed with other water, it can never return to what it was. As you try to grasp it, it slips through the gaps between your fingers, and you see only a part of it.}{Aya Shameimaru}
 \req{2}{AIME I 2011/2}{	In rectangle $ABCD$, $AB=12$ and $BC=10$. Points $E$ and $F$ lie inside rectangle $ABCD$ so that $BE=9$, $DF=8$, $\overline{BE} \parallel \overline{DF}$, $\overline{EF} \parallel \overline{AB}$, and line $BE$ intersects segment $\overline{AD}$. The length $EF$ can be expressed in the form $m\sqrt{n}-p$, where $m,n,$ and $p$ are positive integers and $n$ is not divisible by the square of any prime. Find $m+n+p$.}\\
 \prob{3}{AMC 12A 2020/24}{Suppose that $\triangle ABC$ is an equilateral triangle of side length $s$, with the property that there is a unique point $P$ inside the triangle such that $AP = 1$, $BP = \sqrt{3}$, and $CP = 2$. What is $s?$}\\
-\prob{4}{AIME II 2011/13}{Point $P$ lies on the diagonal $AC$ of square $ABCD$ with $AP>CP$. Let $O_1$ and $O_2$ be the circumcenters of triangles $ABP$ and $CDP$ respectively. Given that $AB=12$ and $\angle O_1 P O_2 = 120^\circ$, then $AP=\sqrt{a}+\sqrt{b}$ where $a$ and $b$ are positive integers. Find $a+b$.}\\
+\prob{4}{AIME II 2011/13}{Point $P$ lies on the diagonal $AC$ of square $ABCD$ with $AP>CP$. Let $O_1$ and $O_2$ be the circumcenters of triangles $\triangle ABP$ and $\triangle CDP$ respectively. Given that $AB=12$ and $\angle O_1 P O_2 = 120^\circ$, then $AP=\sqrt{a}+\sqrt{b}$ where $a$ and $b$ are positive integers. Find $a+b$.}\\
 \prob{4}{AIME I 2021/9}{Let $ABCD$ be an isosceles trapezoid with $AD=BC$ and $AB<CD.$ Suppose that the distances from $A$ to the lines $BC,CD,$ and $BD$ are $15,18,$ and $10,$ respectively. Let $K$ be the area of $ABCD.$ Find $\sqrt2 \cdot K.$}\\
 \prob{4}{CMC 12A 2020/23}{There exists $\triangle ABC$ with $\angle B = 30^{\circ}$ that satisfies $\frac{b+c}{2\cos C}=a$. Find $\angle A$.}\\
 \prob{6}{AIME II 2021/14}{Let $\triangle ABC$ be an acute triangle with circumcenter $O$ and centroid $G$. Let $X$ be the intersection of the line tangent to the circumcircle of $\triangle ABC$ at $A$ and the line perpendicular to $GO$ at $G$. Let $Y$ be the intersection of lines $XG$ and $BC$. Given that the measures of $\angle ABC, \angle BCA, $ and $\angle XOY$ are in the ratio $13 : 2 : 17, $ the degree measure of $\angle BAC$ can be written as $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m+n$.}
@@ -122,7 +122,7 @@ draw(rightanglemark(X,G,O));
 \prob{9}{HMMT Geo 2020/5}{Let $ABCDEF$ be a regular hexagon with side length $2$. A circle with radius $3$ and center at $A$ is drawn. Find the area inside quadrilateral $BCDE$ but outside the circle.}\\
 \prob{9}{USAMO 2020/1}{Let $ABC$ be a fixed acute triangle inscribed in a circle $\omega$ with center $O$. A variable point $X$ is chosen on minor arc $AB$ of $\omega$, and segments $CX$ and $AB$ meet at $D$. Denote by $O_1$ and $O_2$ the circumcenters of triangles $ADX$ and $BDX$, respectively. Determine all points $X$ for which the area of triangle $OO_1O_2$ is minimized.}\\
 \prob{9}{AIME II 2018/12}{Let $ABCD$ be a convex quadrilateral with $AB=CD=10$, $BC=14$, and $AD=2\sqrt{65}$. Assume that the diagonals of $ABCD$ intersect at point $P$, and that the sum of the areas of $\triangle APB$ and $\triangle CPD$ equals the sum of the areas of $\triangle BPC$ and $\triangle APD$. Find the area of quadrilateral $ABCD$.}\\
-(The synthetic-ish solution to this problem is admittedly very funky. For instructive purposes, I'd rather not a trig bash be submitted, but I can't stop you.)\\
+(The Geo Manip - style solution to this problem is admittedly very funky and not as smooth as some of the other solutions. For instructive purposes, I'd rather not a trig bash be submitted, but I can't stop you.)\\
 \req{13}{CMIMC Geo 2016/8}{Suppose $ABCD$ is a convex quadrilateral satisfying $AB=BC$, $AC=BD$, $\angle ABD = 80^\circ$, and $\angle CBD = 20^\circ$. What is $\angle BCD$ in degrees?}\\
 \prob{13}{IMO 1975/3}{In the plane of a triangle $ABC,$ in its exterior$,$ we draw the triangles $\triangle ABR, \triangle BCP, \triangle CAQ$ so that $\angle PBC = \angle CAQ = 45^{\circ}$, $\angle BCP = \angle QCA = 30^{\circ}$, $\angle ABR = \angle RAB = 15^{\circ}$.
 Prove that $\triangle QRP$ is an isoceles right triangle with right angle at $Q$.}\\
