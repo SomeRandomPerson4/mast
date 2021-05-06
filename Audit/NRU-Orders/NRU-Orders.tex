@@ -12,7 +12,7 @@
 Thanks to Raymond Feng for suggesting several of the problems in this handout.
 
 \section{Orders}
-We begin by reviewing some introductory theorems. 
+We begin by reviewing some introductory theorems.
 
 \begin{theo}[Fermat]
 $a^{p-1} \equiv 1 \pmod{p}$ whenever $p$ is prime and $p \nmid a.$
@@ -34,7 +34,7 @@ We claim that $x=100$ is a satisfactory value of $x.$
 Notice that by Euler, $$a^{100} \equiv a^{100 \pmod{\phi(8)}} \equiv a^{100 \pmod{4}} \equiv a^0 \equiv 1 \pmod{8}$$ and that $$a^{100} \equiv a^{\phi (125)} \equiv 1 \pmod{125}$$ whenever $\gcd(a, 1000) = 1.$ Thus, by CRT, $$a^{100} \equiv 1 \pmod{1000}$$ for all $a$ relatively prime to $1000.$
 \end{sol}
 
-Often, there is a number $x < \phi(n)$ such that $a^x \equiv 1 \pmod{n}$ for some $a.$ In order to properly discuss this $x,$ we define \textbf{orders.} 
+Often, there is a number $x < \phi(n)$ such that $a^x \equiv 1 \pmod{n}$ for some $a.$ In order to properly discuss this $x,$ we define \textbf{orders.}
 
 \begin{defi}[Orders]
 Let $a$ and $n$ be two relatively prime integers with $n>1.$ Then $\operatorname{ord}_n(a)$ (the order of $a$ mod $n$) is the smallest positive integer $x$ such that $a^x \equiv 1 \pmod{n}.$
@@ -61,7 +61,7 @@ Show that if a prime $p>2$ can be written as the sum of two squares, we must hav
 \end{exam}
 
 \begin{sol}
-Suppose that $p = x^2+y^2$ for some positive integers $x$ and $y.$ Clearly, $p \nmid x$ and $p \nmid y,$ as if $p$ divided either $x$ or $y,$ we would have $x^2+y^2 > p.$ 
+Suppose that $p = x^2+y^2$ for some positive integers $x$ and $y.$ Clearly, $p \nmid x$ and $p \nmid y,$ as if $p$ divided either $x$ or $y,$ we would have $x^2+y^2 > p.$
 
 Since $x^2+y^2 = p,$ we see $x^2 + y^2 \equiv 0 \pmod{p}.$ Thus, $(x y^{-1})^2 \equiv -1 \pmod{p},$ and (by squaring), $(xy^{-1})^4 \equiv 1 \pmod{p}.$ Thus, $\operatorname{ord}_p(xy^{-1}) \mid 4.$
 
@@ -83,7 +83,7 @@ Assume for the sake of contradiction that $n>1.$ Let $p$ be the smallest prime t
 
 Observe that from Fermat, $\operatorname{ord}_p((a+1)a^{-1}) \mid p-1.$ Thus, $\operatorname{ord}_p((a+1)a^{-1}) \mid \gcd(p-1, n).$ Notice that if $\gcd(p-1, n) > 1,$ then there is some prime $q < p$ that divides $n,$ contradicting minimality of $p.$ Thus, we must have $\gcd(p-1, n) = 1,$ so $\operatorname{ord}_p((a+1)a^{-1}) = 1.$
 
-Thus, $$(a+1)a^{-1} \equiv 1 \pmod{p} \Longleftrightarrow a+1 \equiv a \pmod{p} \Longleftrightarrow 1 \equiv 0 \pmod{p},$$ a contradiction. 
+Thus, $$(a+1)a^{-1} \equiv 1 \pmod{p} \Longleftrightarrow a+1 \equiv a \pmod{p} \Longleftrightarrow 1 \equiv 0 \pmod{p},$$ a contradiction.
 
 Thus, $n = 1.$ Substituting that into the original expression, we see that $$\frac{(a+1)^n-a^n}{n} = \frac{a+1-a}{1} = 1,$$ so $\frac{(a+1)^n-a^n}{n}$ is an integer whenever $n = 1.$
 \end{sol}
@@ -98,7 +98,7 @@ There are two main takeaways from this problem that apply to most order problems
 
 \section{Primitive Roots}
 
-We know that we always have $\operatorname{ord}_n(a) \le \phi(n),$ but can we ever achieve the maximum? In other words, does there exist a value $a$ for a certain $n$ such that $\operatorname{ord}_n(a) = \phi(n)?$ What properties might this $a$ have? In order to properly discuss these numbers, we define a \textbf{primitive root}. 
+We know that we always have $\operatorname{ord}_n(a) \le \phi(n),$ but can we ever achieve the maximum? In other words, does there exist a value $a$ for a certain $n$ such that $\operatorname{ord}_n(a) = \phi(n)?$ What properties might this $a$ have? In order to properly discuss these numbers, we define a \textbf{primitive root}.
 
 \begin{defi}[Primitive Root]
 Let $a$ and $n$ be two positive integers. $a$ is called a primitive root modulo $n$ if and only if $\operatorname{ord}_n(a) = \phi(n).$
@@ -166,12 +166,12 @@ Let $g^m$ and $g^n$ be two distinct elements in $\{g, g^2, g^3, \dots, g^{p-1}\}
 Thus, since there are $p-1$ elements in $\{g, g^2, g^3, \dots, g^{p-1}\}$ and only $p-1$ non-zero residues modulo $p,$ non-zero residues modulo $p$ is equivalent to a certain element of the set $\{g, g^2, g^3, \dots, g^{p-1}\} \pmod{p}.$ Thus, $$\{g, g^2, g^3, \dots, g^{p-1}\} \equiv \{1, 2, 3, \dots, p-1 \} \pmod{p}.$$
 \end{pro}
 
-Primitive roots an often be used to convert questions dealing with the set $\{1, 2, 3, \dots, p-1 \}$ into ones which deal with the set $\{g, g^2, g^3, \dots, g^{p-1}\}$ -- a powerful exchange for many reasons. 
+Primitive roots an often be used to convert questions dealing with the set $\{1, 2, 3, \dots, p-1 \}$ into ones which deal with the set $\{g, g^2, g^3, \dots, g^{p-1}\}$ -- a powerful exchange for many reasons.
 
 They are also typically used when orders aren't powerful enough to solve a problem.
 
 \begin{exam}[Primitive Root Problem]
-Find all positive two digit integers $\overline{ab}$ with $a \neq b$ such that $\overline{ab} \mid k^a-k^b$ for all integers $k.$ 
+Find all positive two digit integers $\overline{ab}$ with $a \neq b$ such that $\overline{ab} \mid k^a-k^b$ for all integers $k.$
 \end{exam}
 
 \begin{sol}
@@ -189,7 +189,7 @@ Clearly, we must have either $b = 0$ or $b = 5.$ Since $5 \mid \overline{ab},$ w
 
 \textbf{Case 3:} $3 \mid \overline{ab}$ and $5 \nmid \overline{ab}$ and $7 \nmid \overline{ab}.$
 
-Notice that we have $\overline{ab} = 3^p \dot 2^q,$ where $p>1.$ Thus, we have $\overline{ab} \in \{27, 81, 12, 18, 24, 36, 48, 54, 72, 96\}.$ We can't have $\overline{ab} \in \{27, 81, 12, 18, 36, 54, 72, 96\},$ as then $3 \mid \overline{ab}$ but $2 \nmid a-b.$ Thus, $\overline{ab} \in \{24, 48\}.$ Now, notice that $\overline{ab} \neq 24,$ since whenever $k \equiv 2 \pmod{8},$ $k^2 - k^4 \not\equiv 0 \pmod{8}.$ Thus, we must have $\overline{ab} = 48.$ 
+Notice that we have $\overline{ab} = 3^p \dot 2^q,$ where $p>1.$ Thus, we have $\overline{ab} \in \{27, 81, 12, 18, 24, 36, 48, 54, 72, 96\}.$ We can't have $\overline{ab} \in \{27, 81, 12, 18, 36, 54, 72, 96\},$ as then $3 \mid \overline{ab}$ but $2 \nmid a-b.$ Thus, $\overline{ab} \in \{24, 48\}.$ Now, notice that $\overline{ab} \neq 24,$ since whenever $k \equiv 2 \pmod{8},$ $k^2 - k^4 \not\equiv 0 \pmod{8}.$ Thus, we must have $\overline{ab} = 48.$
 Checking (with CRT and Euler), we see $\overline{ab} = 48$ works.
 
 \textbf{Case 4:} $2$ is the only prime that divides $\overline{ab}.$
@@ -213,9 +213,9 @@ Let $v_p(n)$ where $p$ is prime be the number such that $p^{v_p(n)} \mid n$ and 
 
 \begin{itemize}
     \item If an odd prime $p \mid a-b$ but $p \nmid a$ and $p \nmid b,$ we have $$v_p(a^n - b^n) = v_p(a-b)+v_p(n).$$
-    
+
     \item If an odd prime $p \mid a+b$ but $p \nmid a$ and $p \nmid b,$ we have $$v_p(a^n + b^n) = v_p(a+b)+v_p(n)$$ if $n$ is odd, and $$v_p(a^n + b^n) = 0$$ if $n$ is even.
-    
+
     \item if $2 \mid x - y$ but $2 \nmid x$ and $2 \nmid y,$ then whenever $2 \mid n,$ we have $$v_2(x^n-y^n) = v_2(x-y)+v_2(n)+v_2(x+y)-1.$$
 \end{itemize}
 \end{theo}
@@ -223,12 +223,12 @@ Let $v_p(n)$ where $p$ is prime be the number such that $p^{v_p(n)} \mid n$ and 
 \noindent\minpt{34}
 
 \psetquote{The Mafia is grievously wounded -- but not mortally.}{Five Families}
-     
+
 \begin{prob}[]{1}
 Show $n \nmid 2^n-1$ for all $n>1.$ (This is actually a weaker form of Example 3.)
 \end{prob}
 
-\begin{prob}[PUMaC NT 2020/A1]{1}
+\begin{prob}[PUMaC Div. A NT 2020/A1]{1}
 Compute the last two digits of $9^{2020}+9^{2020^2}+\ldots +9^{2020^{2020}}$.
 \end{prob}
 
@@ -245,7 +245,7 @@ For all primes $p \geq 3$ such that $p-1 \nmid 120,$ define $$F(p) = \sum^{\frac
 Prove that all factors of $2^{2^{n}} + 1$ are of the form $k \cdot 2^{n+1} + 1.$
 \end{prob}
 
-\begin{prob}[PUMaC NT 2016/A7]{3}
+\begin{prob}[PUMaC Div. A NT 2016/A7]{3}
 Compute the number of positive integers $n$ between $2017$ and $2017^2$ such that $n^n \equiv 1\pmod{2017}$, given that $2017$ is prime.
 \end{prob}
 
@@ -253,7 +253,7 @@ Compute the number of positive integers $n$ between $2017$ and $2017^2$ such tha
 Suppose $p$ is a prime such that there exists an integer $q$ such $q^2 \equiv -3 \pmod{p}.$ Find all solutions to $x^3 \equiv 1 \pmod{p}$ in terms of $p$ and $q.$
 \end{req}
 
-\begin{prob}[Taiwan TST Quiz 2014/3J/2]{4}
+\begin{prob}[Taiwan TST Quiz 2014/3J/2]{6}
 Alice and Bob play the following game. They alternate selecting distinct nonzero digits (from $1$ to $9$) until they have chosen seven such digits, and then consider the resulting seven-digit number by concatenating the digits in the order selected, with the seventh digit appearing last (i.e. $\overline{A_1B_2A_3B_4A_6B_6A_7}$). Alice wins if and only if the resulting number is the last seven decimal digits of some perfect seventh power. Please determine which player has the winning strategy.
 \end{prob}
 
@@ -269,12 +269,12 @@ For a positive integer $n$ not divisible by $211$, let $f(n)$ denote the smalles
 Find all positive integers $n$ such that $n^2 \mid 2^n+1.$
 \end{prob}
 
-\begin{prob}[IMO 1999/4]{6}
+\begin{prob}[IMO 1999/4]{9}
 Find all the pairs of positive integers $(x,p)$ such that p is a prime, $x \leq 2p$ and $x^{p-1}$ is a divisor of $ (p-1)^{x}+1$.
 \end{prob}
 
 \begin{prob}[Weak Dirichlet]{9}
-Prove that there are infinite primes $p\equiv 1\pmod{k}.$
+Prove that there are infinitely many primes $p\equiv 1\pmod{k}$ for any positive integer $k$.
 \end{prob}
 
 \begin{prob}[ISL 2012/N6]{9}
