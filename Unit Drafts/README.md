@@ -12,6 +12,7 @@ There are a number of environments present in dennis.sty. Please use them instea
 	\end{enumerate}
 
 The list of all available environments follows:
+
 	theo
 	pro
 	fact
@@ -25,6 +26,7 @@ The list of all available environments follows:
 	remark
 	walk
 	prob
+
 If there are any environments you find yourself needing, submit an issue (here or on geometryexplorer) or a pull request on my personal website's repository.
 
 ## Problems and point values
