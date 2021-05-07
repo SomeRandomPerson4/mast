@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage[mast]{dennis}
+\usepackage{graphicx}
 
 \title{Mass Points}
 \author{Kelin Zhu}
@@ -10,10 +11,10 @@
 \section{Theory}
 \textbf{Mass Points} is a technique in computational Geometry that trivializes an entire class of Geometry problems featured prominently on MATHCOUNTS, AMC 8 and early-mid AMC 10/12, and can also help in solving some AIME problems, but \textbf{only when executed properly}. If used wrong, it will return nonsensical results and turn out to be a waste of time.
 \begin{defi}[Mass point]
-A \textbf{mass point} is a point, $P$, that is assigned a positive real weight $w$. It is usually written in the form $wP$. A \textbf{system of mass points} is a set of mass points.
+A \textbf{mass point} is a point, $P$, that is assigned a positive real weight $w$. It is usually written in the form $wP$. (In this handout, we will often refer to a mass point more explicitly as ''Point $P$ with mass $w$'' anyways.) A \textbf{system of mass points} is a set of mass points.
 \end{defi}
 Its functionality will be revealed in the next two definitions:
-\begin{defi}[Center of mass of 1,2 points]
+\begin{defi}[Center of mass of 1 and 2 points]
 
 \begin{enumerate}
 \item The \textbf{center of mass} of any mass point $oO$ is itself.
@@ -23,7 +24,7 @@ Its functionality will be revealed in the next two definitions:
 To see why that is the specific location of the center of mass of two points, imagine them on a seesaw; the heavier point will be closer to the balancing point.
 \begin{defi}[General center of mass]
 
-If $aA$ is the center of mass of a system of mass points $S_1$ and $bB$ is the center of mass of another system of mass points $S_2$ distinct from $S_1$, then the center of mass of $aA$ and $bB$ is also the center of mass of $S_1\cup S_2$.
+If $aA$ is the center of mass of a system of mass points $S_1$ and $bB$ is the center of mass of another system of mass points $S_2$ distinct from $S_1$, then the center of mass $cC$ of $aA$ and $bB$ is also the center of mass of $S_1\cup S_2$.
 
 The center of mass of a system of mass points $w_1P_1,w_2P_2\ldots$ can be thought of as their weighted average: toss the mass points on the coordinate plane, then the x-coordinate of the center of mass is $\frac{w_1x_1+w_2x_2\ldots}{w_1+w_2\ldots}$ and similarly the y-coordinate is $\frac{w_1y_1+w_2y_2\ldots}{w_1+w_2\ldots}$.
 \end{defi}
@@ -34,9 +35,10 @@ Lastly, here is the single most important guiding principle (I like to refer to 
 Every mass point defined on a segment should be the gravity center of its two endpoints.
 \end{theo}
 
-You shouldn't go wrong if you keep this in mind and define weights in a way that abides this principle. Note that this sometimes make defining multiple systems of mass points necessary; for example, in problems that demand you to solve for two points $E,F$ inside a triangle, systems of mass points with $E$ and $F$ as unique gravity centers should both be set up.
+You shouldn't go wrong if you keep this in mind and define weights in a way that abides this principle. As a corollary, sometimes defining multiple systems of mass points is necessary; for example, in problems that demand you to solve for two points $E,F$ inside a triangle, systems of mass points with $E$ and $F$ as unique gravity centers should both be set up.
 
 \section{Examples}
+Note: Contrary to usual practice in Geometry, a lower case letter in this section by default refers to the weight of its upper case counterpart rather than a side length.
 \subsection{Simpler problems}
 Mass points would be the most effective on problems that involve ratios, as they can be translated to weights. Having too many intersection points on a single line greatly complicate calculation by bringing in multiple systems to the picture, so it is not preferred.
 
@@ -48,20 +50,48 @@ The \textbf{centroid} $G$ of a triangle is its center of mass and is the interse
 As usual, let the vertices of the triangle be $A,B,C$, and let $M$ be the midpoint of segment $BC$. Assign each of the vertices weight 1; we can see that $2M$ is the gravity center of $1B$ and $1C$. The gravity center of $1A$ and $2M$ is the gravity center of the triangle, which immediately implies our desired result for the $A$-median. Proceed analogously for the other two medians.
 \end{sol}
 
+\bigskip
 Even though the method of mass points is not exactly obscure, there is a suprising amount of problems on official contests that are straightforward applications of it. We will present one such problem here.
-\begin{exam}[2019 AMC 8/24]
+\begin{exam}[AMC 8 2019/24]
 In triangle $ABC$, point $D$ divides side $\overline{AC}$ so that $AD:DC=1:2$. Let $E$ be the midpoint of $\overline{BD}$ and let $F$ be the point of intersection of line $BC$ and line $AE$. Given that the area of $\triangle ABC$ is $360$, what is the area of $\triangle EBF$?
 \end{exam}
 \begin{sol}
-Set $A$'s weight as $2$ and $C$'s weight as $1$. We can see that $D$ has weight $2+1=3$, and since $E$ is the midpoint of $BD$, $E$ must have weight $6$ and $B$ has weight $3$ by balancing. $F$ must have weight $4$, which means that $\frac{EF}{AE}=\frac{2}{4}=\frac{1}{2}$ and $\frac{BF}{FC}=\frac{1}{3}$. The area of triangle $EBF$ is therefore $\frac{1}{3}$ of triangle $ABF$, which has $\frac{1}{4}$ the area of triangle $ABC$; our answer is $\frac{360}{3\cdot 4}=\ansbold{30}$.
+Set $A$'s weight as $2$ and $C$'s weight as $1$. We can see that $D$ has weight $2+1=3$, and since $E$ is the midpoint of $BD$, $E$ must have weight $6$ and $B$ has weight $3$ by balancing. $F$ must have weight $e-a=4$, which means that $\frac{EF}{AE}=\frac{2}{4}=\frac{1}{2}$ and $\frac{BF}{FC}=\frac{1}{3}$. The area of triangle $EBF$ is therefore $\frac{1}{3}$ of triangle $ABF$, which has $\frac{1}{4}$ the area of triangle $ABC$; our answer is $\frac{360}{3\cdot 4}=\ansbold{30}$.
 \end{sol}
-
-It is not a fluke that $F$ happens to have the same weight when it's seen as a point on line $AF$ or segment $BC$. \textbf{If set up properly, mass points is guaranteed to work out}, which is a major part of why it's so powerful. 
+\begin{remark}
+It is not a fluke that $4F$, when seen as a point on the extension of $AE$, also happens to be the gravity center of $1B$ and $3C$; since $E$ is the gravity center of the triangle in this case, $E$ has weight $a+b+c$ and $F$ has weight $(a+b+c)-a=b+c$. \textbf{If set up properly, mass points is guaranteed to work out.}
+\end{remark}
 \subsection{Splitting points and multiple systems}
 Sometimes, the problem is not as direct as the previous subsection, which would call for a few more tricks.
-\subsection{Auxiliary devices}
-Deciding to use mass points does not mean that you can turn off your brain. Applying concepts from other areas of Geometry, such as similar triangles and area formulas, could often greatly simplify a mass points solution.
-\section{Problems}
+\begin{exam}
+In triangle $ABC$, we have $E$ and $F$ on sides $AC,AB$ such that $\frac{AE}{EC}=\frac{5}{2},\frac{AF}{FB}=\frac{3}{7}$. Let $H$ be a point on $EF$ with $\frac{EH}{HF}=\frac{20}{7}$; if line $AH$ intersects $BC$ again at $D$, find $\frac{AH}{HD}$.
+\end{exam}
+This is a prime example of when splitting points is necessary. Its basic premise is to split $A$ into two points: $A_1$ such that $F$ is the gravity center of $A_1$ and $B$, $A_2$ such that $E$ is the gravity center of $A_2$ and $C$, and treat $A$ as having weight $a_1+a_2$ when dealing with the cevian $AD$.
+\newpage
+\begin{sol}
+We split $A$ into $A_1$ and $A_2$ as described. 
 
+Assign a weight of $27$ to $H$. Then, $E$ has weight $7$, $F$ has weight $20$, $A_1$ has weight $14$ and $A_2$ has weight $2$. On the cevian $AD$, $A$ has weight $14+2=16$ and $D$ has weight $27-16=11$, therefore $\frac{AH}{HD}=\frac{11}{16}$. 
+\end{sol}
+
+\bigskip
+Here is a concrete example of attacking a problem with more than one systems of mass points:
+\begin{exam}
+\end{exam}
+\subsection{Auxiliary devices}
+Deciding to use mass points does not mean that you can turn off your brain. Applying concepts from other areas of Geometry, such as similar triangles and area formulas, could often assist mass points to solve problems more efficiently.
+\begin{exam}
+\end{exam}
+In this example, mass points alone seems insufficient.
+\section{Problems}
+Generic mass points problems can be mass-produced, so we will only feature a small number of problems that are considered as genuinely creative applications of it.
+\minpt{24}
+\begin{prob}{1}
+On the triangle formed by the mass points $aA,bB,cC$, a point $D$ is chosen on segment $BC$. Prove that $AD$ goes through the gravity center of the triangle \textbf{if and only if} the mass point $(b+c)D$ is the gravity center of $bB$ and $cC$. That is, we have to prove that segment $AD$ goes through the gravity center if $(b+c)D$ is the gravity center of $bB$ and $cC$, and that the segment would not go through the gravity center if $(b+c)D$ is not the gravity center of $bB$ and $cC$.
+
+(Keep in mind that mass points are still points, and can be referred to as points when only using their properties that are inherited from points.)
+\end{prob}
+\begin{prob}[MATHCOUNTS 2012]{6}
+\end{prob}
 \end{document}
 
