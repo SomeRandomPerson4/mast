@@ -1,0 +1,182 @@
+\documentclass{article}
+
+\usepackage[mast]{dennis}
+
+\title{Solutions to Fake Algebra}
+\author{Allen Wang}
+\date{AQU}
+
+\begin{document}
+
+\maketitle
+
+\toc
+
+\pagebreak\section{Unsourced}
+
+If $a<b<c<a+b,$ order $\frac{b^2+c^2-a^2}{bc},\frac{c^2+a^2-b^2}{ca},\frac{a^2+b^2-c^2}{ab}$ in ascending order.
+
+\subsection{Solution}
+
+\pagebreak\section{Unsourced}
+Prove that the $A$ and $B$ angle bisectors of a triangle are equal in length if and only if $BC=CA.$
+
+\subsection{Solution}
+
+\pagebreak\section{AIME 1986/2}
+Evaluate the product $(\sqrt 5+\sqrt6+\sqrt7)(-\sqrt 5+\sqrt6+\sqrt7)(\sqrt 5-\sqrt6+\sqrt7)(\sqrt 5+\sqrt6-\sqrt7).$
+
+\subsection{Solution}
+Consider a triangle with side lengths $2\sqrt{5},2\sqrt{6},2\sqrt{7}$. By Heron's formula, the area of this triangle is:
+$$\sqrt{(\sqrt 5+\sqrt6+\sqrt7)(-\sqrt 5+\sqrt6+\sqrt7)(\sqrt 5-\sqrt6+\sqrt7)(\sqrt 5+\sqrt6-\sqrt7)}.$$
+To be continued.
+
+\pagebreak\section{Unsourced}
+Let $x$ and $y$ be real numbers such that $(x - 5)^2 + (y - 5)^2 = 18.$ Determine the maximum value of $\frac{y}{x}.$
+
+\subsection{Solution}
+
+\pagebreak\section{Unsourced}
+Let $a,b,c$ be positive reals. Prove that $\sqrt{a^2 - ab + b^2} + \sqrt{b^2 - bc + c^2} \geq \sqrt{a^2 + ac + c^2}.$
+
+\subsection{Solution}
+
+\pagebreak\section{Unsourced}
+Minimze $\sqrt{x^2-3x+3}+\sqrt{y^2-3y+3}+\sqrt{x^2-\sqrt{3}xy+y^2}$ over the reals.
+
+\subsection{Solution}
+
+\pagebreak\section{Unsourced}
+Prove that for reals $a,b\geq 1,$
+\[\sqrt{a^2-1}+\sqrt{b^2-1}\leq ab.\]
+
+\subsection{Solution}
+
+\pagebreak\section{Unsourced}
+What value of $x$ maximizes $(21+x)(1+x)(x-1)(21-x),$ if $x$ must be positive?
+
+\subsection{Solution 1}
+Note that this is the square of the area of a triangle with sides $20,22,2x$, by Heron's. From the sine area formula, we get that the area of the triangle is $220\sin\theta$, where $\theta$ is the measure of the angle between the sides of lengths $20$ and $22$. $\sin\theta$ attains its maximum value when $\theta=90^\circ$, where it is equal to $1$. In this case, we get from the Pythagorean Theorem that $2x=\sqrt{20^2=22^2} \implies x=\ansbold{\sqrt{221}}.$
+
+\subsection{Solution 2}
+Also possible to just use difference of squares and just do algebra.
+
+\pagebreak\section{TrinMaC 2020/19}
+Compute
+\[\sum_{n=0}^{\infty}\cos^{-1}\left(\frac{\sqrt{n(n+1)(n+2)(n+3)}+1}{(n+1)(n+2)}\right).\]
+
+\subsection{Solution}
+
+\pagebreak\section{Unsourced}
+Let $a,b,c,d$ be real numbers such that $a^2 - b^2 - c^2 + d^2 = ad + bc$ and $a^2 + b^2 - c^2 - d^2 = 0.$ Determine the value of $\frac{ab + cd}{ad + bc}.$
+
+\subsection{Solution}
+We note that the first condition rewrites as $a^2+d^2-2ad\cos 60^\circ=b^2+c^2+2bc\cos 120^\circ$, while the second rearranges as $a^2+b^2=c^2+d^2$. So $a,b,c,d$ are the side lengths of a cyclic quadrilateral with angles $60^\circ,120^\circ$ inscribed in a circle. WLOG $AB=a,BC=b,CD=c,DA=d$. Now the Pythagorean inequality combined with $a^2+b^2=c^2+d^2$ gives us $\angle ABC=\angle ADC=90^\circ$. So $\triangle ABC,\triangle ADC$ are $30-60-90$. WLOG setting $b=c=1$ then gives us $a=d=\sqrt{3}$, after which we can easily get the answer as $\ansbold{\frac{\sqrt{3}}{2}}$.
+
+\pagebreak\section{AIME II 2006/15}
+Given that $x, y,$ and $z$ are real numbers that satisfy:
+\[x = \sqrt{y^2-\frac{1}{16}}+\sqrt{z^2-\frac{1}{16}}\]
+\[y = \sqrt{z^2-\frac{1}{25}}+\sqrt{x^2-\frac{1}{25}}\]
+\[z = \sqrt{x^2-\frac{1}{36}}+\sqrt{y^2-\frac{1}{36}}\]
+and that $x+y+z = \frac{m}{\sqrt{n}},$ where $m$ and $n$ are positive integers and $n$ is not divisible by the square of any prime, find $m+n.$
+
+\subsection{Solution}
+The RHS looks suspiciously like the Pythagorean Theorem. After a bit of trial and error based on this observation, we realize that $x,y,z$ are the side lengths of a triangle with altitudes $\frac{1}{4},\frac{1}{5},\frac{1}{6}$ (the altitudes and the sides are ordered in the same way, so the altitude of length $\frac{1}{4}$ is perpendicular to the side of length $x$). Since the area is the same we have $\frac{x}{4}=\frac{y}{5}=\frac{z}{6}$. Let this quantity equal $k$, so $x=4k,y=5k,z=6k$. Then the area is $\frac{k}{2}$. On the other hand, Heron's gives us the area as $\frac{15k^2\sqrt{7}}{4}$. Setting these equal gives us $k=\frac{2}{15\sqrt{7}}$. Since $x+y+z=15k$ it follows that the desired quantity is $\frac{2}{\sqrt{7}} \implies \ansbold{9}$.
+
+\pagebreak\section{Unsourced}
+Consider sequence $a_n$ with $a_1=\sqrt{3}$ and $a_na_{n-1}^2+2a_{n-1}-a_n=0$ for $n\geq 2.$ Find $a_{1000}.$
+
+\subsection{Solution 1}
+Whatever the fake alg solution is supposed to look like.
+
+\subsection{Solution 2}
+It turns out you can obtain an explicit recursion, then just plug in a few values and notice periodicity. From there it's easy (will add more details)
+
+\pagebreak\section{AIME 1991/15}
+For positive integer $n$, define $S_n$ to be the minimum value of the sum\[ \sum_{k=1}^n \sqrt{(2k-1)^2+a_k^2}, \]where $a_1,a_2,\ldots,a_n$ are positive real numbers whose sum is 17. There is a unique positive integer $n$ for which $S_n$ is also an integer. Find this $n$.
+
+\subsection{Solution}
+
+\pagebreak\section{Unsourced}
+If $x,y,z$ are positive numbers such that
+    \[x^2+xy+\frac{1}{3}y^2=25\]
+    \[\frac{1}{3}y^2+z^2=9\]
+    \[z^2+zx+x^2=16,\]
+    find $xy+2yz+3zx.$
+
+\subsection{Solution}
+We substitute $(a,b,c)=(x,\frac{y}{\sqrt{3}},z)$. The equations rewrite as:
+$$a^2+ab\sqrt{3}+b^2=25$$
+$$b^2+c^2=9$$
+$$a^2+ac+c^2=16$$
+We then use the implicit LoC trick to get that $\frac{1}{2}bc+\frac{1}{4}ab+\frac{\sqrt{3}}{4}ca=[ABC]$ where $\triangle ABC$ is a triangle with side lengths $3,4,5$. In this case, $[ABC]$ is simply $6$, so $$\frac{1}{2}bc+\frac{1}{4}ab+\frac{\sqrt{3}}{4}ca=6.$$
+Substituting into $(x,y,z)$ gives us $$\frac{1}{4\sqrt{3}}xy+\frac{1}{2\sqrt{3}}yz+\frac{\sqrt{3}}{4}zx=6.$$ Multiplying by $4\sqrt{3}$ gives the desired quantity equal to $\ansbold{24\sqrt{3}}.$\\
+Not completely sure this is right pls check!
+
+\pagebreak\section{HMMT Feb. Algebra 2014/9}
+Given $a$, $b$, and $c$ are complex numbers satisfying
+
+\[ a^2+ab+b^2=1+i \]
+\[ b^2+bc+c^2=-2 \]
+\[ c^2+ca+a^2=1, \]
+
+compute $(ab+bc+ca)^2$. (Here, $i=\sqrt{-1}$.)
+
+\subsection{Solution}
+The idea is to use LoC to show a more general statement for reals, which can be phrased as a polynomial identity and thus must hold in complex numbers as well! Will add more later.
+
+\pagebreak\section{Unsourced}
+Find all triples $(x,y,z)$ such that $xy+yz+zx=1$ and $5(x+\frac{1}{x})=12(y+\frac{1}{y})=13(z+\frac{1}{z}).$
+
+\subsection{Solution}
+
+\pagebreak\section{rd123/tworigami Mock AIME 2020/13}
+If $a,b,c,d$ are positive real numbers such that
+\begin{align*} ab + cd &= 90, \\ ad + bc &= 108, \\ ac + bd &= 120, \\ a^2+b^2 &= c^2+d^2, \end{align*}and $a+b+c+d=\sqrt{n}$ for some integer $n$, find $n$.
+
+\subsection{Solution}
+Consider a quadrilateral $ABCD$ with $AB=a,BC=b,CD=c,DA=a$, and $\angle B=\angle D=90^\circ$. Then from Pythagoras we have $a^2+b^2=c^2+d^2=AC$. Further since $\angle B+\angle D=180^\circ$ this quadrilateral is cyclic, so inscribe it in a circle. This also means that $\angle C=180^\circ-\angle A$. We know that
+$$[ABCD]=[ABC]+[ADC]=\frac{ab+cd}{2}.$$
+Since $ab+cd=90$ is given, we get $[ABCD]=45$. We can also write $[ABCD]=[ABD]+[CBD]$. Then by the sine area formula and using the fact that $\sin(180^\circ - \theta) = \sin \theta$, this is equal to
+$$\frac{1}{2}\sin \angle A (ad+bc)=54 \sin \angle A.$$
+But $[ABCD]=45$ as well, so $\sin \angle A=\frac{5}{6}$. Finally, we note that by Ptolemy's we have:
+$$ac+bd=AC\cdot BD \implies AC \cdot BD=120.$$
+Now, since the inscribed angle with measure $\theta$ of chord $\overline{BD}$ satisfies $\sin \theta = \frac{5}{6}$, it follows from LoS on either $\triangle BDA$ or $\triangle BDC$ that $BD=\frac{5}{6}AC$, since $\overline{AC}$ is a diameter and therefore $AC=2R$. This gives us:
+$$\frac{5}{6}AC^2=120 \implies AC^2=144=a^2+b^2=c^2+d^2.$$
+To finish, we consider the identity:
+$$(a+b+c+d)^2=a^2+b^2+c^2+d^2+2(ab+ac+ad+bc+bd+cd)$$
+Substituting $a^2+b^2=c^2+d^2=144$ as well as the values given at the start of the problem, we get $(a+b+c+d)^2=n=\ansbold{924}$.
+
+\pagebreak\section{PUMaC Div. A Algebra 2018/6}
+Let $a,b,c$ be nonzero reals such that $\frac{1}{abc}+\frac{1}{a}+\frac{1}{c}=\frac{1}{b}.$ The maximum possible value of $$\frac{4}{a^2+1}+\frac{4}{b^2+1}+\frac{7}{c^2+1}$$ is $\frac{m}{n}$ for relatively prime positive integers $m$ and $n.$ Find $m+n.$
+
+\subsection{Solution}
+
+\pagebreak\section{2018 Mock AIME, by TheUltimate123}
+Let $a$,$b$,$c$,$d$ be positive real numbers such that \[195=a^2+b^2=c^2+d^2=\frac{13(ac+bd)^2}{13b^2-10bc+13c^2}=\frac{5(ad+bc)^2}{5a^2-8ac+5c^2}\] Then $a+b+c+d$ can be expressed in the form $m\sqrt{n}$, where $m$ and $n$ are positive integers and $n$ is not divisible by the square of any prime. Find $m+n$.
+
+\subsection{Solution}
+
+\pagebreak\section{Mildort AIME 3/15}
+Let $\Omega$ denote the value of the sum
+
+\[\sum\limits_{k=1}^{40} \cos^{-1}\left(\frac{k^2 + k + 1}{\sqrt{k^4 + 2k^3 + 3k^2 + 2k + 2}}\right).\]
+
+The value of $\tan\left(\Omega\right)$ can be expressed as $\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Compute $m + n$.
+
+\subsection{Solution}
+We note that $\frac{k^2+k+1}{\sqrt{k^4+2k^3+3k^2+2k+2}}=\frac{k^2+k+1}{\sqrt{(k^2+k+1)^2+1}}$. Drawing out a right triangle quickly, it becomes clear that the summation is equivalent to:
+$$\sum_{k=1}^{40} \arctan \left(\frac{1}{k^2+k+1} \right).$$
+We would ideally like to make this sum telescope. Define a function $f$ such that:
+$$\arctan \left(\frac{1}{k^2+k+1}\right)=\arctan \left(\frac{1}{f(k)}\right)-\arctan \left(\frac{1}{f(k+1)}\right).$$
+Then the summation telescopes to $\arctan \left(\frac{1}{f(1)}\right)-\arctan \left(\frac{1}{f(41)}\right)$ which is hopefully easier to evaluate. Using arctangent addition, we have $\arctan \left(\frac{1}{x}\right)-\arctan \left(\frac{1}{y}\right)=\frac{y-x}{1+xy}$, so we need:
+$$\frac{1}{k^2+k+1}=\frac{f(k+1)-f(k)}{f(k)f(k+1)+1}.$$
+After looking at this for a while it becomes clear that $f(k)=k$ works (verifiable with substitution). So we just have to evaluate $\arctan(1)-\arctan \left(\frac{1}{41}\right)$. Using the arctangent addition formula again, we get that this is equal to $\arctan \left(\frac{20}{21}\right)$, so $\tan (\Omega)=\frac{20}{21}$ which yields an answer of $\ansbold{41}$.
+
+\pagebreak\section{IMO 2001/6}
+Let $a > b > c > d$ be positive integers and suppose that \[ ac + bd = (b+d+a-c)(b+d-a+c). \] Prove that $ab + cd$ is not prime.
+
+\subsection{Solution}
+Look at the problem for a few minutes and cry until you decide to give up and do another unit because Dennis made an IMO P6 required.
+
+\end{document}
