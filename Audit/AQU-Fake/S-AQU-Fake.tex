@@ -18,6 +18,14 @@ If $a<b<c<a+b,$ order $\frac{b^2+c^2-a^2}{bc},\frac{c^2+a^2-b^2}{ca},\frac{a^2+b
 
 \subsection{Solution}
 
+Consider a triangle with side lengths $a<b<c$, and let $\angle A,\angle B,\angle C$ denote the angles opposite the sides $a,b,c$ as usual. This is motivated by our somewhat-symmetric expressions, as well as the requirement that $c<a+b$. Observe that by Law of Cosines:
+\begin{align*}
+    b^2+c^2-2bc\cos \angle A&=a^2\\
+    b^2+c^2-a^2&=2bc\cos\angle A\\
+    2\cos \angle A=\frac{b^2+c^2-a^2}{bc}.
+\end{align*}
+Doing this to the other two expressions, we want to sort $2\cos \angle A,2\cos\angle B, 2\cos\angle C$ in ascending order. Since $\cos$ is decreasing on $[0,\pi]$—in degrees, this is $[0^\circ,180^\circ]$—we want to sort $\angle A,\angle B,\angle C$ in descending order. Noting that, in a triangle, the shortest and longest sides are opposite the smallest and largest angles respectively, we have $\angle C>\angle B>\angle A$. Hence $2\cos\angle C<2\cos\angle B<2\cos\angle A$, so we conclude that $\ansbold{\frac{a^2+b^2-c^2}{ab},\frac{c^2+a^2-b^2}{ca},\frac{b^2+c^2-a^2}{bc}}$ is the correct ordering.
+
 \pagebreak\section{Unsourced}
 Prove that the $A$ and $B$ angle bisectors of a triangle are equal in length if and only if $BC=CA.$
 
@@ -34,7 +42,25 @@ To be continued.
 \pagebreak\section{Unsourced}
 Let $x$ and $y$ be real numbers such that $(x - 5)^2 + (y - 5)^2 = 18.$ Determine the maximum value of $\frac{y}{x}.$
 
-\subsection{Solution}
+\subsection{Solution 1}
+It is possible to solve this purely algebraically.
+Suppose $\frac{y}{x}=k \implies y=kx$. We wish to maximize $k$. Substituting $y=kx$ into our equation and treating it as a quadratic in $x$ gives:
+\begin{align*}
+    (x-5)^2+(kx-5)^2&=18\\
+    x^2-10x+25+k^2x^2-10kx+25&=18\\
+    (k^2+1)x^2-10(k+1)x+32&=0.
+\end{align*}
+For this to have real roots, the discriminant must be nonnegative, so:
+\begin{align*}
+    (10(k+1))^2-4(k^2+1)(32)&\geq 0\\
+    100k^2+200k+100-128k^2-128&\geq 0\\
+    -28k^2+200k-28&\geq 0\\
+    7k^2-50k+7&\leq 0\\
+    (7k-1)(k-7)&\leq 0.
+\end{align*}
+Hence the maximum value of $k$ is $\ansbold{7}$, since for $k>7$ we have $(7k-1)(k-7)>0$.
+
+\subsection{Solution 2}
 
 \pagebreak\section{Unsourced}
 Let $a,b,c$ be positive reals. Prove that $\sqrt{a^2 - ab + b^2} + \sqrt{b^2 - bc + c^2} \geq \sqrt{a^2 + ac + c^2}.$
@@ -81,7 +107,7 @@ Given that $x, y,$ and $z$ are real numbers that satisfy:
 and that $x+y+z = \frac{m}{\sqrt{n}},$ where $m$ and $n$ are positive integers and $n$ is not divisible by the square of any prime, find $m+n.$
 
 \subsection{Solution}
-The RHS looks suspiciously like the Pythagorean Theorem. After a bit of trial and error based on this observation, we realize that $x,y,z$ are the side lengths of a triangle with altitudes $\frac{1}{4},\frac{1}{5},\frac{1}{6}$ (the altitudes and the sides are ordered in the same way, so the altitude of length $\frac{1}{4}$ is perpendicular to the side of length $x$). Since the area is the same we have $\frac{x}{4}=\frac{y}{5}=\frac{z}{6}$. Let this quantity equal $k$, so $x=4k,y=5k,z=6k$. Then the area is $\frac{k}{2}$. On the other hand, Heron's gives us the area as $\frac{15k^2\sqrt{7}}{4}$. Setting these equal gives us $k=\frac{2}{15\sqrt{7}}$. Since $x+y+z=15k$ it follows that the desired quantity is $\frac{2}{\sqrt{7}} \implies \ansbold{9}$.
+The RHS looks suspiciously like the Pythagorean Theorem. After a bit of trial and error based on this observation, we realize that $x,y,z$ are the side lengths of a triangle with altitudes $\frac{1}{4},\frac{1}{5},\frac{1}{6}$ (the altitudes and the sides are ordered in the same way, so the altitude of length $\frac{1}{4}$ is perpendicular to the side of length $x$). Since the area is the same we have $\frac{x}{4}=\frac{y}{5}=\frac{z}{6}$. Let this quantity equal $k$, so $x=4k,y=5k,z=6k$. Then the area is $\frac{k}{2}$. On the other hand, Heron's gives us the area as $\frac{15k^2\sqrt{7}}{4}$. Setting these equal gives us $k=\frac{2}{15\sqrt{7}}$. Since $x+y+z=15k$ it follows that the desired quantity is $\frac{2}{\sqrt{7}} \implies \ansbold{9}$vv.
 
 \pagebreak\section{Unsourced}
 Consider sequence $a_n$ with $a_1=\sqrt{2}+1$ and $a_na_{n-1}^2+2a_{n-1}-a_n=0$ for $n\geq 2.$ Find $a_{1000}.$
