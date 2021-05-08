@@ -77,6 +77,21 @@ Prove that for reals $a,b\geq 1,$
 \[\sqrt{a^2-1}+\sqrt{b^2-1}\leq ab.\]
 
 \subsection{Solution}
+Consider a triangle with two sides of length $a,b \geq 1$ such that the altitude from the vertex formed from the sides of length $a,b$ has length $1$. Label the triangle and its altitudes as shown:\\
+(There should be a diagram here, but things are broken)
+\begin{asy}
+    size(5cm);
+    pair A,B,C,D;
+    A=(0,0);
+    B=(0,8);
+    C=(3,5);
+    D=(0,5);
+    draw(A--B--C--cycle);
+    draw(C--D);
+\end{asy}
+% Diagram is not finished but doesn't even render for me wtf how does Asymptote
+
+We note that $AD=\sqrt{b^2-1}$ and $BD=\sqrt{a^2-1}$ by the pythagorean theorem. Hence by the $\frac{1}{2}bh$ area formula, we have $2[ABC]=\sqrt{a^2-1}+\sqrt{b^2-1}$. Now let $\angle ACB=\theta$. By the sine area formula, we have $2[ABC]=ab\sin\theta$. As $\sin\theta\leq 1$, it follows that $ab\sin\theta\leq ab$, so we have $\sqrt{a^2-1}+\sqrt{b^2-1}\leq ab$ as desired.
 
 \pagebreak\section{Unsourced}
 What value of $x$ maximizes $(21+x)(1+x)(x-1)(21-x),$ if $x$ must be positive?
