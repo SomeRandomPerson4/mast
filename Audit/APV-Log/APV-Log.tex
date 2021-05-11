@@ -55,10 +55,30 @@ For positive $a,b,c,$ $\frac{\log_{a}b}{\log_{a}c}=\log_{c}b.$
 Have $x=\log_ab,$ $y=\log_ac,$ and $z=\log_cb.$ Notice that $a^x=b,a^y=c,c^z=b.$ Then $(a^y)^z=a^x,$ implying $yz=x$ or $\frac{x}{y}=z.$
 \end{pro}
 
+This is one of the fundamental manipulation techniques for logarithmic manipulations. This is very convenient because it can be used to make all the logarithms share an arbitrary common base. Specifically,
+\[\log_ab=\frac{\log a}{\log b}.\]
+
+\begin{exam}[AMC 12B 2021/9]
+What is the value of \[\frac{\log_2 80}{\log_{40}2}-\frac{\log_2 160}{\log_{20}2}?\]
+\end{exam}
+
+\begin{sol}
+First we convert everything to base $10$ with the base change theorem. Note that our expression is equivalent to
+\[\frac{\log 80\log 40 - \log 160\log 20}{(\log 2)^2}.\]
+Here is where things get a little tricky. Note that $\log 160 = \log 80 + \log 2$ and $\log 20 = \log 40 - \log 2$, so our expression becomes
+\begin{align*}
+\frac{\log 80\log 40 - (\log 80+\log 2)(\log 40-\log 2)}{(\log 2)^2}&=\frac{\log 2(\log 80-\log 40)+(\log 2)^2}{(\log 2)^2} \\
+&=\frac{\log 2(\log 2)+(\log 2)^2}{(\log 2)^2} \\
+&=2.
+\end{align*}
+\end{sol}
+
+The motivation for expressing $\log 160$ as $\log 80 + \log 2$ is twofold. The general reason is that we want things to simplify with an SFFT-esque expression, and the reason we use $\log 2$ specifically is because it is in the denominator.
+
 We present the so-called logarithm chain rule as an exercise. (It's pretty useless and is only being presented as a check-up.)
 
 \begin{exer}[Logarithm Chain Rule]
-For positive $a,b,c,d,$ $(\log_{a}b)(\log_{c}d)=(\log_{a}d)(\log_{c}b).$
+For positive $a,b,c,d,$ $\log_{a}b\log_{c}d=\log_{a}d\log_{c}b.$
 \end{exer}
 
 \section{Examples}
