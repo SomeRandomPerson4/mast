@@ -7,7 +7,9 @@ Here are two examples to get you up to speed.
 Find $\log_28.$
 \end{exam}
 
-\begin{sol} Notice that $2^{\log_28}=8=2^3$ by the definition of $\log,$ so $\log_28=3.$\end{sol}
+\begin{sol}
+Notice that $2^{\log_28}=8=2^3$ by the definition of $\log,$ so $\log_28=3.
+\end{sol}
 
 \begin{exam}
 Simplify $\frac{\log_5x}{\log_{25}x}.$
@@ -24,12 +26,10 @@ Evaluate $\log_2{16}+\log_2{32},$ and then evaluate $\log_2{16\cdot 32}.$
 \end{exer}
 
 \subsection{Fundamental Rules}
-For the rest of the theory section, unless specific restrictions are given, assume that $a, b, c$ are positive reals with $a > 1$.
-
-The fundamental two rules of logarithms are the addition and subtraction rules. Notice that addition outside becomes multiplication inside (and inversely, subtraction becomes division inside). This is because of the way exponents behave: $x^{a+b}=x^a\cdot x^b.$
+The fundamental two rules of logarithms are the addition and subtraction rules. Notice that addition outside becomes multiplication inside, and similarly, subtraction outside becomes division inside. This is a consequence of the way exponents behave: $x^{a+b}=x^a\cdot x^b.$
 
 \begin{theo}[Logarithm Addition]
-$\log_{a}b+\log_{a}c=\log_{a}{bc}.$
+Given positive reals $a,b,c$ with $a > 1$, $\log_{a}b+\log_{a}c=\log_{a}{bc}.$
 \end{theo}
 
 \begin{pro}
@@ -37,7 +37,7 @@ Notice that $a^{\log_ab+\log_ac}=a^{\log_ab}\cdot a^{\log_ac}=bc=a^{\log_abc}.$ 
 \end{pro}
 
 \begin{theo}[Logarithm Subtraction]
-$\log_{a}b-\log_{a}c=\log_{a}{\frac{b}{c}}.$
+Given positive reals $a,b,c$ with $a > 1$, $\log_{a}b-\log_{a}c=\log_{a}{\frac{b}{c}}.$
 \end{theo}
 
 \begin{pro}
@@ -50,7 +50,7 @@ Notice that we're exploiting the properties of logarithms, and we're expressing 
 The base change rule allows you to express all logarithms in the same base; this is an extremely powerful, even if it doesn't look like much.
 
 \begin{theo}[Base Change]
-$\frac{\log_{a}b}{\log_{a}c}=\log_{c}b.$
+Given positive reals $a,b,c$ with $a > 1$, $\frac{\log_{a}b}{\log_{a}c}=\log_{c}b.$
 \end{theo}
 
 \begin{pro}
@@ -80,7 +80,7 @@ The motivation for expressing $\log 160$ as $\log 80 + \log 2$ is twofold. The g
 We present the so-called logarithm chain rule as an exercise. (It's pretty useless and is only being presented as a check-up.)
 
 \begin{exer}[Logarithm Chain Rule]
-$a,b,c,d,$ $\log_{a}b\log_{c}d=\log_{a}d\log_{c}b.$
+Given positive reals $a,b,c,d$ with $a>1$ and $c>1$, $\log_{a}b\log_{c}d=\log_{a}d\log_{c}b.$
 \end{exer}
 
 \section{Examples}
