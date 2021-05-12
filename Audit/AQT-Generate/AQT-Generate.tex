@@ -1,3 +1,4 @@
+
 \documentclass{article}
 
 \usepackage[mast]{dennis}
@@ -278,14 +279,27 @@ Kelvin the Frog has a pair of standard fair $8$-sided dice (each labelled from $
 Suppose that Alex's two dice have $a$ and $b$ total dots on them, respectively. Assuming that $a \neq b$, find all possible values of $\min \{a,b\}$.
 \end{prob}
 
-\begin{req}[BMO Round 2 2015/2]{9}
+\begin{req}[AMC 12B 2020/19]{9}
+Square $ABCD$ in the coordinate plane has vertices at the points $A(1,1), B(-1,1), C(-1,-1),$ and $D(1,-1).$ Consider the following four transformations: 
+
+\begin{itemize}
+\item $L,$ a rotation of $90^{\circ}$ counterclockwise around the origin;
+\item $R,$ a rotation of $90^{\circ}$ clockwise around the origin;
+\item $H,$ a reflection across the $x$-axis; and
+\item $V,$ a reflection across the $y$-axis.
+\end{itemize}
+
+Each of these transformations maps the squares onto itself, but the positions of the labeled vertices will change. For example, applying $R$ and then $V$ would send the vertex $A$ at $(1,1)$ to $(-1,-1)$ and would send the vertex $B$ at $(-1,1)$ to itself. How many sequences of $20$ transformations chosen from $\{L, R, H, V\}$ will send all of the labeled vertices back to their original positions? (For example, $R, R, V, H$ is one sequence of $4$ transformations that will send the vertices back to their original positions.)
+\end{req}
+
+\begin{prob}[BMO Round 2 2015/2]{9}
 In Oddesdon Primary School there are an odd number of classes. Each class contains an odd number of pupils. One pupil from each class will be chosen to form the school council. Prove that the following two statements are logically equivalent.
 \begin{enumerate}
 \item There are more ways to form a school council which includes an odd number of boys than ways to form a school council which includes an odd number of girls.
 
 \item There are an odd number of classes which contain more boys than girls.
 \end{enumerate}
-\end{req}
+\end{prob}
 
 \begin{prob}[NYCMT 2020]{13}
 Compute the value of
@@ -388,6 +402,8 @@ This sum is a geometric series with first term $\frac{1}{(1-x)^2}$ and common ra
 \end{align*}
 Now, all that remains is to find a closed form. We leave this as an exercise to the reader. $\square$
 \end{sol}
+
+\newpage
 
 \begin{exer}
 For $n \ge 0$, compute
