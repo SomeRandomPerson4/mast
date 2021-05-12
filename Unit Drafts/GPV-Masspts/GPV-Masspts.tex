@@ -29,7 +29,7 @@ If $aA$ is the center of mass of a system of mass points $S_1$ and $bB$ is the c
 The center of mass of a system of mass points $w_1P_1,w_2P_2\ldots$ can be thought of as their weighted average: toss the mass points on the coordinate plane, then the x-coordinate of the center of mass is $\frac{w_1x_1+w_2x_2\ldots}{w_1+w_2\ldots}$ and similarly the y-coordinate is $\frac{w_1y_1+w_2y_2\ldots}{w_1+w_2\ldots}$.
 \end{defi}
 
-Lastly, here is the single most important guiding principle (I like to refer to it as balancing) one should follow while solving problems with mass points. 
+Lastly, here is the single most important guiding principle (I personally refer to it as balancing) one should follow while solving problems with mass points. 
 
 \begin{theo}[Balancing Principle]
 Every mass point defined on a segment should be the gravity center of its two endpoints.
@@ -61,37 +61,63 @@ Set $A$'s weight as $2$ and $C$'s weight as $1$. We can see that $D$ has weight 
 \begin{remark}
 It is not a fluke that $4F$, when seen as a point on the extension of $AE$, also happens to be the gravity center of $1B$ and $3C$; since $E$ is the gravity center of the triangle in this case, $E$ has weight $a+b+c$ and $F$ has weight $(a+b+c)-a=b+c$. \textbf{If set up properly, mass points is guaranteed to work out.}
 \end{remark}
+\begin{exer}
+On the triangle formed by the mass points $aA,bB,cC$, a point $D$ is chosen on segment $BC$. Prove that $AD$ goes through the gravity center of the triangle \textbf{if and only if} the mass point $(b+c)D$ is the gravity center of $bB$ and $cC$. That is, we have to prove that segment $AD$ goes through the gravity center if $(b+c)D$ is the gravity center of $bB$ and $cC$, and that the segment would not go through the gravity center if $(b+c)D$ is not the gravity center of $bB$ and $cC$.
+
+(Keep in mind that mass points are still points, and can be referred to as points when only using their properties that are inherited from points.)
+\end{exer}
+\newpage
+
 \subsection{Splitting points and multiple systems}
 Sometimes, the problem is not as direct as the previous subsection, which would call for a few more tricks.
 \begin{exam}
 In triangle $ABC$, we have $E$ and $F$ on sides $AC,AB$ such that $\frac{AE}{EC}=\frac{5}{2},\frac{AF}{FB}=\frac{3}{7}$. Let $H$ be a point on $EF$ with $\frac{EH}{HF}=\frac{20}{7}$; if line $AH$ intersects $BC$ again at $D$, find $\frac{AH}{HD}$.
 \end{exam}
 This is a prime example of when splitting points is necessary. Its basic premise is to split $A$ into two points: $A_1$ such that $F$ is the gravity center of $A_1$ and $B$, $A_2$ such that $E$ is the gravity center of $A_2$ and $C$, and treat $A$ as having weight $a_1+a_2$ when dealing with the cevian $AD$.
-\newpage
 \begin{sol}
 We split $A$ into $A_1$ and $A_2$ as described. 
 
-Assign a weight of $27$ to $H$. Then, $E$ has weight $7$, $F$ has weight $20$, $A_1$ has weight $14$ and $A_2$ has weight $2$. On the cevian $AD$, $A$ has weight $14+2=16$ and $D$ has weight $27-16=11$, therefore $\frac{AH}{HD}=\frac{11}{16}$. 
+Assign a weight of $27$ to $H$. Then, $E$ has weight $7$, $F$ has weight $20$, $A_1$ has weight $14$ and $A_2$ has weight $2$. On the cevian $AD$, $A$ has weight $14+2=16$ and $D$ has weight $27-16=11$, therefore $\frac{AH}{HD}=\ansbold{\frac{11}{16}}$. 
 \end{sol}
 
 \bigskip
-Here is a concrete example of attacking a problem with more than one systems of mass points:
+\noindent Here is a concrete example of attacking a problem with more than one systems of mass points:
 \begin{exam}
+Points $D,E,F$ are located on sides $BC,AC,AB$ of triangle $ABC$, respectively, with $\frac{AF}{FB}=\frac{2}{5},\frac{AE}{EC}=\frac{3}{2},\frac{BD}{DC}=\frac{1}{6}$. Given that $AD$ intersect $BE,CF$ at distinct points $R,S$, find $\frac{AR}{AS}$.
 \end{exam}
-\subsection{Auxiliary devices}
-Deciding to use mass points does not mean that you can turn off your brain. Applying concepts from other areas of Geometry, such as similar triangles and area formulas, could often assist mass points to solve problems more efficiently.
-\begin{exam}
-\end{exam}
-In this example, mass points alone seems insufficient.
-\section{Problems}
-Generic mass points problems can be mass-produced, so we will only feature a small number of problems that are considered as genuinely creative applications of it.
-\minpt{24}
-\begin{prob}{1}
-On the triangle formed by the mass points $aA,bB,cC$, a point $D$ is chosen on segment $BC$. Prove that $AD$ goes through the gravity center of the triangle \textbf{if and only if} the mass point $(b+c)D$ is the gravity center of $bB$ and $cC$. That is, we have to prove that segment $AD$ goes through the gravity center if $(b+c)D$ is the gravity center of $bB$ and $cC$, and that the segment would not go through the gravity center if $(b+c)D$ is not the gravity center of $bB$ and $cC$.
 
-(Keep in mind that mass points are still points, and can be referred to as points when only using their properties that are inherited from points.)
-\end{prob}
-\begin{prob}[MATHCOUNTS 2012]{6}
+\begin{walk}
+\begin{enumerate}
+\item Set $R$ as the gravity center to get $\frac{AR}{AD}$, ignoring $S$.
+\item Set $S$ as the gravity center to get $\frac{AS}{AD}$, ignoring $R$.
+\item Obtain the final answer with arithmetics.
+\end{enumerate}
+\end{walk}
+\subsection{Auxiliary devices}
+Deciding to use mass points does not mean that you can turn off your brain. Applying concepts from other branches of Geometry, such as similar triangles and area formulas, could often assist mass points to solve problems more efficiently.
+\begin{exam}[MATHCOUNTS 2012]
+Point $M$ of rectangle $ABCD$ is the midpoint of side $BC$ and point $N$ lies on $CD$ such that $\frac{DN}{NC}=\frac{1}{4}$. Segment $BN$ intersects $AM$ and $AC$ at points $R$ and $S$. If $NS:SR:RB = x:y:z$ for positive integers $x,y,z$ with $\gcd(x,y,z)=1$, find $x + y + z$.
+\end{exam}
+In this example, mass points alone seems insufficient. However, upon noticing a critical pair of similar triangles, the problem is reduced to a standard exercise.
+
+\begin{walk}
+\begin{enumerate}
+\item Find the pair of similar triangles. (Opposite angles are useful.) That immediately eliminates one term in the ratio.
+\item Solve for the other two terms using the techniques that we have developed.
+\item Finish the problem by taking the least common multiple of the denominators.
+\end{enumerate}
+\end{walk}
+\section{Problems}
+Generic mass points problems can be mass-produced, so I will only feature a small number of problems that I consider to be genuinely creative and/or nice applications of it.
+
+\bigskip
+\noindent\minpt{TBD}
+
+\begin{req}[Review of fundamentals]{2}
+\end{req}
+
+\begin{prob}[Ceva]{1}
+On sides $BC,AC,AB$ of triangle $ABC$, choose points $D,E,F$; prove that $AD,BE$ and $CF$ are concurrent (intersect at one single point) if and only if $\frac{BD}{DC}\cdot\frac{CE}{EA}\cdot\frac{AF}{FB}=1$.
 \end{prob}
 \end{document}
 
