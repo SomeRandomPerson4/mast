@@ -6,7 +6,7 @@
 \date{GRU}
 \maketitle
 \section{Introduction}
-This is a (short-ish) unit about moving stuff around in diagrams. This unit can be thought of as a harder version of GQU-Transform, but has a lot of other stuff that you wouldn't expect to see in that unit. Also includes spiral similarity, because, despite not seeing much use, it is still a very useful tool that will kill many problems.\\
+This is a (short-ish) unit about moving stuff around in diagrams. This unit can be thought of as a harder version of GQU-Transform, but has a lot of other stuff that you wouldn't expect to see in that unit. Also includes spiral similarity, because, despite not seeing much use, it is still a very useful tool that will kill many problems.
 Many of the problems in this unit may seem rather silly, but I guarantee that these kinds of problems \textit{will} do show up (and quite frequently at that). This is also the kind of handout where progress will probably come in bursts and not linearly.
 \section{Spiral Similarity and the Miquel point}
 \subsection{Disclaimer}
@@ -20,12 +20,16 @@ The important thing about this is that there is a unique spiral similarity sendi
 \begin{lemma}[Circle Intersections Induce Spiral Similarity]
 Let circles $\omega_1$ and $\omega_2$ intersect at $X,Y$. Let $A,C$ be points on $\omega_1$ and $B,D$ points on $\omega_2$ such that $AB,CD$ pass through $X$. Then there exists a spiral similarity centered at $Y$ sending $AB$ to $CD$. Conversely, if $Y$ is the center of a spiral similarity sending $AB$ to $CD$, and $AB,CD$ intersect at $X$, then $ACXY$ and $BDXY$ are cyclic quadrilaterals.
 \end{lemma}
-\textit{Proof.} Left to the reader as an exercise in angle chasing(find the pair of similar triangles!).\\
-An extension of this is Miquel's Theorem on quadrilaterals.\\
+\begin{pro}
+Left to the reader as an exercise in angle chasing.\footnote{Find the pair of similar triangles!}
+\end{pro}
+An extension of this is Miquel's Theorem on quadrilaterals.
 \begin{theo}[Miquel's Theorem and the Miquel Point]
 Let $ABCD$ be a quadrilateral. Let $AB,CD$ intersect at $E$ and $BC, AD$ intersect at $F$. Then circles $(ABE),(CDE),(BCF),(ADF)$ concur at a point $M$ which we denote as the \textit{Miquel Point} of $ABCD$.
 \end{theo}
-\textit{Proof.} This follows from using the circle intersections lemma twice and the fact that spiral similarities come in pairs. This is also doable with vanilla angle chasing, but that method is isomorphic and finding it is left to the reader. This theorem is admittedly not something you will see used very often on computational contests.\\
+\begin{pro}
+This follows from using the circle intersections lemma twice and the fact that spiral similarities come in pairs. This is also doable with vanilla angle chasing, but that method is isomorphic and finding it is left to the reader. This theorem is admittedly not something you will see used very often on computational contests.
+\end{pro}
 Next, an example showcasing spiral sims that arise from the circle configuration.
 \begin{exam}[AIME I 2010/15]
 	In triangle $ ABC$, $ AC = 13, BC = 14,$ and $ AB=15$. Points $ M$ and $ D$ lie on $ AC$ with $ AM=MC$ and $ \angle ABD = \angle DBC$. Points $ N$ and $ E$ lie on $ AB$ with $ AN=NB$ and $ \angle ACE = \angle ECB$. Let $ P$ be the point, other than $ A$, of intersection of the circumcircles of $ \triangle AMN$ and $ \triangle ADE$. Ray $ AP$ meets $ BC$ at $ Q$. The ratio $ \frac{BQ}{CQ}$ can be written in the form $ \frac{m}{n}$, where $ m$ and $ n$ are relatively prime positive integers. Find $ m-n$.
@@ -39,7 +43,7 @@ Next, an example showcasing spiral sims that arise from the circle configuration
     \end{enumerate}
 \end{walk}
 \section{Construction, featuring our friends rotation and reflection}
-This next section has some of most pure-intuition ideas, so it will feature mostly just problems and very little "lecture".\\
+This next section has some of most pure-intuition ideas, so it will feature mostly just problems and very little "lecture".
 \begin{exam}[Traditional proof of the Angle Bisector Theorem]
 Prove that if $D$ is the point on $BC$ such that $\angle DAB = \angle CAD$, then $\frac{AB}{AC} = \frac{BD}{DC}$.
 \end{exam}
@@ -61,12 +65,15 @@ markangle(radius=15,n=1,C,E,D,marker(markinterval(stickframe(n=1,2mm),true)));
 \end{center}
 \end{pro}
 
-Using $\angle X$ and $180-\angle X$ by adding such an isoceles triangle is a common motif in these kinds of problems.\\
-Finally, one last example, showcasing the power of construction in special triangles:\\
+Using $\angle X$ and $180-\angle X$ by adding such an isoceles triangle is a common motif in these kinds of problems.
+
+
+Finally, one last example, showcasing the power of construction in special triangles:
 \begin{exam}[GGMT Speed 2020/20]
 There exists a point $P$ inside regular hexagon $ABCDEF$ such that $AP=\sqrt{3},BP=2,CP=3.$ If the area of the hexagon can be expressed as $\frac{a\sqrt{b}}{c},$ where $b$ is not divisible by the square of a prime, find $a+b+c.$
 \end{exam}
-Yes, this problem is in Transformations. Once again, feel free to skip if you've done it, but the method here will have a slightly different heuristic than the one in Transformations, where we add points first and look at transformations later.\\
+Yes, this problem is in Transformations. Once again, feel free to skip if you've done it, but the method here will have a slightly different heuristic than the one in Transformations, where we add points first and look at transformations later.
+
 \begin{walk}
     \begin{enumerate}
         \item Add a point $P'$ that takes advantage of the fact that $AB = BC$. (Hint: Congruent Triangles)
@@ -74,15 +81,29 @@ Yes, this problem is in Transformations. Once again, feel free to skip if you've
         \item Finish however you like.
     \end{enumerate}
 \end{walk}
-\section{Problems}
+
+\problems
+
 \minpt{60}
 \psetquote{Truth is water. It is not distinguished into separate, countable objects; once mixed with other water, it can never return to what it was. As you try to grasp it, it slips through the gaps between your fingers, and you see only a part of it.}{Aya Shameimaru}
-\req{2}{AIME I 2011/2}{	In rectangle $ABCD$, $AB=12$ and $BC=10$. Points $E$ and $F$ lie inside rectangle $ABCD$ so that $BE=9$, $DF=8$, $\overline{BE} \parallel \overline{DF}$, $\overline{EF} \parallel \overline{AB}$, and line $BE$ intersects segment $\overline{AD}$. The length $EF$ can be expressed in the form $m\sqrt{n}-p$, where $m,n,$ and $p$ are positive integers and $n$ is not divisible by the square of any prime. Find $m+n+p$.}\\
-\prob{3}{AMC 12A 2020/24}{Suppose that $\triangle ABC$ is an equilateral triangle of side length $s$, with the property that there is a unique point $P$ inside the triangle such that $AP = 1$, $BP = \sqrt{3}$, and $CP = 2$. What is $s?$}\\
-\prob{4}{AIME II 2011/13}{Point $P$ lies on the diagonal $AC$ of square $ABCD$ with $AP>CP$. Let $O_1$ and $O_2$ be the circumcenters of triangles $\triangle ABP$ and $\triangle CDP$ respectively. Given that $AB=12$ and $\angle O_1 P O_2 = 120^\circ$, then $AP=\sqrt{a}+\sqrt{b}$ where $a$ and $b$ are positive integers. Find $a+b$.}\\
-\prob{4}{AIME I 2021/9}{Let $ABCD$ be an isosceles trapezoid with $AD=BC$ and $AB<CD.$ Suppose that the distances from $A$ to the lines $BC,CD,$ and $BD$ are $15,18,$ and $10,$ respectively. Let $K$ be the area of $ABCD.$ Find $\sqrt2 \cdot K.$}\\
-\prob{4}{CMC 12A 2020/23}{There exists $\triangle ABC$ with $\angle B = 30^{\circ}$ that satisfies $\frac{b+c}{2\cos C}=a$. Find $\angle A$.}\\
-\prob{6}{AIME II 2021/14}{Let $\triangle ABC$ be an acute triangle with circumcenter $O$ and centroid $G$. Let $X$ be the intersection of the line tangent to the circumcircle of $\triangle ABC$ at $A$ and the line perpendicular to $GO$ at $G$. Let $Y$ be the intersection of lines $XG$ and $BC$. Given that the measures of $\angle ABC, \angle BCA, $ and $\angle XOY$ are in the ratio $13 : 2 : 17, $ the degree measure of $\angle BAC$ can be written as $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m+n$.}
+\begin{req}[AIME I 2011/2]{2}
+In rectangle $ABCD$, $AB=12$ and $BC=10$. Points $E$ and $F$ lie inside rectangle $ABCD$ so that $BE=9$, $DF=8$, $\overline{BE} \parallel \overline{DF}$, $\overline{EF} \parallel \overline{AB}$, and line $BE$ intersects segment $\overline{AD}$. The length $EF$ can be expressed in the form $m\sqrt{n}-p$, where $m,n,$ and $p$ are positive integers and $n$ is not divisible by the square of any prime. Find $m+n+p$.
+\end{req}
+\begin{prob}[AMC 12A 2020/24]{3}
+Suppose that $\triangle ABC$ is an equilateral triangle of side length $s$, with the property that there is a unique point $P$ inside the triangle such that $AP = 1$, $BP = \sqrt{3}$, and $CP = 2$. What is $s?$
+\end{prob}
+\begin{prob}[AIME II 2011/13]{4}
+Point $P$ lies on the diagonal $AC$ of square $ABCD$ with $AP>CP$. Let $O_1$ and $O_2$ be the circumcenters of triangles $\triangle ABP$ and $\triangle CDP$ respectively. Given that $AB=12$ and $\angle O_1 P O_2 = 120^\circ$, then $AP=\sqrt{a}+\sqrt{b}$ where $a$ and $b$ are positive integers. Find $a+b$.
+\end{prob}
+\begin{prob}[AIME I 2021/9]{4}
+Let $ABCD$ be an isosceles trapezoid with $AD=BC$ and $AB<CD.$ Suppose that the distances from $A$ to the lines $BC,CD,$ and $BD$ are $15,18,$ and $10,$ respectively. Let $K$ be the area of $ABCD.$ Find $\sqrt2 \cdot K.$
+\end{prob}
+\begin{prob}[CMC 12A 2020/23]{4}
+There exists $\triangle ABC$ with $\angle B = 30^{\circ}$ that satisfies $\frac{b+c}{2\cos C}=a$. Find $\angle A$.
+\end{prob}
+\begin{prob}[AIME II 2021/14]{6}
+Let $\triangle ABC$ be an acute triangle with circumcenter $O$ and centroid $G$. Let $X$ be the intersection of the line tangent to the circumcircle of $\triangle ABC$ at $A$ and the line perpendicular to $GO$ at $G$. Let $Y$ be the intersection of lines $XG$ and $BC$. Given that the measures of $\angle ABC, \angle BCA, $ and $\angle XOY$ are in the ratio $13 : 2 : 17, $ the degree measure of $\angle BAC$ can be written as $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m+n$.
+\end{prob}
 \begin{center}
 \begin{asy}
 unitsize(5mm);
@@ -116,16 +137,34 @@ markscalefactor = 0.07;
 draw(rightanglemark(X,G,O));
 \end{asy}
 \end{center}
-\prob{6}{AMC 12A 2018/23}{In $\triangle PAT,$ $\angle P=36^{\circ},$ $\angle A=56^{\circ},$ and $PA=10.$ Points $U$ and $G$ lie on sides $\overline{TP}$ and $\overline{TA},$ respectively, so that $PU=AG=1.$ Let $M$ and $N$ be the midpoints of segments $\overline{PA}$ and $\overline{UG},$ respectively. What is the degree measure of the acute angle formed by lines $MN$ and $PA?$}\\
-\prob{6}{First Isogonality Lemma}{In $\triangle ABC$ let $\omega$ be a circle passing through $B,C$ intersecting $AB,AC$ at $D,E$ respectively. Let the intersection of $CD$ and $BE$ be $P$. Let $Q$ be the reflection of $P$ over the midpoint of $BC$. Then prove \angle $BAP = \angle CAQ$.}\\
-\prob{9}{CMC 10B 2021/24}{Triangle $\triangle PQR$ with $PQ=3$, $QR=4$, $RP=5$ is drawn inside a regular hexagon $ABCDEF$ with $P$ on segment $FA$, $Q$ the midpoint of segment $AB$, and $R$ on segment $CD$. Given that $AB^2=\frac mn$ for relatively prime positive integers $m$ and $n$, find $m+n$.}\\
-\prob{9}{HMMT Geo 2020/5}{Let $ABCDEF$ be a regular hexagon with side length $2$. A circle with radius $3$ and center at $A$ is drawn. Find the area inside quadrilateral $BCDE$ but outside the circle.}\\
-\prob{9}{USAMO 2020/1}{Let $ABC$ be a fixed acute triangle inscribed in a circle $\omega$ with center $O$. A variable point $X$ is chosen on minor arc $AB$ of $\omega$, and segments $CX$ and $AB$ meet at $D$. Denote by $O_1$ and $O_2$ the circumcenters of triangles $ADX$ and $BDX$, respectively. Determine all points $X$ for which the area of triangle $OO_1O_2$ is minimized.}\\
-\prob{9}{AIME II 2018/12}{Let $ABCD$ be a convex quadrilateral with $AB=CD=10$, $BC=14$, and $AD=2\sqrt{65}$. Assume that the diagonals of $ABCD$ intersect at point $P$, and that the sum of the areas of $\triangle APB$ and $\triangle CPD$ equals the sum of the areas of $\triangle BPC$ and $\triangle APD$. Find the area of quadrilateral $ABCD$.}\\
-(The Geo Manip - style solution to this problem is admittedly very funky and not as smooth as some of the other solutions. For instructive purposes, I'd rather not a trig bash be submitted, but I can't stop you.)\\
-\req{13}{CMIMC Geo 2016/8}{Suppose $ABCD$ is a convex quadrilateral satisfying $AB=BC$, $AC=BD$, $\angle ABD = 80^\circ$, and $\angle CBD = 20^\circ$. What is $\angle BCD$ in degrees?}\\
-\prob{13}{IMO 1975/3}{In the plane of a triangle $ABC,$ in its exterior$,$ we draw the triangles $\triangle ABR, \triangle BCP, \triangle CAQ$ so that $\angle PBC = \angle CAQ = 45^{\circ}$, $\angle BCP = \angle QCA = 30^{\circ}$, $\angle ABR = \angle RAB = 15^{\circ}$.
-Prove that $\triangle QRP$ is an isoceles right triangle with right angle at $Q$.}\\
-\prob{13}{USAMO 2021/1}{Rectangles $BCC_1B_2,$ $CAA_1C_2,$ and $ABB_1A_2$ are erected outside an acute triangle $ABC.$ Suppose that\[\angle BC_1C+\angle CA_1A+\angle AB_1B=180^{\circ}.\]Prove that lines $B_1C_2,$ $C_1A_2,$ and $A_1B_2$ are concurrent.}\\
-(Once again, multiple solutions. Try avoid drawing any circles.)
+\begin{prob}[AMC 12A 2018/23]{6}
+In $\triangle PAT,$ $\angle P=36^{\circ},$ $\angle A=56^{\circ},$ and $PA=10.$ Points $U$ and $G$ lie on sides $\overline{TP}$ and $\overline{TA},$ respectively, so that $PU=AG=1.$ Let $M$ and $N$ be the midpoints of segments $\overline{PA}$ and $\overline{UG},$ respectively. What is the degree measure of the acute angle formed by lines $MN$ and $PA?$
+\end{prob}
+\begin{prob}[First Isogonality Lemma]{6}
+In $\triangle ABC$ let $\omega$ be a circle passing through $B,C$ intersecting $AB,AC$ at $D,E$ respectively. Let the intersection of $CD$ and $BE$ be $P$. Let $Q$ be the reflection of $P$ over the midpoint of $BC$. Then prove $\angle BAP = \angle CAQ$.
+\end{prob}
+\begin{prob}[CMC 10B 2021/24]{9}
+Triangle $\triangle PQR$ with $PQ=3$, $QR=4$, $RP=5$ is drawn inside a regular hexagon $ABCDEF$ with $P$ on segment $FA$, $Q$ the midpoint of segment $AB$, and $R$ on segment $CD$. Given that $AB^2=\frac mn$ for relatively prime positive integers $m$ and $n$, find $m+n$.
+\end{prob}
+\begin{prob}[HMMT Geo 2020/5]{9}
+Let $ABCDEF$ be a regular hexagon with side length $2$. A circle with radius $3$ and center at $A$ is drawn. Find the area inside quadrilateral $BCDE$ but outside the circle.
+\end{prob}
+\begin{prob}[USAMO 2020/1]{9}
+Let $ABC$ be a fixed acute triangle inscribed in a circle $\omega$ with center $O$. A variable point $X$ is chosen on minor arc $AB$ of $\omega$, and segments $CX$ and $AB$ meet at $D$. Denote by $O_1$ and $O_2$ the circumcenters of triangles $ADX$ and $BDX$, respectively. Determine all points $X$ for which the area of triangle $OO_1O_2$ is minimized.
+\end{prob}
+\begin{prob}[AIME II 2018/12]{9}
+Let $ABCD$ be a convex quadrilateral with $AB=CD=10$, $BC=14$, and $AD=2\sqrt{65}$. Assume that the diagonals of $ABCD$ intersect at point $P$, and that the sum of the areas of $\triangle APB$ and $\triangle CPD$ equals the sum of the areas of $\triangle BPC$ and $\triangle APD$. Find the area of quadrilateral $ABCD$.\footnote{The Geo Manip - style solution to this problem is admittedly very funky and not as smooth as some of the other solutions. For instructive purposes, I'd rather not have a trigonometric bash be submitted, but I can't stop you.}
+\end{prob}
+
+\begin{req}[CMIMC Geo 2016/8]{13}
+Suppose $ABCD$ is a convex quadrilateral satisfying $AB=BC$, $AC=BD$, $\angle ABD = 80^\circ$, and $\angle CBD = 20^\circ$. What is $\angle BCD$ in degrees?
+\end{req}
+\begin{prob}[IMO 1975/3]{13}
+In the plane of a triangle $ABC,$ in its exterior$,$ we draw the triangles $\triangle ABR, \triangle BCP, \triangle CAQ$ so that $\angle PBC = \angle CAQ = 45^{\circ}$, $\angle BCP = \angle QCA = 30^{\circ}$, $\angle ABR = \angle RAB = 15^{\circ}$.
+Prove that $\triangle QRP$ is an isoceles right triangle with right angle at $Q$.
+\end{prob}
+\begin{prob}[USAMO 2021/1]{13}
+Rectangles $BCC_1B_2,$ $CAA_1C_2,$ and $ABB_1A_2$ are erected outside an acute triangle $ABC.$ Suppose that\[\angle BC_1C+\angle CA_1A+\angle AB_1B=180^{\circ}.\]Prove that lines $B_1C_2,$ $C_1A_2,$ and $A_1B_2$ are concurrent.\footnote{Once again, there are multiple solutions. Try to avoid drawing any circles.}
+\end{prob}
+
 \end{document}
