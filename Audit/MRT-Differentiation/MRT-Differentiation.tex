@@ -51,10 +51,10 @@ This mindset will completely explain the Power Rule and higher order derivatives
 Borrowing a concept from computer science, we discuss the order of a function. Typically in computer science we want to examine how programs behave as they grow large, so a function that runs in $n^2+7n+4$ time is said to be ``$O(n^2),$'' because only the $n^2$ term matters when it grows large. But in calculus we want to examine the behavior of a function as it grows \db{smaller}; thus, the most significant term is the constant term, followed by the linear term, then the quadratic term, etc. \textbf{Terms with smaller degrees are more significant}.
 
 \begin{defi}[Order]
-We say that the order of a function is $o(\epsilon^k)$ if the \textbf{smallest} degree of $\epsilon$ in a term is $k.$
+We say that the order of a function is $O(\epsilon^k)$ if the \textbf{smallest} degree of $\epsilon$ in a term is $k.$
 \end{defi}
 
-Now we can be more specific when we say $f(2+\epsilon)\approx 4+4\epsilon$ -- what we really mean is that $f(2+\epsilon)=4+4\epsilon+o(\epsilon^2),$ where we truthfully could care less what the function $o(\epsilon^2)$ entails.
+Now we can be more specific when we say $f(2+\epsilon)\approx 4+4\epsilon$ -- what we really mean is that $f(2+\epsilon)=4+4\epsilon+O(\epsilon^2),$ where we truthfully could care less what the function $O(\epsilon^2)$ entails.
 
 \subsection{The Power Rule}
 
@@ -62,7 +62,7 @@ We can take the derivative of a function at a point -- but generally we will wan
 
 \begin{defi}[Derivative of a Function]
 We denote the derivative of $f'$ at any arbitrary point as $f'(x).$ We express this in terms of $x.$ It satisfies the equation
-\[f(x+\epsilon)=f(x)+\epsilon f'(x)+o(\epsilon^2),\]
+\[f(x+\epsilon)=f(x)+\epsilon f'(x)+O(\epsilon^2),\]
 \end{defi}
 
 This fundamentally means that $f'(x)$ is the coefficient of the $\epsilon$ term of $f(x+\epsilon).$
@@ -74,7 +74,7 @@ What is the derivative of $f(x)=x^2,$ expressed as a function of $x?$
 \end{exam}
 
 \begin{sol}
-Note that $f(x+\epsilon)=(x+\epsilon)^2=x^2+2x\epsilon+\epsilon^2.$ Since $\epsilon^2$ is $o(\epsilon^2)$ and the rest of the terms are not, $f'(x)=2x.$
+Note that $f(x+\epsilon)=(x+\epsilon)^2=x^2+2x\epsilon+\epsilon^2.$ Since $\epsilon^2$ is $O(\epsilon^2)$ and the rest of the terms are not, $f'(x)=2x.$
 \end{sol}
 
 Now we go further -- what's the derivative of $f(x)=x^n$ in general?
@@ -84,7 +84,7 @@ If $f(x)=x^n,$ then $f'(x)=nx^{n-1}.$
 \end{theo}
 
 \begin{pro}
-Note that $f(x+\epsilon)=x^n+nx^{n-1}\epsilon+o(\epsilon^2),$ so the derivative is the coefficient of $\epsilon,$ namely $nx^{n-1}.$
+Note that $f(x+\epsilon)=x^n+nx^{n-1}\epsilon+O(\epsilon^2),$ so the derivative is the coefficient of $\epsilon,$ namely $nx^{n-1}.$
 \end{pro}
 
 Keep in mind that this holds for non-integer $n$ as well because of the Extended Binomial Theorem (as $\binom{n}{1}$ is always $n$). Since I trust you can pick a random polynomial and apply the Power Law on your own, I'll present a fairly difficult number-theoretic application of it instead.
@@ -159,11 +159,11 @@ If $f(0)=g(0)=0$ and $k$ is the smallest number such that $g^{(k)}(a)\neq 0,$ th
 \begin{pro}
 Note the Maclaurin Series look like
 \begin{align*}
-f(x)&=\frac{f^{(k)}(0)x^k}{k!}+o(x^{k+1})\\
-g(x)&=\frac{g^{(k)}(0)x^k}{k!}+o(x^{k+1}),
+f(x)&=\frac{f^{(k)}(0)x^k}{k!}+O(x^{k+1})\\
+g(x)&=\frac{g^{(k)}(0)x^k}{k!}+O(x^{k+1}),
 \end{align*}
 so
-\[\lim_{x\to 0}\frac{f(x)}{g(x)}=\lim_{x\to 0}\frac{f^{(k)}(0)+o(x)}{g^{(k)}(0)+o(x)}=\frac{f^{(k)}(0)}{g^{(k)}(0)}.\]
+\[\lim_{x\to 0}\frac{f(x)}{g(x)}=\lim_{x\to 0}\frac{f^{(k)}(0)+O(x)}{g^{(k)}(0)+O(x)}=\frac{f^{(k)}(0)}{g^{(k)}(0)}.\]
 \end{pro}
 
 A proof with the limit definition of derivatives is also quite straightforward. We do not prove the more general rule, which is that $\lim\limits_{x\to a}\frac{f(x)}{g(x)}=\lim\limits_{x\to a}\frac{f'(x)}{g'(x)}$ in the indefinite forms, but you still do need to know this.
@@ -176,13 +176,13 @@ Find $\lim\limits_{x\to 0}\frac{\sin(2x)}{x+x^2}.$
 We address a comment from mathchampion1 here: ``You don't explicitly prove that the derivative actually gives you the slope of the tangent line when you start out with the approximation-based definition.''
 
 \begin{theo}[Tangent slope and approximation give the same derivative]
-Say that $f(x+\epsilon)=f(x)+f'(x)\epsilon+o(\epsilon^2).$ Then $y-f(a)=f'(a)(x-a)$ is tangent to $f$ at $a,f(a).$
+Say that $f(x+\epsilon)=f(x)+f'(x)\epsilon+O(\epsilon^2).$ Then $y-f(a)=f'(a)(x-a)$ is tangent to $f$ at $a,f(a).$
 \end{theo}
 
 \begin{pro}
 Note that \[f'(x)=\lim_{\epsilon\to 0}\frac{f(x+\epsilon)-f(x)}{\epsilon}\] by the limit definition, which would give us the slope of the tangent line. Now rearranging gives
 \[\lim_{\epsilon\to 0}f(x+\epsilon)=\lim_{\epsilon\to 0}f(x)+f'(x)\epsilon,\]
-and since $\lim_{\epsilon\to 0}f(x+\epsilon)=\lim_{\epsilon\to 0}f(x)+f'(x)\epsilon+o(\epsilon^2).$ Since $\epsilon$ approaches $0$ and $o(\epsilon^2)$ is smaller than linear, the two definitions are consistent.
+and since $\lim_{\epsilon\to 0}f(x+\epsilon)=\lim_{\epsilon\to 0}f(x)+f'(x)\epsilon+O(\epsilon^2).$ Since $\epsilon$ approaches $0$ and $O(\epsilon^2)$ is smaller than linear, the two definitions are consistent.
 \end{pro}
 
 \subsection{Summary}
@@ -253,8 +253,8 @@ To see why the product rule must be true, we proceed by adding and subtracting $
 \end{pro}
 
 \begin{pro}[2 (Taylor)]
-Note $f(x+\epsilon)=f(x)+f'(x)\epsilon+O(\epsilon^2)$ and $g(x+\epsilon)=g(x)+g'(x)\epsilon+o(\epsilon^2),$ so
-\[f(x+\epsilon)g(x+\epsilon)=f(x)g(x)+(f'(x)g(x)+f(x)g'(x))\epsilon+o(\epsilon^2).\]
+Note $f(x+\epsilon)=f(x)+f'(x)\epsilon+O(\epsilon^2)$ and $g(x+\epsilon)=g(x)+g'(x)\epsilon+O(\epsilon^2),$ so
+\[f(x+\epsilon)g(x+\epsilon)=f(x)g(x)+(f'(x)g(x)+f(x)g'(x))\epsilon+O(\epsilon^2).\]
 By the definition of the derivative, $(f(x)g(x))'$ is the coefficient of the $\epsilon$ term, or $f'(x)g(x)+f(x)g'(x),$ as desired.
 \end{pro}
 
