@@ -1,7 +1,5 @@
 \documentclass{article}
-\usepackage{dennis}
-
-\usepackage{float}
+\usepackage[mast]{lucky}
 
 \title{Integration}
 \author{Dennis Chen and Dylan Yu}
@@ -900,6 +898,27 @@ as desired.
 \end{tikzpicture}
 \end{center}
 
+Here is a somewhat involved example.
+
+\begin{exam}[Snyder Calculus BC 2020]
+Find the length of the parametric curve $(x,y)=(\cos^3t,\sin^3t)$ on the domain $(0,\frac{\pi}{2})$.
+\end{exam}
+
+\begin{sol}
+Note that $\frac{dx}{dt}=-3\cos^2t\sin t$ and $\frac{dy}{dt}=3\sin^2t\cos t$. Thus, the length of the curve is
+\begin{align*}
+\int_{0}^{\frac{\pi}{2}}\sqrt{\left(\frac{dx}{dt}\right)^2+\left(\frac{dy}{dt}\right)^2}dt&=\int_{0}^{\frac{\pi}{2}}\sqrt{\left(-3\cos^2t\sin t\right)^2+\left(3\sin^2t\cos t\right)^2}dt \\
+&=\int_{0}^{\frac{\pi}{2}}\sqrt{9\cos^4t\sin^2t+9\cos^2t\sin^4t}dt \\
+% meh, unnecessary.
+%&=\int_{0}^{\frac{\pi}{2}}3\sin t\cos t\sqrt{\sin^2t+\cos^2t}dt \\
+&=\int_{0}^{\frac{\pi}{2}}3\sin t\cos tdt \\
+&=\int_{0}^{\frac{\pi}{2}}\frac{3\sin(2t)}{2}dt \\
+&=\Eval{\frac{-3\cos(2t)}{4}}{0}{\frac{\pi}{2}} \\
+&=\frac{3}{4}-(\frac{-3}{4}) \\
+&=\frac{3}{2}.
+\end{align*}
+\end{sol}
+
 \begin{theo}[Arc Length in Rectangular Form]
 The arc length of a rectangular function from $a$ to $b$ is
 \[\int_a^b \sqrt{1+\left(\frac{dy}{dx}\right)^2}dx.\]
@@ -926,7 +945,7 @@ and similarly,
 Now note
 \begin{align*}
 \sqrt{\left(\frac{dx}{d\theta}\right)^2+\left(\frac{dy}{d\theta}\right)^2}&=\sqrt{\left(\frac{dr}{d\theta}\cos\theta-r\sin\theta\right)^2+\left(\frac{dr}{d\theta}\sin\theta+r\cos\theta\right)^2} \\
-&=\sqrt{\left(\frac{dr}{d\theta}\right)^2(cos^2\theta+\sin^2\theta)+r\frac{dr}{d\theta}(-2\sin\theta\cos\theta+2\sin\theta\cos\theta)+r^2(\sin^2\theta+\cos^2\theta)} \\
+&=\sqrt{\left(\frac{dr}{d\theta}\right)^2(\cos^2\theta+\sin^2\theta)+r\frac{dr}{d\theta}(-2\sin\theta\cos\theta+2\sin\theta\cos\theta)+r^2(\sin^2\theta+\cos^2\theta)} \\
 &=\sqrt{r^2+\left(\frac{dr}{d\theta}\right)^2}.
 \end{align*}
 So the initial parametric integral simplifies to
@@ -939,7 +958,7 @@ So the initial parametric integral simplifies to
 It is often hard to bound an integral. Here are a few tricks:
 \begin{itemize}
     \item If $1+a^x$ is in the denominator with bounds $-b$ to $b$, then apply $u=-x$.
-    \item If the integrand is in the form $\frac{f(x-c)}{f(x-c)+f(-x+d)}$ with bounds from $a$ to $b$, and $a+b=c+d,$ then apply $u=a+b-x$. This is usually seen in the form $u=\frac{pi}{2}-x$ for trigonometric functions over $\paren{0,\frac{\pi}{2}}$ or $u=1-x$ over $(0,1)$.
+    \item If the integrand is in the form $\frac{f(x-c)}{f(x-c)+f(-x+d)}$ with bounds from $a$ to $b$, and $a+b=c+d,$ then apply $u=a+b-x$. This is usually seen in the form $u=\frac{\pi}{2}-x$ for trigonometric functions over $\paren{0,\frac{\pi}{2}}$ or $u=1-x$ over $(0,1)$.
     \item If $x^2+a^2$ is in the denominator with bounds 0 to $\infty$ or 1 to $a$ (which is common with $\ln x$ and $\arctan x$), apply $u=\frac{a}{x}$.
 \end{itemize}
 
@@ -949,9 +968,9 @@ Evaluate $\int_{-\infty}^{\infty} \frac{1}{(1+x^2)(1+e^x)}\,dx$.
 
 \subsection{Weierstrass Substitution}
 The \db{Weierstrass substitution} is simply $t=\tan\paren{\frac{x}{2}}$. Under this substitution, we have
-$$\sin x=\frac{2t}{1+t^2} \qquad \cos x=\frac{1-t^2}{1+t^2} \qquad dx=\frac{2}{1+t^2}\,dx.$$
-his allows us to turn trigonometric expressions into rational functions. Using $t=\tanh\paren{\frac{x}{2}}$, we can similarly derive
-$$\sinh x=\frac{2t}{1-t^2} \qquad \cosh(x)=\frac{1+t^2}{1-t^2} \qquad dx=\frac{2}{1-t^2}\,dx.$$
+\[\sin x=\frac{2t}{1+t^2} \qquad \cos x=\frac{1-t^2}{1+t^2} \qquad dx=\frac{2}{1+t^2}\,dx.\]
+This allows us to turn trigonometric expressions into rational functions. Using $t=\tanh\paren{\frac{x}{2}}$, we can similarly derive
+\[\sinh x=\frac{2t}{1-t^2} \qquad \cosh(x)=\frac{1+t^2}{1-t^2} \qquad dx=\frac{2}{1-t^2}\,dx.\]
 
 \begin{exer}
 Evaluate $\int_0^{\frac{\pi}{2}} \frac{1}{3+\cos x}\,dx$.
@@ -995,11 +1014,11 @@ Show that for all $x>1,$
 \[\int_{1}^x e^{-t^2}dt<\frac{1}{2e}.\]
 \end{prob}
 
-\begin{req}[]{2}
+\begin{req}{2}
 Find $\int f(x)f'(x)dx.$
 \end{req}
 
-\begin{req}[]{3}
+\begin{req}{3}
 Find $\int e^x\sin xdx.$
 \end{req}
 
@@ -1012,7 +1031,7 @@ Find the value of $a$ such that
 Find the average value of the function $f(x)=\cos(2x)-\sin(\frac{x}{2})$ on the interval $[\frac{-\pi}{2},\pi]$.
 \end{prob}
 
-\begin{prob}[]{4}
+\begin{prob}{4}
 Evaluate
 \[\int \frac{1}{x^2+c}dx.\]
 \end{prob}
@@ -1029,7 +1048,6 @@ Three numbers in the interval $[0,1]$ are chosen independently and at random. Wh
 Evaluate the following limits:
 	\[\lim_{n \to \infty} \sum_{i = 1}^n\left[\sqrt{1+\frac{2i}{n}}\right]\frac{2}{n}\]
 	\[\lim_{h \to \infty} \frac{1}{h}\int_{2}^{2+h}\sin(x^2)dx.\]
-
 \end{prob}
 
 \begin{prob}[Joe Foster]{6}
@@ -1042,10 +1060,10 @@ Evaluate $\int_0^2\frac{\ln(1+x)}{x^2-x+1}\,dx$.
 \end{prob}
 
 \begin{prob}[David Altizio]{6}
-Evaluate \[\int \frac{2x}{x^4 + 1},dx.\]
+Evaluate \[\int \frac{2x}{x^4 + 1}\,dx.\]
 \end{prob}
 
-\begin{prob}[]{9}
+\begin{prob}{9}
 Evaluate \[\int \frac{dx}{e^x - 1}.\]
 \end{prob}
 
@@ -1066,7 +1084,9 @@ A block of wood has the shape of a right circular cylinder with radius $6$ and h
 \begin{center}
     \begin{asy}
         import geometry; import olympiad; import cse5; import three; import solids; size(8cm); currentprojection=orthographic(-1,-5,3);  picture lpic, rpic;  size(lpic,5cm); draw(lpic,surface(revolution((0,0,0),(-3,3*sqrt(3),0)..(0,6,4)..(3,3*sqrt(3),8),Z,0,120)),gray(0.7),nolight); draw(lpic,surface(revolution((0,0,0),(-3*sqrt(3),-3,8)..(-6,0,4)..(-3*sqrt(3),3,0),Z,0,90)),gray(0.7),nolight); draw(lpic,surface((3,3*sqrt(3),8)..(-6,0,8)..(3,-3*sqrt(3),8)--cycle),gray(0.7),nolight); draw(lpic,(3,-3*sqrt(3),8)..(-6,0,8)..(3,3*sqrt(3),8)); draw(lpic,(-3,3*sqrt(3),0)--(-3,-3*sqrt(3),0),dashed); draw(lpic,(3,3*sqrt(3),8)..(0,6,4)..(-3,3*sqrt(3),0)--(-3,3*sqrt(3),0)..(-3*sqrt(3),3,0)..(-6,0,0),dashed); draw(lpic,(3,3*sqrt(3),8)--(3,-3*sqrt(3),8)..(0,-6,4)..(-3,-3*sqrt(3),0)--(-3,-3*sqrt(3),0)..(-3*sqrt(3),-3,0)..(-6,0,0)); draw(lpic,(6*cos(atan(-1/5)+3.14159),6*sin(atan(-1/5)+3.14159),0)--(6*cos(atan(-1/5)+3.14159),6*sin(atan(-1/5)+3.14159),8));  size(rpic,5cm); draw(rpic,surface(revolution((0,0,0),(3,3*sqrt(3),8)..(0,6,4)..(-3,3*sqrt(3),0),Z,230,360)),gray(0.7),nolight); draw(rpic,surface((-3,3*sqrt(3),0)..(6,0,0)..(-3,-3*sqrt(3),0)--cycle),gray(0.7),nolight); draw(rpic,surface((-3,3*sqrt(3),0)..(0,6,4)..(3,3*sqrt(3),8)--(3,3*sqrt(3),8)--(3,-3*sqrt(3),8)--(3,-3*sqrt(3),8)..(0,-6,4)..(-3,-3*sqrt(3),0)--cycle),white,nolight); draw(rpic,(-3,-3*sqrt(3),0)..(-6*cos(atan(-1/5)+3.14159),-6*sin(atan(-1/5)+3.14159),0)..(6,0,0)); draw(rpic,(-6*cos(atan(-1/5)+3.14159),-6*sin(atan(-1/5)+3.14159),0)..(6,0,0)..(-3,3*sqrt(3),0),dashed); draw(rpic,(3,3*sqrt(3),8)--(3,-3*sqrt(3),8)); draw(rpic,(-3,3*sqrt(3),0)..(0,6,4)..(3,3*sqrt(3),8)--(3,3*sqrt(3),8)..(3*sqrt(3),3,8)..(6,0,8)); draw(rpic,(-3,3*sqrt(3),0)--(-3,-3*sqrt(3),0)..(0,-6,4)..(3,-3*sqrt(3),8)--(3,-3*sqrt(3),8)..(3*sqrt(3),-3,8)..(6,0,8)); draw(rpic,(-6*cos(atan(-1/5)+3.14159),-6*sin(atan(-1/5)+3.14159),0)--(-6*cos(atan(-1/5)+3.14159),-6*sin(atan(-1/5)+3.14159),8));  add(lpic.fit(),(0,0)); add(rpic.fit(),(1,0));
-        // label(rpic,"$A$",(-3,3*sqrt(3),0),W); label(rpic,"$B$",(-3,-3*sqrt(3),0),W); // these didn't work idk
+        label(rpic,"$A$",(-3,3*sqrt(3),0),W);
+        label(rpic,"$B$",(-3,-3*sqrt(3),0),W);
+        // these didn't work idk
     \end{asy}
 \end{center}
 \end{prob}
@@ -1074,8 +1094,6 @@ A block of wood has the shape of a right circular cylinder with radius $6$ and h
 \pagebreak
 
 \appendix
-
-% \noindent{\LARGE\merri \bfseries Appendix} % you don't even need this tbh
 
 \section{Partial Fraction Decomposition}
 
