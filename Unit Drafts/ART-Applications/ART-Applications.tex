@@ -18,12 +18,18 @@ An ordered pair $(a,b)$ is \textit{spicy} if there exists real $c$ such that the
 \end{exam}
 \begin{sol}
 The key claim is the following: such a real $c$ exists iff $f$ has a local minima and maxima.
-Since nonreal roots of a real-coefficient polynomial come in complex conjugate pairs, $f'$, which has degree 2, has either 2 zeroes, no zeroes or a double root.
-If it has no zeroes, then $f$ strictly increases (as $3>0$), and it's obviously impossible to choose a $c$ such that $f$ has 3 roots.
+
+Since nonreal roots of a real-coefficient polynomial come in complex conjugate pairs, $f'$, which has degree 2, has either 2 distinct zeroes, no zeroes or a double root.
+
+If it has two distinct roots, then we can draw a horizontal line between the local minima and maxima; since the polynomial is continuous, the line will intersect $f$ between the two critical points, once as $x\rightarrow -\infty$ and once as $x\rightarrow \infty$.
+
 if it has a double root, then we can shift $f$ so that the inflection point is a triple root.
-Otherwise, we can draw a horizontal line between the local minima and maxima; since the polynomial is continuous, the line will intersect $f$ between the two critical points, once as $x\rightarrow -\infty$ and once as $x\rightarrow \infty$.
+
+Otherwise, $f$ strictly increases (as $3>0$), and it's obviously impossible to choose a $c$ such that $f$ has 3 roots.
+
 Therefore, we just need to calculate the number of pairs $(a,b)$ with $4a^2-12b\ge 0$, which can easily be computed to be $\ansbold{305}$.
 \end{sol}
+
 Here is a much more difficult example that still utilizes the properties of local minimas and maximas.
 \begin{exam}[2021 HMMT Feb. AlgNT/9]
 Find all monic cubic polynomials $f$ following the following properties:
@@ -32,6 +38,9 @@ Find all monic cubic polynomials $f$ following the following properties:
 \item over all reals $c, f(f(x))-c$ has either $1, 5$ or $9$ roots.
 \end{itemize}
 \end{exam}
+\begin{walk}
+\end{walk}
+\section{Section 3}
 \section{Problems}
 \noindent\minpt{TBD}
 
