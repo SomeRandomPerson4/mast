@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage[mast]{lucky}
+\usepackage{graphicx}
+
+\title{Applications of Differentiation}
+\author{Kelin Zhu}
+\date{ART}
+
+\begin{document}
+\maketitle
+Here, we will discuss the common uses of differentiation in contest problems that are not explicitly about Calculus.
+\section{Jensen's inequality and Tangent Line Trick}
+A part of why ''Trvial by Jensen's'' is often said as a meme regarding problems that may or may not involve inequalities is its true power.
+\section{Local maximas and minimas}
+Here is the first problem I have ever solved in any contest using differentiation, which is a prime example of how the roots of derivatives can give us critical information on a function.
+\begin{exam}[Stormersyle mock AMC 10/25]
+An ordered pair $(a,b)$ is \textit{spicy} if there exists real $c$ such that the polynomial $f(x)=x^3+ax^2+bx+c$ has all real roots. For how many ordered pairs $(a,b)$ of integers with $1\le a,b\le 20$ is $(a,b)$ spicy?
+\end{exam}
+\begin{sol}
+The key claim is the following: such a real $c$ exists iff $f$ has a local minima and maxima.
+Since nonreal roots of a real-coefficient polynomial come in complex conjugate pairs, $f'$, which has degree 2, has either 2 zeroes, no zeroes or a double root.
+If it has no zeroes, then $f$ strictly increases (as $3>0$), and it's obviously impossible to choose a $c$ such that $f$ has 3 roots.
+if it has a double root, then we can shift $f$ so that the inflection point is a triple root.
+Otherwise, we can draw a horizontal line between the local minima and maxima; since the polynomial is continuous, the line will intersect $f$ between the two critical points, once as $x\rightarrow -\infty$ and once as $x\rightarrow \infty$.
+Therefore, we just need to calculate the number of pairs $(a,b)$ with $4a^2-12b\ge 0$, which can easily be computed to be $\ansbold{305}$.
+\end{sol}
+Here is a much more difficult example that still utilizes the properties of local minimas and maximas.
+\begin{exam}[2021 HMMT Feb. AlgNT/9]
+Find all monic cubic polynomials $f$ following the following properties:
+\begin{itemize}
+\item $f$ is odd, and
+\item over all reals $c, f(f(x))-c$ has either $1, 5$ or $9$ roots.
+\end{itemize}
+\end{exam}
+\section{Problems}
+\noindent\minpt{TBD}
+
+\begin{prob}[SMT 2021]{2}
+Farley the frog starts at the first lily pad in an infinite row of lily pads. If she is currently on the $n$th lily pad, she has a $\frac{1}{n}$ probability of jumping to the $n+1$th lilypad. Find the expected number of lily pads that she will ever reach.
+\end{prob}
+\end{document}
