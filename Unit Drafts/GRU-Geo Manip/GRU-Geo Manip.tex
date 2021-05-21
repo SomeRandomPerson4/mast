@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass{article}
 \usepackage[mast]{lucky}
 \begin{document}
 \title{Manipulation and Construction in Geometry Problems}
@@ -17,9 +17,9 @@ These notes will look a lot like EGMO chapter 10. Feel free to read that instead
 A spiral similarity is a transformation about a point $P$ that combines a rotation about $P$ and a homothety(dilation) with center $P$. 
 \end{defi}
 The important thing about this is that there is a unique spiral similarity sending any pair of points to any other pair of points. Also, they come in pairs: if spiral sim $\Phi$ sends $A$ to $C$ and $B$ to $D$, then there exists another spiral sim $\Psi$ sending $A$ to $B$ and $C$ to $D$. For those that know complex numbers, spiral sims are simply transformations defined by shifting a point to the origin, multiplying by some arbitrary complex number, and then shifting back. However, most pre-olympiad students may not be familiar with any configuration with a spiral similarity in it. Most spiral sims(but not all!) in geometry problems rise from a single configuration, which you could call the \textit{Base Miquel configuration}.
-\begin{lemma}[Circle Intersections Induce Spiral Similarity]
+\begin{theo}[Circle Intersections Induce Spiral Similarity]
 Let circles $\omega_1$ and $\omega_2$ intersect at $X,Y$. Let $A,C$ be points on $\omega_1$ and $B,D$ points on $\omega_2$ such that $AB,CD$ pass through $X$. Then there exists a spiral similarity centered at $Y$ sending $AB$ to $CD$. Conversely, if $Y$ is the center of a spiral similarity sending $AB$ to $CD$, and $AB,CD$ intersect at $X$, then $ACXY$ and $BDXY$ are cyclic quadrilaterals.
-\end{lemma}
+\end{theo}
 \begin{pro}
 Left to the reader as an exercise in angle chasing.\footnote{Find the pair of similar triangles!}
 \end{pro}
@@ -88,22 +88,22 @@ Yes, this problem is in Transformations. Once again, feel free to skip if you've
 \psetquote{Truth is water. It is not distinguished into separate, countable objects; once mixed with other water, it can never return to what it was. As you try to grasp it, it slips through the gaps between your fingers, and you see only a part of it.}{Aya Shameimaru}
 \begin{req}[AIME I 2011/2]{2}
 In rectangle $ABCD$, $AB=12$ and $BC=10$. Points $E$ and $F$ lie inside rectangle $ABCD$ so that $BE=9$, $DF=8$, $\overline{BE} \parallel \overline{DF}$, $\overline{EF} \parallel \overline{AB}$, and line $BE$ intersects segment $\overline{AD}$. The length $EF$ can be expressed in the form $m\sqrt{n}-p$, where $m,n,$ and $p$ are positive integers and $n$ is not divisible by the square of any prime. Find $m+n+p$.
-\end{req}
+\end{req}\\
 \begin{prob}[AMC 12A 2020/24]{3}
 Suppose that $\triangle ABC$ is an equilateral triangle of side length $s$, with the property that there is a unique point $P$ inside the triangle such that $AP = 1$, $BP = \sqrt{3}$, and $CP = 2$. What is $s?$
-\end{prob}
+\end{prob}\\
 \begin{prob}[AIME II 2011/13]{4}
 Point $P$ lies on the diagonal $AC$ of square $ABCD$ with $AP>CP$. Let $O_1$ and $O_2$ be the circumcenters of triangles $\triangle ABP$ and $\triangle CDP$ respectively. Given that $AB=12$ and $\angle O_1 P O_2 = 120^\circ$, then $AP=\sqrt{a}+\sqrt{b}$ where $a$ and $b$ are positive integers. Find $a+b$.
-\end{prob}
+\end{prob}\\
 \begin{prob}[AIME I 2021/9]{4}
 Let $ABCD$ be an isosceles trapezoid with $AD=BC$ and $AB<CD.$ Suppose that the distances from $A$ to the lines $BC,CD,$ and $BD$ are $15,18,$ and $10,$ respectively. Let $K$ be the area of $ABCD.$ Find $\sqrt2 \cdot K.$
-\end{prob}
+\end{prob}\\
 \begin{prob}[CMC 12A 2020/23]{4}
 There exists $\triangle ABC$ with $\angle B = 30^{\circ}$ that satisfies $\frac{b+c}{2\cos C}=a$. Find $\angle A$.
-\end{prob}
+\end{prob}\\
 \begin{prob}[AIME II 2021/14]{6}
 Let $\triangle ABC$ be an acute triangle with circumcenter $O$ and centroid $G$. Let $X$ be the intersection of the line tangent to the circumcircle of $\triangle ABC$ at $A$ and the line perpendicular to $GO$ at $G$. Let $Y$ be the intersection of lines $XG$ and $BC$. Given that the measures of $\angle ABC, \angle BCA, $ and $\angle XOY$ are in the ratio $13 : 2 : 17, $ the degree measure of $\angle BAC$ can be written as $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m+n$.
-\end{prob}
+\end{prob}\\
 \begin{center}
 \begin{asy}
 unitsize(5mm);
@@ -139,30 +139,30 @@ draw(rightanglemark(X,G,O));
 \end{center}
 \begin{prob}[AMC 12A 2018/23]{6}
 In $\triangle PAT,$ $\angle P=36^{\circ},$ $\angle A=56^{\circ},$ and $PA=10.$ Points $U$ and $G$ lie on sides $\overline{TP}$ and $\overline{TA},$ respectively, so that $PU=AG=1.$ Let $M$ and $N$ be the midpoints of segments $\overline{PA}$ and $\overline{UG},$ respectively. What is the degree measure of the acute angle formed by lines $MN$ and $PA?$
-\end{prob}
+\end{prob}\\
 \begin{prob}[First Isogonality Lemma]{6}
 In $\triangle ABC$ let $\omega$ be a circle passing through $B,C$ intersecting $AB,AC$ at $D,E$ respectively. Let the intersection of $CD$ and $BE$ be $P$. Let $Q$ be the reflection of $P$ over the midpoint of $BC$. Then prove $\angle BAP = \angle CAQ$.
-\end{prob}
+\end{prob}\\
 \begin{prob}[CMC 10B 2021/24]{9}
 Triangle $\triangle PQR$ with $PQ=3$, $QR=4$, $RP=5$ is drawn inside a regular hexagon $ABCDEF$ with $P$ on segment $FA$, $Q$ the midpoint of segment $AB$, and $R$ on segment $CD$. Given that $AB^2=\frac mn$ for relatively prime positive integers $m$ and $n$, find $m+n$.
-\end{prob}
+\end{prob}\\
 \begin{prob}[HMMT Geo 2020/5]{9}
 Let $ABCDEF$ be a regular hexagon with side length $2$. A circle with radius $3$ and center at $A$ is drawn. Find the area inside quadrilateral $BCDE$ but outside the circle.
-\end{prob}
+\end{prob}\\
 \begin{prob}[USAMO 2020/1]{9}
 Let $ABC$ be a fixed acute triangle inscribed in a circle $\omega$ with center $O$. A variable point $X$ is chosen on minor arc $AB$ of $\omega$, and segments $CX$ and $AB$ meet at $D$. Denote by $O_1$ and $O_2$ the circumcenters of triangles $ADX$ and $BDX$, respectively. Determine all points $X$ for which the area of triangle $OO_1O_2$ is minimized.
-\end{prob}
+\end{prob}\\
 \begin{prob}[AIME II 2018/12]{9}
 Let $ABCD$ be a convex quadrilateral with $AB=CD=10$, $BC=14$, and $AD=2\sqrt{65}$. Assume that the diagonals of $ABCD$ intersect at point $P$, and that the sum of the areas of $\triangle APB$ and $\triangle CPD$ equals the sum of the areas of $\triangle BPC$ and $\triangle APD$. Find the area of quadrilateral $ABCD$.\footnote{The Geo Manip - style solution to this problem is admittedly very funky and not as smooth as some of the other solutions. For instructive purposes, I'd rather not have a trigonometric bash be submitted, but I can't stop you.}
-\end{prob}
+\end{prob}\\
 
 \begin{req}[CMIMC Geo 2016/8]{13}
 Suppose $ABCD$ is a convex quadrilateral satisfying $AB=BC$, $AC=BD$, $\angle ABD = 80^\circ$, and $\angle CBD = 20^\circ$. What is $\angle BCD$ in degrees?
-\end{req}
+\end{req}\\
 \begin{prob}[IMO 1975/3]{13}
 In the plane of a triangle $ABC,$ in its exterior$,$ we draw the triangles $\triangle ABR, \triangle BCP, \triangle CAQ$ so that $\angle PBC = \angle CAQ = 45^{\circ}$, $\angle BCP = \angle QCA = 30^{\circ}$, $\angle ABR = \angle RAB = 15^{\circ}$.
 Prove that $\triangle QRP$ is an isoceles right triangle with right angle at $Q$.
-\end{prob}
+\end{prob}\\
 \begin{prob}[USAMO 2021/1]{13}
 Rectangles $BCC_1B_2,$ $CAA_1C_2,$ and $ABB_1A_2$ are erected outside an acute triangle $ABC.$ Suppose that\[\angle BC_1C+\angle CA_1A+\angle AB_1B=180^{\circ}.\]Prove that lines $B_1C_2,$ $C_1A_2,$ and $A_1B_2$ are concurrent.\footnote{Once again, there are multiple solutions. Try to avoid drawing any circles.}
 \end{prob}
