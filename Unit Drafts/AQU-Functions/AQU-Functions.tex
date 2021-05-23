@@ -41,7 +41,7 @@ Floor and ceiling function problems come in various flavors, so it's quite diffi
 
 \subsection{Analyzing near-integer inputs}
 
-One useful technique is to look at what happens to the function \emph{near} integer inputs. The reason for this is the following: floor and ceiling functions usually "jump" at integer inputs, so analyzing what happens right before or after that jump is a useful way to better understand the behavior of a function.
+One useful technique is to look at what happens to the function \emph{near} integer inputs. The reason for this is the following: floor and ceiling functions usually ``jump" at integer inputs, so analyzing what happens right before or after that jump is a useful way to better understand the behavior of a function.
 
 \begin{exam}[math1's Computer Science Teacher]
 Determine whether the following statement is true or false for all positive real numbers $x$:
@@ -51,7 +51,7 @@ Determine whether the following statement is true or false for all positive real
 \begin{sol}
 The first step is to convince yourself that the answer is more likely false than true without putting pen on paper. Adding $1$ on the inside of the logarithm on the RHS is very weird, and it should feel like we can find a counter-example at the edge cases.
 
-This is a similar vein to what we mentioned before: let's analyze how these functions behave when we look at inputs near "jumps". In this case, those jumps occur on the LHS at powers of $2$, while on the RHS they occur at $1$ less than each power of $2$. Perhaps we can find a good counter-example between those two.
+This is a similar vein to what we mentioned before: let's analyze how these functions behave when we look at inputs near ``jumps". In this case, those jumps occur on the LHS at powers of $2$, while on the RHS they occur at $1$ less than each power of $2$. Perhaps we can find a good counter-example between those two.
 
 In particular, we want a number that is between $2^k - 1$ and $2^k$, so suppose $x = 2^{k - \epsilon}$ for some sufficiently small value of $0  < \epsilon << 1$.  Plugging this in, we have
 \begin{align*}
@@ -74,7 +74,7 @@ which proves that the original statement is false.
 
 \bigskip
 
-In summary, analyzing the places where the functions "jumped" allowed us to find a motivated counter-example to the problem.  
+In summary, analyzing the places where the functions ``jumped" allowed us to find a motivated counter-example to the problem.  
 
 We now proceed with another example with a highly similar flavor.
 
