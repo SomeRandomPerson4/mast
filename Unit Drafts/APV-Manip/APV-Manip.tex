@@ -8,7 +8,7 @@
 \begin{document}
 \maketitle
 
-Here, we talk about some clever algebra manipulations. These basic tricks are fairly common in competition questions, and knowledge of these tricks generally reduces the time needed to solve algebra questions.
+Here we discuss some clever algebra manipulations. These basic tricks are fairly common in competition questions, and knowledge of these tricks generally reduces the time needed to solve algebra questions.
 
 \section{Symmetric Systems}
 
@@ -17,51 +17,53 @@ The most basic of algebraic manipulations involves systems of equations. The gis
 A three-dimensional rectangular box with dimensions $X$, $Y$, and $Z$ has faces whose surface areas are $24$, $24$, $48$, $48$, $72$, and $72$ square units. What is $X$ + $Y$ + $Z$?
 \end{exam}
 \begin{sol}
-Manipulation does the trick better than just bashing out possible values. Note that the surface areas can be expressed as $XY,XZ,$ and $YZ.$ Therefore, we can let $XY = 24, XZ = 48, YZ = 72.$ A good way to solve for $X,Y,$ and $Z$ individually is finding $XYZ$ and then dividing by each of $XY, XZ,$ and $YZ.$ Multiplying all equations together yields $XY \cdot XZ \cdot YZ = (XYZ)^2 = 24 \cdot 48 \cdot 72 \implies XYZ = 288,$ so it follows that $X = \frac{XYZ}{YZ} = \frac{288}{72} = 4.$ Similarly, $Y = 6$ and $Z=12,$ so our answer is $4+6+12= 22.$
+Manipulation does the trick better than just bashing out possible values. Note that the surface areas can be expressed as $XY,XZ,$ and $YZ.$ Therefore, we can let $XY = 24, XZ = 48, YZ = 72.$
+
+A good way to solve for $X,Y,$ and $Z$ individually is by finding $XYZ$ and then dividing this quantity by $XY, XZ,$ and $YZ.$ Multiplying all equations together yields $XY \cdot XZ \cdot YZ = (XYZ)^2 = 24 \cdot 48 \cdot 72$, and taking the square root gives $XYZ = 288,$ so it follows that $X = \frac{XYZ}{YZ} = \frac{288}{72} = 4.$ Similarly, $Y = 6$ and $Z=12,$ so our answer is $4+6+12= 22.$
 \end{sol}
 \begin{exam}[Classic]
 Find positive integers $a,b,$ and $c$ that satisfy
 \begin{align*}
-(a+b)(a+c)=96(b+c) \\
-(a+b)(b+c)=54(a+c) \\
-(a+c)(b+c)=24(a+b)
+(a+b)(a+c)&=96(b+c) \\
+(a+b)(b+c)&=54(a+c) \\
+(a+c)(b+c)&=24(a+b)
 \end{align*}
 \end{exam}
 
 \begin{sol}
-The idea of this problem is similar to the previous example, in that there is a way to "manipulate" the product. Multiplying the equations gives: 
-\[(a+b)^2(a+c)^2(b+c)^2 = 96 \cdot 54 \cdot 24(a+b)(a+c)(b+c)\implies (a+b)(a+c)(b+c)= 96 \cdot 54 \cdot 24\]
+The idea of this problem is similar to the previous example, in that there is a way to "manipulate" the product. Multiplying the equations gives
+\[(a+b)^2(a+c)^2(b+c)^2 = 96 \cdot 54 \cdot 24(a+b)(a+c)(b+c)\]
+\[(a+b)(a+c)(b+c)= 96 \cdot 54 \cdot 24\]
 We can divide by $(a+b)(a+c)$ to obtain $b+c = \frac{96 \cdot 54 \cdot 24}{96} \cdot (b+c),$ or $b+c = 36,$ and then apply the same method with $a+b$ and $a+c.$ But we're not done, we still need to resolve:
 \begin{align*}
-b+c = 36 \\
-a+c = 72\\
-a+b = 48
+b+c &= 36 \\
+a+c &= 72\\
+a+b &= 48
 \end{align*}
-Applying the manipulation trick again, we have: $2a +2b+2c = 156 \implies a+b+c = 78.$ Subtracting $a+b+c$ from $b+c,a+c,$ and $a+b$ leads to our desired answer: $a = 42, b = 6, c = 30.$
+Applying the manipulation trick again, we have: $2a +2b+2c = 156$, implying that $a+b+c = 78.$ Subtracting $a+b+c$ from $b+c,a+c,$ and $a+b$ leads to our desired answer: $\ansbold{a = 42, b = 6, c = 30}.$
 \end{sol}
 
 \section{Fraction Tricks}
-There's no "official" name for this manipulation but it is often very useful in manipulating fractions with "ugly" denominators and numerators. 
+There's no ``official'' name for this manipulation, but it is often very useful in manipulating fractions with ugly denominators and numerators. 
 \begin{theo}[Fraction Trick]
-If $\frac{a}{b}=\frac{c}{d}$,
-\\
-$$\frac{a}{b}=\frac{c}{d}=\frac{a+c}{b+d}$$
+If $\frac{a}{b}=\frac{c}{d}$, then
+\[\frac{a}{b}=\frac{c}{d}=\frac{a+c}{b+d}.\]
 \end{theo}
 
 \begin{pro}
-Let $\frac{a}{b}=\frac{c}{d}=k$. Then, $\frac{a+c}{b+d}=\frac{bk+dk}{b+d}=k$.
+Let $\frac{a}{b}=\frac{c}{d}=k$. Then $\frac{a+c}{b+d}=\frac{bk+dk}{b+d}=k$.
 \end{pro}
 
 This may seem obvious but a large amount of people often forget that this exists when it comes up.
 
-A similarly "obvious" trick is flipping the fraction when the denominator is complicated and the numerator is simple.
+A similarly ``obvious'' trick is flipping the fraction when the denominator is complicated and the numerator is simple.
 
 \begin{exam}[Classic]
-If $\frac{x}{x^2+x+1}=3$, find $x$.
+If $\frac{x}{x^2+x+1}=\frac{1}{3}$, find $x$.
 \end{exam}
 
 \begin{sol}
-We invert the fraction to get $\frac{x^2+x+1}{x}=3$. Then, $x+1+\frac{1}{x}=3\implies x+\frac{1}{x}=2$. We multiply by $x$ to get $x^2-2x+1=(x-1)^2=0\implies x=1$.
+We reciprocate both sides to get $\frac{x^2+x+1}{x}=3$. Then, $x+1+\frac{1}{x}=3$, or $\implies x-2+\frac{1}{x}=0$. We multiply by $x$ to get $x^2-2x+1=(x-1)^2=0$, so $x=\ansbold{1}$.
 \end{sol}
 
 \section{Numbers as Variables}
@@ -92,24 +94,24 @@ Let us say that a decade is \emph{primeval} if it contains four prime numbers. F
 \begin{sol}
 Finding the next primeval decade is too time consuming! We instead use two observations:
 \begin{itemize}
-\item Prime numbers greater than $7$ must end in $1,3,7,$ or $9.$
+\item Prime numbers greater than $5$ must end in $1,3,7,$ or $9.$
 \item If the oldest year of a primeval decade is $x,$ then the four prime years are $x+1,x+3,x+7,$ and $x+9.$
 \end{itemize}
-Now the problem becomes standard algebra fare; our answer is $(x+3)(x+7)-(x+1)(x+9) = 12.$ We avoided unnecessary computation here, by treating large numbers as simple variables.
+Now the problem becomes standard algebra fare; our answer is $(x+3)(x+7)-(x+1)(x+9) = 12.$ We avoided unnecessary computation here by treating large numbers as variables instead.
 \end{sol}
 
 \begin{exam}[Math Prizes For Girls 2015]{6}
 Let $S$ be the sum of all distinct real solutions of the equation 
-$$\sqrt{x + 2015} = x^2 - 2015.$$
-Compute $\lfloor 1/S \rfloor$.  Recall that if $r$ is a real number, then $\lfloor r \rfloor$ (the floor of $r$) is the greatest integer that is less than or equal to $r$
+\[\sqrt{x + 2015} = x^2 - 2015.\]
+Compute $\lfloor 1/S \rfloor$.  Recall that if $r$ is a real number, then $\lfloor r \rfloor$ (the floor of $r$) is the greatest integer that is less than or equal to $r$.
 \end{exam}
 
 \begin{sol}
-Let $2015=y$. Then, we have $\sqrt{x+y}=x^2-y\implies x+y=x^4-2x^2y+y^2\implies y^2+(-2x^2-1)y+x^4-x=0$. Then, $y=\frac{2x^2+1 \pm (2x+1)}{2}$. Now, we have $2015=x^2+x+1$ or $2015=x^2-x$. These give $x=\frac{-1 \pm \sqrt{8057}}{2}$ and $x=\frac{1 \pm \sqrt{8061}}{2}$. Now, note that we have $x+y\ge 0 \implies x \ge -2015$ and $x^2-y\ge 0\implies |x|\ge \sqrt{2015}$. \\
-\\
-We can see that $\frac{-1 + \sqrt{8057}}{2}>\sqrt{2015}$ and that $\frac{-1-\sqrt{8057}}{2} < -\sqrt{2015}$. Also, $\frac{1-\sqrt{8061}}{2} > - \sqrt{2015}$ and $\frac{1+\sqrt{8061}}{2} > \sqrt{2015}$. So, we have that our two solutions are $\frac{-1-\sqrt{8057}}{2}$ and $\frac{1+\sqrt{8061}}{2}$. \\
-\\
-Then, $\frac{1}{S}=\frac{2}{\sqrt{8061}-\sqrt{8057}}=\frac{\sqrt{8061}+\sqrt{8057}}{2}$. So, $89 < \frac{1}{S} < 90$ so our answer is $\ansbold{89}$.
+Let $2015=y$. Then, we have $\sqrt{x+y}=x^2-y$, which implies that $x+y=x^4-2x^2y+y^2\implies y^2+(-2x^2-1)y+x^4-x=0$. Thus $y=\frac{2x^2+1 \pm (2x+1)}{2}$. Now, we have $2015=x^2+x+1$ or $2015=x^2-x$. These give $x=\frac{-1 \pm \sqrt{8057}}{2}$ and $x=\frac{1 \pm \sqrt{8061}}{2}$. Now, note that we have
+\[x+y\ge 0 \implies x \ge -2015~~\text{and}~~x^2-y\ge 0\implies |x|\ge \sqrt{2015}.\]
+We can see that $\frac{-1 + \sqrt{8057}}{2}>\sqrt{2015}$ and that $\frac{-1-\sqrt{8057}}{2} < -\sqrt{2015}$. Also, $\frac{1-\sqrt{8061}}{2} > - \sqrt{2015}$ and $\frac{1+\sqrt{8061}}{2} > \sqrt{2015}$. So our only two solutions are $\frac{-1-\sqrt{8057}}{2}$ and $\frac{1+\sqrt{8061}}{2}$.
+
+Then $\frac{1}{S}=\frac{2}{\sqrt{8061}-\sqrt{8057}}=\frac{\sqrt{8061}+\sqrt{8057}}{2}$. Since $89 < \frac{1}{S} < 90$ so our answer is $\ansbold{89}$.
 \end{sol}
 
 \section{Symmetric and Cyclic Expressions}
@@ -123,7 +125,7 @@ All the roots of the polynomial $z^6-10z^5+Az^4+Bz^3+Cz^2+Dz+16$ are positive in
 
 \begin{exam}[NEMO 2017]
 The value of the expression
-$$\sqrt{1+\sqrt{\sqrt[3]{32}-\sqrt[3]{16}}} + \sqrt{1-\sqrt{\sqrt[3]{32}-\sqrt[3]{16}}}$$
+\[\sqrt{1+\sqrt{\sqrt[3]{32}-\sqrt[3]{16}}} + \sqrt{1-\sqrt{\sqrt[3]{32}-\sqrt[3]{16}}}\]
 can be written as $\sqrt[m]{n}$, where $m$ and $n$ are positive integers. Compute the smallest possible value of
 $m + n$.
 \end{exam}
@@ -140,11 +142,11 @@ $\frac{x^6+y^6}{x^5+y^5}$.
 \end{exam}
 
 \begin{exam}[HMMT February 2013]
-Let $a$ and $b$ be real numbers such that $\frac{ab}{a^2+b^2}=\frac{1}{4}$. Find all possible values of $\frac{|a^2-b^2|}{a^2+b^2}$
+Let $a$ and $b$ be real numbers such that $\frac{ab}{a^2+b^2}=\frac{1}{4}$. Find all possible values of $\frac{|a^2-b^2|}{a^2+b^2}$.
 \end{exam}
 
 \begin{sol}
-$\boxed{\frac{\sqrt{3}}{2}}$
+$\frac{\sqrt{3}}{2}$
 \end{sol}
 
 
@@ -162,15 +164,18 @@ What is the greatest integer less than or equal to\[\frac{3^{100}+2^{100}}{3^{96
 \begin{prob}[2008-2009 Mandelbrot]{3}
 Austin currently owns some shirts, pants, and pairs of shoes; he chooses one of each to create an outfit. If he were to obtain one more shirt, his total number of outfits would increase by $48.$ Similarly, if he bought another pair of pants he would have $90$ more outfits, while an extra pair of shoes would result in $120$ more outfits. How many outfits can he currently create?
 \end{prob}
-  \\
+  
 
 \begin{prob}[OMO Fall 2014/12]{4}
-Let $a$, $b$, $c$ be positive real numbers for which \[
+Let $a$, $b$, $c$ be positive real numbers for which
+\[
   \frac{5}{a} = b+c, \quad
   \frac{10}{b} = c+a, \quad \text{and} \quad
-  \frac{13}{c} = a+b. \] If $a+b+c = \frac mn$ for relatively prime positive integers $m$ and $n$, compute $m+n$.
+  \frac{13}{c} = a+b.
+\]
+If $a+b+c = \frac mn$ for relatively prime positive integers $m$ and $n$, compute $m+n$.
 \end{prob}
-  \\
+  
   
 \begin{prob}[JMC 10 2021/22]{5}
 Let $r_1,r_2,r_3,r_4$ be the roots of $P(x)= x^4+4x^3-3x^2+2x-1.$ Suppose $Q(x)$ is the monic polynomial with all six roots in the form $r_{i}+r_{j}$ for integers $1\le i < j \le 4.$ What is the coefficient of the $x^4$ term in the polynomial $Q(x)?$
@@ -180,33 +185,33 @@ Let $r_1,r_2,r_3,r_4$ be the roots of $P(x)= x^4+4x^3-3x^2+2x-1.$ Suppose $Q(x)$
 \begin{prob}[2019 hARMLess Mock ARML/4]{5}
 Fran has two congruent rectangular prisms, each with volume $V$. There are three distinct ways for Fran to glue the two prisms together along congruent faces to form a larger rectangular prism. The three prisms that can be created in this way have surface areas $20,18,$ and $17$. Compute $V$.
 \end{prob}
-\\
+
 
 \begin{prob}[vvluo]{6}
 Determine all solutions, if any exist, to the system
 \begin{align*}
-\frac{1}{xy}&=\frac{x}{z}+1 \\
-\frac{1}{yz}&=\frac{y}{x}+1 \\
+\frac{1}{xy}&=\frac{x}{z}+1 
+\frac{1}{yz}&=\frac{y}{x}+1 
 \frac{1}{zx}&=\frac{z}{y}+1.
 \end{align*}
 \end{prob}
-\\
+
 
 \begin{prob}[BMT 2020]{6}
 Let $a,b$ and $c$ be real numbers such that $a+b+c=\frac{1}{a}+\frac{1}{b}+\frac{1}{c}$ and $abc=5$. The value of
-$$(a-\frac{1}{b})^3+(b-\frac{1}{c})^3+(c-\frac{1}{a})^3$$
+\[(a-\frac{1}{b})^3+(b-\frac{1}{c})^3+(c-\frac{1}{a})^3\]
 can be written in the form $\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integeres. Compute $m+n$.
 \end{prob}
 
 \begin{prob}[NICE Spring 2021/13]{6}
 Suppose $x$ and $y$ are nonzero real numbers satisfying the system of equations
 \begin{align*}
-    3x^2 + y^2 &= 13x,\\
+    3x^2 + y^2 &= 13x,
     x^2 + 3y^2 &= 14y.
 \end{align*}
 Find $x+y$.
 \end{prob}
-\\
+
 
 
 \begin{req}[JMC 10 2021/18]{9}
@@ -214,7 +219,6 @@ If $x,y,$ and $z$ are positive real numbers that satisfy the equation
 \[xy+yz+zx=96(y+z)-x^2 = 24(x+z) -y^2 = 54(x+y) -z^2,\]
 what is the value of $xyz$?
 \end{req}
-\\
 
 \begin{prob}[CARML 2019/8]{13}
 There exist unique positive integers $1<a<b$ satisfying
