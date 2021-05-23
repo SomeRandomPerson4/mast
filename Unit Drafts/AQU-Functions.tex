@@ -1,0 +1,123 @@
+\documentclass{article}
+\usepackage[mast]{lucky}
+
+\title{Functions}
+\author{math1}
+\date{AQU}
+
+\begin{document}
+\maketitle
+There are multiple types of function-related problems that could appear on the AIME.  Some functions will be defined within the problem,  while others will be in terms of \emph{special functions} such as floor,  ceiling, or absolute value functions.  Here, we explore these kinds of problems and how to approach them.
+
+\section{Floors and Ceilings}
+
+Let's begin with some definitions.
+
+\begin{defi}[Floor Function]
+Let $\lfloor x \rfloor$ denote the greatest integer less than or equal to $x$.
+\end{defi}
+
+Similarly, we define the ceiling function.
+
+\begin{defi}[Ceiling Function]
+Let $\lceil x \rceil$ denote the smallest integer greater than or equal to $x$.
+\end{defi}
+
+It is also useful to define the fractional part of a number. There are actually conflicting definitions for this, mainly arising from the issues with negative numbers, but we will use the below definition throughout this handout. Most math competitions also use the below definition, and they usually explicitly define the floor, ceiling, and fractional part functions within the problem itself.
+
+\begin{defi}[Fractional Part]
+Let $\{ x \} = x - \lfloor x \rfloor$.
+\end{defi}
+
+To see these functions in action, we present some examples.
+
+\begin{exam}
+We have $$\lfloor 5 \rfloor = 5, \ \lfloor 3.4 \rfloor = 3, \ \lfloor -2.6 \rfloor = -3,$$
+and $$\lceil 5 \rceil = 5, \ \lceil 3.4 \rceil = 4, \ \lceil -2.6 \rceil = -2,$$
+and $$\{ 5 \} = 0, \ \{ 3.4 \} = 0.4, \ \{ -2.6 \} = 0.4.$$
+\end{exam}
+
+Floor and ceiling function problems come in various flavors, so it's quite difficult to group them under one umbrella. However, there are a few general heuristics we can keep in mind; these will be covered in each subsection of this section.
+
+\subsection{Analyzing near-integer inputs}
+
+One useful technique is to look at what happens to the function \emph{near} integer inputs. The reason for this is the following: floor and ceiling functions usually "jump" at integer inputs, so analyzing what happens right before or after that jump is a useful way to better understand the behavior of a function.
+
+\begin{exam}[math1's Computer Science Teacher]
+Determine whether the following statement is true or false for all positive real numbers $x$:
+\[ \lfloor \log_2 (x) + 1 \rfloor = \lceil \log_2 (x + 1) \rceil. \]
+\end{exam}
+
+\begin{sol}
+The first step is to convince yourself that the answer is more likely false than true without putting pen on paper. Adding $1$ on the inside of the logarithm on the RHS is very weird, and it should feel like we can find a counter-example at the edge cases.
+
+This is a similar vein to what we mentioned before: let's analyze how these functions behave when we look at inputs near "jumps". In this case, those jumps occur on the LHS at powers of $2$, while on the RHS they occur at $1$ less than each power of $2$. Perhaps we can find a good counter-example between those two.
+
+In particular, we want a number that is between $2^k - 1$ and $2^k$, so suppose $x = 2^{k - \epsilon}$ for some sufficiently small value of $0  < \epsilon << 1$.  Plugging this in, we have
+\begin{align*}
+\lfloor \log_2 (2^{k - \epsilon}) + 1 \rfloor = \lfloor k - \epsilon + 1 \rfloor = k.
+\end{align*}
+
+To prove that there is a counter-example, we would like $k < \lceil \log_2 (2^{k - \epsilon} + 1) \rceil$. Since $k = \log_2 (2^k)$, it would be great if we could get $2^{k - \epsilon} + 1 > 2^k$. We can find such values of $\epsilon$ by solving for $\epsilon$ in the inequality:
+\begin{align*}
+2^{k - \epsilon} + 1 &> 2^k \\
+2^{k - \epsilon} &> 2^k - 1 \\
+k - \epsilon &> \log_2 (2^k - 1) \\
+\epsilon &< k - \log_2 (2^k - 1).
+\end{align*}
+Since $\log_2 (2^k - 1) < k$, the RHS is positive, so such an $\epsilon$ definitely exists.  Thus, letting $\epsilon$ be sufficiently small such that $2^{k - \epsilon} + 1 > 2^k$, we have
+\begin{align*}
+\lfloor \log_2 (2^{k - \epsilon}) + 1 \rfloor = k = \lceil \log_2 (2^k) \rceil   <  \lceil \log_2 (2^{k - \epsilon} + 1) \rceil,
+\end{align*}
+which proves that the original statement is false.
+\end{sol}
+
+\bigskip
+
+In summary, analyzing the places where the functions "jumped" allowed us to find a motivated counter-example to the problem.  
+
+We now proceed with another example with a highly similar flavor.
+
+\section{Absolute Value}
+
+\section{Problem-Defined Functions}
+
+This first example is representative of why experimentation is useful in function-based problems. 
+
+\begin{exam}[2021 AMC 10A/18]
+Let $f$ be a function defined on the set of positive rational numbers with the property that $f(a\cdot b)=f(a)+f(b)$ for all positive rational numbers $a$ and $b$. Furthermore, suppose that $f$ also has the property that $f(p)=p$ for every prime number $p$. For which of the following numbers $x$ is $f(x)<0$?
+
+$$\textbf{(A)} ~\frac{17}{32}\qquad\textbf{(B)} ~\frac{11}{16}\qquad\textbf{(C)} ~\frac{7}{9}\qquad\textbf{(D)} ~\frac{7}{6} \qquad\textbf{(E)} ~\frac{25}{11}$$
+\end{exam}
+
+\begin{sol}
+Let's apply some wishful thinking. We want the function to be negative, but everything seems positive in the given conditions. So, can we somehow get a negative sign? Indeed, we can in the following way:
+ \[ f(a \cdot b) - f(b) = f(a). \]
+This is promising, since we have control over $a$. In particular, let's make $b$ an arbitrary prime $p$ so we only have to worry about $a$:
+ \[ f(a \cdot p) - p = f(a). \]
+Let's get rid of $a \cdot p$ now; let $a = \frac{k}{p}$ for some positive integer $k$:
+ \[ f(k) - p = f\left( \frac{k}{p}\cdot p\right) - p = f\left(\frac{k}{p}\right). \]
+Aha! If $f(k) < p$, then $f\left(\frac{k}{p}\right)$ is negative. We now look towards the answer choices to see if there are any prime denominators, and indeed, $\frac{25}{11}$ is one of the answer choices. Letting $k = 25$ and $p = 11$, we have
+\begin{align*}
+f\left(\frac{25}{11}\right) &= f(25) - 11 = f(5) + f(5) - 11 = 5 + 5 - 11 = -1 < 0,
+\end{align*}
+as required. So, the answer is $\ansbold{\frac{25}{11}}$.
+\end{sol}
+
+\bigskip
+
+Here, experimenting allowed us to gain a better understanding of the problem. Specifically, we used the classic theme of \textbf{plugging in convenient values to make things disappear}. This theme is likely not new to those who have experience solving functional equations.
+
+\pagebreak\section{Problems}
+
+\psetquote{Do. Or do not. There is no try.}{Yoda}
+
+\begin{prob}[AIME 1984/12]{4}
+A function $f$ is defined for all real numbers and satisfies\[f(2 + x) = f(2 - x)\qquad\text{and}\qquad f(7 + x) = f(7 - x)\]for all real $x$. If $x = 0$ is a root of $f(x) = 0$, what is the least number of roots $f(x) = 0$ must have in the interval $-1000 \le x \le 1000$?
+\end{prob}
+
+\begin{prob}[AIME I 2021/8]{6}
+Find the number of integers $c$ such that the equation$$\left||20|x|-x^2|-c\right|=21$$has $12$ distinct real solutions.
+\end{prob}
+
+\end{document}
