@@ -165,6 +165,21 @@ Prove that $\triangle QRP$ is an isoceles right triangle with right angle at $Q$
 \end{prob}\\
 \begin{prob}[USAMO 2021/1]{13}
 Rectangles $BCC_1B_2,$ $CAA_1C_2,$ and $ABB_1A_2$ are erected outside an acute triangle $ABC.$ Suppose that\[\angle BC_1C+\angle CA_1A+\angle AB_1B=180^{\circ}.\]Prove that lines $B_1C_2,$ $C_1A_2,$ and $A_1B_2$ are concurrent.\footnote{Once again, there are multiple solutions. Try to avoid drawing any circles.}
+\end{prob}\\
+\begin{prob}[AIME I 2017/15]{13}
+The area of the smallest equilateral triangle with one vertex on each of the sides of the right triangle with side lengths $2\sqrt3$, $5$, and $\sqrt{37}$, as shown, is $\tfrac{m\sqrt{p}}{n}$, where $m$, $n$, and $p$ are positive integers, $m$ and $n$ are relatively prime, and $p$ is not divisible by the square of any prime. Find $m+n+p$.
 \end{prob}
-
+\begin{center}
+\begin{asy}
+size(5cm);
+pair C=(0,0),B=(0,2*sqrt(3)),A=(5,0);
+real t = .385, s = 3.5*t-1;
+pair R = A*t+B*(1-t), P=B*s;
+pair Q = dir(-60) * (R-P) + P;
+fill(P--Q--R--cycle,gray);
+draw(A--B--C--A^^P--Q--R--P);
+dot(A--B--C--P--Q--R);
+\end{asy}
+\end{center}
+\footnote{The only way I've ever executed fully is inversion(!!) but there are other ways to do it.}
 \end{document}
