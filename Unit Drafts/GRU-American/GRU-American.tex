@@ -1,0 +1,130 @@
+\documentclass{article}
+\usepackage[mast]{lucky}
+\begin{document}
+\title{Modern American Computational Geo}
+\author{Ethan Liu}
+\date{GRU}
+\maketitle
+\section{Introduction}
+This is a unit about triangle centers, configurations, and nontrivial geometry skills(e.g. angle chasing) actually used in computational problems. Recently, AIME geo has featured more of these kinds of problems, especially the in the last five. In particular, the "ideas" of this unit won't really be in the lecture notes; rather, this unit will focus on the problem set. These problems are referred to as "American", both in the sense that they have configurational elements and nontrivial angle chasing, much like "American Geo" in the olympiad sense, and also in the sense that recent American computational problems really do look like this.\\
+Computational problems will \textit{still use computational methods,} despite the bulk of the problem being some olympiad-style angle chase. Thus, it is \textit{vital} that you remember all your standard tools(e.g. ratio lemma, law of sines/cosines, Stewart's theorem, Ptolemy, Heron's, etc), as there will rarely be problems where you will have to do no significant algebra/length chasing at all.\\
+Nevertheless, be prepared for some difficult geometry, bordering on olympiad-level. In fact, this unit will contain some olympiad problems.
+\section{Properties of Triangle Centers}
+\begin{theo}[Fact 5]
+Let $I$ be the incenter of $\triangle ABC$ and let $M$ be the arc midpoint of $BC$. Then $M$ is the circumcenter of $(BIC)$.
+\end{theo}
+\begin{pro}
+$\angle BIM = \frac{\angle B}2 + \frac{\angle A}2 = \angle IBC + \angle CAM = \angle IBC + \angle CBM = \angle IBM$, similarly for $C$.
+\end{pro}
+This is one of the ubiquitous basic results in geometry that leads contestants to be embarrassed if overlooked. Make sure to have a thorough understanding of why it is true. As a corollary, the $A-$excenter also lies on $(BIC)$.
+\begin{exam}[Orthocenter/Incenter Duality]
+Let $H_A$ be the foot of the altitude from $A$, similarly for $B$ and $C$. then the orthocenter $H$ is the incenter of $H_AH_BH_C$. Similarly, if $I_A$ is the $A-$excenter, then $I$ is the orthocenter of $I_AI_BI_C$.
+\end{exam}
+\begin{pro}
+For one direction, note that $(A,H_B,H_C,H)$ cyclic. For the other direction, simply note that $I_AI$ is perpendicular to $I_BI_C$. 
+\end{pro}
+Next, some computational-style results, primarily just to make computations with triangle centers easier.
+\begin{theo}[Circumradius formula]
+Let $[ABC]$ be the area of triangle $\triangle ABC$, and let $a,b,c$ be side lengths. Then $R = \frac{abc}{4[ABC]}$.
+\end{theo}
+\begin{pro}
+Combine extended law of sines($R = \frac{a}{2\sin{A}}$) and trig area formula($[ABC] = \frac12 bc \sin{A}$), where $A$ denotes angle $\angle BAC$.
+\end{pro}
+This particularly useful to find lengths of known chords on the circumcircle.
+\section{Other related points}
+\begin{theo}[Orthocenter reflection]
+Let $H$ be the orthocenter. Then the reflection of $H$ over $BC$, and the reflection of $H$ over the midpoint of $BC$ both lie on $(ABC)$.
+\end{theo}
+\begin{pro}
+Simply use the fact that $\angle BHC = 180 - \angle A$.
+\end{pro}
+Note that this means $H_AH\cdot H_AA = H_AB\cdot H_AC$.
+\begin{theo}[Other properties of feet of the altitudes]
+Let $H_B$, $H_C$ be the feet of the altitudes from $B, C$, respectively. Then $BCH_BH_C$ is cyclic, or $\triangle AH_BH_C \sim \triangle ABC$.\\
+\end{theo}
+This can be used with incircles/excircles effectively.\\
+\problems
+\minpt{50}
+\psetquote{I'll swear when I want to}{Evan Chen}
+\begin{prob}[AMC 12A 2019/25]{3}
+Let $\triangle A_0B_0C_0$ be a triangle whose angle measures are exactly $59.999^\circ$, $60^\circ$, and $60.001^\circ$. For each positive integer $n$ define $A_n$ to be the foot of the altitude from $A_{n-1}$ to line $B_{n-1}C_{n-1}$. Likewise, define $B_n$ to be the foot of the altitude from $B_{n-1}$ to line $A_{n-1}C_{n-1}$, and $C_n$ to be the foot of the altitude from $C_{n-1}$ to line $A_{n-1}B_{n-1}$. What is the least positive integer $n$ for which $\triangle A_nB_nC_n$ is obtuse?
+\end{prob}\\
+\begin{prob}[Purple Comet HS 2020/26]{3}
+In $\vartriangle ABC, \angle A = 52^o$ and $\angle B = 57^o$. One circle passes through the points $B, C$, and the incenter of $\vartriangle ABC$, and a second circle passes through the points $A, C$, and the circumcenter of $\vartriangle ABC$. Find the degree measure of the acute angle at which the two circles intersect.
+\end{prob}\\
+\begin{prob}[JMO 2019/4]{4}
+Let $ABC$ be a triangle with $\angle ABC$ obtuse. The $A$-excircle is a circle in the exterior of $\triangle ABC$ that is tangent to side $BC$ of the triangle and tangent to the extensions of the other two sides. Let $E$, $F$ be the feet of the altitudes from $B$ and $C$ to lines $AC$ and $AB$, respectively. Can line $EF$ be tangent to the $A$-excircle?
+\end{prob}\\
+\begin{prob}[AIME I 2016/6]{4}
+In $\triangle ABC$ let $I$ be the center of the inscribed circle, and let the bisector of $\angle ACB$ intersect $AB$ at $L$. The line through $C$ and $L$ intersects the circumscribed circle of $\triangle ABC$ at the two points $C$ and $D$. If $LI = 2$ and $LD = 3$, find $IC$.
+\end{prob}\\
+\begin{req}[AIME I 2011/4]{4}
+In triangle $ABC$, $AB=125,AC=117$, and $BC=120$. The angle bisector of angle $A$ intersects $\overline{BC}$ at point $L$, and the angle bisector of angle $B$ intersects $\overline{AC}$ at point $K$. Let $M$ and $N$ be the feet of the perpendiculars from $C$ to $\overline{BK}$ and $\overline{AL}$, respectively. Find $MN$.
+\end{req}\\
+\begin{prob}[PuMaC 2018 G3]{4}
+Let $\triangle ABC$ satisfy $AB = 17, AC = \frac{70}{3}$ and $BC = 19$. Let $I$ be the incenter of $\triangle ABC$ and $E$ be the excenter of $\triangle ABC$ opposite $A$. (Note: this means that the circle tangent to ray $AB$ beyond $B$, ray $AC$ beyond $C$, and side $BC$ is centered at $E$.) Suppose the circle with diameter $IE$ intersects $AB$ beyond $B$ at $D$. Find $BD$.
+\end{prob}\\
+\begin{prob}[OMO Spring 2020/15]{4}
+Let $ABC$ be a triangle with $AB = 20$ and $AC = 22$. Suppose its incircle touches $\overline{BC}$, $\overline{CA}$, and $\overline{AB}$ at $D$, $E$, and $F$ respectively, and $P$ is the foot of the perpendicular from $D$ to $\overline{EF}$. If $\angle BPC = 90^{\circ}$, then compute $BC^2$.
+\end{prob}\\
+\begin{prob}[IMO 2006/1]{4}
+Let $ABC$ be triangle with incenter $I$. A point $P$ in the interior of the triangle satisfies\[\angle PBA+\angle PCA = \angle PBC+\angle PCB.\]Show that $AP \geq AI$, and that equality holds if and only if $P=I$.
+\end{prob}\\
+\begin{req}[HMMT 2019 G7]{6}
+Let $ABC$ be a triangle with $AB = 13$, $BC = 14$, $CA = 15$. Let $H$ be the orthocenter of $ABC$. Find the radius of the circle with nonzero radius tangent to the circumcircles of $AHB$, $BHC$, $CHA$.
+\end{req}\\
+\begin{prob}[AIME II 2021/14]{6}
+Let $\triangle ABC$ be an acute triangle with circumcenter $O$ and centroid $G$. Let $X$ be the intersection of the line tangent to the circumcircle of $\triangle ABC$ at $A$ and the line perpendicular to $GO$ at $G$. Let $Y$ be the intersection of lines $XG$ and $BC$. Given that the measures of $\angle ABC, \angle BCA, $ and $\angle XOY$ are in the ratio $13 : 2 : 17, $ the degree measure of $\angle BAC$ can be written as $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m+n$.
+\end{prob}\\
+\begin{center}
+\begin{asy}
+unitsize(5mm);
+pair A,B,C,X,G,O,Y;
+A = (2,8);
+B = (0,0);
+C = (15,0);
+dot(A,5+black); dot(B,5+black); dot(C,5+black);
+draw(A--B--C--A,linewidth(1.3));
+draw(circumcircle(A,B,C));
+O = circumcenter(A,B,C);
+G = (A+B+C)/3;
+dot(O,5+black); dot(G,5+black);
+pair D = bisectorpoint(O,2*A-O);
+pair E = bisectorpoint(O,2*G-O);
+draw(A+(A-D)*6--intersectionpoint(G--G+(E-G)*15,A+(A-D)--A+(D-A)*10));
+draw(intersectionpoint(G--G+(G-E)*10,B--C)--intersectionpoint(G--G+(E-G)*15,A+(A-D)--A+(D-A)*10));
+X = intersectionpoint(G--G+(E-G)*15,A+(A-D)--A+(D-A)*10);
+Y = intersectionpoint(G--G+(G-E)*10,B--C);
+dot(Y,5+black);
+dot(X,5+black);
+label("$A$",A,NW);
+label("$B$",B,SW);
+label("$C$",C,SE);
+label("$O$",O,ESE);
+label("$G$",G,W);
+label("$X$",X,dir(0));
+label("$Y$",Y,NW);
+draw(O--G--O--X--O--Y);
+markscalefactor = 0.07;
+draw(rightanglemark(X,G,O));
+\end{asy}
+\end{center}
+\begin{prob}[AIME II 2012/15]{9}
+Triangle $ABC$ is inscribed in circle $\omega$ with $AB = 5$, $BC = 7$, and $AC = 3$. The bisector of angle $A$ meets side $BC$ at $D$ and circle $\omega$ at a second point $E$. Let $\gamma$ be the circle with diameter $DE$. Circles $\omega$ and $\gamma$ meet at $E$ and a second point $F$. Then $AF^2 = \frac mn$, where m and n are relatively prime positive integers. Find $m + n$.
+\end{prob}\\
+\begin{prob}[AIME II 2019/15]{9}
+In acute triangle $ABC$ points $P$ and $Q$ are the feet of the perpendiculars from $C$ to $\overline{AB}$ and from $B$ to $\overline{AC}$, respectively. Line $PQ$ intersects the circumcircle of $\triangle ABC$ in two distinct points, $X$ and $Y$. Suppose $XP=10$, $PQ=25$, and $QY=15$. The value of $AB\cdot AC$ can be written in the form $m\sqrt n$ where $m$ and $n$ are positive integers, and $n$ is not divisible by the square of any prime. Find $m+n$.
+\end{prob}\\
+\begin{prob}[AIME I 2020/13]{9}
+Point $D$ lies on side $BC$ of $\triangle ABC$ so that $\overline{AD}$ bisects $\angle BAC$. The perpendicular bisector of $\overline{AD}$ intersects the bisectors of $\angle ABC$ and $\angle ACB$ in points $E$ and $F$, respectively. Given that $AB=4$, $BC=5$, $CA=6$, find the area of $\triangle AEF$.
+\end{prob}\\
+\begin{prob}[AIME II 2020/15]{13}
+Let $\triangle ABC$ be an acute scalene triangle with circumcircle $\omega$. The tangents to $\omega$ at $B$ and $C$ intersect at $T$. Let $X$ and $Y$ be the projections of $T$ onto lines $AB$ and $AC$, respectively. Suppose $BT=CT=16$, $BC=22$, and $TX^2+TY^2+XY^2=1143$. Find $XY^2$.
+\end{prob}\\
+\begin{prob}[ISL 2019 G2]{13}
+Let $ABC$ be an acute-angled triangle and let $D, E$, and $F$ be the feet of altitudes from $A, B$, and $C$ to sides $BC, CA$, and $AB$, respectively. Denote by $\omega_B$ and $\omega_C$ the incircles of triangles $BDF$ and $CDE$, and let these circles be tangent to segments $DF$ and $DE$ at $M$ and $N$, respectively. Let line $MN$ meet circles $\omega_B$ and $\omega_C$ again at $P \ne M$ and $Q \ne N$, respectively. Prove that $MP = NQ$.
+\end{prob}\\
+\begin{prob}[MOP 2019 HW]{13}
+Let $\triangle ABC$ be a triangle and let $E$ and $F$ be the feet of the altitudes from $B$ and $C$. Assume line $EF$ is tangent to the incircle of $\triangle ABC$. Let the excircle of triangle $\triangle ABC$ opposite the vertex $A$ be tangent to $BC$ at point $A_1$. Define points $B_1$ on $AC$ and $C_1$ on $AB$ analogously, using the excircles opposite $B$ and $C$, respectively. Prove that points $A, A_1, B_1, C_1$ are concyclic.
+\end{prob}\\
+\end{document}
