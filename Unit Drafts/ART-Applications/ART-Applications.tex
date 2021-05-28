@@ -2,17 +2,21 @@
 \usepackage[mast]{lucky}
 \usepackage{graphicx}
 
-\title{Applications of Differentiation}
+\title{Applications of Calculus}
 \author{Kelin Zhu}
 \date{ART}
 
 \begin{document}
 \maketitle
-Here, we will discuss the common uses of differentiation in contest problems that are not explicitly about Calculus.
+Here, we will discuss the common uses of single-variable differention and integration in contest problems that are not explicitly about Calculus.
 \section{Jensen's inequality and Tangent Line Trick}
 A part of why ''Trvial by Jensen's'' is often said as a meme regarding problems that may or may not involve inequalities is its true power.
+\begin{theo}[Jensen's Inequality]
+In an interval, a function is \textbf{convex} if and only if its second derivative is nonnegative throughout the interval and \textbf{concave} if and only if its second derivative is nonpositive throughout the interval.
 
+\end{theo}
 \section{Local maximas and minimas}
+(This section can be thought of a follow-up to the graphing unit in a way, as it 
 Here is the first problem I have ever solved in any contest using differentiation, which is a prime example of how the roots of derivatives can give us critical information on a function.
 \begin{exam}[Stormersyle mock AMC 10/25]
 An ordered pair $(a,b)$ is \textit{spicy} if there exists real $c$ such that the polynomial $f(x)=x^3+ax^2+bx+c$ has all real roots. For how many ordered pairs $(a,b)$ of integers with $1\le a,b\le 20$ is $(a,b)$ spicy?
@@ -40,8 +44,18 @@ Find all monic cubic polynomials $f$ following the following properties:
 \end{itemize}
 \end{exam}
 \begin{walk}
+\begin{enumerate}
+\item Don't be scared by the problem number!
+\item $f$ is of the form $x^3+ax$. Using simple reasoning, arrive at that $a<0$.
+\item Consider moving a horizontal line from a large $y$ value (intersecting $f(f(x))$ once) downwards. What does it hopping from intersecting $f$ once to five times tell us?
+\item Using the chain rule, solve for the local maximas of $f(f(x))$. (It might be helpful to make the substitution $a=-3b^2$.)
+\item Use the fact that the local maximas have equal $y$ values to find $b$.
+\end{enumerate}
 \end{walk}
-\section{Section 3}
+\section{Estimating series}
+
+\section{Calculating area}
+
 \section{Problems}
 \noindent\minpt{TBD}
 
