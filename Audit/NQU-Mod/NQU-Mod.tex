@@ -258,7 +258,7 @@ or $N\equiv 9376\pmod{10000}.$ So the answer is $937.$
 Let $n$ be the least positive integer greater than $1000$ for which\[\gcd(63, n+120) =21\quad \text{and} \quad \gcd(n+63, 120)=60.\]What is the sum of the digits of $n$?
 \end{exam}
 
-A somewhat pedagogical and unrelated comment: The problem asks for the sum of the digits of $n$ because otherwise you could game the problem by just trying all of the answer choices. In this case, the problem does not imply that finding the sum of the digits of $n$ as opposed to finding $n$ will solve the problem in a quicker or easier way.
+A somewhat pedagogical and unrelated comment: the problem asks for the sum of the digits of $n$ because otherwise you could game the problem by just trying all of the answer choices. In this case, the problem does not imply that finding the sum of the digits of $n$ as opposed to finding $n$ will solve the problem in a quicker or easier way.
 
 \begin{sol}
 Our $\gcd$ equations give us possible remainders of $n$ when divided by $63$ and $120,$ which clues us in to the Chinese Remainder Theorem.
@@ -295,7 +295,13 @@ But $237<1000,$ so the smallest $n$ is $n=237+2520=2757.$ So the minimum is $191
 Often in number theory problems we will want to take some number to some large power and find its remainder when divided by another number. Fermat's Little Theorem provides a way to make this calculation much easier.
 
 \begin{theo}[Fermat's Little Theorem]
-Consider a prime $p.$ For relatively prime $a,p,$ $a^{p-1}\equiv 1\pmod {p}.$
+Consider a prime $p.$ For any integer $a$, we have $a^{p}\equiv a \pmod {p}.$
+\end{theo}
+
+If we add the restriction that $a$ and $p$ are relatively prime, we can divide by $a$ on both sides to achieve the following.
+
+\begin{theo}[Fermat's Little Theorem, alternative]
+Consider a prime $p.$ For relatively prime $a, p$, we have $a^{p-1}\equiv 1 \pmod {p}.$
 \end{theo}
 
 There are two proofs for this theorem. We present the induction proof first because it requires the least amount of ingenuity.
