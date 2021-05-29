@@ -10,7 +10,7 @@
 *.pre
 *.synctex
 *.synctex(busy)
-
+*.DS_Store
 # compendium
 compendium-*.pdf
 
