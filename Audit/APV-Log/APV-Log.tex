@@ -1,5 +1,5 @@
 \section{Theory}
-We commonly have functions of the form $f(x)=x^n,$ and to find $f^{-1}(x),$ we just take the $n$th root of both sides to get $\sqrt[n]{x}=f^{-1}(x).$ But how would we find the inverse of a function like $f(x)=n^x?$ To do this, we create an inverse function known as a logarithm, where $n^{\log_nx}=x.$ Note that the base of a logarithm, which is $b$ in the case of $\log_b(x)$, must be in the interval $(0, 1)$ or greater than $1$. 
+We commonly have functions of the form $f(x)=x^n,$ and to find $f^{-1}(x),$ we just take the $n$th root of both sides to get $\sqrt[n]{x}=f^{-1}(x).$ But how would we find the inverse of a function like $f(x)=n^x?$ To do this, we create an inverse function known as a logarithm, where $n^{\log_nx}=x.$ Note that the base of a logarithm, which is $b$ in the case of $\log_b(x)$, must be in the interval $(0, 1)$ or greater than $1$.  In particular, it is important to check for cases where $b = 1$ in problems because not doing so may lead to extraneous solutions.
 
 Here are two examples to get you up to speed.
 
@@ -37,7 +37,7 @@ Notice that $a^{\log_ab+\log_ac}=a^{\log_ab}\cdot a^{\log_ac}=bc=a^{\log_abc}.$ 
 \end{pro}
 
 \begin{theo}[Logarithm Subtraction]
-Given positive reals $a,b,c$ with $a > 1$, $\log_{a}b-\log_{a}c=\log_{a}{\frac{b}{c}}.$
+Given positive reals $a,b,c$ with $a > 0$ and $a \neq 1$, $\log_{a}b-\log_{a}c=\log_{a}{\frac{b}{c}}.$
 \end{theo}
 
 \begin{pro}
@@ -50,7 +50,7 @@ Notice that we're exploiting the properties of logarithms, and we're expressing 
 The base change rule allows you to express all logarithms in the same base; this is extremely powerful, even if it doesn't look like much.
 
 \begin{theo}[Base Change]
-Given positive reals $a,b,c$ with $a > 1$, $\frac{\log_{a}b}{\log_{a}c}=\log_{c}b.$
+Given positive reals $a,b,c$ with $a > 0$ and $a \neq 1$, $\frac{\log_{a}b}{\log_{a}c}=\log_{c}b.$
 \end{theo}
 
 \begin{pro}
@@ -80,7 +80,7 @@ The motivation for expressing $\log 160$ as $\log 80 + \log 2$ is twofold. The g
 We present the so-called logarithm chain rule as an exercise. (It's pretty useless and is only being presented as a check-up.)
 
 \begin{exer}[Logarithm Chain Rule]
-Given positive reals $a,b,c,d$ with $a>1$ and $c>1$, $\log_{a}b\log_{c}d=\log_{a}d\log_{c}b.$
+Given positive reals $a,b,c,d$ with $a, c > 0$ and $a, c \neq 1$, $\log_{a}b\log_{c}d=\log_{a}d\log_{c}b.$
 \end{exer}
 
 \section{Examples}
