@@ -23,7 +23,7 @@ Our definition of divisibility leaves us with some helpful results.
 \begin{enumerate}
     \item If $a\mid b$ and $b\mid c$ then $a\mid c.$ (This may be referred to as the "chain rule" of divisibility.)
     
-    \item If $a\mid b$ then $a\mid bc$ for all integer $c.$
+    \item If $a\mid b$ then $a\mid bc$ for all integers $c.$
     
     \item If $a\mid b$ and $a\mid c,$ then $a\mid b+c$ and $a\mid b-c.$
 \end{enumerate}
@@ -39,9 +39,9 @@ The intuitive way to think about this is that $a$ and $b$ have the same remainde
 \begin{defi}[Modular Residue]
 We say the \textit{residue} of an integer $a\pmod{n}$ is the integer $b$ that satisfies
 \begin{itemize}
-    \Item $0\leq b<n$
-    
-    \Item $a\equiv b\pmod{n}.$
+    \item $0\leq b<n$
+
+    \item $a\equiv b\pmod{n}.$
 \end{itemize}
 \end{defi}
 
@@ -68,8 +68,8 @@ If $a \equiv x\pmod{n}$ and $b\equiv y\pmod{n},$ $ab\equiv xy\pmod{n}.$
 Say $a=a_pn+q$ and $x=x_pn+q$ where $q$ is the residue of $a$ and $x,$ and $b=b_pn+r$ and $y=y_pn+r$ where $r$ is the residue of $b$ and $y.$ Then
 \begin{align*}
 xy-ab&=(x_pn+q)(y_pn+r)-(a_pn+q)(b_pn+r)\\
-&=n^2(x_py_p-a_pb_p)+n(x_p+y_p-a_p-b_p)+qr-qr\\
-&=n^2(x_py_p-a_pb_p)+n(x_p+y_p-a_p-b_p),
+&=n^2(x_py_p-a_pb_p)+n(x_pr+y_pq-a_pr-b_pq)+qr-qr\\
+&=n^2(x_py_p-a_pb_p)+n(x_pr+y_pq-a_pr-b_pq),
 \end{align*}
 which is clearly divisible by $n.$
 \end{pro}
@@ -85,7 +85,7 @@ Note that $n\mid a-b\mid a^k-b^k.$
 As an exercise for the operations we've defined so far, pick your favorite ordered triple of positive integers $(a,b,n),$ and compute the remainder of $a+b,$ $a-b,$ $ab,$ and $a^b$\footnote{For large enough $b,$ you'll want to know Fermat's Little Theorem!} when divided by $n.$
 
 \begin{fact}[Dividing]
-Let $a,b,c$ be positive integers such that $c\mid a$ and $c\mid b.$ If $a\equiv b\pmod{n}$ \textbf{and} $\gcd(a,n)=1,$ then $\frac{a}{c}\equiv\frac{b}{c}\pmod{n}.$
+Let $a,b,c$ be positive integers such that $c\mid a$ and $c\mid b.$ If $a\equiv b\pmod{n}$ \textbf{and} $\gcd(c,n)=1,$ then $\frac{a}{c}\equiv\frac{b}{c}\pmod{n}.$
 \end{fact}
 
 Be careful to remember that we \textbf{must have} $\gcd(c,n)=1$!
@@ -126,7 +126,8 @@ Notice that in general, $\overline{ab}\equiv 10a+b\equiv a+b\pmod{9}.$
 \subsection{Modular Inverses}
 In normal arithmetic, we define $a\cdot a^{-1}=1.$ We can do something similar in modular arithmetic.
 
-\begin{defi}We define $a^{-1}$ to be the number mod $n$ such that $a\cdot a^{-1}\equiv 1 \pmod{n}.$ We say that $a^{-1}$ is the inverse of $a \pmod{n}.$\end{defi}
+\begin{defi}[Modular Inverse]
+We define $a^{-1}$ to be the number mod $n$ such that $a\cdot a^{-1}\equiv 1 \pmod{n}.$ We say that $a^{-1}$ is the inverse of $a \pmod{n}.$\end{defi}
 
 The modular inverse is defined if and only if $\gcd(a,n)=1.$
 
@@ -661,10 +662,10 @@ Determine all positive integers relatively prime to all the terms of the infinit
 \begin{prob}[AIME I 2013/15]{13}
 Let $N$ be the number of ordered triples $(A,B,C)$ of integers satisfying the conditions
 \begin{itemize}
-\Item $0\le A<B<C\le99$,
-\Item there exist integers $a$, $b$, and $c$, and prime $p$ where $0\le b<a<c<p$,
-\Item $p$ divides $A-a$, $B-b$, and $C-c$, and
-\Item each ordered triple $(A,B,C)$ and each ordered triple $(b,a,c)$ form arithmetic sequences.
+\item $0\le A<B<C\le99$,
+\item there exist integers $a$, $b$, and $c$, and prime $p$ where $0\le b<a<c<p$,
+\item $p$ divides $A-a$, $B-b$, and $C-c$, and
+\item each ordered triple $(A,B,C)$ and each ordered triple $(b,a,c)$ form arithmetic sequences.
 \end{itemize}
 Find $N$.
 \end{prob}
