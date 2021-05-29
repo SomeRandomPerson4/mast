@@ -1,0 +1,207 @@
+\documentclass{article}
+\usepackage[mast]{lucky}
+\usepackage{color}
+\begin{document}
+\title{Computational Geometry Summit}
+\author{Ethan Liu}
+\date{GRV}
+\maketitle
+\section{Lecture notes}
+In case the R-level geometry units were insufficient, here is a collection of incredibly difficult computational geometry problems of mixed styles, that many contestants would find challenging or tricky. For comedic value, the sections are labeled after the major musical periods: Baroque, Classical, Romantic, and Contemporary. These labels are just for fun and shouldn't be taken especially seriously. As with all\footnote{Hopefully people will make more!} Summit units, in lieu of any walkthroughs or useful advice, here is a celebratory cake\footnote{Thanks to Evan Chen for the asymptote code.}.
+\begin{center}
+\begin{asy}
+import cse5;
+import geometry;
+size(10cm); // nom nom nom
+pair O = (0,0); // o_o
+
+picture layer; // make a cake layer!
+real w = 50;
+real h = 18;
+filldraw(layer, ellipse(O, w, h), lightyellow, orange); // bottom ellipse
+fill(layer, box((-w,0),(w,h)), lightyellow); // body
+draw(layer, (-w,0)--(-w,h), orange); // left side
+draw(layer, (w,0)--(w,h), orange); // right side
+filldraw(layer, ellipse((0,h), w, h), yellow, orange); // top ellipse
+
+add(layer); // first layer
+add(shift(0,21)*scale(0.9)*layer); // second layer
+add(shift(0,42)*scale(0.8)*layer); // third layer
+
+picture cherry; // I never eat these though
+draw(cherry, (0,0)..(2, 3)..(3,3), brown+1); // stem
+fill(cherry, ellipse(O, 2, 1.7), red); // body
+add(shift(23,62)*cherry);
+add(shift(14,52)*cherry);
+add(shift(-24,61)*cherry);
+add(shift(-13,54)*cherry);
+
+picture candle; // uh oh this looks hard
+filldraw(candle, (-1.5,0)..(0,-0.5)..(1.5,0)--(1.5,25)--(-1.5,25)--cycle, lightgrey, grey); // stick
+path fire = O..(0.8,0.8)..(0.9,1.5)--(0,4)--(-0.9,1.5)..(-0.8,0.8)..cycle; // meow
+fill(candle, shift(0,24.8)*scale(1.5)*fire, opacity(0.7)+red); // fire red
+fill(candle, shift(0,24.8)*scale(1.2)*fire, opacity(0.7)+orange); // fire orange
+fill(candle, shift(0,24.8)*scale(0.9)*fire, opacity(0.7)+yellow); // fire yellow
+
+add(shift(-3,60)*candle); // first candle
+add(shift( 3,60)*candle); // last candle (skipping the other N-2, N >> 0)
+
+label(scale(1.8)*"$\mathcal{HAPPY}$",    (0,35), red);
+label(scale(2.0)*"$\mathcal{BIRTHDAY}$", (0,14), red);
+label(scale(0.4)*"--- \textsf{03/30/2017}", (45,-20));
+\end{asy}
+\end{center}
+\problems
+\minpt{90}
+\psetquote{Ishigami...you have friends...?}{Miko Iino}
+\subsection{Baroque-style geometry problems}
+\begin{prob}[AMC 12A 2021/10]{2}
+Two right circular cones with vertices facing down as shown in the figure below contain the same amount of liquid. The radii of the tops of the liquid surfaces are $3 \text{ cm}$ and $6 \text{ cm}$. Into each cone is dropped a spherical marble of radius $1 \text{ cm}$, which sinks to the bottom and is completely submerged without spilling any liquid. What is the ratio of the rise of the liquid level in the narrow cone to the rise of the liquid level in the wide cone?
+\end{prob}
+\begin{center}
+\begin{asy}
+size(350);
+defaultpen(linewidth(0.8));
+real h1 = 10, r = 3.1, s=0.75;
+pair P = (r,h1), Q = (-r,h1), Pp = s * P, Qp = s * Q;
+path e = ellipse((0,h1),r,0.9), ep = ellipse((0,h1*s),r*s,0.9);
+draw(ellipse(origin,r*(s-0.1),0.8));
+fill(ep,gray(0.8));
+fill(origin--Pp--Qp--cycle,gray(0.8));
+draw((-r,h1)--(0,0)--(r,h1)^^e);
+draw(subpath(ep,0,reltime(ep,0.5)),linetype("4 4"));
+draw(subpath(ep,reltime(ep,0.5),reltime(ep,1)));
+draw(Qp--(0,Qp.y),Arrows(size=8));
+draw(origin--(0,12),linetype("4 4"));
+draw(origin--(r*(s-0.1),0));
+label("$3$",(-0.9,h1*s),N,fontsize(10));
+
+real h2 = 7.5, r = 6, s=0.6, d = 14;
+pair P = (d+r-0.05,h2-0.15), Q = (d-r+0.05,h2-0.15), Pp = s * P + (1-s)*(d,0), Qp = s * Q + (1-s)*(d,0);
+path e = ellipse((d,h2),r,1), ep = ellipse((d,h2*s+0.09),r*s,1);
+draw(ellipse((d,0),r*(s-0.1),0.8));
+fill(ep,gray(0.8));
+fill((d,0)--Pp--Qp--cycle,gray(0.8));
+draw(P--(d,0)--Q^^e);
+draw(subpath(ep,0,reltime(ep,0.5)),linetype("4 4"));
+draw(subpath(ep,reltime(ep,0.5),reltime(ep,1)));
+draw(Qp--(d,Qp.y),Arrows(size=8));
+draw((d,0)--(d,10),linetype("4 4"));
+draw((d,0)--(d+r*(s-0.1),0));
+label("$6$",(d-r/4,h2*s-0.06),N,fontsize(10));
+\end{asy}
+\end{center}
+\begin{prob}[AIME II 2007/15]{6}
+Four circles $\omega,$ $\omega_{A},$ $\omega_{B},$ and $\omega_{C}$ with the same radius are drawn in the interior of triangle $ABC$ such that $\omega_{A}$ is tangent to sides $AB$ and $AC$, $\omega_{B}$ to $BC$ and $BA$, $\omega_{C}$ to $CA$ and $CB$, and $\omega$ is externally tangent to $\omega_{A},$ $\omega_{B},$ and $\omega_{C}$. If the sides of triangle $ABC$ are $13,$ $14,$ and $15,$ find the radius of $\omega$.
+\end{prob}\\
+\begin{prob}[AIME I 2019/15]{9}
+Let $\overline{AB}$ be a chord of a circle $\omega$, and let $P$ be a point on the chord $\overline{AB}$. Circle $\omega_1$ passes through $A$ and $P$ and is internally tangent to $\omega$. Circle $\omega_2$ passes through $B$ and $P$ and is internally tangent to $\omega$. Circles $\omega_1$ and $\omega_2$ intersect at points $P$ and $Q$. Line $PQ$ intersects $\omega$ at $X$ and $Y$. Assume that $AP=5$, $PB=3$, $XY=11$, and $PQ^2 = \tfrac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.
+\end{prob}\\
+\begin{req}[PuMaC 2020 G7]{9}
+Let $\triangle ABC$ be a triangle with sides $AB = 34, BC = 15, AC = 35$ and let $\Gamma$ be the circle of smallest possible radius passing through $A$ tangent to $\overline{BC}$. Let the second intersections of $\Gamma$ and sides $AB, AC$ be the points $X, Y$ . Let the ray $XY$ intersect the circumcircle of the triangle $\triangle ABC$ at $Z$. Find $AZ$.
+\end{req}\\
+\begin{prob}[CMIMC 2017 G10]{9}
+Suppose $\triangle ABC$ is such that $AB=13$, $AC=15$, and $BC=14$. It is given that there exists a unique point $D$ on side $\overline{BC}$ such that the Euler lines of $\triangle ABD$ and $\triangle ACD$ are parallel. Determine the value of $\tfrac{BD}{CD}$. (The $\textit{Euler}$ line of a triangle $ABC$ is the line connecting the centroid, circumcenter, and orthocenter of $ABC$.)
+\end{prob}\\
+\begin{prob}[USMCA 2021/29]{13}
+Three circles $\Gamma_A$, $\Gamma_B$, $\Gamma_C$ are externally tangent. The circles are centered at $A$, $B$, and $C$. Circles $\Gamma_B$ and $\Gamma_C$ meet at $D$, circles $\Gamma_C$ and $\Gamma_A$ meet at $E$, and circles $\Gamma_A$ and $\Gamma_B$ meet at $F$. Let $GH$ be a common external tangent of $\Gamma_B$ and $\Gamma_C$ on the opposite side of $BC$ as $EF$, with $G$ on $\Gamma_B$ and $H$ on $\Gamma_C$. Lines $FG$ and $EH$ meet at $K$. Point $L$ is on $\Gamma_A$ such that $\angle DLK = 90^\circ$. Prove that 
+\[\frac{LG}{LH}=\frac{FG}{EH}\]
+\end{prob}
+\subsection{Classical-style geometry problems}
+\begin{prob}[AIME 1994/15]{4}
+Given a point $P$ on a triangular piece of paper $ABC,$ consider the creases that are formed in the paper when $A, B,$ and $C$ are folded onto $P.$ Let us call $P$ a fold point of $\triangle ABC$ if these creases, which number three unless $P$ is one of the vertices, do not intersect. Suppose that $AB=36, AC=72,$ and $\angle B=90^\circ.$ Then the area of the set of all fold points of $\triangle ABC$ can be written in the form $q\pi-r\sqrt{s},$ where $q, r,$ and $s$ are positive integers and $s$ is not divisible by the square of any prime. What is $q+r+s$?
+\end{prob}\\
+\begin{prob}[AIME I 2014/11]{6}
+In $\triangle RED, RD =1, \angle DRE = 75^\circ$ and $\angle RED = 45^\circ$. Let $M$ be the midpoint of segment $\overline{RD}$. Point $C$ lies on side $\overline{ED}$ such that $\overline{RC} \perp \overline{EM}$. Extend segment $\overline{DE}$ through $E$ to point $A$ such that $CA = AR$. Then $AE = \tfrac{a-\sqrt{b}}{c},$ where $a$ and $c$ are relatively prime positive integers, and $b$ is a positive integer. Find $a+b+c$.	
+\end{prob}\\
+\begin{prob}[AIME II 2016/14]{6}
+Equilateral $\triangle ABC$ has side length $600$. Points $P$ and $Q$ lie outside of the plane of $\triangle ABC$ and are on the opposite sides of the plane. Furthermore, $PA=PB=PC$, and $QA=QB=QC$, and the planes of $\triangle PAB$ and $\triangle QAB$ form a $120^{\circ}$ dihedral angle (The angle between the two planes). There is a point $O$ whose distance from each of $A,B,C,P$ and $Q$ is $d$. Find $d$.	
+\end{prob}\\
+\begin{prob}[AIME II 2019/13]{6}
+Regular octagon $A_1A_2A_3A_4A_5A_6A_7A_8$ is inscribed in a circle of area $1$. Point $P$ lies inside the circle so that the region bounded by $\overline{PA_1}$, $\overline{PA_2}$, and the minor arc $\widehat{A_1A_2}$ of the circle has area $\tfrac17$, while the region bounded by $\overline{PA_3}$, $\overline{PA_4}$, and the minor arc $\widehat{A_3A_4}$ of the circle has area $\tfrac 19$. There is a positive integer $n$ such that the area of the region bounded by $\overline{PA_6}$, $\overline{PA_7}$, and the minor arc $\widehat{A_6A_7}$ is equal to $\tfrac18 - \tfrac{\sqrt 2}n$. Find $n$.
+\end{prob}\\
+\begin{req}[AIME I 2019/13]{9}
+Triangle $ABC$ has side lengths $AB=4$, $BC=5$, and $CA=6$. Points $D$ and $E$ are on ray $AB$ with $AB<AD<AE$. The point $F \neq C$ is a point of intersection of the circumcircles of $\triangle ACD$ and $\triangle EBC$ satisfying $DF=2$ and $EF=7$. Then $BE$ can be expressed as $\tfrac{a+b\sqrt{c}}{d}$, where $a$, $b$, $c$, and $d$ are positive integers such that $a$ and $d$ are relatively prime, and $c$ is not divisible by the square of any prime. Find $a+b+c+d$.
+\end{req}\\
+\begin{prob}[NICE Spring 2021/23]{9}
+Let $ABC$ be a triangle with $\angle ABC = 90^\circ$ and incircle $\omega$ of radius $4$, which is tangent to $\overline{BC}$ and $\overline{AC}$ at $E$ and $F$ respectively. Suppose that $\overline{BF}$ is tangent to the circumcircle of $\triangle CEF$. Then $BC$ can be written in the form $p + \sqrt{q}$ for positive integers $p$ and $q$. Determine $1000p + q$.
+\end{prob}\\
+\begin{prob}[OMO Spring 2018/28]{13}
+In $\triangle ABC$, the incircle $\omega$ has center $I$ and is tangent to $\overline{CA}$ and $\overline{AB}$ at $E$ and $F$ respectively. The circumcircle of $\triangle{BIC}$ meets $\omega$ at $P$ and $Q$. Lines $AI$ and $BC$ meet at $D$, and the circumcircle of $\triangle PDQ$ meets $\overline{BC}$ again at $X$. Suppose that $EF = PQ = 16$ and $PX + QX = 17$. Find $BC^2$.
+\end{prob}
+\subsection{Romantic-style geometry problems}
+\begin{prob}[AIME II 2020/13]{4}
+Convex pentagon $ABCDE$ has side lengths $AB=5$, $BC=CD=DE=6$, and $EA=7$. Moreover, the pentagon has an inscribed circle (a circle tangent to each side of the pentagon). Find the area of $ABCDE$.	
+\end{prob}\\
+\begin{prob}[MPfG 2014/17]{4}
+Let $ABC$ be a triangle. Points $D$, $E$, and $F$ are respectively on the sides $\overline{BC}$, $\overline{CA}$, and $\overline{AB}$ of $\triangle ABC$. Suppose that
+\[
+  \frac{AE}{AC} = \frac{CD}{CB} = \frac{BF}{BA} = x
+\]
+for some $x$ with $\frac{1}{2} < x < 1$. Segments $\overline{AD}$, $\overline{BE}$, and $\overline{CF}$ cut the triangle into 7 nonoverlapping regions: 4 triangles and 3 quadrilaterals. The total area of the 4 triangles equals the total area of the 3 quadrilaterals. Compute the value of $x$.
+\end{prob}\\
+\begin{prob}[AIME I 2013/13]{6}
+In $\triangle ABC$, $AC = BC$, and point $D$ is on $\overline{BC}$ so that $CD = 3 \cdot BD$. Let $E$ be the midpoint of $\overline{AD}$. Given that $CE = \sqrt{7}$ and $BE = 3$, the area of $\triangle ABC$ can be expressed in the form $m\sqrt{n}$, where $m$ and $n$ are positive integers and $n$ is not divisible by the square of any prime. Find $m+n$.	
+\end{prob}\\
+\begin{req}[AIME I 2014/13]{6}
+On square $ABCD,$ points $E,F,G,$ and $H$ lie on sides $\overline{AB},\overline{BC},\overline{CD},$ and $\overline{DA},$ respectively, so that $\overline{EG} \perp \overline{FH}$ and $EG=FH = 34.$ Segments $\overline{EG}$ and $\overline{FH}$ intersect at a point $P,$ and the areas of the quadrilaterals $AEPH, BFPE, CGPF,$ and $DHPG$ are in the ratio $269:275:405:411.$ Find the area of square $ABCD$.
+\end{req}
+\begin{center}
+\begin{asy}
+size(200);
+defaultpen(linewidth(0.8)+fontsize(10.6));
+pair A = (0,sqrt(850));
+pair B = (0,0);
+pair C = (sqrt(850),0);
+pair D = (sqrt(850),sqrt(850));
+draw(A--B--C--D--cycle);
+dotfactor = 3;
+dot("$A$",A,dir(135));
+dot("$B$",B,dir(215));
+dot("$C$",C,dir(305));
+dot("$D$",D,dir(45));
+pair H = ((2sqrt(850)-sqrt(120))/6,sqrt(850));
+pair F = ((2sqrt(850)+sqrt(306)+7)/6,0);
+dot("$H$",H,dir(90));
+dot("$F$",F,dir(270));
+draw(H--F);
+pair E = (0,(sqrt(850)-6)/2);
+pair G = (sqrt(850),(sqrt(850)+sqrt(100))/2);
+dot("$E$",E,dir(180));
+dot("$G$",G,dir(0));
+draw(E--G);
+pair P = extension(H,F,E,G);
+dot("$P$",P,dir(60));
+label("$w$", (H+E)/2,fontsize(15));
+label("$x$", (E+F)/2,fontsize(15));
+label("$y$", (G+F)/2,fontsize(15));
+label("$z$", (H+G)/2,fontsize(15));
+label("$w:x:y:z=269:275:405:411$",(sqrt(850)/2,-4.5),fontsize(11));
+\end{asy}
+\end{center}
+\begin{prob}[AIME I 2018/13]{9}
+Let $\triangle ABC$ have side lengths $AB=30$, $BC=32$, and $AC=34$. Point $X$ lies in the interior of $\overline{BC}$, and points $I_1$ and $I_2\) are the incenters of $\triangle ABX$ and $\triangle ACX$, respectively. Find the minimum possible area of $\triangle AI_1I_2$ as $X$ varies along $\overline{BC}$.
+\end{prob}\\
+\begin{prob}[AIME I 2011/13]{13}
+A cube with side length 10 is suspended above a plane. The vertex closest to the plane is labelled $A$. The three vertices adjacent to vertex $A$ are at heights 10, 11, and 12 above the plane. The distance from vertex $A$ to the plane can be expressed as $\tfrac{r-\sqrt{s}}{t}$, where $r$, $s$, and $t$ are positive integers, and $r+s+t<1000$. Find $r+s+t$.
+\end{prob}
+\subsection{Contemporary-style geometry problems}
+\begin{prob}[AMC 12B 2018/23]{3}
+Amol is standing at point $A$ near Pontianak, Indonesia, $0^\circ$ latitude and $110^\circ \text{ E}$ longitude. Brian is standing at point $B$ near Big Baldy Mountain, Idaho, USA, $45^\circ \text{ N}$ latitude and $115^\circ \text{ W}$ longitude. Assume that Earth is a perfect sphere with center $C$. What is the degree measure of $\angle ACB$?
+\end{prob}\\
+\begin{prob}[AMC 12A 2021/21]{6}
+The five solutions to the equation$$(z-1)(z^2+2z+4)(z^2+4z+6)=0$$may be written in the form $x_k+y_ki$ for $1\le k\le 5,$ where $x_k$ and $y_k$ are real. Let $\mathcal E$ be the unique ellipse that passes through the points $(x_1,y_1),(x_2,y_2),(x_3,y_3),(x_4,y_4),$ and $(x_5,y_5)$. Find the eccentricity of $\mathcal E$. (Recall that the eccentricity of an ellipse $\mathcal E$ is the ratio $\frac ca$, where $2a$ is the length of the major axis of $E$ and $2c$ is the is the distance between its two foci.)
+\end{prob}\\
+\begin{prob}[HMMT 2021 G8]{9}
+Two circles with radii $71$ and $100$ are externally tangent. Compute the largest possible area of a right triangle whose vertices are each on at least one of the circles.
+\end{prob}\\
+\begin{req}[AIME I 2021/13]{9}
+Circles $\omega_1$ and $\omega_2$ with radii $961$ and $625$, respectively, intersect at distinct points $A$ and $B$. A third circle $\omega$ is externally tangent to both $\omega_1$ and $\omega_2$. Suppose line $AB$ intersects $\omega$ at two points $P$ and $Q$ such that the measure of minor arc $\widehat{PQ}$ is $120^{\circ}$. Find the distance between the centers of $\omega_1$ and $\omega_2$.	
+\end{req}\\
+\begin{prob}[AMC 12B 2011/25]{13}
+Triangle $ABC$ has $\angle BAC=60^\circ$, $\angle CBA \le 90^\circ$, $BC=1$, and $AC \ge AB$. Let $H$, $I$, and $O$ be the orthocenter, incenter, and circumcenter of $\triangle ABC$, respectively. Assume that the area of the pentagon $BCOIH$ is the maximum possible. What is $\angle CBA$?
+\end{prob}\\
+\begin{prob}[AIME II 2017/15]{13}
+Tetrahedron $ABCD$ has $AD=BC=28$, $AC=BD=44$, and $AB=CD=52$. For any point $X$ in space, define $f(X)=AX+BX+CX+DX$. The least possible value of $f(X)$ can be expressed as $m\sqrt{n}$, where $m$ and $n$ are positive integers, and $n$ is not divisible by the square of any prime. Find $m+n$.	
+\end{prob}
+\end{document}
