@@ -295,18 +295,18 @@ But $237<1000,$ so the smallest $n$ is $n=237+2520=2757.$ So the minimum is $191
 Often in number theory problems we will want to take some number to some large power and find its remainder when divided by another number. Fermat's Little Theorem provides a way to make this calculation much easier.
 
 \begin{theo}[Fermat's Little Theorem]
-Consider a prime $p.$ For any integer $a$, we have $a^{p}\equiv a \pmod {p}.$
+Consider a prime $p.$ For any integer $a$, $a^{p}\equiv a \pmod {p}.$
 \end{theo}
 
 If we add the restriction that $a$ and $p$ are relatively prime, we can divide by $a$ on both sides to achieve the following.
 
 \begin{theo}[Fermat's Little Theorem, alternative]
-Consider a prime $p.$ For relatively prime $a, p$, we have $a^{p-1}\equiv 1 \pmod {p}.$
+Consider a prime $p.$ For relatively prime $a, p$, $a^{p-1}\equiv 1 \pmod {p}.$
 \end{theo}
 
 There are two proofs for this theorem. We present the induction proof first because it requires the least amount of ingenuity.
 \begin{pro}[1 (Induction)]
-For the inductive proof, we prove that $a^p\equiv a\pmod{p}$ instead.
+For the inductive proof, we prove that $a^p\equiv a\pmod{p}$.
 
 This is obviously true for the base case $a=1.$
 
@@ -318,7 +318,7 @@ as desired.
 \end{pro}
 The rearrangement proof requires a little bit more creativity and is more aesthetic. It can also be generalized to Euler's Theorem, where the first proof cannot.
 \begin{pro}[2 (Rearrangement)]
-We claim that $a,2a,3a\dots a(p-1)$ is a rearrangement of $1,2,3\dots p-1$ taken mod $p.$ We prove this by contradiction. Assume that there are two integers such that $ax\equiv ay \pmod{p}.$ Since $\gcd(a,p)=1,$ we can divide both sides by $a$ to yield $x\equiv y.$ But this is obviously not possible. Thus, contradiction.
+Suppose that $a$ and $p$ are relatively prime. We claim that $a,2a,3a\dots a(p-1)$ is a rearrangement of $1,2,3\dots p-1$ taken mod $p.$ We prove this by contradiction. Assume that there are two integers such that $ax\equiv ay \pmod{p}$ with $0 < x, y < p$ and $x \neq y$. Since $\gcd(a,p)=1,$ we can divide both sides by $a$ to yield $x\equiv y.$ But this is obviously not possible. Thus, contradiction.
 
 This implies that $(p-1)!\equiv a^{p-1}(p-1)! \pmod{p}.$ As $\gcd(p,(p-1)!)=1,$ we can divide both sides by $(p-1)!$ to get $1\equiv a^{p-1}\pmod{p},$ as desired.
 \end{pro}
@@ -472,7 +472,7 @@ Now we prove $k>4$ doesn't work. Note that the minimal $k$ such that $3^k\equiv 
 
 Now we take a look at Euler's Totient Function.
 
-\begin{defi}
+\begin{defi}[Euler's Totient Function]
 We define $\phi(n)$ to be the number of positive integers less than or equal to $n$ that are also relatively prime to $n.$
 \end{defi}
 
@@ -517,7 +517,7 @@ This implies that $x_1x_2\ldots x_{\phi(n)}\equiv (x_1x_2\ldots x_{\phi(n)})a^{\
 
 \footnotetext{So similar, in fact, that I copy-pasted the proof for Fermat's and made minor adjustments.}
 
-Also notice that Fermat's is just special case of Euler's.
+Also, notice that Fermat's is just a special case of Euler's.
 
 \section{Wilson's Theorem}
 
