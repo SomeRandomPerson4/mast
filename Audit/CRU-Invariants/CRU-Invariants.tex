@@ -27,6 +27,24 @@ Note that the knight always changes color as it moves, and that it can only atta
 
 Consult a chess rulebook if you do not know how a knight moves or how the board is colored.
 
+\subsection{Monovariants}
+
+Sometimes, what we are looking for is not quite something that never changes, but rather something that changes predictably. This is what we call a monovariant, and they are particularly useful when they only change in one direction.
+
+\begin{exam}[All-Russian Math Olympiad 1961/7]
+Consider a table with one real number in each cell. In one step, one may switch the sign of the numbers in one row or one column simultaneously. Prove that one can obtain a table with non-negative sums in each row and each column.
+\end{exam}
+
+We present two similar solutions that both use the sum as a monovariant.
+
+\begin{sol}[1]
+Note that the configuration with the largest sum must have each row and column be non-negative, because otherwise, you could create a larger configuration by swapping the sign of the negative row or column.
+\end{sol}
+
+\begin{sol}[2]
+We claim that if we continuously swap each row or column with a negative sum, our process will eventually terminate. Note that swapping the sign of a row or column with a negative sum will strictly increase the total sum. Since the total sum is bounded by the sums of the absolute values of each element, our process terminates.
+\end{sol}
+
 \section{Symmetry}
 What stays the same?
 

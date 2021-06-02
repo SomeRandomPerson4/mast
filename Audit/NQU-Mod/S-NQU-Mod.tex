@@ -1,0 +1,364 @@
+
+\documentclass[mast]{lucky}
+
+\title{Solutions to Modular Arithmetic}
+\author{MAST}
+\date{NQU}
+
+\begin{document}
+
+\maketitle
+
+\toc
+
+\pagebreak\section{Unsourced}
+
+Find the inverse of $2\pmod {p}$ for odd prime $p$ in terms of $p.$
+
+\subsection{Solution}
+
+Note that $2\cdot \left(\frac{p + 1}{2}\right) \equiv 1 \pmod p$ for an odd prime $p$, so the answer is $\ansbold{\frac{p + 1}{2}}$. 
+
+\pagebreak\section{Unsourced}
+
+Find the remainder of $97!$ when divided by $101.$
+
+\subsection{Solution}
+
+By Wilson's Theorem, since $101$ is prime, $100! \equiv -1 \pmod{101}$. Then,
+\begin{align*}
+97! \cdot 98 \cdot 99 \cdot 100 &\equiv -1 \\
+97! \cdot (-3) \cdot (-2) \cdot (-1) &\equiv -1 \\
+97! \cdot (-3) \cdot (-2) &\equiv 1 \\
+97! \cdot 6 &\equiv 1 \pmod{101},
+\end{align*}
+and note that $6 \cdot 17 \equiv 102 \equiv 1 \pmod{101}$, so $17$ is the inverse of $6 \pmod{101}$. Thus, 
+\begin{align*}
+97! \cdot 6 &\equiv 1 \\
+97! &\equiv 17 \pmod{101},
+\end{align*}
+so the answer is $\ansbold{17}$.
+
+\pagebreak\section{Unsourced}
+
+Find the remainder of $(p-2)!$ when divided by $p,$ provided that $p$ is prime.
+
+\subsection{Solution}
+
+By Wilson's Theorem, $(p - 1)! \equiv -1 \pmod p$. Then,
+\begin{align*}
+(p - 2)! \cdot (p - 1) &\equiv -1 \\
+(p - 2)! \cdot (-1) &\equiv -1 \\
+(p - 2)! &\equiv 1 \pmod p,
+\end{align*}
+so the answer is $\ansbold{1}$.
+
+\pagebreak\section{AMC 12A 2003/18}
+
+Let $n$ be a $5$-digit number, and let $q$ and $r$ be the quotient and the remainder, respectively, when $n$ is divided by $100$. For how many values of $n$ is $q+r$ divisible by $11$?
+
+\subsection{Solution}
+
+Let $n = \overline{abcde}$ for digits $a, b, c, d, e$ with $a \neq 0$. Note that $q = \overline{abc}$ and $r = \overline{de}$. Thus,
+\begin{align*}
+q + r &= \overline{abc} + \overline{de} \\
+&= 100a + 10b + c + 10d + e \\
+&= 100a + 10(b + d) + (c + e) \\
+&\equiv a - b + c - d + e \pmod{11}.
+\end{align*}
+Now, we require $a - b + c - d + e \equiv 0 \pmod{11}$. By the divisibility rule for $11$, this is equivalent to $n$ being divisible by $11$. The smallest 5-digit multiple of $11$ is $11 \cdot 910 = 10010$, while the largest 5-digit multiple of $11$ is $11 \cdot 9090 = 99990$, so the answer is $9090 - 910 + 1 = \ansbold{8181}$.
+
+\pagebreak\section{MAST Diagnostic 2020}
+
+How many integer values of $1\leq x\leq 100$ makes $x^2+8x+5$ divisible by $10?$
+
+\subsection{Solution}
+
+Note that $x^2 + 8x + 5 = (x + 4)^2 - 11$. So, we are trying to find values of $1 \leq x \leq 100$ such that $(x + 4)^2 - 11 \equiv 0 \pmod{10}$. Let $a = x + 4$. Now, we are trying to find values of $5 \leq a \leq 104$ such that
+\begin{align*}
+a^2 - 11 &\equiv 0 \\
+a^2 &\equiv 11 \\
+a^2 &\equiv 1 \pmod{10},
+\end{align*}
+which amounts to $a$ having a units digit of $1$ or $9$. There are $10$ values of $5 \leq a \leq 104$ such that $a$ has a units digit of $1$, and there are $10$ values of $a$ in the same interval with units digit $9$. Thus, the answer is $10 + 10 = \ansbold{20}$.
+
+\pagebreak\section{1001 Problems in Number Theory}
+
+For which positive integers $n$ is it true that $1+2+\cdots+n\mid 1\cdot 2\cdot \cdots \cdot n$?
+
+\subsection{Solution}
+
+Suppose that $n$ is odd. Since $n \mid n$ and $\frac{n + 1}{2} \mid (n - 1)!$, we have $\frac{n(n + 1)}{2} \mid n!$. Suppose that $n$ is even. We have the following: 
+\begin{enumerate}
+\item Since $n$ is relatively prime to $n + 1$, $\frac{n}{2}$ is relatively prime to $n + 1$.
+\item $\frac{n}{2} \mid n!$.
+\end{enumerate}
+
+\emph{Case 1.} $n + 1$ is prime (in particular, $n$ is an odd prime in this case since we assumed that $n$ is even). 
+
+\bigskip 
+
+Since $n + 1 \nmid \, n!$, $\frac{n(n + 1)}{2} \nmid \, n!$. 
+
+\bigskip
+
+\emph{Case 2.} $n + 1$ is not a prime. 
+
+\bigskip 
+
+Since $n + 1 \mid n!$, by (1) and (2), we have $\frac{n(n + 1)}{2} \mid n!$. 
+
+\bigskip
+
+Thus, the answer is $n$ such that $n + 1$ is not an odd prime.
+
+\pagebreak\section{Unsourced}
+
+What is the residue of $\frac{1}{1\cdot 2}\cdot \frac{1}{2\cdot 3}\cdot \dots \cdot \frac{1}{11\cdot 12}\pmod {13}?$
+
+\subsection{Solution}
+
+Since $13$ is prime, by Wilson's theorem, $12!$ is the inverse of $12!$. Then, 
+\begin{align*}
+\prod_{i = 1}^{11} \frac{1}{i(i + 1)} &\equiv \frac{1}{11! \cdot 12!} \\
+&\equiv \frac{1}{11!} \cdot \frac{1}{12!} \\
+&\equiv \frac{12}{12!} \cdot 12! \\
+&\equiv 12 \pmod{13},
+\end{align*}
+so the answer is $\ansbold{12}$.
+
+\pagebreak\section{AMC 10A 2020/18}
+
+Let $(a,b,c,d)$ be an ordered quadruple of not necessarily distinct integers, each one of them in the set ${0,1,2,3}.$ For how many such quadruples is it true that $a\cdot d-b\cdot c$ is odd? (For example, $(0,3,1,1)$ is one such quadruple, because $0\cdot 1-3\cdot 1 = -3$ is odd.)
+
+\subsection{Solution}
+
+We require $ad$ and $bc$ to be of opposite parity. We apply complementary counting. The total number of ordered pairs $(a, b, c, d)$ without the parity restriction is $4 \cdot 4 \cdot 4 \cdot 4 = 256$. If $ad$ and $bc$ are of the same parity, then there are $12$ choices for $(a, d)$ and $12$ choices for $(b, d)$ (at least one variable in each term has to be even). Then, there are $12 \cdot 12 = 144$ ordered pairs $(a, b, c, d)$ such that $ad$ and $bc$ have the same parity. Thus, the answer is $256 - 144 = \ansbold{112}$.
+
+\pagebreak\section{AMC 10B 2018/16}
+
+Let $a_1,a_2,\dots,a_{2018}$ be a strictly increasing sequence of positive integers such that\[a_1+a_2+\cdots+a_{2018}=2018^{2018}.\]What is the remainder when $a_1^3+a_2^3+\cdots+a_{2018}^3$ is divided by $6$?
+
+\subsection{Solution}
+
+By Fermat's Little Theorem,
+\begin{align*}
+\sum_{i = 1}^{2018} a_i^3 \equiv \sum_{i = 1}^{2018} a_i \equiv 2018^{2018} \equiv (-1)^{2018} \equiv 1 \pmod 3. 
+\end{align*}
+Since $a_i \equiv a_i^3 \pmod 2$,
+\begin{align*}
+\sum_{i = 1}^{2018} a_i^3 \equiv \sum_{i = 1}^{2018} a_i \equiv 2018^{2018} \equiv 0 \pmod 2. 
+\end{align*}
+Thus,
+\begin{align*}
+\sum_{i = 1}^{2018} a_i^3 \equiv 4 \pmod 6, 
+\end{align*}
+so the answer is $\ansbold{4}$.
+
+\pagebreak\section{PUMaC 2018}
+
+Find the number of positive integers $n<2018$ such that $25^n+9^n$ is divisible by $13.$
+
+\subsection{Solution}
+
+Note that
+\begin{align*}
+0 &\equiv 25^n + 9^n \\
+&\equiv (-1)^n + (-4)^n \\
+&\equiv 1^n + 4^n \\
+-1 &\equiv 4^n \pmod{13}.
+\end{align*}
+Since $k = 3$ is the smallest possible positive integer such that $4^k \equiv -1 \pmod{13}$, we know that $n = 3m$ for odd positive integers $m$. Thus, $n \in \{3, 9,15, \dots, 2013\}$, so the number of possible values of $n$ is $\ansbold{336}$.
+
+\pagebreak\section{Unsourced}
+
+Prove $\phi(n)$ is composite for $n\geq 7.$
+
+\subsection{Solution}
+
+\pagebreak\section{AMC 10B 2019/14}
+
+The base-ten representation for $19!$ is $121,6T5,100,40M,832,H00$, where $T$, $M$, and $H$ denote digits that are not given. What is $T+M+H$?
+
+\subsection{Solution}
+
+Since $1000 \mid 19!$, $H = 0$. Note that $0 \leq M + T \leq 18$ and $-9 \leq M - T \leq 9$. First, by the divisibility rule for $9$, $33 + M + T  \equiv 0 \pmod 9$, so $M + T \in \{3, 12\}$. Next, by the divisibility rule for $11$, $7 + M - T \equiv 0 \pmod{11}$, so $M - T \in \{-4, 4\}$. Since $M + T$ and $M - T$ must have the same parity, $M + T$ must be even, so $M + T = 12$. Thus, $T + M + H = 12 + 0 = \ansbold{12}$.
+
+\pagebreak\section{Unsourced}
+
+Find the remainder of $5^{31}+5^{17}+1$ when divided by $31.$
+
+\subsection{Solution}
+
+By Fermat's Little Theorem, $5^{31} \equiv 5 \pmod{31}$. Then,
+\begin{align*}
+5^{31} + 5^{17} + 1 &\equiv 5 + 5^{17} + 1 \\
+&\equiv 5 + (5^3)^5 \cdot 5^2 + 1 \\
+&\equiv 5 + (1)^5 \cdot 5^2 + 1 \\
+&\equiv 5 + 25 + 1 \\
+&\equiv 0 \pmod{31},
+\end{align*}
+so the answer is $\ansbold{0}$.
+
+\pagebreak\section{OMO 15-16 Spring/9}
+
+Let $f(n)=1 \times 3 \times 5 \times \cdots \times (2n-1)$. Compute the remainder when $f(1)+f(2)+f(3)+\cdots +f(2016)$ is divided by $100.$
+
+\subsection{Solution}
+
+\pagebreak\section{Unsourced}
+
+Prove that the equation $x^2+y^2+z^2=x+y+z+1$ has no solutions over the rationals.
+
+\subsection{Solution}
+
+\pagebreak\section{MAST Diagnostic 2021}
+
+Find the remainder of $(1^3)(1^3+2^3)(1^3+2^3+3^3)\dots(1^3+2^3+3^3\dots+99^3)$ when divided by $101.$
+
+\subsection{Solution}
+
+Note that $\sum_{i=1}^{n} i^3 = \left(\frac{n(n + 1)}{2}\right)^2$. Then, the given expression is equivalent to 
+\begin{align*}
+\left(\frac{1(2)}{2} \cdot \frac{2(3)}{2} \cdots \frac{99(100)}{2}\right)^2 = \left(\frac{99! \cdot 100!}{2^{99}}\right)^2.
+\end{align*}
+By Wilson's Theorem, $100! \equiv -1 \pmod{101}$. Additionally,
+\begin{align*}
+-1 &\equiv 100! \\
+-1 &\equiv 99! \cdot 100 \\
+-1 &\equiv 99! \cdot -1 \\
+1 &\equiv 99! \pmod{101}.
+\end{align*}
+By Fermat's Little Theorem, $2^{100} \equiv 1 \pmod{101}$, so
+\begin{align*}
+\frac{1}{2^{99}} &\equiv \frac{2}{2^{100}} \\
+&\equiv 2 \pmod{101}.
+\end{align*}
+Thus, 
+\begin{align*}
+\left(\frac{99! \cdot 100!}{2^{99}}\right)^2 \equiv (1 \cdot -1 \cdot 2)^2 \equiv 4 \pmod{101},
+\end{align*}
+so the answer is $\ansbold{4}$.
+
+\pagebreak\section{Wolstenholme's Theorem}
+
+Prove that for all prime $p\ge5$, we have $p^2\mid (p-1)!\left(\sum\limits_{i=1}^{p-1}\frac1{i}\right)$.
+
+\subsection{Solution}
+
+\pagebreak\section{AIME 1989/9}
+
+One of Euler's conjectures was disproved in the 1960s by three American mathematicians when they showed there was a positive integer such that $133^5+110^5+84^5+27^5=n^{5}$. Find the value of $n$.
+
+\subsection{Solution}
+
+By working modulo $3$, we find that $n^5 \equiv 0 \pmod 3$, so $3 \mid n$. By working modulo $10$, we find that the $n^5 \equiv 4 \pmod{10}$, so $n \equiv 4 \pmod{10}$. Thus, $n \in \{144, 174, 204, \dots\}$. However, note that 
+\begin{align*}
+174^5 \approx (1.3 \cdot 133)^5 > 3.2 \cdot 133^5 > 133^5 + 133^5 + 133^5 + (0.2 \cdot 133)^5 > n^5,
+\end{align*}
+so $174$ is too large. Thus, the answer is $\ansbold{144}$.
+
+\pagebreak\section{USAMO 1979/1}
+
+Determine all non-negative integral solutions $(n_1, n_2, \dots , n_k)$, if any, apart from permutations, of the Diophantine equation
+$$n_1^4 + n_2^4 + \cdots + n_{14}^{4} = 1599.$$
+
+\subsection{Solution}
+
+We claim that there are no solutions. Indeed, taking mod $16$ on both sides,
+\begin{align*}
+n_1^4 + n_2^4 + \cdots + n_{14}^4 \equiv 15 \pmod{16}.
+\end{align*}
+However, since $n_i^4 \in \{0, 1\} \pmod{16}$ for $1 \leq i \leq 14$, this is impossible.
+
+\pagebreak\section{AIME II 2017/8}
+
+Find the number of positive integers $n$ less than $2017$ such that
+\[ 1+n+\frac{n^2}{2!}+\frac{n^3}{3!}+\frac{n^4}{4!}+\frac{n^5}{5!}+\frac{n^6}{6!} \]is an integer.
+
+\subsection{Solution}
+
+\pagebreak\section{IMO 1970/4}
+
+Find all positive integers $n$ such that the set $\{n,n+1,n+2,n+3,n+4,n+5\}$ can be partitioned into two subsets so that the product of the numbers in each subset is equal.
+
+\subsection{Solution}
+
+\pagebreak\section{IMO 2005/4}
+
+Determine all positive integers relatively prime to all the terms of the infinite sequence
+\[a_n=2^n+3^n+6^n -1,\ n\geq 1.\]
+
+\subsection{Solution}
+
+\pagebreak\section{AIME I 2013/15}
+
+Let $N$ be the number of ordered triples $(A,B,C)$ of integers satisfying the conditions
+\begin{itemize}
+\item $0\le A<B<C\le99$,
+\item there exist integers $a$, $b$, and $c$, and prime $p$ where $0\le b<a<c<p$,
+\item $p$ divides $A-a$, $B-b$, and $C-c$, and
+\item each ordered triple $(A,B,C)$ and each ordered triple $(b,a,c)$ form arithmetic sequences.
+\end{itemize}
+Find $N$.
+
+\subsection{Solution}
+
+\pagebreak\section{USEMO 2019/4}
+
+Prove that for any prime $p,$ there exists a positive integer $n$ such that
+\[1^n+2^{n-1}+3^{n-2}+\cdots+n^1\equiv 2020\pmod{p}.\]
+
+\subsection{Solution}
+
+\pagebreak\section{Unsourced}
+
+The expansion of $\frac{1}{7}$ is $0.\overline{142857},$ which is a repeating decimal with a $6$ digit long sequence. How many digits long is the expansion of $\frac{1}{13}?$
+
+\subsection{Solution}
+
+Long division gives $\frac{1}{13} = 0.\overline{076923}$, so the answer is $\ansbold{6}$.
+
+\pagebreak\section{Unsourced}
+
+We define the cycle of a repeating fraction $\tfrac{m}{n}$ as the minimum number $i$ such that $\tfrac{m}{n} = 0.\overline{a_1a_2a_3\dots a_i}$. Find the cycle of $\tfrac{1}{23}$.
+
+\subsection{Solution}
+
+It suffices to find the smallest positive integer $i$ such that $10^i \equiv 1 \pmod{23}$. By Fermat's Little theorem, $i = 22$ is a valid solution. To prove that this is the smallest such value, we need to check $10^1$, $10^2$, and $10^{11}$. The first two clearly don't work. For the third case,
+\begin{align*}
+10^{11} \equiv (10^2)^5 \cdot 10 \equiv 8^5 \cdot 10 \equiv 64^2 \cdot 8 \cdot 10 \equiv (-5)^2 \cdot 8 \cdot 10 \equiv 2 \cdot 80 \equiv 160 \equiv -1 \pmod{23}.
+\end{align*}
+Thus, $10^{11}$ does not work, so the answer is $\ansbold{22}$.
+
+\pagebreak\section{AMC 10A 2019/18}
+
+For some positive integer $k$, the repeating base-$k$ representation of the (base-ten) fraction $\frac{7}{51}$ is $0.\overline{23}_k = 0.232323\ldots_k$. What is $k$?
+
+\subsection{Solution}
+
+Note that
+\begin{align*}
+\frac{2k + 3}{k^2 - 1} = \frac{7}{51}.
+\end{align*}
+Simplifying, we have $102k + 160 = 7k^2$. By inspection, we test a few values by verifying units digits before plugging in the entire guess, and find that $k = \ansbold{16}$.
+
+\pagebreak\section{e-dchen Mock MATHCOUNTS}
+
+What is the sum of all odd $n$ such that $\frac{1}{n}$ expressed in base $8$ is a repeating decimal with period $4?$
+
+\subsection{Solution}
+
+\pagebreak\section{AMC 12A 2014/23}
+
+The fraction\[\dfrac1{99^2}=0.\overline{b_{n-1}b_{n-2}\ldots b_2b_1b_0},\]where $n$ is the length of the period of the repeating decimal expansion. What is the sum $b_0+b_1+\cdots+b_{n-1}$?
+
+\subsection{Solution}
+
+\pagebreak\section{AMC 12B 2016/22}
+
+For a certain positive integer $n$ less than $1000$, the decimal equivalent of $\frac{1}{n}$ is $0.\overline{abcdef}$, a repeating decimal of period $6$, and the decimal equivalent of $\frac{1}{n+6}$ is $0.\overline{wxyz}$, a repeating decimal of period $4$. Find $n.$
+
+\subsection{Solution}
+
+\end{document}
