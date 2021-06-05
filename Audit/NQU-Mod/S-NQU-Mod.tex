@@ -176,6 +176,14 @@ Prove $\phi(n)$ is composite for $n\geq 7.$
 
 \subsection{Solution}
 
+\textbf{Claim:} $\phi(n)$ is even for $n > 2$.
+\begin{pro}[1 (Direct)]
+Either it has an odd prime power $p^k$ as a factor, in which case $\phi(p^k)$ is an even factor of $\phi(n)$ or it has a power of two greater than 2 as a factor, in which case $\phi(2^k)$ is also an even factor of $\phi(n)$. 
+\end{pro}
+\begin{pro}[2 (Combinitorial)]
+Alternatively, let $S$ be the set of numbers relatively prime to $n$ less than $\frac{n}2$. Then the number of numbers relatively prime to $n$ must be a $2|S|$ as if $k$ is relatively prime to $n$ then $n-k$ must be relatively prime to $n$ and $\gcd\left(\frac{n}{2}, n\right) > 1$ for even $n$. Thus the size of the set of numbers relatively prime to $n$ is even.
+\end{pro}
+Thus we only have to worry about $\phi(n) = 2$, but clearly this is a finite case check(and in fact the only such $n$ is $6$).
 \pagebreak\section{AMC 10B 2019/14}
 
 The base-ten representation for $19!$ is $121,6T5,100,40M,832,H00$, where $T$, $M$, and $H$ denote digits that are not given. What is $T+M+H$?
@@ -211,7 +219,7 @@ Let $f(n)=1 \times 3 \times 5 \times \cdots \times (2n-1)$. Compute the remainde
 Prove that the equation $x^2+y^2+z^2=x+y+z+1$ has no solutions over the rationals.
 
 \subsection{Solution}
-
+It suffices to solve the equation $a^2 + b^2 + c^2 = 7$ over the rationals, or solving $a^2+b^2+c^2 = 7n^2$ over the integers, by completing the square and multiplying by the square of the lcm of the denominator. Now, if $a,b,c,n$ all even, divide each of them by $2$. Keep doing this until we have one of $a,b,c,n$ odd. Now, note that since squares are $1 \pmod{8}$ we have $a + b + c \equiv 7d \pmod{8}$ where $a,b,c,d \in \{0,1\}$, where $a+b+c+d \neq 0$. However, this is ridiculous by adding $d$ on both sides, giving exactly $a+b+c+d = 0$.
 \pagebreak\section{MAST Diagnostic 2021}
 
 Find the remainder of $(1^3)(1^3+2^3)(1^3+2^3+3^3)\dots(1^3+2^3+3^3\dots+99^3)$ when divided by $101.$
@@ -283,6 +291,7 @@ Find the number of positive integers $n$ less than $2017$ such that
 Find all positive integers $n$ such that the set $\{n,n+1,n+2,n+3,n+4,n+5\}$ can be partitioned into two subsets so that the product of the numbers in each subset is equal.
 
 \subsection{Solution}
+Clearly, $n+2 | n(n+1)(n+3)(n+4)(n+5)$, which happens iff $n+2 | 12$, which reduces the problem to a finite case check. In fact, all of these run into problems with $7$ and $11$ being in $\{n,n+1,n+2,n+3,n+4,n+5\}$.
 
 \pagebreak\section{IMO 2005/4}
 
@@ -290,7 +299,7 @@ Determine all positive integers relatively prime to all the terms of the infinit
 \[a_n=2^n+3^n+6^n -1,\ n\geq 1.\]
 
 \subsection{Solution}
-
+For any given integer $k$ let the smallest prime dividing $k$ be $p$. We claim there exists an $n$ such that $p|a_n$. If $p=2$, pick $n=1$, and if $p = 3$, pick $n=2$. For $p > 3$, pick $n = p-2$; then $2^{p-2} + 3^{p-2} + 6^{p-2} - 1 \equiv \frac12 + \frac13 + \frac16 - 1 \equiv 0 \pmod{p}$, done. Thus the only such integer is $k=1$ for trivial reasons.
 \pagebreak\section{AIME I 2013/15}
 
 Let $N$ be the number of ordered triples $(A,B,C)$ of integers satisfying the conditions
