@@ -55,7 +55,7 @@ At this point the rest of the problem is pretty straightforward -- from experien
 \[(a^2+b^2)(a-2b)(a-b).\]
 \end{sol}
 
-We provide an alternative solution that abuses the following fact: \dbold{proving a factorization is a lot easier than finding one}, so we may abuse ``illegitimate'' strategies. This also abuses the fact that the entire function is homogenous and thus can be scaled. This way, we can turn a two-variable factorization problem into a one-variable factorization problem, which essentially is the same as solving a polynomial.
+We provide an alternative solution that abuses the following fact: \emph{proving a factorization is a lot easier than finding one}, so we may abuse ``illegitimate'' strategies. This also abuses the fact that the entire function is homogenous and thus can be scaled. This way, we can turn a two-variable factorization problem into a one-variable factorization problem, which essentially is the same as solving a polynomial.
 
 \begin{sol}[2]
 Note that the degree of each term is $4$; this means that if $(a,b)$ is a root, then so is $(\frac{a}{c},\frac{b}{c}).$ We abuse this by setting $c=b$; now we solve for the roots of a single-variable polynomial, which should be more familiar. So we set $b=1$ and scale up later.
@@ -174,7 +174,7 @@ We say that $f=g$ is an identity for expressions $f$ and $g$ if it is true for a
 
 So, for example, $x^2-y^2=(x-y)(x+y)$ is an identity because it is true for all pairs $(x,y),$ while $x-y=0$ is not an identity because $2-1=0,$ among other counterexamples.
 
-It is important to realize that \dbold{a factorization is really an identity}; that is, we are trying to show that $f(x)=g(x)$ where $f$ is a polynomial and $g$ is the factorization. The following intuitive observation will be stated explicitly.
+It is important to realize that \emph{a factorization is really an identity}; that is, we are trying to show that $f(x)=g(x)$ where $f$ is a polynomial and $g$ is the factorization. The following intuitive observation will be stated explicitly.
 
 \begin{theo}[Degrees of Identities]
 If $f=g,$ then the degree of $f$ must be the same as the degree of $g$ as defined about any variable where $f,g$ take inputs. Also, $f$ and $g$ must nontrivially take the same inputs.\footnote{If $f$ non-trivially takes a variable $x$ as an input, that means there exist two values $x_1$ and $x_2$ such that $f(x_1)\neq f(x_2).$ So $f=a+b+c-c$ does not take $c$ as an input, because the value of $c$ does not change the output of $f.$}
@@ -186,13 +186,13 @@ You can prove this theorem with some size argument; I do not care enough to do s
 Why can't $x^{101}+y^{100}x+(x^2+xy-y^3)(x+xy+y^9)=(x+y)^{100}$ be an identity?
 \end{exer}
 
-This degree idea is very important, \dbold{because the degree of a polynomial limits the number of roots it can have.} This means that if $\deg f=\deg g = n,$ and you show $f=g$ for $n+1$ different inputs, then you're done. Alternatively, if you show $f=g$ for $n$ different inputs and show that they have the same constant factor (generally an easy task for explicitly given identities), you are also done. The easiest $n$ values to show $f=g$ for are usually the roots.
+This degree idea is very important, \emph{because the degree of a polynomial limits the number of roots it can have.} This means that if $\deg f=\deg g = n,$ and you show $f=g$ for $n+1$ different inputs, then you're done. Alternatively, if you show $f=g$ for $n$ different inputs and show that they have the same constant factor (generally an easy task for explicitly given identities), you are also done. The easiest $n$ values to show $f=g$ for are usually the roots.
 
 This really comes into play in the next section: polynomial interpolation.
 
 \subsection{Polynomial Interpolation}
 
-Occasionally you'll see problems that ask you to prove $p(x)=q(x),$ where $p(x)$ and $q(x)$ are some \dbold{rational functions}.\footnote{A rational function is one that can be expressed as the quotient of two polynomials.} The trick here is that you can use polynomial interpolation -- if you can clear common divisors to make it equivalent to $P(x)=Q(x)$ for polynomials $P,Q,$ and then you show that this identity is true, the original problem is done as well.
+Occasionally you'll see problems that ask you to prove $p(x)=q(x),$ where $p(x)$ and $q(x)$ are some \emph{rational functions}.\footnote{A rational function is one that can be expressed as the quotient of two polynomials.} The trick here is that you can use polynomial interpolation -- if you can clear common divisors to make it equivalent to $P(x)=Q(x)$ for polynomials $P,Q,$ and then you show that this identity is true, the original problem is done as well.
 
 We provide an example to concretely show what this means.
 
@@ -203,7 +203,7 @@ Let $p$, $q$, and $r$ be the distinct roots of the polynomial $x^3 - 22x^2 + 80x
 \begin{sol}
 Note that by the polynomial interpolation method discussed above, this is the same as solving for $A,B,C$ such that
 \[1=A(s-q)(s-r)+B(s-r)(s-p)+C(s-p)(s-q).\]
-Here's where polynomial interpolation helps us: \dbold{we are now allowed to set $s=p,q,r$.} With this in mind, the solution becomes much more straightforward.
+Here's where polynomial interpolation helps us: \emph{we are now allowed to set $s=p,q,r$.} With this in mind, the solution becomes much more straightforward.
 
 Note that
 \begin{align*}
