@@ -12,7 +12,7 @@
 
 \section{Pointers}
 
-In the easier version of this handout (\db{CQV-Perspectives}), the bijections you need to make are mostly studied and the aim is to familiarize the reader with basic combinatorial theorems, tying them together with the pedagogy of ``perspectives.'' Aside from Freedom problems, the techniques you needed to use were mostly handed to you on a platter. But there are a large section of perspectives-style problems that do not cleanly fit into a category, and in those cases only intuition and experience will help. You should know everything from \db{CQV-Perspectives} and should be able to feel when a problem or argument is ``perspectives-style,'' even if you can't articulate why.
+In the easier version of this handout (\emph{CQV-Perspectives}), the bijections you need to make are mostly studied and the aim is to familiarize the reader with basic combinatorial theorems, tying them together with the pedagogy of ``perspectives.'' Aside from Freedom problems, the techniques you needed to use were mostly handed to you on a platter. But there are a large section of perspectives-style problems that do not cleanly fit into a category, and in those cases only intuition and experience will help. You should know everything from \emph{CQV-Perspectives} and should be able to feel when a problem or argument is ``perspectives-style,'' even if you can't articulate why.
 
 Because you are expected to know basic theory and it's already covered in CQV anyway, we just present a couple of flagship examples.
 
@@ -39,7 +39,7 @@ Though Perspectives may seem like a catch-all for bijection, what makes a proble
 \begin{sol}
 First note we can biject the height of the bricks. Subtracting $4$ from each dimension to get heights of $0, 6, 15$ will reduce the total height by a constant of $4\cdot 94,$ and then dividing each dimension by $3$ to get heights of $0, 2, 5$ will divide the total height by $3$. Thus both processes are bijections, and we can now proceed with dimensions $0, 2, 5$.
 
-Now note that if we have five blocks of height $2$, we can replace it with two blocks of height $5$ and three blocks of height $0$. This implies that if a tower can be constructed, \db{it can be constructed with no more than four blocks of height $2$}, as any extra can just be swapped with blocks of height $5$ and $0$ to achieve the same height.
+Now note that if we have five blocks of height $2$, we can replace it with two blocks of height $5$ and three blocks of height $0$. This implies that if a tower can be constructed, \emph{it can be constructed with no more than four blocks of height $2$}, as any extra can just be swapped with blocks of height $5$ and $0$ to achieve the same height.
 
 Thus we only have to consider the cases where there are $0$, $1$, $2$, $3$, or $4$ blocks of height $2$. By mod $5$, none of these cases will overlap. For each case, you just have to consider how many of the remaining blocks have height $5$. (For example, if there are no blocks of height $2$, then there are $94$ blocks left. Since we can have anywhere between $0$ to $94$ blocks of height $5$, this case has $95$ possibilities.) This implies the final answer is
 \[95+94+93+92+91=\ansbold{465}.\]

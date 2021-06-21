@@ -15,7 +15,7 @@
 
 It is necessary to know summation notation and partial fraction decomposition, and it is helpful to have prior experience in them. If you don't know either of them, there is an appendix at the end explaining them.
 
-The philosophy of this handout is about expressing sums in a way such that terms cancel out. Shifts in perspectives will be crucial -- in fact, you can think of this sort of as the algebraic version of \db{CQV-Perspectives}.
+The philosophy of this handout is about expressing sums in a way such that terms cancel out. Shifts in perspectives will be crucial -- in fact, you can think of this sort of as the algebraic version of \emph{CQV-Perspectives}.
 
 \subsection{Examples}
 If you don't know summation notation or partial fraction decomposition by now, you will have a difficult time.
@@ -92,7 +92,7 @@ For $\{1, 2, 3, \ldots, n\}$ and each of its non-empty subsets a unique alternat
 \end{exam}
 
 \begin{sol}
-Consider any subset $S$ that does not have $7$ in it, and let $f(S)$ be the alternating sum of $S$. If $S^{*}$ is the subset $S$ along with $7,$ then by definition, $f(S^*)=7-f(S).$ Since there are $2^6-1$ such subsets $S,$ then the sum of all subsets \db{except for $\{7\}$} is $63\cdot 7.$\footnote{$7$ was not included in this count because $S$ cannot be the empty set, as $f(S)$ would then be undefined. Alternatively, you can define $f(\varnothing)=0$, as that doesn't change the final answer.} Now adding in $7,$ our sum is $63\cdot 7+7=\ansbold{448}.$
+Consider any subset $S$ that does not have $7$ in it, and let $f(S)$ be the alternating sum of $S$. If $S^{*}$ is the subset $S$ along with $7,$ then by definition, $f(S^*)=7-f(S).$ Since there are $2^6-1$ such subsets $S,$ then the sum of all subsets \emph{except for $\{7\}$} is $63\cdot 7.$\footnote{$7$ was not included in this count because $S$ cannot be the empty set, as $f(S)$ would then be undefined. Alternatively, you can define $f(\varnothing)=0$, as that doesn't change the final answer.} Now adding in $7,$ our sum is $63\cdot 7+7=\ansbold{448}.$
 \end{sol}
 
 \begin{exam}[LMT 2014/I15]
@@ -245,7 +245,7 @@ It's basically the same; instead, we have $$\prod\limits_{i=1}^{10} i=1\cdot 2\c
 
 \subsection{Partial Fraction Decomposition}
 
-We mostly took knowledge of partial fraction decomposition (henceforth abbreviated \db{PFD}) for granted in the handout and omitted the process of finding the PFD in our solutions. In the American schooling system, PFD is a calculus topic and is not commonly used in introductory American contests.\footnote{The latter may be too strong a claim.} Therefore, we demonstrate the process of PFD here for those who might find it helpful.
+We mostly took knowledge of partial fraction decomposition (henceforth abbreviated \emph{PFD}) for granted in the handout and omitted the process of finding the PFD in our solutions. In the American schooling system, PFD is a calculus topic and is not commonly used in introductory American contests.\footnote{The latter may be too strong a claim.} Therefore, we demonstrate the process of PFD here for those who might find it helpful.
 
 \begin{defi}[Partial Fraction Decomposition]
 The partial fraction decomposition of a fraction
@@ -288,7 +288,7 @@ the functions $f_1,f_2,\ldots, f_n$ can be determined via substituting the roots
 \[f(x)=f_1(x)g_2(x)\cdots g_n(x)+\cdots+f_n(x)g_1(x)\cdots g_{n-1}(x).\]
 \end{theo}
 
-The natural instinct to have after using this `trick' a couple times is, ``Wait, why does this actually work?'' and it is very easy to just relegate this to a trick that you don't think about. However, there is a well-founded reason that this works, and it is rooted in polynomial and root analysis. We remind the reader of the following theorem from \db{AQU-Factorize}.
+The natural instinct to have after using this `trick' a couple times is, ``Wait, why does this actually work?'' and it is very easy to just relegate this to a trick that you don't think about. However, there is a well-founded reason that this works, and it is rooted in polynomial and root analysis. We remind the reader of the following theorem from \emph{AQU-Factorize}.
 
 \begin{theo}[Infinite Roots]
 If a degree $n$ polynomial has more than $n$ roots, it must have infinite roots.
@@ -318,7 +318,7 @@ In the case where all $g_i$ are linear, $f_i$ are all constant, so \[f_i=\frac{f
 
 Keep in mind that this only explicitly describes the values achieved from forbidden values; you should almost always clear the fractions and substitute the forbidden values yourself instead of trying to recall the exact formula. The corollary does little good especially when some $g_i$ is not linear. If no $g_i$ are linear, the forbidden values method is completely useless, since no $f_i$ will be linear. In fact, forbidden values works exactly when $g_i$ is linear, even if other $g$ are not.
 
-Let me state it more explicitly: \db{substituting forbidden values only works for linear $g_i$}.
+Let me state it more explicitly: \emph{substituting forbidden values only works for linear $g_i$}.
 
 \begin{exam}
 Find the partial fraction decomposition of $\frac{1}{x(x+1)}.$

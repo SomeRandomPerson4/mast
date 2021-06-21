@@ -22,7 +22,7 @@ Raymond has a drawer of red, white, and blue socks, where there are at least two
 Note that Raymond can draw $3$ socks -- one of each color -- without getting a pair. Thus the answer is $3+1=\ansbold{4}.$
 \end{sol}
 
-This mindset will be present in \db{almost every} Pigeonhole problem. The reason it holds is because of the way the maximum is defined; if it were possible to add one more item without satisfying the criterion, then our initial construction would not be a maximum.
+This mindset will be present in \emph{almost every} Pigeonhole problem. The reason it holds is because of the way the maximum is defined; if it were possible to add one more item without satisfying the criterion, then our initial construction would not be a maximum.
 
 \begin{exam}[AMC 10A 2006/20]
 Six distinct positive integers are randomly chosen between $1$ and $2006,$ inclusive. What is the probability that some pair of these integers has a difference that is a multiple of $5?$ 
@@ -41,7 +41,7 @@ In a $3\times 7$ grid of unit squares, each square is either colored white or bl
 \end{exam}
 
 \begin{sol}
-For convenience in this solution, note that swapping two rows/columns does not change the number of \db{monochromatic rectangles}. By Pigeonhole, note that each column has either at least two black or two white squares, since $\lceil\frac{3}{2}\rceil=2.$ Without loss of generality, let there be more columns with two or more black squares. Now note that by Pigeonhole again, there are $\lceil\frac{7}{2}\rceil=4$ rows with two or more black squares.
+For convenience in this solution, note that swapping two rows/columns does not change the number of \emph{monochromatic rectangles}. By Pigeonhole, note that each column has either at least two black or two white squares, since $\lceil\frac{3}{2}\rceil=2.$ Without loss of generality, let there be more columns with two or more black squares. Now note that by Pigeonhole again, there are $\lceil\frac{7}{2}\rceil=4$ rows with two or more black squares.
 
 We only examine these $4$ rows.\footnote{You cannot form a black rectangle with a row that has less than two black squares. You also can easily avoid making a white rectangle with $3$ rows of $2$ white rectangles.} We claim that with two black squares in each column, there must be two identical columns; this is because there are $\binom{3}{2}$ different possible columns, and since $\lceil\frac{4}{3}\rceil>1,$ we are done by Pigeonhole.
 

@@ -8,11 +8,11 @@
 \begin{document}
 \maketitle
 
-Just like in differentiation, where we want to reconcile two different definitions -- the approximation-based definition and the repeated differentiation-based definition -- we want to take the two different definitions of the integral and understand why they're really the same: the area under a curve definition and the antiderivative definition. We unify the two definitions with the \db{Fundamental Theorem of Calculus}.
+Just like in differentiation, where we want to reconcile two different definitions -- the approximation-based definition and the repeated differentiation-based definition -- we want to take the two different definitions of the integral and understand why they're really the same: the area under a curve definition and the antiderivative definition. We unify the two definitions with the \emph{Fundamental Theorem of Calculus}.
 
 \section{The Integral}
 
-Because integration can be somewhat hard to grasp at the beginning, we spend a lot of time bashing you over the head with the ``area under a curve'' and antiderivative concepts. If you find yourself going ``I understand all of this, and this is going very slowly,'' feel free to skim/skip the section \db{until you get to the Fundamental Theorem of Calculus}.
+Because integration can be somewhat hard to grasp at the beginning, we spend a lot of time bashing you over the head with the ``area under a curve'' and antiderivative concepts. If you find yourself going ``I understand all of this, and this is going very slowly,'' feel free to skim/skip the section \emph{until you get to the Fundamental Theorem of Calculus}.
 
 \subsection{Area Under a Curve and Some Exposition}
 
@@ -21,18 +21,18 @@ We crudely define the integral as the area under a curve.\footnote{If you want a
 The purpose of the antiderivative is to answer the question: if $F'(x)=f(x)$, and we are given $f$, what is $F$? You'll soon see that a function has infinitely many antiderivatives, and all differ only by a constant. Furthermore, just like the derivative of $f$ may not exist, the antiderivative can also be non-existent.
 
 \begin{defi}[Integral]
-For a function $f$ that is continuous over $[a,b],$ we define the \db{integral} $\int\limits_{a}^{b}f(x)dx$ as the area under $f$ in the range $[a,b].$
+For a function $f$ that is continuous over $[a,b],$ we define the \emph{integral} $\int\limits_{a}^{b}f(x)dx$ as the area under $f$ in the range $[a,b].$
 
 If $f$ goes below the $y$ axis, then the area counts as negative.
 \end{defi}
 
 \begin{defi}[Indefinite Integral]
-Let $f(x)$ be a function that has an antiderivative $F(x)$. The \db{indefinite integral} of $f(x)$ is denoted by and equal to
+Let $f(x)$ be a function that has an antiderivative $F(x)$. The \emph{indefinite integral} of $f(x)$ is denoted by and equal to
 $$\int f(x)\,dx = F(x)+C,$$
 where $C$ is a constant.
 \end{defi}
 \begin{defi}[Definite Integral]
-Let $f(x)$ be a function that has an antiderivative $F(x)$. The \db{definite integral} of $f(x)$ from $x=a$ to $x=b$ is denoted by and equal to
+Let $f(x)$ be a function that has an antiderivative $F(x)$. The \emph{definite integral} of $f(x)$ from $x=a$ to $x=b$ is denoted by and equal to
 $$\int_a^b f(x)\, dx=F(b)-F(a)=\Eval{F(x)}{a}{b}.$$
 \end{defi}
 
@@ -146,7 +146,7 @@ We might mention a few of these later, so take them for granted for now:
 \end{itemize}
 \end{theo}
 
-You can easily show most of these by differentiating the right-hand side. Here's a heuristic you should be aware of: \db{whenever you see something of the form $1\pm x^2$ in the denominator of a function}, think trig substitutions.
+You can easily show most of these by differentiating the right-hand side. Here's a heuristic you should be aware of: \emph{whenever you see something of the form $1\pm x^2$ in the denominator of a function}, think trig substitutions.
 
 \begin{exer}[Antiderivative of $e^{f(x)}$]
 Show that the antiderivative of $e^{f(x)}$ is $\frac{e^{f(x)}}{f'(x)}.$
@@ -168,7 +168,7 @@ for all $x\in (a,b),$ where the integral function denotes the area under the cur
 \end{theo}
 
 \begin{pro}
-The first part follows from the limit definition of the derivative. I'll explicitly state the key idea: \db{we're adding a rectangle of width $\epsilon$ and height $f(x).$} Note that \[F'(x)=\lim_{\epsilon\to 0}\frac{F(x+\epsilon)-F(x)}{\epsilon}=\lim_{\epsilon\to 0}\frac{\int\limits_{x}^{x+\epsilon}f(x)dx}{\epsilon}=\frac{\epsilon f(x)}{\epsilon}=f(x).\]
+The first part follows from the limit definition of the derivative. I'll explicitly state the key idea: \emph{we're adding a rectangle of width $\epsilon$ and height $f(x).$} Note that \[F'(x)=\lim_{\epsilon\to 0}\frac{F(x+\epsilon)-F(x)}{\epsilon}=\lim_{\epsilon\to 0}\frac{\int\limits_{x}^{x+\epsilon}f(x)dx}{\epsilon}=\frac{\epsilon f(x)}{\epsilon}=f(x).\]
 
 The second part follows from the first. Note that if $F'(x)=f(x),$ then by properties of the derivative, the only functions $g$ that satisfy $g'(x)=f(x)$ are of the form $F'(x)+C$ for any constant $C.$ Thus $g(b)-g(a)=F(b)-F(a)=\int\limits_{a}^{b}f(x)dx.$
 
@@ -184,11 +184,11 @@ The second part follows from the first. Note that if $F'(x)=f(x),$ then by prope
 \end{center}
 \end{pro}
 
-The two parts are respectively called the \db{second} and \db{first} fundamental theorems of calculus, respectively.\footnote{I don't know why the theorems are ordered like this either and I think it makes sense to present the second before the first, but if anyone knows why, please shoot me an email at proofprogram@gmail.com or message me on Discord at shootinglucky$\#4186$ so I can replace this footnote with something more useful.}
+The two parts are respectively called the \emph{second} and \emph{first} fundamental theorems of calculus, respectively.\footnote{I don't know why the theorems are ordered like this either and I think it makes sense to present the second before the first, but if anyone knows why, please shoot me an email at proofprogram@gmail.com or message me on Discord at shootinglucky$\#4186$ so I can replace this footnote with something more useful.}
 
 \subsubsection{Indefinite Integrals}
 
-Now we really connect the idea of integrals and anti-derivatives with the \db{indefinite integral}, which is a representation of an integral as an anti-derivative.
+Now we really connect the idea of integrals and anti-derivatives with the \emph{indefinite integral}, which is a representation of an integral as an anti-derivative.
 
 \begin{defi}[Indefinite Integral]
 Given $F'(x)=f(x),$ we say that
@@ -199,11 +199,11 @@ In general, we will choose to express the constant term of $F(x)$ as $0,$ since 
 
 \section{Evaluating the Integral}
 
-Because integrals are really just the reverse of derivatives, it follows that the two fundamental rules of differentiation hold in some for integration: the \db{chain rule} and \db{product rule}. Their counterparts in integration are $u$-substitution (and the use of $u$-substitution is followed by something still called the chain rule) and integration by parts.
+Because integrals are really just the reverse of derivatives, it follows that the two fundamental rules of differentiation hold in some for integration: the \emph{chain rule} and \emph{product rule}. Their counterparts in integration are $u$-substitution (and the use of $u$-substitution is followed by something still called the chain rule) and integration by parts.
 
 \subsection{$u$-substitution}
 
-The chain rule is really just saying that $\frac{d}{dx}=\frac{d}{du}\cdot \frac{du}{dx}.$ When we do a $u$-substitution, what we're really trying to do is \db{get rid of unruly expressions in} $x$ and turn them into managable expressions in terms of $u.$
+The chain rule is really just saying that $\frac{d}{dx}=\frac{d}{du}\cdot \frac{du}{dx}.$ When we do a $u$-substitution, what we're really trying to do is \emph{get rid of unruly expressions in} $x$ and turn them into managable expressions in terms of $u.$
 
 \begin{theo}[Chain Rule]
 If $u$ is a function about $x,$ $g(u)=f(x),$ and $f(x)$ is an integratable function, then $\int f(x) dx = \int \frac{g(u)}{u'}du.$
@@ -222,7 +222,7 @@ The ``unruly term'' here is $2x^2+1.$ Note that the derivative of this term is $
 \[\int 8x(2x^2+1)dx=\int \frac{8xu}{u'}du=\int\frac{8xu}{4x}du=\int 2udu=u^2.\]
 \end{sol}
 
-If we're dealing with definite integrals, then in our $u$-substitution, \db{we must make sure to change the bounds according to $u$}. Let's reuse the previous example.
+If we're dealing with definite integrals, then in our $u$-substitution, \emph{we must make sure to change the bounds according to $u$}. Let's reuse the previous example.
 
 \begin{exam}[Changing Bounds]
 Find $\int\limits_{-1}^{3} 8x(2x^2+1)dx.$
@@ -255,7 +255,7 @@ At this point, crudely expanding will just work: you get
 Indeed, there is no good reason to use integration by parts here -- we only presented it as an example that could be verified through other approaches.
 \end{sol}
 
-Notice that in these types of integrals, we want to \db{contrive} the $u$-sub into working: Take a value of $u$ that might seem inconvenient at first to force the $x$ to disappear.
+Notice that in these types of integrals, we want to \emph{contrive} the $u$-sub into working: Take a value of $u$ that might seem inconvenient at first to force the $x$ to disappear.
 
 Here is a very tricky and non-obvious application of the chain rule: the integral of $\sec x.$
 
@@ -318,7 +318,7 @@ Given functions $u,v,$
 \begin{remark}
 Typically, we write $u'=du,v'=dv,$ so the most common way it is written is
 \[\int udv = uv-\int vdu.\]
-\db{Note we are using this to find the integral of $\int udv,$ not $\int uv.$}
+\emph{Note we are using this to find the integral of $\int udv,$ not $\int uv.$}
 \end{remark}
 
 This just follows by the product rule for derivatives; differentiating gives an obviously true statement.
@@ -342,7 +342,7 @@ We integrate by parts. Let $x=u$ and $v'=\sin x.$ Then
 \end{sol}
 
 \begin{remark}
-Not that unlike the product rule, integration by parts \db{should not be used symmetrically}; that is, the choice of which function to make $u$ and which function to make $v'$ makes a major difference between how feasible a calculation is.
+Not that unlike the product rule, integration by parts \emph{should not be used symmetrically}; that is, the choice of which function to make $u$ and which function to make $v'$ makes a major difference between how feasible a calculation is.
 \end{remark}
 
 \begin{remark}
@@ -362,7 +362,7 @@ Our parts are $u=\ln x$ and $dv = 1.$ Then
 
 What's the motivation here? Once you're told this is an ``integration by parts'' problem, it isn't hard to see why we set $u=\ln x$ and $dv=1$ -- we want the $\ln x$ to disappear from the integral, and $du=\frac{1}{x}$ is a lot easier to handle. But why would we try integration by parts to begin with?
 
-In a nutshell, it's because \db{it's the easiest approach that could work}. We can't ``just integrate this function'' because it's an elementary function -- there are no tricks here. The Chain Rule actually \textit{does} work in this case -- though it is a quite complicated argument, and you can't even get away from integration by parts in the end.\footnote{Set $u=\ln x$ and note
+In a nutshell, it's because \emph{it's the easiest approach that could work}. We can't ``just integrate this function'' because it's an elementary function -- there are no tricks here. The Chain Rule actually \textit{does} work in this case -- though it is a quite complicated argument, and you can't even get away from integration by parts in the end.\footnote{Set $u=\ln x$ and note
 \[\int \ln xdx=\int ue^u du.\]
 Then use integration by parts to get
 \[\int ue^u du = ue^u-\int e^u = ue^u-e^u+C.\]
@@ -415,7 +415,7 @@ Find $\int \frac{1}{\sqrt{1-x^2}}dx.$
 Let $x=\sin \theta;$ then note $dx=\cos\theta d\theta,$ and we have $\int \frac{1}{\cos\theta}\cos\theta d\theta=\theta+C.$ Note that $\theta=\arcsin x,$ so the integral evaluates to $\arcsin x + C,$ as desired.
 \end{sol}
 
-In general, expressions of the form $x^2\pm 1$ strongly suggest trigonometric substitutions. \db{This is not just something you'll see in calculus} -- in fact, many algebra problems (particularly at college contests, which are run for high schoolers despite their name) involve these sorts of substitutions.
+In general, expressions of the form $x^2\pm 1$ strongly suggest trigonometric substitutions. \emph{This is not just something you'll see in calculus} -- in fact, many algebra problems (particularly at college contests, which are run for high schoolers despite their name) involve these sorts of substitutions.
 
 \subsection{Partial Fraction Decomposition}
 
@@ -559,7 +559,7 @@ ymin=-1, ymax=6.5
 
 \subsection{Applied Example: 3D Geometry}
 
-Before we discuss volume, we should first define it. \db{This definition is not intended to be rigorous}; instead, it is meant to highlight the connection between integration and volumes.
+Before we discuss volume, we should first define it. \emph{This definition is not intended to be rigorous}; instead, it is meant to highlight the connection between integration and volumes.
 
 \begin{defi}[Volume]
 The volume of a solid is the integral of the areas of all cross-sections made with planes parallel to a certain reference plane.
@@ -720,9 +720,9 @@ What if our problem with Gabriel's Horn had no domain restrictions; that is, wha
 The disk method extends pretty naturally to the washer method. The question asked is ``what happens to the volume if I cut circles of varying radiuses out of each layer?'' and the answer is, ``the cutout can also be integrated; evaluate the volume of the part you cut out.''
 
 \begin{theo}[Washer Method]
-Say we are finding the volume of the rotation of a curve around a line $\ell.$ We integrate about a plane perpendicular to the axis $\ell;$ if the maximum distance from a point to the axis is $R(x)$ and the minimum distance from a point to the axis is $r(x)$ on the plane $x$ \db{directed} units away from an arbitrary base, then the volume of the curve is
+Say we are finding the volume of the rotation of a curve around a line $\ell.$ We integrate about a plane perpendicular to the axis $\ell;$ if the maximum distance from a point to the axis is $R(x)$ and the minimum distance from a point to the axis is $r(x)$ on the plane $x$ \emph{directed} units away from an arbitrary base, then the volume of the curve is
 \[\int_a^b (R(x)^2-r(x)^2)dx,\]
-provided that \db{every value between the minimum and maximum on each plane is somehow covered by the rotation}.\footnote{In high-school calculus classes, this will usually be the case. High-school calculus contests such as Integration Bee will probably not ask you to know this.}
+provided that \emph{every value between the minimum and maximum on each plane is somehow covered by the rotation}.\footnote{In high-school calculus classes, this will usually be the case. High-school calculus contests such as Integration Bee will probably not ask you to know this.}
 
 In terms of the coordinate plane, you want the integral
 \[\int_a^b (R(x)^2-r(x)^2)dx,\footnote{I am aware the formula is the same. No, it is not a coincidence or a mistake.}\]
@@ -733,10 +733,10 @@ where $y=R(x)$ is the outer radius (larger value) and $y=r(x)$ is the inner radi
 This can easily be generalized to weirder curves with several ``cutouts;'' however, the computation becomes worse.
 \end{remark}
 
-A variant of the dish and washer method is the \db{shell} method. The primary difference is that instead of integrating about the axis of revolution, we integrate instead about a line \db{perpendicular} to the axis of revolution.
+A variant of the dish and washer method is the \emph{shell} method. The primary difference is that instead of integrating about the axis of revolution, we integrate instead about a line \emph{perpendicular} to the axis of revolution.
 
 \begin{theo}[Shell Method]
-Say we are rotating some function $y=f(x)$ with bounds $(a,b)$ around the \db{y}-axis. Then the volume of the resultant solid is
+Say we are rotating some function $y=f(x)$ with bounds $(a,b)$ around the \emph{y}-axis. Then the volume of the resultant solid is
 \[2\pi\int_a^b xydx.\footnote{Another way to write the sum is $2\pi\int_a^b xf(x)dx.$}\]
 \end{theo}
 
@@ -878,7 +878,7 @@ The arc length of a parametric function from $a$ to $b$ is
 \[\int_a^b \sqrt{\left(\frac{dx}{dt}\right)^2+\left(\frac{dy}{dt}\right)^2}dt.\]
 \end{theo}
 
-Here is a short explanation of why this \textit{should} be true. Let me emphasize that \db{this is not a proof}.
+Here is a short explanation of why this \textit{should} be true. Let me emphasize that \emph{this is not a proof}.
 
 Note that the distance between $(x(t),y(t))$ and $(x(t+\epsilon),y(t+\epsilon))$ for small $\epsilon$ is
 \[\sqrt{(dx)^2+(dy)^2}\]
@@ -967,7 +967,7 @@ Evaluate $\int_{-\infty}^{\infty} \frac{1}{(1+x^2)(1+e^x)}\,dx$.
 \end{exer}
 
 \subsection{Weierstrass Substitution}
-The \db{Weierstrass substitution} is simply $t=\tan\paren{\frac{x}{2}}$. Under this substitution, we have
+The \emph{Weierstrass substitution} is simply $t=\tan\paren{\frac{x}{2}}$. Under this substitution, we have
 \[\sin x=\frac{2t}{1+t^2} \qquad \cos x=\frac{1-t^2}{1+t^2} \qquad dx=\frac{2}{1+t^2}\,dx.\]
 This allows us to turn trigonometric expressions into rational functions. Using $t=\tanh\paren{\frac{x}{2}}$, we can similarly derive
 \[\sinh x=\frac{2t}{1-t^2} \qquad \cosh(x)=\frac{1+t^2}{1-t^2} \qquad dx=\frac{2}{1-t^2}\,dx.\]
@@ -1140,7 +1140,7 @@ the functions $f_1,f_2,\ldots, f_n$ can be determined via substituting the roots
 \[f(x)=f_1(x)g_2(x)\cdots g_n(x)+\cdots+f_n(x)g_1(x)\cdots g_{n-1}(x).\]
 \end{theo}
 
-The natural instinct to have after using this `trick' a couple times is, ``Wait, why does this actually work?'' and it is very easy to just relegate this to a trick that you don't think about. However, there is a well-founded reason that this works, and it is rooted in polynomial and root analysis. We remind the reader of the following theorem from \db{AQU-Factorize}.
+The natural instinct to have after using this `trick' a couple times is, ``Wait, why does this actually work?'' and it is very easy to just relegate this to a trick that you don't think about. However, there is a well-founded reason that this works, and it is rooted in polynomial and root analysis. We remind the reader of the following theorem from \emph{AQU-Factorize}.
 
 \begin{theo}[Infinite Roots]
 If a degree $n$ polynomial has more than $n$ roots, it must have infinite roots.
@@ -1170,7 +1170,7 @@ In the case where all $g_i$ are linear, $f_i$ are all constant, so \[f_i=\frac{f
 
 Keep in mind that this only explicitly describes the values achieved from forbidden values; you should almost always clear the fractions and substitute the forbidden values yourself instead of trying to recall the exact formula. The corollary does little good especially when some $g_i$ is not linear. If no $g_i$ are linear, the forbidden values method is completely useless, since no $f_i$ will be linear. In fact, forbidden values works exactly when $g_i$ is linear, even if other $g$ are not.
 
-Let me state it more explicitly: \db{substituting forbidden values only works for linear $g_i$}.
+Let me state it more explicitly: \emph{substituting forbidden values only works for linear $g_i$}.
 
 \begin{exam}
 Find the partial fraction decomposition of $\frac{1}{x(x+1)}.$
@@ -1270,7 +1270,7 @@ Understanding this theorem requires a good bit of experience with polar coordina
 
 That's all fine and dandy, but this is the perfect excuse to show you a little bit of linear algebra. Note that the above system of equations can perfectly be expressed in the following equation:
 \[\begin{bmatrix}x' \\ y'\end{bmatrix}=\begin{bmatrix}\cos (-\theta) & -\sin(-\theta) \\ \sin(-\theta) & \cos(-\theta)\end{bmatrix}\begin{bmatrix}x \\ y\end{bmatrix}.\]
-Why do we express the rotation matrix like this? Because what we're doing is really equivalent to \db{rotating the point} by $-\theta$ around the origin. Thus, commonly, the rotation matrix is defined as following.
+Why do we express the rotation matrix like this? Because what we're doing is really equivalent to \emph{rotating the point} by $-\theta$ around the origin. Thus, commonly, the rotation matrix is defined as following.
 
 \begin{defi}[Rotation Matrix]
 The two-dimensional rotation matrix $R=\begin{bmatrix}\cos\theta & -\sin\theta \\ \sin\theta & \cos\theta\end{bmatrix}$ is used to rotate some two-dimensional vector $\vec{v}$ by $\theta,$ and the rotation is done by
@@ -1303,6 +1303,6 @@ This is equivalent to rotating the point by $-\theta$ around the origin; thus, w
 \[\begin{bmatrix}\cos (-\theta) & -\sin(-\theta) \\ \sin(-\theta) & \cos(-\theta)\end{bmatrix}\begin{bmatrix}x \\ y\end{bmatrix}=\begin{bmatrix}\cos \theta & \sin\theta \\ -\sin\theta & \cos\theta\end{bmatrix}\begin{bmatrix}x \\ y\end{bmatrix}=\begin{bmatrix}x\cos \theta + y\sin \theta \\ -x \sin \theta + y\cos \theta\end{bmatrix}.\]
 \end{pro}
 
-I cannot stress this enough: \db{matrices are convenient representations of linear mappings}, not random arrays of numbers; hopefully this has shown you one of the fantastic uses of matrices and you don't write them off as ``arcane magic we learned about in high school that one time.'' There's a reason I included the last example in Rotating About An Axis, and it wasn't just to show how transformations could make Disks, Washers, and Shells usable.
+I cannot stress this enough: \emph{matrices are convenient representations of linear mappings}, not random arrays of numbers; hopefully this has shown you one of the fantastic uses of matrices and you don't write them off as ``arcane magic we learned about in high school that one time.'' There's a reason I included the last example in Rotating About An Axis, and it wasn't just to show how transformations could make Disks, Washers, and Shells usable.
 
 \end{document}
