@@ -10,11 +10,27 @@
 \maketitle
 Here, we will discuss the common uses of single-variable differention and integration in contest problems that are not explicitly about Calculus.
 \section{Jensen's inequality and Tangent Line Trick}
+(This section is more useful for Olympiad math rather than computational, but its importance demands for it to be included.)
+
 A part of why ''Trvial by Jensen's'' is often said as a meme regarding problems that may or may not involve inequalities is its true power.
 \begin{theo}[Jensen's Inequality]
 In an interval, a function is \textbf{convex} if and only if its second derivative is nonnegative throughout the interval and \textbf{concave} if and only if its second derivative is nonpositive throughout the interval.
 
+For real numbers $x_1,x_2\ldots x_i$ in a convex function $f$'s domain and positive real weights $w_1,w_2\ldots w_n$, we have
+$$f\left(\frac{\sum w_i x_i}{\sum w_i}\right)\le \frac{\sum w_i f(x_i)}{\sum w_i}$$
+When the function is concave, we have an analogous inequality
+$$f\left(\frac{\sum w_i x_i}{\sum w_i}\right)\ge \frac{\sum w_i f(x_i)}{\sum w_i}$$
+as $-f$ is convex.
 \end{theo}
+
+It is useful to memorize the convexities of the most common functions, and below are some of them:
+\begin{exer}[List of functions to evaluate]
+$x^2, x, \frac{1}{x}, \sqrt{x}, \log(x)$ over the real numbers
+
+(Answers: convex, convex and concave, convex, concave, concave)
+\end{exer}
+
+The last function (log with respect to an arbitrary base), despite seemingly the least common, can be used to simplify a multitude of inequalities.
 \section{Local maximas and minimas}
 (This section can be thought of a follow-up to the graphing unit in a way, as it 
 Here is the first problem I have ever solved in any contest using differentiation, which is a prime example of how the roots of derivatives can give us critical information on a function.
@@ -37,7 +53,7 @@ Therefore, we just need to calculate the number of pairs $(a,b)$ with $4a^2-12b\
 
 Here is a much more difficult example that still utilizes the properties of local minimas and maximas.
 \begin{exam}[2021 HMMT Feb. AlgNT/9]
-Find all monic cubic polynomials $f$ following the following properties:
+Find all monic cubic polynomials $f$ that have the following properties:
 \begin{itemize}
 \item $f$ is odd, and
 \item over all reals $c, f(f(x))-c$ has either $1, 5$ or $9$ roots.
