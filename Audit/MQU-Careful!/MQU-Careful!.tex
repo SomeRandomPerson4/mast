@@ -64,6 +64,10 @@ Let $a,b,c,d,e$ be pairwise relatively prime non-negative integers. Find the min
 Joy has $30$ thin rods, one each of every integer length from $1$ cm through $30$ cm. She places the rods with lengths $3$ cm, $7$ cm, and $15$ cm on a table. She then wants to choose a fourth rod that she can put with these three to form a quadrilateral with positive area. How many of the remaining rods can she choose as the fourth rod?
 \end{prob}
 
+\begin{prob}[AMC 12A 2012/9]{3}
+A year is a leap year if and only if the year number is divisible by $400$ (such as $2000$) or is divisible by $4$ but not by $100$ (such as $2012$). The $200\text{th}$ anniversary of the birth of novelist Charles Dickens was celebrated on February $7$, $2012$, a Tuesday. On what day of the week was Dickens born?
+\end{prob}
+
 \begin{prob}[AMC 10B 2019/10]{3}
 In a given plane, points $A$ and $B$ are $10$ units apart. How many points $C$ are there in the plane such that the perimeter of $\triangle ABC$ is $50$ units and the area of $\triangle ABC$ is $100$ square units?
 \end{prob}
@@ -106,18 +110,16 @@ Six cards numbered $1$ through $6$ are to be lined up in a row. Find the number 
 \end{prob}
 
 \begin{prob}[AMC 10A 2015/14]{4}
-The diagram below shows the circular face of a clock with radius $20$ cm and a circular disk with radius $10$ cm externally tangent to the clock face at $12$ o' clock. The disk has an arrow painted on it, initially pointing in the upward vertical direction. Let the disk roll clockwise around the clock face. At what point on the clock face will the disk be tangent when the arrow is next pointing in the upward vertical direction?}
-\vspace{-0.2cm}
-	\begin{center}
-	\begin{asy}
+The diagram below shows the circular face of a clock with radius $20$ cm and a circular disk with radius $10$ cm externally tangent to the clock face at $12$ o' clock. The disk has an arrow painted on it, initially pointing in the upward vertical direction. Let the disk roll clockwise around the clock face. At what point on the clock face will the disk be tangent when the arrow is next pointing in the upward vertical direction?
+\end{prob}
+\begin{center}
+\begin{asy}
 	size(170);defaultpen(linewidth(0.9)+fontsize(13pt));draw(unitcircle^^circle((0,1.5),0.5));
 path arrow = origin--(-0.13,-0.35)--(-0.06,-0.35)--(-0.06,-0.7)--(0.06,-0.7)--(0.06,-0.35)--(0.13,-0.35)--cycle;
 for(int i=1;i<=12;i=i+1){draw(0.9*dir(90-30*i)--dir(90-30*i));label("$"+(string) i+"$",0.78*dir(90-30*i));}
 dot(origin);draw(shift((0,1.87))*arrow);draw(arc(origin,1.5,68,30),EndArrow(size=12));
-	\end{asy}
-	\end{center}
-\vspace{0.2cm
-\end{prob}
+\end{asy}
+\end{center}
 
 \begin{prob}[AIME II 2017/9]{6}
 A special deck of cards contains $49$ cards, each labeled with a number from $1$ to $7$ and colored with one of seven colors. Each number-color combination appears on exactly one card. Sharon will select a set of eight cards from the deck at random. Given that she gets at least one card of each color and at least one card with each number, the probability that Sharon can discard one of her cards and still have at least one card of each color and at least one card with each number is $\frac{p}{q}$, where $p$ and $q$ are relatively prime positive integers. Find $p+q$.
@@ -164,6 +166,8 @@ While watching a show, Ayako, Billy, Carlos, Dahlia, Ehuang, and Frank sat in th
     \item The problem never says ``distinct''; also, remind yourself of the definition of $\gcd$.
     
     \item You can't use a rod twice.
+	
+    \item Make sure you're counting everything correctly, and be aware of off by ones when you consider the number of years that have passed. Read.
 
     \item First, you must find all of the things that work \emph{and verify they do}...
     

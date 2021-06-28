@@ -102,4 +102,30 @@ $$1, 2, 2, 3, 3, 3, 4, 4, 4, 4, \cdot, 200, 200, \cdot , 200$$What is the median
 \answer{100.5}{134}{142}{150.5}{167}
 \end{prob}
 
+\begin{req}[DMC 10B 2021/23]{9}
+What is the sum of the digits of the smallest positive integer $n$ such that
+\[\sqrt{5n-1}-\sqrt{5n-2}+\sqrt{5n-3}-\sqrt{5n-4}\]
+is less than $0.05?$
+\begin{solu}
+Because this solution uses approximation, it is not particularly rigorous.
+
+First note that for sufficiently large $n$,
+\[\sqrt{5n-1}-\sqrt{5n-2}\approx \sqrt{5n-3}+\sqrt{5n-4}.\]
+(Formally we could say $\lim_{n\to\infty}\frac{\sqrt{5n-1}-\sqrt{5n-2}}{\sqrt{5n-3}-\sqrt{5n-4}}=1.$)
+
+Thus, we want to find the minimum $n$ such that
+\[\sqrt{5n-1}-\sqrt{5n-2}<\frac{1}{40}.\]
+Square both sides to get
+\[10n-3-2\sqrt{5n-1}\sqrt{5n-2}<\frac{1}{1600},\]
+and rearrange to end up with
+\[(10n-3)-\frac{1}{1600}<2\sqrt{5n-1}\sqrt{5n-2}.\]
+Since both sides are positive, square again to get
+\[100n^2-60n+9-\frac{1}{800}(10n-3)+\frac{1}{1600^2}<100n^2-60n+8.\]
+Since $\frac{1}{1600^2}$ is negligible, we can ignore it and instead solve for the minimum integer $n$ such that
+\[100n^2-60n+9-\frac{1}{800}(10n-3)<100n^2-60n+8,\]
+which is equivalent to
+\[1<\frac{1}{800}(10n-3).\]
+Thus the smallest $n$ is $81$, and our answer is $8+1=\ansbold{9}$.
+\end{solu}
+\end{req}
 \end{document}
