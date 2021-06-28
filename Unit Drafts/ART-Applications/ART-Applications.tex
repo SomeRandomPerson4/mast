@@ -8,11 +8,11 @@
 
 \begin{document}
 \maketitle
-Here, we will discuss the common uses of single-variable differention and integration in contest problems that are not explicitly about Calculus.
+Here, we will discuss the common uses of single-variable differentiaton and integration in contest problems that are not explicitly about Calculus.
 \section{Jensen's inequality and Tangent Line Trick}
 (This section is more useful for Olympiad math rather than computational, but its importance demands for it to be included.)
 
-A part of why ''Trvial by Jensen's'' is often said as a meme regarding problems that may or may not involve inequalities is its true power.
+A part of why ''Trivial by Jensen's'' is often said as a meme regarding problems that may or may not involve inequalities is its true power.
 \begin{theo}[Jensen's Inequality]
 In an interval, a function is \textbf{convex} if and only if its second derivative is nonnegative throughout the interval and \textbf{concave} if and only if its second derivative is nonpositive throughout the interval.
 
@@ -69,6 +69,17 @@ Find all monic cubic polynomials $f$ that have the following properties:
 \end{enumerate}
 \end{walk}
 \section{Estimating series}
+We can often estimate infinite sums with integrals, which solves many problems asking for the rough value (floor/ceil or rounded) of infinite sums.
+\begin{exam}
+Find the floor of $\sum_{n=1}^{1000000}\frac{1}{\sqrt{n}}$.
+\end{exam}
+\begin{sol}
+Trying to look for smart telescopes or cancellations would be pointless, but fortunately, the sum is close to an easily evaluable integral.
+
+The sum is a lower bound to $\int_{x=0}^{1000000}\frac{1}{\sqrt{x}}dx=2000$ and an upper bound to $\int_{x=1}^{1000001}\frac{1}{\sqrt{x}}dx>1998$. Therefore, the answer is either 1998 or 1999. 
+
+We can see that $\int_{x=0}^{1}(1-\frac{1}{\sqrt{x}})dx=1$, and therefore $\int_{x=0}^{1000000}\left\lceil\frac{1}{\sqrt{x}}\right\rceil-\frac{1}{\sqrt{x}}>1$, making our answer $\ansbold{1998}$.
+\end{sol}
 
 \section{Calculating area}
 
