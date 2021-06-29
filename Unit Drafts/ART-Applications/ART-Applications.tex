@@ -2,17 +2,37 @@
 
 \usepackage{graphicx}
 
-\title{Applications of Differentiation}
+\title{Applications of Calculus}
 \author{Kelin Zhu}
 \date{ART}
 
 \begin{document}
 \maketitle
-Here, we will discuss the common uses of differentiation in contest problems that are not explicitly about Calculus.
+Here, we will discuss the common uses of single-variable differentiaton and integration in contest problems that are not explicitly about Calculus.
 \section{Jensen's inequality and Tangent Line Trick}
-A part of why ''Trvial by Jensen's'' is often said as a meme regarding problems that may or may not involve inequalities is its true power.
+(This section is more useful for Olympiad math rather than computational, but its importance demands for it to be included.)
 
+A part of why ``Trivial by Jensen's'' is often said as a meme regarding problems that may or may not involve inequalities is its true power.
+\begin{theo}[Jensen's Inequality]
+In an interval, a function is \textbf{convex} if and only if its second derivative is nonnegative throughout the interval and \textbf{concave} if and only if its second derivative is nonpositive throughout the interval.
+
+For real numbers $x_1,x_2\ldots x_i$ in a convex function $f$'s domain and positive real weights $w_1,w_2\ldots w_n$, we have
+$$f\left(\frac{\sum w_i x_i}{\sum w_i}\right)\le \frac{\sum w_i f(x_i)}{\sum w_i}$$
+When the function is concave, we have an analogous inequality
+$$f\left(\frac{\sum w_i x_i}{\sum w_i}\right)\ge \frac{\sum w_i f(x_i)}{\sum w_i}$$
+as $-f$ is convex.
+\end{theo}
+
+It is useful to memorize the convexities of the most common functions, and below are some of them:
+\begin{exer}[List of functions to evaluate]
+$x^2, x, \frac{1}{x}, \sqrt{x}, \log(x)$ over the real numbers
+
+(Answers: convex, convex and concave, convex, concave, concave)
+\end{exer}
+
+The last function (log with respect to an arbitrary base), despite seemingly the least common, can be used to simplify a multitude of inequalities.
 \section{Local maximas and minimas}
+(This section can be thought of a follow-up to the graphing unit in a way, as it 
 Here is the first problem I have ever solved in any contest using differentiation, which is a prime example of how the roots of derivatives can give us critical information on a function.
 \begin{exam}[Stormersyle mock AMC 10/25]
 An ordered pair $(a,b)$ is \textit{spicy} if there exists real $c$ such that the polynomial $f(x)=x^3+ax^2+bx+c$ has all real roots. For how many ordered pairs $(a,b)$ of integers with $1\le a,b\le 20$ is $(a,b)$ spicy?
@@ -33,15 +53,36 @@ Therefore, we just need to calculate the number of pairs $(a,b)$ with $4a^2-12b\
 
 Here is a much more difficult example that still utilizes the properties of local minimas and maximas.
 \begin{exam}[2021 HMMT Feb. AlgNT/9]
-Find all monic cubic polynomials $f$ following the following properties:
+Find all monic cubic polynomials $f$ that have the following properties:
 \begin{itemize}
 \item $f$ is odd, and
 \item over all reals $c, f(f(x))-c$ has either $1, 5$ or $9$ roots.
 \end{itemize}
 \end{exam}
 \begin{walk}
+\begin{enumerate}
+\item Don't be scared by the problem number!
+\item $f$ is of the form $x^3+ax$. Using simple reasoning, arrive at that $a<0$.
+\item Consider moving a horizontal line from a large $y$ value (intersecting $f(f(x))$ once) downwards. What does it hopping from intersecting $f$ once to five times tell us?
+\item Using the chain rule, solve for the local maximas of $f(f(x))$. (It might be helpful to make the substitution $a=-3b^2$.)
+\item Use the fact that the local maximas have equal $y$ values to find $b$.
+\end{enumerate}
 \end{walk}
-\section{Section 3}
+\section{Estimating series}
+We can often estimate infinite sums with integrals, which solves many problems asking for the rough value (floor/ceil or rounded) of infinite sums.
+\begin{exam}
+Find the floor of $\sum_{n=1}^{1000000}\frac{1}{\sqrt{n}}$.
+\end{exam}
+\begin{sol}
+Trying to look for smart telescopes or cancellations would be pointless, but fortunately, the sum is close to an easily evaluable integral.
+
+The sum is a lower bound to $\int_{x=0}^{1000000}\frac{1}{\sqrt{x}}dx=2000$ and an upper bound to $\int_{x=1}^{1000001}\frac{1}{\sqrt{x}}dx>1998$. Therefore, the answer is either 1998 or 1999. 
+
+We can see that $\int_{x=0}^{1}(1-\frac{1}{\sqrt{x}})dx=1$, and therefore $\int_{x=0}^{1000000}\left\lceil\frac{1}{\sqrt{x}}\right\rceil-\frac{1}{\sqrt{x}}>1$, making our answer $\ansbold{1998}$.
+\end{sol}
+
+\section{Calculating area}
+
 \section{Problems}
 \noindent\minpt{TBD}
 
