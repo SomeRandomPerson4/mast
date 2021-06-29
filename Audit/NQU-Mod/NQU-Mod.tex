@@ -30,6 +30,8 @@ Our definition of divisibility leaves us with some helpful results.
 \end{fact}
 
 \section{Modular Arithmetic}
+The following section describes operations in Modular Arithmetic, intuitively motivated by operations over the integers, rationals, and even real and complex numbers\footnote{Yes, you can find $i \pmod{p}$.}. You will find you will be able to do almost everything$\pmod{n}$ that you would be able to do normally. Make sure you understand the rigorous reasons why these things are true, but you should simultaneously feel free to do whatever you want given a few restrictions.
+
 \begin{defi}[Modular Congruence]
 We say $a\equiv b\pmod {n}$ if and only if $n\mid a-b.$
 \end{defi}
@@ -163,11 +165,19 @@ Note that this implies $ab\equiv cd\pmod{5},$ or $\frac{ab}{c}\equiv d\pmod{5}.$
 
 Make sure you understand \textbf{why} $d$ is uniquely determined!
 
+One last example, that uses purely standard modular arthimetic techniques; it epitomizes the ideas of this section. This is also an exercise in reading the problem carefully, and many students did overzealous approaches, for example bashing through all the cases. Unfourtunately, the answer was $E$, so this took a lot of time.\footnote{I (Ethan) seem to recall simply getting it wrong. Oops.}
+\begin{exam}[AMC 10B 2017/25]
+Last year Isabella took 7 math tests and received 7 different scores, each an integer between 91 and 100, inclusive. After each test she noticed that the average of her test scores was an integer. Her score on the seventh test was 95. What was her score on the sixth test?
+\end{exam}
+
+\begin{sol}
+Let $A$ be the average of the first 6 tests. We know $6A + 95$ is a multiple of 7, as it is the sum of the first seven tests, or \[6A + 95 \equiv 0 \pmod{7}\text{.}\] This means we have $6A  \equiv 3 \pmod 7$, which means \[A \equiv \frac12 \equiv \frac82 = 4 \pmod{7}\text{.}\] However, $A$ must be one of ${91,92,\dots, 100}$. In fact we find $A = 95$. If the sixth score is $S$ and the average of the first 5 tests is $B$, then since $570 = S + 5B$, $S$ is multiple of $5$ and must be $\ansbold{100}$.
+\end{sol}
 \section{Chinese Remainder Theorem}
 The Chinese Remainder Theorem tells you that
 \begin{enumerate}
-\item given an independent system of linear congruences, you can ``stitch them together'' to one linear congruence that encompasses all of the conditions
-\item given a linear congruence, you can ``take it apart'' into an independent system of linear congruence that encompasses the original congruence, and solve them independently.
+\item given an independent system of linear congruences, you can ``stitch them together'' to one linear congruence that encompasses all of the conditions. This is often used when you obtain two mod conditions that are disjoint into one big condition that is easier to work with. In particular, finding values satisfying two linear congruences is hard, but finding values satistfying one modular congruence means one simply has to work with an arithmetic sequence.
+\item given a linear congruence, you can ``take it apart'' into an independent system of linear congruence that encompasses the original congruence, and solve them independently. This is often used to split up a residue mod a composite number into residues mod prime powers, that are usually much more tolerable, and then using the previous to ``put them back together" to find a exact value. For example, one might want to find the last three digits of a large number $N$. What one would do is find $N \pmod{8}$ and $N \pmod{125}$, then combine them to find $N\pmod{1000}$.
 \end{enumerate}
 
 We state the formal theorem just to show that in of itself, it is completely devoid of any substance.
@@ -183,7 +193,7 @@ If $a\equiv b\pmod{p_i^{e_i}}$ for $1\leq i\leq k,$ then
 \[a\equiv b\pmod{p_1^{e_1}p_2^{e_2}\cdots p_k^{e_k}}.\]
 \end{fact}
 
-You'll notice that a common theme with the examples that use CRT Congruences is that it feels like we're rigging the congruences to work this way. That's because we are, and for small enough numbers, guesswork is sufficient.
+You'll notice that a common theme with the examples that use CRT Congruences is that it feels like we're rigging the congruences to work this way. That's because we are, and for small enough numbers, guesswork is sufficient.\footnote{There is an algorithm, but it is sufficiently easy to just work out yourself, alongside the Euclidean Algorithm.}
 
 Here are some basic (and almost insultingly obvious) examples to underscore that the Chinese Remainder Theorem is just formalized intuition.
 
@@ -258,10 +268,10 @@ or $N\equiv 9376\pmod{10000}.$ So the answer is $937.$
 Let $n$ be the least positive integer greater than $1000$ for which\[\gcd(63, n+120) =21\quad \text{and} \quad \gcd(n+63, 120)=60.\]What is the sum of the digits of $n$?
 \end{exam}
 
-A somewhat pedagogical and unrelated comment: the problem asks for the sum of the digits of $n$ because otherwise you could game the problem by just trying all of the answer choices. In this case, the problem does not imply that finding the sum of the digits of $n$ as opposed to finding $n$ will solve the problem in a quicker or easier way.
+A somewhat pedagogical and unrelated comment: the problem asks for the sum of the digits of $n$ because otherwise you could game the problem by just trying all of the answer choices. In this case, the problem does not imply that finding the sum of the digits of $n$ as opposed to finding $n$ will solve the problem in a quicker or easier way. This sort of approach does humorously work sometimes, and is a tip for guessing.
 
 \begin{sol}
-Our $\gcd$ equations give us possible remainders of $n$ when divided by $63$ and $120,$ which clues us in to the Chinese Remainder Theorem.
+Our $\gcd$ equations give us possible remainders of $n$ when divided by $63$ and $120,$ which clues us in to the Chinese Remainder Theorem. In particular, we know we are going to want to put them together into one big congruence, as $n > 1000$.
 
 Note that $n+120\equiv 0\pmod{21},$ or $n\equiv 6\pmod{21},$ but also note that $n\not\equiv 6\pmod{63}.$ Thus $n\equiv 27\pmod{63}$ or $n\equiv 48\pmod{63}.$ Similarly, $n\equiv 117\pmod{120}.$ This gives us two possible systems of congruences.
 
@@ -547,8 +557,6 @@ for all $p>2.$ The case $p=2$ can be manually checked.
 
 A corollary of this proof is that $1^k+2^k+\cdots+(p-1)^k\equiv 0\pmod{p}$ for $p-1\nmid k.$
 
-As an exercise, prove that $(p-2)!\equiv 1\pmod{p}.$ (This is quite easy to do directly with Wilson's.)
-
 You can use Wilson's Theorem to deal with binomial coefficients mod $p$ effectively.
 
 \begin{exam}
@@ -561,9 +569,10 @@ Note that
 \binom{p-1}{k}&\equiv \frac{(p-1)!}{k!(p-1-k)!}\\
 &\equiv \frac{-1}{(-1)^{k}(p-k)(p+1-k)(p+2-k)\cdots(p+k-1-k)(p-1-k)!}\\
 &\equiv \frac{-1}{(-1)^k(p-1)!}\\
-&\equiv (-1)^k\pmod{p}.
-\end{align*}
+&\equiv (-1)^k\pmod{p}.\end{align*}
 \end{sol}
+
+Wilson's theorem is actually kind of unnecessary here; note that $(p-1)!$ cancels.
 
 As an exercise, find $\binom{p-2}{k}\pmod{p}$ in terms of $p,k$ for $p>2.$
 
@@ -658,6 +667,10 @@ Find the number of positive integers $n$ less than $2017$ such that
 
 \begin{prob}[IMO 1970/4]{6}
 Find all positive integers $n$ such that the set $\{n,n+1,n+2,n+3,n+4,n+5\}$ can be partitioned into two subsets so that the product of the numbers in each subset is equal.
+\end{prob}
+
+\begin{prob}[AIME I 2001/11]{6}
+In a rectangular array of points, with 5 rows and $N$ columns, the points are numbered consecutively from left to right beginning with the top row. Thus the top row is numbered 1 through $N,$ the second row is numbered $N+1$ through $2N,$ and so forth. Five points, $P_1, P_2, P_3, P_4,$ and $P_5,$ are selected so that each $P_i$ is in row $i.$ Let $x_i$ be the number associated with $P_i.$ Now renumber the array consecutively from top to bottom, beginning with the first column. Let $y_i$ be the number associated with $P_i$ after the renumbering. It is found that $x_1=y_2,$ $x_2=y_1,$ $x_3=y_4,$ $x_4=y_5,$ and $x_5=y_3.$ Find the smallest possible value of $N.$
 \end{prob}
 
 \begin{prob}[IMO 2005/4]{9}
