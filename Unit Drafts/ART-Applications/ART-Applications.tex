@@ -80,13 +80,73 @@ The sum is a lower bound to $\int_{x=0}^{1000000}\frac{1}{\sqrt{x}}dx=2000$ and 
 
 We can see that $\int_{x=0}^{1}(1-\frac{1}{\sqrt{x}})dx=1$, and therefore $\int_{x=0}^{1000000}\left\lceil\frac{1}{\sqrt{x}}\right\rceil-\frac{1}{\sqrt{x}}>1$, making our answer $\ansbold{1998}$.
 \end{sol}
+Here is a more difficult AIME problem 15 that instead utilizes trigonometric integrals:
+\begin{exam}[AIME II 2000/15]
+Find the least positive integer $n$ such that\[ \frac 1{\sin 45^\circ\sin 46^\circ}+\frac 1{\sin 47^\circ\sin 48^\circ}+\cdots+\frac 1{\sin 133^\circ\sin 134^\circ}=\frac 1{\sin n^\circ}. \]
+\end{exam}
+\begin{walk}
+This is perhaps more naturally solved with telescoping, but we present an integration solution due to AoPS user \textbf{nkim9005}.
+\begin{enumerate}
+    \item Convert the cosecants to secants.
+    \item Estimate each term in a way that makes the sequence easily integrable.
+    \item Using this estimate, integrate and find the approximate value of $\sin(x)$.
+    \item Finish the problem using the fact that $sin(x)\approx x$ for small values.
+\end{enumerate}
+\end{walk}
+As you probably have noticed, this method does rely on praying that the errors won't be significant.
+In the case of our last example, our 3 sources of error happened to cancel each other out.
+However, if you are unlucky, inaccuracies have the potential to render a calculation useless.
+Therefore, this technique should be used as more of a last resort for when you see no other way out.
 
 \section{Calculating area}
+(this section veers towards other subjects, and is only included because it is also an application of integration; feel free to skip it)
+Most commonly in Geometric probability, to solve the problem or as an intermediary stage in solving the problem, it is necessary to evaluate the area bounded by multiple functions. That is a textbook application of integration.
+
+Here is an easy example to give a general feel of these problems:
+\begin{exam}[AMC 10A 2015/25]
+Let $S$ be a square of side length $1$. Two points are chosen independently at random on the sides of $S$. The probability that the straight-line distance between the points is at least $\tfrac12$ is $\tfrac{a-b\pi}c$, where $a$, $b$, and $c$ are positive integers and $\gcd(a,b,c)=1$. What is $a+b+c$?
+\end{exam}
+\begin{sol}
+First, scale up everything by a factor of 2. Select the first point $A$; WLOG assume that it is on the bottom side and closer to the bottom-left vertex.
+
+If the second point is also on the bottom side, it is well-known that there is a $\frac{1}{4}$ probability that they are not within 1 of each other.
+
+If the second point is on the top side or right side, they must have distance $>1$.
+
+The tricky part is if the second point is on the left side. Assume that $A$ is $x$ away from the bottom-left vertex; the probability that $B$ is at least $\sqrt{1-x^2}$ away from the bottom-left vertex is equal to $\frac{\int_{x=0}^{2}(2-\sqrt{1-x^2})dx}{2}=\frac{2-\frac{\pi}{4}}{2}$.
+
+The answer is therefore $\frac{2+\frac{1}{4}+1-\frac{\pi}{8}}{4}=\frac{26-\pi}{32}$, making the requested sum $\ansbold{59}$.
+\end{sol}
+
+Here is a more difficult example, where the setup is perhaps more difficult to see but ultimately spiritually similar:
+\begin{exam}[PUMAC Combo 2016/7A]
+The Dinky is a train connecting Princeton to the outside world. It runs on an odd schedule:
+the train arrives once every one-hour block at some uniformly random time (once at a random
+time between 9am and 10am, once at a random time between 10am and 11am, and so on).
+One day, Emilia arrives at the station, at some uniformly random time, and does not know
+the time. She expects to wait for $y$ minutes for the next train to arrive. After waiting for an
+hour, a train has still not come. She now expects to wait for $z$ minutes. Find $yz$.
+\end{exam}
+\begin{sol}
+Suppose that Emilia arrives after $x$ of the current hour is over for some nonnegative $x<1$.
+
+If she arrives after the train for the hour (with probability $x$), she is expected to wait $1-x+\frac{1}{2}$ more hours.
+
+Otherwise, she is expected to wait $\frac{1-x}{2}$ more hours. From here, we can calculate $y=60\int_{x=0}^{1}[(x)(1-x+\frac{1}{2})+(1-x)\frac{1-x}{2}]dx=35$.
+
+After 1 hour, there is a $x(1-x)$ chance that no trains have arrived. In which case, Emilia is expected to wait for $\frac{x}{2}$ more hours. We can calculate $z=60\frac{\int_{x=0}^{1}(x^2)(1-x)}{2\int_{x=0}^{1}x(1-x)}=15$, making our answer $35\cdot 15=\ansbold{525}.$
+\end{sol}
+
+
 
 \section{Problems}
 \noindent\minpt{TBD}
 
 \begin{prob}[SMT 2021]{2}
 Farley the frog starts at the first lily pad in an infinite row of lily pads. If she is currently on the $n$th lily pad, she has a $\frac{1}{n}$ probability of jumping to the $n+1$th lilypad. Find the expected number of lily pads that she will ever reach.
+\end{prob}
+
+\begin{prob}[OMO Spring 2020/24]{13}
+Let $A$, $B$ be opposite vertices of a unit square with circumcircle $\Gamma$. Let $C$ be a variable point on $\Gamma$. If $C\not\in\{A, B\}$, then let $\omega$ be the incircle of triangle $ABC$, and let $I$ be the center of $\omega$. Let $C_1$ be the point at which $\omega$ meets $\overline{AB}$, and let $D$ be the reflection of $C_1$ over line $CI$. If $C \in\{A, B\}$, let $D = C$. As $C$ varies on $\Gamma$, $D$ traces out a curve $\mathfrak C$ enclosing a region of area $\mathcal A$. Compute $\lfloor 10^4 \mathcal A\rfloor$.
 \end{prob}
 \end{document}
