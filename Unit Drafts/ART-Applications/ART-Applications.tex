@@ -68,6 +68,28 @@ Find all monic cubic polynomials $f$ that have the following properties:
 \item Use the fact that the local maximas have equal $y$ values to find $b$.
 \end{enumerate}
 \end{walk}
+\section{Derivatives Trick}
+
+\begin{theo}[Derivatives Trick]
+Let $f(x)=(x-r_{1})(x-r_{2})\ldots(x-r_{k})$. Then,
+$$\frac{f'(x)}{f(x)} = \sum_{i=1}^{k} \frac{1}{x-r_{i}}$$
+\end{theo}
+
+\begin{pro}
+We take the natural log of both sides.
+$$\ln (f(x)) = \sum_{i=1}^{k} \ln(x-r_{i})$$
+We take the derivative of both sides using the chain rule.
+$$\frac{f'(x)}{f(x)} = \sum_{i=1}^{k} \frac{1}{x-r_{i}}$$
+\end{pro}
+
+We can extend this further by taking the derivative again as much as we need to do to find $\sum_{i=1}^{k} \frac{1}{(x-r_{k})^n}$ for $n$ in general.
+\begin{theo}[Derivatives Trick Extended]
+$$\frac{f''(x)f(x)-f'(x)^2}{f(x)^2} = -\sum_{i=1}^{k} \frac{1}{(x-r_{i})^2}$$
+\end{theo}
+
+\begin{pro}
+Use the Quotient Rule.
+\end{pro}
 \section{Estimating series}
 We can often estimate infinite sums with integrals, which solves many problems asking for the rough value (floor/ceil or rounded) of infinite sums.
 \begin{exam}
