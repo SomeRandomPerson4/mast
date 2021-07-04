@@ -25,12 +25,38 @@ as $-f$ is convex.
 
 It is useful to memorize the convexities of the most common functions, and below are some of them:
 \begin{exer}[List of functions to evaluate]
-$x^2, x, \frac{1}{x}, \sqrt{x}, \log(x)$ over the real numbers
+$x^2, x, \frac{1}{x}, \sqrt{x}, \ln(x)$ over the real numbers
 
 (Answers: convex, convex and concave, convex, concave, concave)
 \end{exer}
 
-The last function (log with respect to an arbitrary base), despite seemingly the least common, can be used to simplify a multitude of inequalities.
+The last function (natural logarithm), despite seemingly the least common, can be used to simplify a multitude of inequalities.
+\begin{exam}[AM-GM]
+Prove that for a set of nonnegative real numbers $a_1,a_2,\ldots,a_n$, the following always holds:\[\frac{a_1+a_2+\ldots+a_n}{n}\geq\sqrt[n]{a_1a_2\cdots a_n}\]
+\end{exam}
+\begin{walk}
+\begin{enumerate}
+\item Take the logs of both sides.
+\item Use the fact that log is concave, and finish immediately with Jensen's.
+\end{enumerate}
+\end{walk}
+Because of log's properties (turns multiplication into addition, exponentiation into multiplication, division into subtraction), the above trick is often applicable on inequalities involving a fixed function.
+\begin{exer}[Taiwan TST 2014]
+Let $a_i > 0$ for $i=1,2,\dots,n$ and suppose $a_1 + a_2 + \dots + a_n = 1$. Prove that for any positive integer $k$,
+\[ \left( a_1^k + \frac{1}{a_1^k} \right) \left( a_2^k + \frac{1}{a_2^k} \right) \dots \left( a_n^k + \frac{1}{a_n^k} \right) \ge \left( n^k + \frac{1}{n^k} \right)^n. \]
+\end{exer}
+
+Sometimes, even when Jensen seems to be hopeless, we can still prove the following pseudo-Jensen inequality:
+$$f(x)\ge f(a)+f'(a)(x-a)$$
+where $a$ is the average of all variables. This is the tangent line trick.
+\begin{exam}[Poland 1996]
+$a,b,c \geq-3/4$ and $a+b+c=1$. Show that: $\frac{a}{1+a^{2}}+\frac{b}{1+b^{2}}+\frac{c}{1+c^{2}}\leq \frac{9}{10}$
+\end{exam}
+\begin{sol}
+By TLT, notice the inequality 
+$$\frac{x}{x^2+1}-\frac{18}{25}(x-\frac{1}{3})-\frac{3}{10}\le 0 \iff -\frac{(4x+3)(3x-1)^2}{50(x^2+1)}\le 0$$
+Summing this over all variables yields the desired result.
+\end{sol}
 \section{Local maximas and minimas}
 (This section can be thought of a follow-up to the graphing unit in a way, as it 
 Here is the first problem I have ever solved in any contest using differentiation, which is a prime example of how the roots of derivatives can give us critical information on a function.
