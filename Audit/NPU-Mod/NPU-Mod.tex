@@ -215,12 +215,117 @@ $\textbf{(A)} \text{ 92} \qquad \textbf{(B)} \text{ 94} \qquad \textbf{(C)} \tex
 Let $A$ be the average of the first 6 tests. We know $6A + 95$ is a multiple of 7, as it is the sum of the first seven tests, or \[6A + 95 \equiv 0 \pmod{7}\text{.}\] This means we have $6A  \equiv 3 \pmod 7$, which means \[A \equiv \frac12 \equiv \frac82 = 4 \pmod{7}\text{.}\] However, $A$ must be one of ${91,92,\dots, 100}$. In fact we find $A = 95$. If the sixth score is $S$ and the average of the first 5 tests is $B$, then since $570 = S + 5B$, $S$ is multiple of $5$ and must be $\ansbold{(E) 100}$.
 \end{sol}
 
+\section{Wilson's Theorem}
+
+Factorials rarely appear in number theory (at least for the AMCs and the AIME). But Wilson's Theorem is still one of the standard tools you need to have at your disposal.
+
+\begin{theo}[Wilson's Theorem]
+For prime $p,$ $$(p-1)!\equiv -1\pmod{p}.$$
+\end{theo}
+
+\begin{pro}[1]
+Notice that the numbers $2,3,4\dots p-2$ all have modular inverses. In addition, modular inverses come in pairs. Since $p$ is odd (the case where $p=2$ is very easy to deal with), then the modular inverses all multiply to $1.$ This leaves us with $(p-1)!\equiv 1\cdot (p-1)\equiv -1\pmod{p},$ as desired.
+\end{pro}
+
+We do not include $1,p-1$ in the pairing because for prime $p,$ $1$ and $p-1$ are the only numbers whose modular inverses are themselves.
+
+Here is how Wilson's theorem simplify a problem you might have solved in the application:
+
+\begin{exam}[NARML/4, MAST S3 Diagnostics/N1]
+Compute the smallest positive integer $n$ such that $9(n+3)$ divides $4n!+n+5$.
+\end{exam}
+
+\begin{sol}
+Brute force works here, but there is an easier route.
+
+First, we can check that none of $1\le n\le 5$ work, and therefore $4n!+n+5\equiv n+5\pmod{9}$ as $n!$ is necessarily a multiple of $3\cdot 6=9\cdot 2$. From here, we can see that $n$ must be equivalent to 4 mod 9.
+
+Next, suppose that $n+3$ is composite; as $n\ge 6$, we have $2n>n+3$ and therefore $n!$ will be a multiple of $n+3$; we would need $n+5$ to be a multiple of $n+3$ which is impossible. Therefore, $n+3$ must be a prime.
+
+The smallest possible $n$ that satisfies the above conditions is $40$. Indeed, by Wilson's theorem, $40!\equiv \frac{-1}{41\cdot 42} \equiv \frac{-1}{2}\pmod{43}$ and $4\cdot \frac{-1}{2}+40+5=40+5-2=43$.
+\end{sol}
+
+\begin{remark}
+Even though Wilson's is only used towards the end to verify our solution, it invisibly motivates the entire solution. The idea of checking if $n+3$ is prime should naturally arise after seeing factorials in the problem.
+\end{remark}
 \pagebreak
 
 \section{Problems}
-\minpt{54}
+\minpt{46}
 
 \psetquote{Take what fortune grants you, use it while you've got it!}{Death Note Musical}
+
+\begin{prob}[]{1}
+Find the inverse of $2\pmod {p}$ for odd prime $p$ in terms of $p.$
+\end{prob}
+    
+\begin{prob}[]{1}
+Find the remainder of $97!$ when divided by $101.$
+\end{prob}
+
+\begin{prob}[1001 Problems in Number Theory]{2}
+For which positive integers $n$ is it true that $1+2+\cdots+n\mid 1\cdot 2\cdot \cdots \cdot n$?
+\end{prob}
+
+\begin{prob}[]{2}
+What is the residue of $\frac{1}{1\cdot 2}\cdot \frac{1}{2\cdot 3}\cdot \dots \cdot \frac{1}{11\cdot 12}\pmod {13}?$
+\end{prob}
+
+\begin{prob}[PUMaC 2018]{3}
+Find the number of positive integers $n<2018$ such that $25^n+9^n$ is divisible by $13.$
+\end{prob}
+
+\begin{req}[AMC 10B 2019/14]{4}
+The base-ten representation for $19!$ is $121,6T5,100,40M,832,H00$, where $T$, $M$, and $H$ denote digits that are not given. What is $T+M+H$?
+\end{req}
+
+\begin{prob}[AMC 10B 2018/16]{4}
+Let $a_1,a_2,\dots,a_{2018}$ be a strictly increasing sequence of positive integers such that\[a_1+a_2+\cdots+a_{2018}=2018^{2018}.\]What is the remainder when $a_1^3+a_2^3+\cdots+a_{2018}^3$ is divided by $6$?
+\end{prob}
+    
+\begin{prob}[]{4}
+Find the remainder of $5^{31}+5^{17}+1$ when divided by $31.$
+\end{prob}
+
+\begin{prob}[AIME II 2017/8]{6}
+Find the number of positive integers $n$ less than $2017$ such that
+\[ 1+n+\frac{n^2}{2!}+\frac{n^3}{3!}+\frac{n^4}{4!}+\frac{n^5}{5!}+\frac{n^6}{6!} \]is an integer.
+\end{prob}
+
+\begin{req}[AIME 1989/9]{9}
+One of Euler's conjectures was disproved in the 1960s by three American mathematicians when they showed there was a positive integer such that $133^5+110^5+84^5+27^5=n^{5}$. Find the value of $n$.
+\end{req}
+    
+\begin{prob}[USAMO 1979/1]{9}
+Determine all non-negative integral solutions $(n_1, n_2, \dots , n_k)$, if any, apart from permutations, of the Diophantine equation
+$$n_1^4 + n_2^4 + \cdots + n_{14}^{4} = 1599.$$
+\end{prob}
+
+\begin{prob}[IMO 2005/4]{13}
+Determine all positive integers relatively prime to all the terms of the infinite sequence
+\[a_n=2^n+3^n+6^n -1,\ n\geq 1.\]
+\end{prob}
+
+\subsection{Period of a Repeating Decimal}
+\begin{prob}[]{3}
+The expansion of $\frac{1}{7}$ is $0.\overline{142857},$ which is a repeating decimal with a $6$ digit long sequence. How many digits long is the expansion of $\frac{1}{13}?$
+\end{prob}
+
+\begin{prob}[]{3}
+We define the cycle of a repeating fraction $\tfrac{m}{n}$ as the minimum number $i$ such that $\tfrac{m}{n} = 0.\overline{a_1a_2a_3\dots a_i}$. Find the cycle of $\tfrac{1}{23}$.
+\end{prob}
+
+\begin{prob}[AMC 10A 2019/18]{6}
+For some positive integer $k$, the repeating base-$k$ representation of the (base-ten) fraction $\frac{7}{51}$ is $0.\overline{23}_k = 0.232323\ldots_k$. What is $k$?
+\end{prob}
+
+\begin{prob}[AMC 12B 2016/22]{6}
+For a certain positive integer $n$ less than $1000$, the decimal equivalent of $\frac{1}{n}$ is $0.\overline{abcdef}$, a repeating decimal of period $6$, and the decimal equivalent of $\frac{1}{n+6}$ is $0.\overline{wxyz}$, a repeating decimal of period $4$. Find $n.$
+\end{prob}
+
+\begin{prob}[AMC 12A 2014/23]{9}
+The fraction\[\dfrac1{99^2}=0.\overline{b_{n-1}b_{n-2}\ldots b_2b_1b_0},\]where $n$ is the length of the period of the repeating decimal expansion. What is the sum $b_0+b_1+\cdots+b_{n-1}$?
+\end{prob}
 
 
 \end{document}
