@@ -1,0 +1,15 @@
+APV-Manip
+APV-Series
+AQV-Roots
+
+CPV-Intro
+CQU-Recursion
+CQV-Perspectives
+
+GPV-Basics
+GQT-Transformation
+GQU-Triangles
+
+NPU-Mod
+NPU-Diophantine
+NQV-Primes
