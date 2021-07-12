@@ -138,6 +138,74 @@ Let the digits be $a,b,c,d.$ Then we desire $1\leq a\leq b\leq c\leq d\leq 9.$ B
 
 This can also be done with stars and bars - if we let the "baskets" be the digits $1,2,\ldots, 9$ and the "stars" be the 4 digits we choose. We also get the value of $\binom{9-1+4}{4}=495.$
 
+\subsection{Grid/Letter Bijections}
+Here, we examine bijections that use grids and/or ordered sequences of letters to solve problems. First, we'll need to show that these are actually the same thing.
+\begin{exam}[Folklore]
+Find the number of paths from $(0,0)$ to $(4,5)$ that use only moves one unit up or one unit to the right.
+\end{exam}
+
+\begin{sol}
+We claim a bijection between any path and sequences of $8$ letters with $4$ R's and $5$ U's; in fact R's correspond to right moves and U's correspond to up moves. Thus the answer is $\binom 94 = \ansbold{126}$.
+\end{sol}
+
+Here's another example of where bijecting to sequences of letters is very helpful for confusing problems that have a very clear structure.
+\begin{exam}[AIME 1990/8]
+In a shooting match, eight clay targets are arranged in two hanging columns of three targets each and one column of two targets. A marksman is to break all the targets according to the following rules:
+
+1) The marksman first chooses a column from which a target is to be broken.
+2) The marksman must then break the lowest remaining target in the chosen column.
+
+If the rules are followed, in how many different orders can the eight targets be broken?
+\end{exam}
+
+\begin{sol}
+Let the columns be $A,B,C$ in that order. Note that at any point the marksman can only pick at most one target from $A,B,C$ and moreover any sequence of targets shot corresponds to exactly one sequence of A's, B's, and C's, so there exists a bijection between the number of orders of target breaking and the permutations of $AAABBBCC$, and the answer is $\ansbold{560}$.
+\end{sol}
+
+The next example is unreasonably clever, and the efficient solution is morbidly difficult and clever.
+\begin{exam}[AIME I 2018/10]
+The wheel shown below consists of two circles and five spokes, with a label at each point where a spoke meets a circle. A bug walks along the wheel, starting at point $A$. At every step of the process, the bug walks from one labeled point to an adjacent labeled point. Along the inner circle the bug only walks in a counterclockwise direction, and along the outer circle the bug only walks in a clockwise direction. For example, the bug could travel along the path $AJABCHCHIJA$, which has $10$ steps. Let $n$ be the number of paths with $15$ steps that begin and end at point $A$. Find the remainder when $n$ is divided by $1000$.
+\begin{center}
+\begin{asy}
+unitsize(32);
+draw(unitcircle);
+draw(scale(2) * unitcircle);
+for(int d = 90; d < 360 + 90; d += 72){
+draw(2 * dir(d) -- dir(d));
+}
+
+real s = 4;
+dot(1 * dir( 90), linewidth(s));
+dot(1 * dir(162), linewidth(s));
+dot(1 * dir(234), linewidth(s));
+dot(1 * dir(306), linewidth(s));
+dot(1 * dir(378), linewidth(s));
+dot(2 * dir(378), linewidth(s));
+dot(2 * dir(306), linewidth(s));
+dot(2 * dir(234), linewidth(s));
+dot(2 * dir(162), linewidth(s));
+dot(2 * dir( 90), linewidth(s));
+
+defaultpen(fontsize(10pt));
+real r = 0.05;
+label("$A$", (1-r) * dir( 90), -dir( 90));
+label("$B$", (1-r) * dir(162), -dir(162));
+label("$C$", (1-r) * dir(234), -dir(234));
+label("$D$", (1-r) * dir(306), -dir(306));
+label("$E$", (1-r) * dir(378), -dir(378));
+label("$F$", (2+r) * dir(378), dir(378));
+label("$G$", (2+r) * dir(306), dir(306));
+label("$H$", (2+r) * dir(234), dir(234));
+label("$I$", (2+r) * dir(162), dir(162));
+label("$J$", (2+r) * dir( 90), dir( 90));
+\end{asy}
+\end{center}
+\end{exam}
+
+One might be tempted to use the positions as letters. This is in fact an instant fail and similar recursion solutions are also quite bashy. There are a few nicer Vandermonde-based solutions that you can attempt, but none of them are quite as elegant as the official solution.
+\begin{sol}
+Let $X$ denote a move that ends in the inner ring, and let $Y$ denote any move that ends in the outer ring. Then we claim that the set of moves from $A$ is simply the set of strings of $X, Y$, as the first $X$ in a string of $X$'s is the inward move, and the next few $X$'s are clockwise rotations, similarly for $Y$. Now, note that we need the number of $X$'s to be a multiple of $5$  more(or less) than the number of $Y's$ as since the last letter must be an $X$ you have an even number of ring-swapping moves, and since the number of $X$ ring-swapping moves is the same as the number of $Y$ ring-swapping moves, we have that the number of $X$'s minus the number of $Y$'s is exactly the amount rotated, which must be a multiple of $5$. Finally, this means that there must be $4,9,$ or $14$ $X's$ in the first $14$ moves, as the last move is an $X$; This gives an answer of $\binom{14}4 + \binom{14}9 + 1 = 3004 \rightarrow \ansbold{004}$.
+\end{sol}
 \section{Combinatorial Identites}
 We take a look at some famous combinatorial identities like Hockey-Stick, Vandermonde, and the Binomial Theorem (and friends). We will look at the combinatorial proofs (aka bijections) when possible because algebra is boring and straightforward (and sometimes not possible).
 
