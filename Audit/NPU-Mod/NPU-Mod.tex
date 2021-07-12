@@ -6,68 +6,77 @@
 
 \begin{document}
 \maketitle
+
 \section{Divisibility}
-The concept of divisibility is a cornerstone of Number Theory across the AMC's and beyond, and therefore it must be reserved as our first topic.
+The concept of divisibility is a cornerstone of number theory across the AMCs and beyond; therefore, it must be reserved as our first topic.
+
 \begin{defi}[Divisibility]
-We say that an integer $m$ is \textbf{divisible by} another integer $n$ and equivalently $n$ \textbf{divides} $m$ (neither are necessarily positive, though we will mostly work with positive integers in this unit), notated as $n|m$, if there exists another integer $k$ with $m=kn$.
+An integer $b$ is \textbf{divisible by} an integer $a$ if there exists an integer $c$ with $b=ca$. Alternatively, we say $a$ divides $b$, denoted by $a \mid b$.
 \end{defi}
+
 \begin{remark}
-If we instead define divisibility by saying that $\frac{m}{n}=k$ is an integer, our picture falls apart when 0 is introduced. Indeed, we can get that $0$ is divisible by $0$, but $\frac{0}{0}$ is indeterminate.
+If instead we define divisibility by saying that $\frac{b}{a}$ is an integer, our picture falls apart when $0$ is introduced. For instance, $0$ is divisible by $0$, but $\frac{0}{0}$ is indeterminate.
 \end{remark}
 
 We can derive some useful results immediately:
+
 \begin{fact}[Divisibility Results]
 \hfill
 \begin{enumerate}
-    \item If $a\mid b$ and both $a,b$ are positive then $a\le b$; if $a\mid b$, $b\mid a$ and both $a,b$ are positive then $a=b$.
-    \item If $a\mid b$ and $b\mid c$ then $a\mid c.$
-    \item If $a\mid b$ then $a\mid bc$ for all integers $c.$
-    \item If $a\mid b$ and $a\mid c,$ then $a\mid b+c$ and $a\mid b-c$.
+    \item If $a\mid b$ and both $a,b$ are positive, then $a\le b$
+    \item If $a\mid b$, $b\mid a$, and both $a,b$ are positive, then $a=b$.
+    \item If $a\mid b$ and $b\mid c$, then $a\mid c.$
+    \item If $a\mid b$, then $a\mid bc$ for all integers $c.$
+    \item If $a\mid b$ and $a\mid c$, then $a\mid b+c$ and $a\mid b-c$.
 \end{enumerate}
 \end{fact}
 
-WARNING: There are many false results in divisibility that might be cited or used mistakenly. The most common ones will be listed below.
+On the other hand, there are many \emph{false} results in divisibility that might be cited or used mistakenly. Common ones are listed below.
 \begin{enumerate}
-\item If $a\mid c$ and $b\mid c$, it is NOT NECESSARILY true that $ab\mid c$; take $a=4,b=8,c=16$ for a counterexample. However, this claim is always true if $a,b$ are relatively prime. (can you see why?)
-\item If $a\mid bc$, it is NOT NECESSARILY true that $a\mid b$ or $a\mid c$; again, $a=16, b=4, c=8$ is a counterexample.
-\item Conversely, if $a$ divides neither $b$ nor $c$, it is NOT NECESSARILY true that $a$ does not divide $bc$.
+\item If $a\mid c$ and $b\mid c$, it is \emph{not necessarily} true that $ab\mid c$; take $a=4,b=8,c=16$ as a counterexample. (However, this claim is always true if $a,b$ are relatively prime, defined shortly.)
+\item If $a\mid bc$, it is \emph{not necessarily} true that $a\mid b$ or $a\mid c$; again, $a=16, b=4, c=8$ is a counterexample.
+\item Conversely, if $a$ divides neither $b$ nor $c$, it is \emph{not necessarily} true that $a$ does not divide $bc$.
 \end{enumerate}
 
-\hfill
+The concepts of GCD and LCM also appear frequently; they are covered more thoroughly in the unit NQV-Prime.
 
-The concept of GCD and LCM also appear frequently; they will be covered more thoroughly in the unit NQV-Prime.
+\begin{defi}[Least Common Multiple]
+The \textbf{least common multiple} (often abbreviated as \textbf{LCM}) of two integers $a,b$ is the smallest positive integer that is a multiple of both $a$ and $b$.
+\end{defi}
 
-\begin{defi}[LCM/GCD]
-The \textbf{Least Common Multiple} (often abbreviated as \textbf{LCM}) of two integers $a,b$ is the smallest positive integer that is a multiple of both $a$ and $b$.
+\begin{defi}[Greatest Common Divisor]
+The \textbf{greatest common divisor} (often abbreviated as \textbf{GCD}) of two integers $a,b$ is the greatest positive integer that divides both $a$ and $b$. In particular, the GCD of $0$ and $n$ for any integer $n$ is equal to $n$, and the GCD of $0$ and $0$ is undefined.
+\end{defi}
 
-The \textbf{Greatest Common Divisor} (often abbreviated as \textbf{GCD}) of two integers $a,b$ is the greatest positive integer that divides both $a$ and $b$. In particular, the GCD of $0$ and $n$ for any integer $n$ is equal to $n$, and the GCD of $0$ and $0$ is undefined.
-
-Two integers $a,b$ are \textbf{relatively prime} if and only if their GCD is equal to $1$. In particular, $1$ and $-1$ are relatively prime to all integers.
+\begin{defi}[Relatively Prime]
+Two integers $a,b$ are \textbf{relatively prime} if and only if $\gcd{(a,b)}$ is equal to $1$. In particular, $1$ and $-1$ are relatively prime to all integers.
 \end{defi}
 
 These concepts can be extended to three or more integers, but at this stage, we only really work with two.
 
-To top off the section, here are a few relatively well-known divisibility rules. For a challenge, try proving all of them on your own after reading throrugh the next section!
-\begin{fact}[Divisibility rules]
+To top off the section, here are a few relatively well-known divisibility rules. For a challenge, try proving all of them on your own after reading through the next section! 
+
+\begin{fact}[Divisibility Rules]
 \hfill
 \begin{itemize}
     \item 2: If the last digit of $n$ is even, then $n$ is even.
     \item 4: If the last 2 digits of $n$ is a multiple of 4, then $n$ is a multiple of 4.
     \item 8: If the last 3 digits of $n$ is a multiple of 8, then $n$ is a multiple of 8. (Can you see a pattern?)
-    \item 3/9: If the sum of digits of $n$ is a multiple of 3/9, then $n$ is a multiple of 3/9. (This DOES NOT generalize to 27 or greater powers of 3!)
+    \item 3 or 9: If the sum of digits of $n$ is a multiple of 3/9, then $n$ is a multiple of 3 or 9. (This does \emph{not} generalize to 27 or greater powers of 3.)
     \item 5: If the last digit of $n$ is a multiple of 5, then $n$ is a multiple of 5.
     \item 25: If the last 2 digits of $n$ is a multiple of 25, then $n$ is a multiple of 25.
-    \item 125: If the last 3 digits of $n$ is a multiple of 125, then $n$ is a multiple of 125. (The pattern for powers of 2 also apply here.)
+    \item 125: If the last 3 digits of $n$ is a multiple of 125, then $n$ is a multiple of 125. (The pattern for powers of 2 also applies here.)
     \item 11: Let $a$ be the sum of the 1st, 3rd, 5th... digits from the right of $n$, and let $b$ be the sum of the 2nd, 4th, 6th... digits from the right of $n$. If $a-b$ is a multiple of 11, then $n$ is a multiple of 11.
 \end{itemize}
-For pairwise relatively prime integers, we can construct the divisibility rule of their product by simply combining their divisibility rules. For example, the divisibility rule of $60$ is simply being divisible by $3,4,5$, since any two of $3,4,5$ have GCD 1. 
+For pairwise relatively prime integers, we can construct the divisibility rule of their product by combining their divisibility rules. For example, the divisibility rule of $60$ is being divisible by $3,4,5$, since any two of $3,4,5$ have GCD 1. 
 \end{fact}
 
 All of the above are bidirectional; that is, all multiples of $x$ will satisfy the divisibility rules of $x$, and all numbers that satisfy the divisibility rules of $x$ will be multiples of $x$.
-\section{Modular Arithmetic}
-The following section describes operations in Modular Arithmetic, intuitively motivated by operations over the integers, rationals, and even real and complex numbers\footnote{Yes, you can find $i \pmod{p}$.}. You will find you will be able to do almost everything$\pmod{n}$ that you would be able to do normally. Make sure you understand the rigorous reasons why these things are true, but you should simultaneously feel free to do whatever you want given a few restrictions.
 
-Note that the modulus does have to be positive and greater than 1, unlike the previous section.
+\section{Modular Arithmetic}
+The following section describes operations in modular arithmetic, intuitively motivated by operations over the integers, rationals, and even real and complex numbers\footnote{Yes, you can find $i \pmod{p}$.}. 
+
+Note that the modulus does have to be positive and greater than 1, unlike the previous section. For the rest of the exposition below, assume that the given variables are integers or positive integers when reasonable.
 
 \begin{defi}[Modular Congruence]
 We say $a\equiv b\pmod {n}$ if and only if $n\mid a-b.$
@@ -75,23 +84,24 @@ We say $a\equiv b\pmod {n}$ if and only if $n\mid a-b.$
 
 The intuitive way to think about this is that $a$ and $b$ have the same remainder when divided by $n.$ (Remember that negative numbers also have a remainder when divided.)
 
-As a corollary, we can derive the following: if $a\equiv b\pmod {n}$, then $a\equiv b\pmod {d}$ for any divisor $d$ of $n$. (The converse is obviously false.)
+As a corollary, we can derive the following: if $a\equiv b\pmod {n}$, then $a\equiv b\pmod {d}$ for any divisor $d$ of $n$. (The converse is false.)
 
 \begin{defi}[Modular Residue]
 We say the \textit{residue} of an integer $a\pmod{n}$ is the integer $b$ that satisfies
 \begin{itemize}
     \item $0\leq b<n$
-
     \item $a\equiv b\pmod{n}.$
 \end{itemize}
 \end{defi}
 
-It can be helpful to think of $b$ as the remainder of $a$ when divided by $n.$
+It can be helpful to think of $b$ as the remainder of $a$ when divided by $n$, but care should be taken when applying this intuition with negative numbers.
+
+You may find that almost all arithmetic $\text{mod} \ n$ is extremely similar to normal arithmetic. Make sure you understand why the following results are true, but you should simultaneously feel free to do whatever you want given a few restrictions. 
 
 \subsection{Modular Operations}
 You can add, subtract, multiply, and exponentiate modulos. You can also divide, but care must be taken.
 
-\begin{fact}[Adding]
+\begin{fact}[Addition]
 If $a \equiv x\pmod{n}$ and $b\equiv y\pmod{n},$ $a+b\equiv x+y\pmod{n}.$
 \end{fact}
 
@@ -99,9 +109,9 @@ If $a \equiv x\pmod{n}$ and $b\equiv y\pmod{n},$ $a+b\equiv x+y\pmod{n}.$
 Since $n\mid x-a$ and $n\mid y-b,$ clearly $n\mid(x+y)-(a+b).$
 \end{pro}
 
-Subtracting is identical, so we do not discuss it further.
+Subtraction is identical, so we do not discuss it further.
 
-\begin{fact}[Multiplying]
+\begin{fact}[Multiplication]
 If $a \equiv x\pmod{n}$ and $b\equiv y\pmod{n},$ $ab\equiv xy\pmod{n}.$
 \end{fact}
 
@@ -112,39 +122,46 @@ xy-ab&=(x_pn+q)(y_pn+r)-(a_pn+q)(b_pn+r)\\
 &=n^2(x_py_p-a_pb_p)+n(x_pr+y_pq-a_pr-b_pq)+qr-qr\\
 &=n^2(x_py_p-a_pb_p)+n(x_pr+y_pq-a_pr-b_pq),
 \end{align*}
-which is clearly divisible by $n.$
+which is divisible by $n.$
 \end{pro}
 
-\begin{fact}[Exponentiating]
-For integer $a,b$ and positive integers $n,k,$ if $a \equiv b\pmod{n}$, then $a^k \equiv b^k \pmod{n}$.
+\begin{fact}[Exponentiation]
+If $a \equiv b\pmod{n}$, then $a^k \equiv b^k \pmod{n}$ for any positive integer $k$.
 \end{fact}
 
 \begin{pro}
 Note that $n\mid a-b\mid a^k-b^k.$
 \end{pro}
 
-As an exercise for the operations we've defined so far, pick your favorite ordered triple of positive integers $(a,b,n),$ and compute the remainder of $a+b,$ $a-b,$ $ab,$ and $a^b$\footnote{For large enough $b,$ you'll want to know Fermat's Little Theorem!} when divided by $n.$
+As an exercise for the operations we have defined so far, pick your favorite ordered triple of positive integers $(a,b,n),$ and compute the remainder of $a+b,$ $a-b,$ $ab,$ and $a^b$\footnote{For large enough $b,$ you'll want to know Fermat's Little Theorem!} when divided by $n.$
 
-\begin{fact}[Dividing]
+\begin{fact}[Division]
 Let $a,b,c$ be positive integers such that $c\mid a$ and $c\mid b.$ If $a\equiv b\pmod{n}$ \textbf{and} $\gcd(c,n)=1,$ then $\frac{a}{c}\equiv\frac{b}{c}\pmod{n}.$
 \end{fact}
 
-Be careful to remember that we \textbf{must have} $\gcd(c,n)=1$!
+Be careful to remember that we \textbf{must have} $\gcd(c,n)=1$! (To strengthen your understanding of modular artihmetic, try to explain why this condition is necessary.)
 
-\begin{fact}[Strengthened 3/9 divisibility]
-Let the sum of digits of a positive integer $n$ be equal to $m$. Then, $n\equiv m\pmod{9}$.
+\begin{fact}[Strengthened Divisibility of 3 or 9]
+Let $m$ be the sum of digits of a positive integer $n$. Then, $n\equiv m\pmod{9}$.
 \end{fact}
 
 \begin{pro}
-$10^0\cdot d_0+10^1\cdot d_1+10^2\cdot d^2+\ldots\equiv 1^0\cdot d_0+1^1\cdot d_1+1^2\cdot d_2\ldots\pmod{9}$
+Let $n = \overline{d_k d_{k - 1} \cdots d_2 d_1 d_0}$. We have 
+\begin{align*}
+n &\equiv 10^k \cdot d_k + 10^{k-1} \cdot d_{k-1} + \dots + 10^2 \cdot d_2+10^1\cdot d_1+10^0\cdot d_0 \\
+&\equiv 1^k \cdot d_k + 1^{k-1} \cdot d_{k-1} + \dots + 1^2 \cdot d_2+1^1\cdot d_1+1^0\cdot d_0 \\
+&\equiv d_k + d_{k-1} + \dots + d_2+d_1+d_0 \\
+&\equiv m
+\pmod{9}.
+\end{align*}
 \end{pro}
 
-\begin{fact}[Strengthened powers of 2/5 divisibility]
+\begin{fact}[Strengthened Divisibility of Powers of 2 or 5]
 For nonnegative integers $n,a,b$, the remainder when $n$ is divided by $2^a5^b$ is equal to the remainder when the last $\max(a,b)$ digits of $n$ is divided by $2^a5^b$.
 \end{fact}
 
 \begin{pro}
-$10^0\cdot d_0+10^1\cdot d_1\ldots +10^{\max(a,b)}d_{\max(a,b)}+\ldots= 2^05^0\cdot d_0+2^15^1\cdot d_1\ldots +2^{\max(a,b)}5^{\max(a,b)}\cdot d_{\max(a,b)}+\ldots \equiv 10^{0}\cdot d_{0}+10^1\cdot d_1\ldots +10^{\max(a,b)-1}\cdot d_{\max(a,b)-1}+0\cdot d_{\max(a,b)}+0\ldots \pmod{2^a5^b}$
+We have $10^0\cdot d_0+10^1\cdot d_1\ldots +10^{\max(a,b)}d_{\max(a,b)}+\ldots= 2^05^0\cdot d_0+2^15^1\cdot d_1\ldots +2^{\max(a,b)}5^{\max(a,b)}\cdot d_{\max(a,b)}+\ldots \equiv 10^{0}\cdot d_{0}+10^1\cdot d_1\ldots +10^{\max(a,b)-1}\cdot d_{\max(a,b)-1}+0\cdot d_{\max(a,b)}+0\ldots \pmod{2^a5^b}$
 \end{pro}
 
 The above rules allows us to kill an AMC last five in mere seconds:
@@ -156,7 +173,7 @@ $\textbf{(A)}\ 1 \qquad\textbf{(B)}\ 4 \qquad\textbf{(C)}\ 9 \qquad\textbf{(D)}\
 \end{exam}
 
 \begin{sol}
-$N$ is equivalent to 4 mod 5 from its last digit, which immediately rules out choices A,D. It seems somewhat tedious to count the number of occurrences of each digit, which motivates the observation that $1+0+1+1+\ldots +4+3+4+4\equiv 10+11+\ldots +43+44=\frac{44\cdot 45}{2}\equiv 0\pmod{9}$, which eliminates choices D,E. Our final answer is $\ansbold{(C) 9}$.
+$N$ is equivalent to 4 mod 5 from its last digit, which immediately rules out choices A and D. It seems somewhat tedious to count the number of occurrences of each digit, which motivates the observation that $1+0+1+1+\ldots +4+3+4+4\equiv 10+11+\ldots +43+44=\frac{44\cdot 45}{2}\equiv 0\pmod{9}$, which eliminates choices D and E. Our final answer is $\ansbold{(C) \ 9}$.
 \end{sol}
 
 \subsection{Modular Inverses}
@@ -165,10 +182,9 @@ In normal arithmetic, we define $a\cdot a^{-1}=1.$ We can do something similar i
 \begin{defi}[Modular Inverse]
 We define $a^{-1}$ to be the number mod $n$ such that $a\cdot a^{-1}\equiv 1 \pmod{n}.$ We say that $a^{-1}$ is the inverse of $a \pmod{n}.$
 
-\textbf{The modular inverse is defined if and only if $\gcd(a,n)=1.$} \end{defi}
+\textbf{The modular inverse is defined if and only if $\gcd(a,n)=1.$} (Why?) \end{defi}
 
-
-We can treat inverses as fractions - for instance, $\frac{1}{2}+\frac{1}{3}+\frac{1}{6}\equiv 1\pmod{p}$ for $p\neq 2,3.$ The proof is non-trivial and inverses should be treated with care, so we will prove that all of these operations are valid.
+We can treat inverses as fractions; for instance, $\frac{1}{2}+\frac{1}{3}+\frac{1}{6}\equiv 1\pmod{p}$ for $p\neq 2,3.$ The proof is non-trivial and inverses should be treated with care, so we will prove that all of these operations are valid.
 
 You should rewrite all of these operations into fractions to understand what they're really saying. The proofs follow directly from the associative, distributive, and commutative properties.
 
@@ -204,7 +220,7 @@ Make sure you understand \textbf{why} $d$ is uniquely determined!
 We can also define any negative exponents mod $n$; $m^{-a}$ is the inverse of $m^a$, or $m^{-1}\cdot m^a$; both definitions give us the same residue.
 \end{fact}
 
-One last example, that uses purely standard modular arithmetic techniques; it epitomizes the ideas of this section. This is also an exercise in reading the problem carefully, and many students did overzealous approaches, for example bashing through all the cases. Unfourtunately, the answer was $E$, so this took a lot of time.\footnote{I (Ethan) seem to recall simply getting it wrong. Oops.}
+Here is one last example, that uses purely standard modular arithmetic techniques; it epitomizes the ideas of this section. This is also an exercise in reading the problem carefully, and many students tried overzealous approaches, for example bashing through all the cases. Unfourtunately, the answer was $E$, so this took a lot of time.\footnote{I (Ethan) seem to recall simply getting it wrong. Oops.}
 
 \begin{exam}[AMC 10B 2017/25]
 Last year Isabella took 7 math tests and received 7 different scores, each an integer between 91 and 100, inclusive. After each test she noticed that the average of her test scores was an integer. Her score on the seventh test was 95. What was her score on the sixth test?
@@ -213,7 +229,7 @@ $\textbf{(A)} \text{ 92} \qquad \textbf{(B)} \text{ 94} \qquad \textbf{(C)} \tex
 \end{exam}
 
 \begin{sol}
-Let $A$ be the average of the first 6 tests. We know $6A + 95$ is a multiple of 7, as it is the sum of the first seven tests, or \[6A + 95 \equiv 0 \pmod{7}\text{.}\] This means we have $6A  \equiv 3 \pmod 7$, which means \[A \equiv \frac12 \equiv \frac82 = 4 \pmod{7}\text{.}\] However, $A$ must be one of ${91,92,\dots, 100}$. In fact we find $A = 95$. If the sixth score is $S$ and the average of the first 5 tests is $B$, then since $570 = S + 5B$, $S$ is multiple of $5$ and must be $\ansbold{(E) 100}$.
+Let $A$ be the average of the first 6 tests. We know $6A + 95$ is a multiple of 7, as it is the sum of the first seven tests, or \[6A + 95 \equiv 0 \pmod{7}\text{.}\] This means we have $6A  \equiv 3 \pmod 7$, so \[A \equiv \frac12 \equiv \frac82 = 4 \pmod{7}\text{.}\] However, $A$ must be one of ${91,92,\dots, 100}$. Thus, $A = 95$. If the sixth score is $S$ and the average of the first 5 tests is $B$, since $570 = S + 5B$, $S$ is multiple of $5$ and must be $\ansbold{(E) \ 100}$.
 \end{sol}
 
 \section{Wilson's Theorem}
@@ -224,13 +240,13 @@ Factorials rarely appear in number theory (at least for the AMCs and the AIME). 
 For prime $p,$ $$(p-1)!\equiv -1\pmod{p}.$$
 \end{theo}
 
-\begin{pro}[1]
+\begin{pro}
 Notice that the numbers $2,3,4\dots p-2$ all have modular inverses. In addition, modular inverses come in pairs. Since $p$ is odd (the case where $p=2$ is very easy to deal with), then the modular inverses all multiply to $1.$ This leaves us with $(p-1)!\equiv 1\cdot (p-1)\equiv -1\pmod{p},$ as desired.
 \end{pro}
 
 We do not include $1,p-1$ in the pairing because for prime $p,$ $1$ and $p-1$ are the only numbers whose modular inverses are themselves.
 
-Here is how Wilson's theorem simplify a problem you might have solved in the Season 3 application:
+Here is how Wilson's theorem simplifies a problem you might have solved in the Season 3 application:
 
 \begin{exam}[NARML/4, MAST S3 Diagnostics/N1]
 Compute the smallest positive integer $n$ such that $9(n+3)$ divides $4n!+n+5$.
@@ -243,7 +259,7 @@ First, we can check that none of $1\le n\le 5$ work, and therefore $4n!+n+5\equi
 
 Next, suppose that $n+3$ is composite; as $n\ge 6$, we have $2n>n+3$ and therefore $n!$ will be a multiple of $n+3$; we would need $n+5$ to be a multiple of $n+3$ which is impossible. Therefore, $n+3$ must be a prime.
 
-The smallest possible $n$ that satisfies the above conditions is $40$. Indeed, by Wilson's theorem, $40!\equiv \frac{-1}{41\cdot 42} \equiv \frac{-1}{2}\pmod{43}$ and $4\cdot \frac{-1}{2}+40+5=40+5-2=43$.
+The smallest possible $n$ that satisfies the above conditions is $\ansbold{40}$. Indeed, by Wilson's theorem, $40!\equiv \frac{-1}{41\cdot 42} \equiv \frac{-1}{2}\pmod{43}$ and $4\cdot \frac{-1}{2}+40+5=40+5-2=43$.
 \end{sol}
 
 \begin{remark}
@@ -300,6 +316,10 @@ Find the sum of all positive integers $n$ such that when $1^3+2^3+3^3+\cdots+n^3
 \begin{req}[AIME 1989/9]{9}
 One of Euler's conjectures was disproved in the 1960s by three American mathematicians when they showed there was a positive integer such that $133^5+110^5+84^5+27^5=n^{5}$. Find the value of $n$.
 \end{req}
+
+\begin{prob}[AIME I 2001/11]{9}
+In a rectangular array of points, with 5 rows and $N$ columns, the points are numbered consecutively from left to right beginning with the top row. Thus the top row is numbered 1 through $N,$ the second row is numbered $N+1$ through $2N,$ and so forth. Five points, $P_1, P_2, P_3, P_4,$ and $P_5,$ are selected so that each $P_i$ is in row $i.$ Let $x_i$ be the number associated with $P_i.$ Now renumber the array consecutively from top to bottom, beginning with the first column. Let $y_i$ be the number associated with $P_i$ after the renumbering. It is found that $x_1=y_2,$ $x_2=y_1,$ $x_3=y_4,$ $x_4=y_5,$ and $x_5=y_3.$ Find the smallest possible value of $N.$\footnote{CRT is helpful but unnecessary.}
+\end{prob}
     
 \begin{prob}[USAMO 1979/1]{9}
 Determine all non-negative integral solutions $(n_1, n_2, \dots , n_k)$, if any, apart from permutations, of the Diophantine equation
