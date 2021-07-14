@@ -1,6 +1,4 @@
-\documentclass[11pt][mast]{lucky}
-
-
+\documentclass[mast]{lucky}
 
 \title{Introduction to Series}
 \author{William Dai}
@@ -11,353 +9,516 @@
 \maketitle
 
 \section{Introduction}
-This handout is supposed to be an introductory look at the very common arithmetic and geometric series while also introducing a few common strategies for computing series. You already should be quite familar with the formulas for arithmetic and geometric series.
 
-%%%---------------------------------------------------------------------------------------------------------%%%
-%--------------------------------------------------------------------------------------------------------------------%
-%%%---------------------------------------------------------------------------------------------------------%%%
+We discuss algebraic manipulations with the roots of polynomials to find symmetric sums and to solve polynomials.
 
-\section{Arithmetic Sequences and Series}
+\newpage
+\section{Symmetric Sums of Roots}
+\subsection{Vieta's Formulas}
+To motivate this section, we give Vieta's upfront.
 
-\begin{defi}[Arithmetic Series and Sequences]
-An arithmetic series is $a_{1}+a_{2}+a_{3}\ldots $ where $a_{i}-a_{i-1}=d$ for some constant $d$ and all $i\ge 2$. Note that an arithmetic series refers to the \textbf{sum} while an arithmetic sequence refers to the \textbf{ordered list of terms}.\footnote{Sometimes, an arithmetic sequence or series starts with index $0$, making it \textbf{zero-indexed}. The same formulas still apply but you will have to adjust the indexes accordingly.}
-\end{defi}
-
-Using this definition, we can now derive some formulas for each term and the series.
-\begin{theo}[Formula For Term]
-If $a_{i}$ is $i$th term of an arithmetic sequence with common difference $d$, then $a_{i}=a_{1}+(i-1)d$.
+\begin{theo}[Vieta's Formulas]
+Consider polynomial $a_nx^n+a_{n-1}x^{n-1}+\cdots+a_{1}x+a_0$ with roots $r_1,r_2,\ldots,r_n.$ Then
+\[\sum\limits_{1\leq i_1<i_2<\cdots<i_k}r_{i_1}r_{i_2}\ldots r_{i_k}=(-1)^k\frac{a_{n-k}}{a_n}.\]
 \end{theo}
 
-Now, we'll present some common formulas for arithmetic series and sequences. These all easily follow from the previous formula but it's useful to know them to quickly manipulate arithmetic series.
+So what does this mean, and what's the right way to think about Vieta's? The answer is through factoring the polynomial and matching coefficients.
 
-\begin{theo}[Arithmetic Average]
-In an arithmetic series $a_{i}$, $a_{n}+a_{m}=2a_{\frac{n+m}{2}}$ if $n+m$ is even.
+\begin{exam}[Quadratic]
+Let the roots of $x^2+7x-30$ be $r_1,r_2.$ Find $r_1+r_2.$
+\end{exam}
+
+We're not going to just use Vieta's Theorem blindly here. Instead we'll try to motivate its discovery.
+
+\begin{sol}
+Note that $x^2+7x-30=(x-r_1)(x-r_2)$, \textbf{by definition}. Expanding gives $x^2+7x+30=x^2-(r_1+r_2)x+r_1r_2.$ Matching coefficients
+\end{sol}
+
+Let's explicitly formalize this matching coefficients idea.
+
+\begin{theo}[Matching Coefficients]
+Consider polynomials $f(x)=a_0+a_1x+a_2x^2+\cdots$ and $g(x)=b_0+b_1x+b_2x^2+\cdots.$ Then $f(x)=g(x)$ if and only if $a_i=b_i$ for all $i.$\footnotemark
 \end{theo}
+
+\footnotetext{We use $\cdots$ even though the polynomials are terminating because $a_k=0$ for all $k>\deg{f}.$ In other words, at some point it's just coefficients of $0$ going forward.}
+
+With this idea in mind we can now prove Vieta's formulas.
+
+\begin{pro}[(Vieta's Formulas)]
+Expand $(x-r_1)(x-r_2)\ldots(x-r_n)$ and compare its coefficients with the coefficients of $a_nx^n+a_{n-1}x^{n-1}+\cdots+a_{1}x+a_0.$
+\end{pro}
+\newpage
+\subsection{Newton's Sums}
+
+Newton's Sums are about the sum $r_1^k+r_2^k+\cdots+r_n^k,$ where $r_1,r_2,\ldots,r_k$ are the roots of some polynomial $P.$ These sums are often called \textbf{power sums}.
+
+\begin{theo}[Newton's Sums]
+Consider some degree $n$ polynomial $P(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_0$ with roots $r_1,r_2,\ldots,r_n.$ Then let $Z_k=r_1^k+r_2^k+\cdots+r_n^k.$ Then
+\[\sum_{i=0}^{n}a_iZ_{k-n+i}=a_nZ_k+a_{n-1}Z_{k-1}+\cdots+a_{n-(k-1)}Z_1+a_{0}Z_{k-n}=0.\]
+\end{theo}
+
+The proof is actually surprisingly obvious.
 
 \begin{pro}
-We have $a_{n}=a_{1}+(n-1)d$ and $a_{m}=a_{1}+(m-1)d$. Then, $a_{n}+a_{m}=2a_{1}+(n+m-2)d=2(a_{1}+(\frac{n+m}{2}-1)d)=2a_{\frac{n+m}{2}}$
+Note that for any root $x$ of $P(x),$ $x^{k-n}(a_nx^n+a_{n-1}x^{n-1}+\cdots+a_0)=0=a_nx^k+a_{n-1}x^{k-1}+\cdots+a_0x^{k-n}.$ Now just take $x=r_1,r_2,\ldots,r_n$ and sum all the equations.
 \end{pro}
 
-\begin{theo}[Arithmetic Sequence and Series]
-For an arithmetic sequence $a_{i}$, $a_{1}+a_{2}\ldots + a_{n}=\frac{a_{1}+a_{n}}{2}\cdot n$.
-\end{theo}
+Here's a direct example of Newton's Sums.
 
-\begin{pro}
-Note that we can pair up $a_{i}$ and $a_{n+1-i}$ to get $a_{1}+(i-1)d+a_{1}+(n-i)d=2a_{1}+(n-1)d$. There is a special case that if $n$ is odd and $i=\frac{n+1}{2}$, we can't pair up that term with itself. However, $a_{\frac{n+1}{2}}=a_{1}+\frac{n-1}{2}d$ so it still averages out as $\frac{1}{2}$ of a pair.
-
-Then, we have $\frac{n}{2}$ pairs (if $n$ is odd, we have that $\frac{1}{2}$ pair). So, our total sum is
-$\frac{n}{2}\cdot (a_{1}+a_{n})=\frac{a_{1}+a_{n}}{2}\cdot n$.
-\end{pro}
-
-\begin{theo}[Arithmetic Series]
-If the common difference is $d$ in arithmetic sequence $a_{i}$, $a_{1}+a_{2}\ldots + a_{n}=n\cdot a_{1}+d(\frac{(n-1)(n)}{2})$.
-\end{theo}
-
-\begin{pro}
-We use the previous theorem
-$$a_{1}+a_{2}\ldots + a_{n}$$
-$$=\frac{a_{1}+a_{n}}{2}\cdot n$$
-$$=\frac{a_{1}+a_{1}+(n-1)d}{2}\cdot n$$
-$$=a_{1}\cdot n + d(\frac{(n-1)(n)}{2})$$
-\end{pro}
-
-Most of time, problems with arithmetic series require only simple algebraic manipulation to solve.
-
-\begin{exam}[NanoMath Fall Meet 2020]
-Let $a_0, a_1, a_2, \ldots$ be an arithmetic sequence of positive integers. If $a_0 + a_1 + \cdots + a_{10} = 209$ and $a_{a_{0}} +
-a_{a_{1}} + \cdots + a_{a_{10}} = 671$, then find $a_0$.
+\begin{exam}[AMC 12A 2019/17]
+Let $s_k$ denote the sum of the $\textit{k}$th powers of the roots of the polynomial $x^3-5x^2+8x-13$. In particular, $s_0=3$, $s_1=5$, and $s_2=9$. Let $a$, $b$, and $c$ be real numbers such that $s_{k+1} = as_k + bs_{k-1} + cs_{k-2}$ for $k=2$, $3$, $\ldots$ What is $a+b+c$?
 \end{exam}
 
 \begin{sol}
-Using our series formula on $a_0 + a_1 + \cdots + a_{10} = 209$ gives that $11\cdot \frac{a_{0}+a_{10}}{2}=209\implies a_{0}+a_{10}=38\implies 2a_{0}+10d=38$.
-
-Now,
-$$a_{a_{0}}+a_{a_{1}} + \cdots + a_{a_{10}} = 671$$
-$$11a_{0}+(a_{0}+a_{1}\cdots + a_{10})d=671$$
-$$11a_{0}+209d=671$$
-
-Now, using the first equation, $11a_{0}+55d=209$. Then, subtracting from the second equation, $154d=462\implies d =3$. So, $a_{0}=\ansbold{4}$.
+By Newton's Sums, $s_{k+1}-5s_k+8s_{k-1}-13s_{k-2},$ or $s_{k+1}=5s_k-8s_{k-1}+13s_{k-2}.$ Thus $a+b+c=5-8+13=10.$
 \end{sol}
-
-%%%---------------------------------------------------------------------------------------------------------%%%
-%--------------------------------------------------------------------------------------------------------------------%
-%%%---------------------------------------------------------------------------------------------------------%%%
-\section{Geometric Sequence and Series}
-
-\begin{defi}[Geometric Series and Sequences]
-An geometric series is $a_{1}+a_{2}+a_{3}\ldots $ where $a_{i}/a_{i-1}=r$ for some constant $r$ and all $i\ge 2$. Note that an geometric series refers to the \textbf{sum} while an geometric sequence refers to the \textbf{ordered list of terms}.\footnote{Sometimes, an geometric sequence or series starts with index $0$, making it \textbf{zero-indexed}. The same formulas still apply but you will have to adjust the indexes accordingly.}
-\end{defi}
-
-Using this definition, we can now derive some formulas for each term and the series.
-\begin{theo}[Formula For Term]
-If $a_{i}$ is $i$th term of an arithmetic sequence with common ratio $r$, then $a_{i}=a_{1}r^{i-1}$.
-\end{theo}
-
-Now, we'll present some common formulas for geometric series and sequences.
-\begin{theo}[Geometric Average]
-In a geometric series $a_{i}$, $a_{n}a_{m}=(a_{\frac{n+m}{2}})^2$ if $n+m$ is even.
-\end{theo}
-Notice that this is quite similar to the arithmetic average formula that we looked at before except with multiplying.
-
-\begin{pro}
-We have $a_{n}=a_{1}r^{n-1}$ and $a_{m}=a_{1}r^{m-1}$. Then, $a_{n}a_{m}=a_{1}^2 r^{n+m-2}=(a_{1}r^{\frac{n+m}{2}-1})^2=(a_{\frac{n+m}{2}})^2$.
-\end{pro}
-
-However, the formulas for geometric series is quite different.
-\begin{theo}[Geometric Series]
-If the geometric sequence $a_{i}$ has common ratio $r$, then $a_{1}+a_{2}\ldots + a_{n} = a_{1}\frac{r^{n}-1}{r-1}$.
-\end{theo}
-
-\begin{pro}
-We can rewrite $a_{1}+a_{2}\ldots + a_{n}$ as $a_{1}+a_{1}r\ldots + a_{1}r^{n-1}=a_{1}(1+r+r^2\ldots + r^{n-1})$. Now, let $1+r+r^2\ldots + r^{n-1}=S$. Then, this implies $rS=r+r^2\ldots + r^{n}=S-1+r^{n}$.
-$$S(r-1)=r^{n}-1$$
-$$S=\frac{r^{n-1}-1}{r-1}$$
-Then, we have $a_{1}(1+r+r^2\ldots + r^{n-1})=a_{1}\frac{r^{n}-1}{r-1}$.
-\end{pro}
-
-Note that when $|r|<1$, we can calculate the infinite geometric series as this series as it goes to infinity is bounded by some number.
-\begin{theo}[Infinite Geometric Series]
-If the geometric sequence $a_{i}$ has common ratio $r$ and $|r|<1$, $a_{1}+a_{2}\ldots = \frac{a_{1}}{1-r}$.
-\end{theo}
-
-Intuitively, we could use the finite version of the geometric series and reason that the infinite version is what happens when $n$ goes to infinity. Then, as $|r|<1$, $r^{n}$ would tend to $0$. So, it would be $a_{1}\cdot \frac{-1}{r-1}=\frac{a_{1}}{1-r}$.
-
-\begin{pro}
-We can rewrite $a_{1}+a_{2}\ldots $ as $a_{1}+a_{1}r+a_{1}r^2\ldots$. Let this be $S$. Then, $rS=a_{1}r+a_{1}r^2\ldots = S-a_{1}$. Then, $(1-r)S=a_{1}\implies S =\frac{a_{1}}{1-r}$. \footnote{This reasoning is only valid since $|r|<1$.}
-\end{pro}
-
-Like problems involving arithmetic series and sequences, problems with geometric series and sequences tend to heavily rely on algebraic manipulation instead of deep theory.
-\begin{exam}[djmathman Mock AMC 2013/9]
-Let $p$ and $q$ be numbers with  $|p| <1$ and $|q| <1$ such that \[p+pq+pq^2+pq^3 + \dots = 2  ~~\text{and} ~~ q + qp + qp^2 + \dots = 3.\] What is $100pq$?
-\end{exam}
-
-\begin{sol}
-First, $p+pq+pq^2+pq^3 + \dots = \frac{p}{1-q}=2\implies p=2-2q$. Also, $q+qp+qp^2 + \dots = \frac{q}{1-p}=3\implies q=3-3p$. We plug this into the first equation to get $p=2-2(3-3p)=6p-4\implies p = \frac{4}{5}$ and $q=\frac{3}{5}$. Then, $100pq=12\cdot 4=\ansbold{48}$.
-\end{sol}
-
-\section{Arithmetico-Geometric Sequence and Series}
-The term arithmetico-geometric sequence is rather obscure but such sequences do show occassionally on contests (though usually not with this name). The worth of this is not from memorizing the formula ad verbatim but rather from practicing strategies that commonly appears in all types of series problems, \textbf{breaking up the series into several series that are easier to compute} and \textbf{representing the series as a variable and manipulating that.}
-
-\begin{defi}[Arithmetico-Geometric Sequence]
-The $i$th term of an arithmetico-geometric sequence $b$ is $b_{i}=a_{i}g_{i}$ where $a_{i}$ is the $i$th term of an arithmetic sequence and $g_{i}$ is the $i$th term of a geometric sequence.
-
-Another way to state this is that $b_{i}=(a_{1}+(i-1)d)(g_{1}r^{i-1})$ for some constants $a_{1},d,g_{1}$ and $r$.
-\end{defi}
-
-Now, here's an interesting problem: what is $b_{1}+b_{2}\ldots+b_{n}$? When does $b_{1}+b_{2}\ldots $ converge and what is its value then?
-
-We'll investigate this problem first and give the formula later.
-\begin{pro}
-This series looks very messy so we try to simplify the terms a bit.
-Consider $b_{i}'=b_{i}-a_{1}g_{1}r^{i-1}=(i-1)dg_{1}r^{i-1}$.
-
-So, $b_{1}+b_{2}\ldots + b_{n}=b_{1}'+b_{2}'\ldots + b_{n}'+a_{1}g_{1}(1+r+\ldots + r^{n-1})$
-
-Now, we can note that $a_{1}g_{1}(1+r+\ldots + r^{n-1})$ is a geometric series. We apply our formula to get $a_{1}g_{1}\cdot (\frac{r^{n}-1}{r-1})$ for this.
-
-Now, $b_{1}'+b_{2}'\ldots + b_{n}'=dg_{1}\cdot (0\cdot 1+1\cdot r+\ldots + (n-1)\cdot r^{n-1})$. Let $S=0\cdot 1+1\cdot r \ldots + (n-1)\cdot r^{n-1}$. We want to manipulate $S$ to get basically another copy of $S$ that's missing something we can easily calculate. If we look at $rS=0\cdot r+1\cdot r^2\ldots +(n-1)\cdot r^{n}$, we can notice that it's very similar to our $S$ before except with $(n-1)\cdot r^{n}-r^{n-1}-r^{n-2}\ldots-r=(n-1)\cdot r^{n}-\frac{r^{n}-r}{r-1}$ added. Then, $rS=S+(n-1)\cdot r^{n}-\frac{r^{n}-r}{r-1}\implies S=\frac{(n+1)\cdot r^{n}-\frac{r^{n}-r}{r-1}}{r-1}$.
-
-So, $b_{1}'+b_{2}'\ldots + b_{n}'=dg_{1}\cdot (\frac{(n+1)\cdot r^{n}-\frac{r^{n}-r}{r-1}}{r-1})$.
-
-Now, we add the two series together to get
-$$dg_{1}\cdot (\frac{(n+1)\cdot r^{n}-\frac{r^{n}-r}{r-1}}{r-1})+a_{1}g_{1}\cdot (\frac{r^{n}-1}{r-1})$$
-\end{pro}
-
-\begin{theo}[Arithmetico-Geometric Series]
-If $b$ is an arithmetico-geometric sequence such that $b_{i}=a_{i}g_{i}$ for arithmetic sequence $a$ with common difference $d$ and geometric sequence $g$ with common ratio $r$, then
-$$b_{1}+b_{2}\ldots + b_{n} = dg_{1}\cdot (\frac{(n+1)\cdot r^{n}-\frac{r^{n}-r}{r-1}}{r-1})+a_{1}g_{1}\cdot (\frac{r^{n}-1}{r-1})$$
-\end{theo}
-
-As you can tell, this is a quite hefty formula and certainly not intuitively obvious. In general, when remembering complex formulas or ideas, it is best to remember the thought-process that led to it instead of trying to cram it in your mind.
-
-We can easily derive the infinite version from this.
-\begin{theo}[Arithmetico-Geometric Infinite Series]
-If $b$ is an arithmetico-geometric sequence such that $b_{i}=a_{i}g_{i}$ for arithmetic sequence $a$ with common difference $d$ and geometric sequence $g$ with common ratio $r$ and $|r|<1$, then
-$b_{1}+b_{2}\ldots  = dg_{1}\cdot \frac{r}{(1-r)^2}+a_{1}g_{1}\cdot \frac{1}{1-r}$
-\end{theo}
-
-
-
-%%%---------------------------------------------------------------------------------------------------------%%%
-%--------------------------------------------------------------------------------------------------------------------%
-%%%---------------------------------------------------------------------------------------------------------%%%
-\section{The Distributive Property Extended}
-We'll reintroduce Distributive Property as a way to gain a new perspective on series involving combinations. There's no real theorem or theory to learn here, just simply how to reapply the Distributive Property that all of us learned in elementary school.
-
-\begin{theo}[Extended Distributive Property]
-\[(a_{1}+a_{2}\ldots + a_{s_{1}})(b_{1}+b_{2}\ldots + b_{s_{2}})\ldots(z_{1}+z_{2}\ldots + z_{s_{n}})=\sum a_{i}b_{j}\ldots z_{k}\]
-
-In words, when we multiply all these sequences together, we get the sum of the products of all possible combination of terms.
-\end{theo}
-
-We'll begin with a few concrete example problems to elucidate how exactly the Distributive Property is useful.
-
-\begin{exam}[Classical]
-Compute
-$$\sum_{i=1}^{19}\sum_{j=i+1}^{20} ij$$
-\end{exam}
-
-\begin{sol}
-This sum is basically the sum of every possible unordered pair of distinct positive integers from $1$ to $20$.
-
-Now, here is the very crucial step. Then, notice that $(1+2+3\ldots + 20)(1+2+3\ldots + 20)$, by the Distributive Property, is the sum of the every possible ordered pair of positive integers from $1$ to $20$. This is almost exactly what we need! Once, we get rid of terms like $i\cdot i$, we can then divide the sum of every possible ordered pair of distinct integers by $2$ to get the sum of every possible unordered pair of distinct integers.
-
-So, our answer is
-$$\frac{210^2-1^2-2^2\ldots - 20^2}{2}$$
-$$=\frac{210^2-\frac{(20)(21)(41)}{6}}{2}$$
-$$=\frac{210^2-70\cdot 41}{2}$$
-$$=\ansbold{20615}$$
-\end{sol}
-
-We can actually extend this strategy further on into unordered distinct $n$-tuplets though it obviously becomes much more involved as there is a lot more terms to subtract out.
-
-We can also apply the Distributive Property to infinite series.
-
-\begin{exam}[2018 AMC 12A/18]
-Let $A$ be the set of positive integers that have no prime factors other than $2$, $3$, or $5$. The infinite sum $$\frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + \frac{1}{6} + \frac{1}{8} + \frac{1}{9} + \frac{1}{10} + \frac{1}{12} + \frac{1}{15} + \frac{1}{16} + \frac{1}{18} + \frac{1}{20} + \cdots$$of the reciprocals of the elements of $A$ can be expressed as $\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. What is $m+n$?
-\end{exam}
-
-\begin{sol}
-Note that such an $i$ can be represented as $2^{a}3^{b}5^{c}$ where $a,b,c$ are integers less than or equal to $0$. Then, the sum of all $i$ would be the sum of all combinations of $2^{0},2^{-1}\ldots$ and $3^{0},3^{-1}\ldots$ and $5^{0},5^{-1}\ldots $. Then, the sum is
-$$(1+\frac{1}{2}+\frac{1}{2^2}\ldots)(1+\frac{1}{3}+\frac{1}{3^2}\ldots)(1+\frac{1}{5}+\frac{1}{5^2}\ldots)$$
-$$=2\cdot \frac{3}{2}\cdot \frac{5}{4}$$
-$$=\ansbold{\frac{15}{4}}$$
-\end{sol}
-
-%%%---------------------------------------------------------------------------------------------------------%%%
-%--------------------------------------------------------------------------------------------------------------------%
-%%%---------------------------------------------------------------------------------------------------------%%%
-\section{Sum of Squares, Cubes}
-These are just the formulas for the sum of the first $n$ squares or cubes which come up semi-often.
-\begin{theo}[Sum of Squares]
-$$1^2+2^2\ldots + n^2=\frac{(n)(n+1)(2n+1)}{6}$$
-\end{theo}
-
-\begin{pro}
-We use induction. Our base case of $n=1$ is true as $1^2=\frac{1\cdot 2\cdot 3}{6}$. Now, we prove the inductive case of $P(n)\implies P(n+1)$. Note that $1^2+2^2\ldots + (n+1)^2=\frac{(n)(n+1)(2n+1)}{6}+(n+1)^2$ by the Inductive Hypothesis. We can do some algebra and find $\frac{(n)(n+1)(2n+1)}{6}+(n+1)^2=\frac{(n+1)(n+2)(2n+3)}{6}$. Our inductive case is complete.
-\end{pro}
-
-\begin{theo}[Sum of Cubes]
-$$1^3+2^3\ldots + n^3=(\frac{(n)(n+1)}{2})^2$$
-\end{theo}
-
-\begin{pro}
-We use induction. Our base case of $n=1$ is true as $1^3=(\frac{1\cdot 2}{2})^2$. Now, we prove the inductive case of $P(n)\implies P(n+1)$. Note that $1^3+2^3\ldots + (n+1)^3=(\frac{(n)(n+1)}{2})^2+(n+1)^3$ by the Inductive Hypothesis. We can do some algebra and find $(\frac{(n)(n+1)}{2})^2+(n+1)^3=(\frac{(n+1)(n+2)}{2})^2$. Our inductive case is complete.
-\end{pro}
-
-\section{General Strategies}
-Because just adding things up is such a broad topic, here are a few strategies to keep in mind.
-\begin{enumerate}
-\item When you have a double summation, see if you can reverse the order and if that makes it easier. Also, see if you can use pairing or symmetry.
-\item Let the series be called $S$ and try to manipulate to have get a copy of $S$ plus or minus something.
-\item Split the series into several simpler series that are easier to solve.
-\item If everything else fails, try computing the first $n$ terms for small $n$ and see if there is a pattern.
-\end{enumerate}
 
 \pagebreak
 
+%%----------------------------------------------------------------------------------------------------------------------------%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%----------------------------------------------------------------------------------------------------------------------------%%
+
+\subsection{Reciprocal Roots}
+\begin{theo}[Reciprocal Roots]
+If $f(x)=a_{k}x^{k}+a_{k-1}x^{k-1}\ldots + a_{0}$ has roots $r_{1},r_{2}\ldots r_{k}$, then $g(x)=a_{0}x^{k}+a_{1}x^{k-1}\ldots + a_{k}$ has roots $\frac{1}{r_{1}}, \frac{1}{r_{2}}\ldots \frac{1}{r_{k}}$.
+\end{theo}
+
+\begin{pro}[With Vieta's]
+Use Vieta\rq{}s  to show that the polynomial with roots $\frac{1}{r_{1}}, \frac{1}{r_{2}}\ldots \frac{1}{r_{k}}$ and leading coefficient $a_{0}$ is indeed $g(x)$.
+\end{pro}
+
+\begin{pro}[Without Vieta's]
+Alternatively, consider $f(\frac{1}{x})$. $f(\frac{1}{x})$ has reciprocal roots so $x^{k}(\frac{1}{x^{k}}a_{k}+\frac{1}{x^{k-1}}a_{k-1}\ldots + a_{0}=a_{0}x^{k}+a_{1}x^{k-1}\ldots + a_{k})=(x-\frac{1}{r_[1})(x-\frac{1}{r_{2}})\ldots (x-\frac{1}{r_{k}})$
+\end{pro}
+After doing this, you can find symmetric sums of $\frac{1}{r_{1}} \ldots \frac{1}{r_{k}}$ using Vieta\rq{}s and other polynomial techniques. In many cases like computing $\frac{1}{r_{1}}\cdots + \frac{1}{r_{k}}$ or $\sum \frac{1}{r_{i}r_{j}}$, it\rq{}s simply easier to combine under a common denominator and apply Vieta\rq{}s on $f(x)$. However, this trick is very useful for sums like $\frac{1}{r_{1}^2}+\frac{1}{r_{2}^2}\cdots  + \frac{1}{r_{k}^2}$ where the numerator isn\rq{}t very easy to work with using the original roots. In this example, once you switch to the reciprocal roots, it simply becomes Newton\rq{}s Sums. This often trivializes certain problems.
+
+One interesting corollary of this is that for polynomials with palindromic coefficents, that is $a_{i}=a_{k-i}$, $r$ is a root of $f(x)$ if and only if $\frac{1}{r}$ is a root.
+
+\begin{exam}[AMC 12B 2021/16]
+Let $g(x)$ be a polynomial with leading coefficient $1,$ whose three roots are the reciprocals of the three roots of $f(x)=x^3+ax^2+bx+c,$ where $1<a<b<c.$ What is $g(1)$ in terms of $a,b,$ and $c?$
+\end{exam}
+
+\begin{sol}
+Using the previous theorem, $cx^3+bx^2+ax+1$ has the reciprocal roots of $f(x)$. Then, we divide by $c$ to get a leading coefficient of $1$ so $g(x)=\frac{cx^3+bx^2+ax+1}{c}$. Hence, $g(1)=\frac{a+b+c+1}{c}$.
+\end{sol}
+
+\newpage
+%%----------------------------------------------------------------------------------------------------------------------------%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%----------------------------------------------------------------------------------------------------------------------------%%
+
+\newpage
+%%----------------------------------------------------------------------------------------------------------------------------%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%----------------------------------------------------------------------------------------------------------------------------%%
+\subsection{Derivatives Trick}
+
+The following section requires pre-requisite knowledge of the Chain Rule and Quotient Rule from calculus. This trick mainly appears on college competitions, and those preparing primarily for the AMCs and AIME should not feel the need to know this.
+
+\begin{theo}[Derivatives Trick]
+Let $f(x)=(x-r_{1})(x-r_{2})\ldots(x-r_{k})$. Then,
+$$\frac{f'(x)}{f(x)} = \sum_{i=1}^{k} \frac{1}{x-r_{i}}$$
+\end{theo}
+
+\begin{pro}
+We take the natural log of both sides.
+$$\ln (f(x)) = \sum_{i=1}^{k} \ln(x-r_{i})$$
+We take the derivative of both sides using the chain rule.
+$$\frac{f'(x)}{f(x)} = \sum_{i=1}^{k} \frac{1}{x-r_{i}}$$
+\end{pro}
+
+We can extend this further by taking the derivative again as much as we need to do to find $\sum_{i=1}^{k} \frac{1}{(x-r_{k})^n}$ for $n$ in general.
+\begin{theo}[Derivatives Trick Extended]
+$$\frac{f''(x)f(x)-f'(x)^2}{f(x)^2} = -\sum_{i=1}^{k} \frac{1}{(x-r_{i})^2}$$
+\end{theo}
+
+\begin{pro}
+Use the Quotient Rule.
+\end{pro}
+\newpage
+
+%%----------------------------------------------------------------------------------------------------------------------------%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%----------------------------------------------------------------------------------------------------------------------------%%
+\section{Solving Polynomials}
+\subsection{Substitutions}
+The big idea is that you make substitutions to simplify a seemingly very complicated equation such as a quartic or higher degree polynomial. Then, you work backwards to find the solutions in the original variable. In this section, we'll present some common substitutions.
+
+
+Note that a common substitution is $y=x+\frac{1}{x}$, particularly for polynomials which are palindromic.
+
+\begin{exam}[HMMT February 2014]
+Find all real numbers $k$ such that $r^4+kr^3+r^2+4kr+16=0$ is true for exactly one real number $r$.
+\end{exam}
+
+\begin{sol}
+We divide by $r^2$ to get $r^2+\frac{16}{r^2} + k(r+\frac{4}{r})+1=0$. Then subsitute $t=r+\frac{4}{r}$ to get
+\begin{align*}
+t^2-8+kt+1 &= 0\\
+t^2+kt-7&=0\\
+k^2-28&=0\\
+k &= \ansbold{\pm 2\sqrt{7}}.
+\end{align*}
+\end{sol}
+
+When you have a factorization of the form $(x+a)(x+b)(x+c)(x+d)$ where $a+d=b+c=k$, group together $(x+a)(x+d)=x^2+kx+ad$ and $(x+b)(x+c)=x^2+kx+bc$. Then substituting $y=x^2+kx$, or in some cases $y=x^2+kx+\frac{ad+bc}{2}$ to take advantage of difference of squares, will help
+
+This applies more generally in that you should try to group together terms to produce polynomials that only differ in the constant term.
+
+\begin{exam}[AMC 10A 2019/19]
+What is the least possible value of
+\[(x+1)(x+2)(x+3)(x+4)+2019\]
+where $x$ is a real number?
+\end{exam}
+
+\begin{sol}
+We group together $(x+1)(x+4)=x^2+5x+4$ and $(x+2)(x+3)=x^2+5x+6$. We make the substitution $y=x^2+5x+5$. Then, the expression is $(y-1)(y+1)+2019=y^2+2018\ge 2018$ with equality if $y=0$. We use the quadratic formula and see that $\Delta\footnote{This denotes the discriminant of the quadratic.} > 0$, so $y=0$ is actually possible. Then, the minimum is $\ansbold{2018}$.
+\end{sol}
+\newpage
+
+%%----------------------------------------------------------------------------------------------------------------------------%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%----------------------------------------------------------------------------------------------------------------------------%%
+\subsection{Symmetry}
+Basically, we use some kind of symmetry in the function to find solutions. This can just be that the function is symmetric about $x=c$. Note that if we make a substitution, we can use the symmetry of the substitution, even if the polynomial in terms of the substitution isn't actually symmetric.
+\begin{exam}[HMMT February 2014]
+Find the sum of all real numbers $x$ such that $5x^4+10x^3 + 10x^2+5x-11 = 0.$
+\end{exam}
+
+\begin{sol}
+First, note that we cannot just use Vieta\rq{}s because it specifies \textbf{real} roots. Now, to make the equation more symmetric, we rewrite this as \[5x^4+10x^3+10x^2+5x=11.\] The left hand, which we will call $f(x),$ side factors to
+\begin{align*}
+5(x(x^3+1)+2x^2(x+1))&=5(x+1)(x(x^2-x+1)+2x^2) \\
+&=5(x+1)(x^3+x^2+x) \\
+&=5x(x+1)(x^2+x+1) \\
+&=5(x^2+x)(x^2+x+1) \\
+&=5((x^2+x)^2+(x^2+x))
+\end{align*} which is a polynomial in $x^2+x$. Since $x^2+x$ is symmetric about $\frac{-1}{2}$, $f(x)$ is also symmetric about $\frac{-1}{2}$. This implies that if $f(x)=-11$, then $f(-1-x)=11$. So, the real solution $x$\rq{}s come in pairs that sum to $-1$ (note that $\frac{-1}{2}$ isn't a solution). Now we need to find the number of these pairs. We subtitute in $x^2+x=k$ to get \[5k^2+5k=11\implies 5k^2+5k-11\] which has solutions $\frac{-5 \pm 7\sqrt{5}}{10}$. Now, note that $5k^2+5k=5(k+\frac{1}{2})^2-\frac{5}{4}$ so it has a minimum of $\frac{-5}{4}$. Then, $\frac{-5-7\sqrt{5}}{10}$ is less than this minimum but $\frac{-5+7\sqrt{5}}{10}$ is greater than this minimum. So, there is only one pair, yielding an answer of $\ansbold{-1}$.
+\end{sol}
+\newpage
+%%----------------------------------------------------------------------------------------------------------------------------%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%----------------------------------------------------------------------------------------------------------------------------%%
+\subsection{Roots of Unity}
+
+\begin{defi}[Root of Unity]
+A complex number $\omega$ is a $n$th root of unity if $\omega^{n}=1$.
+\end{defi}
+For example, $i$ is a 2nd root of unity.
+In the complex plane, the $n$th roots of unity will look like a regular $n$-gon centered around the origin.
+
+\begin{defi}[Primitive Root of Unity]
+A complex number $\omega$ is a $n$th primitive root of unity if the smallest positive integer $k$ such that $\omega^{k}=1$ is $n$.
+\end{defi}
+
+\begin{defi}[Cis]
+$\cis \theta = \cos \theta + \sin \theta$
+\end{defi}
+The motivation behind this definition is that $\cis \theta$ is the point in the complex plane such that when you connect it with the origin, it forms an angle with measure $\theta$ with the $x$-axis.
+
+\begin{theo}[De Moivre's]
+$\cis \alpha+\beta = (\cis \alpha)(\cis \beta)$
+\end{theo}
+
+\begin{pro}
+Use the cosine addition and sine addition formulas.
+\end{pro}
+
+\begin{theo}[Formula for nth Root of Unity]
+An $n$th root of unity can be written in the form $\cis \frac{2k\pi}{n}$. for $0\leq k<n$.
+\end{theo}
+
+\begin{exam}[AMC 12B 2017/12]
+What is the sum of the roots of $z^{12}=64$ that have a positive real part?
+\end{exam}
+
+\begin{sol}
+Substitute in $x=z\sqrt{2}$. Then, $x^{12}=1$. Using the previous theorem, $x=\cis \frac{2k\pi}{12}=\cis \frac{k\pi}{6}=\cos \frac{k\pi}{6}+\sin \frac{k\pi}{6}$. The real part is $\cos \frac{k\pi}{6}>0$ which happens for $k=0,1,2,10,11$. 
+
+When we sum these roots, the imaginary parts cancel out and we get $1+2\cdot \frac{\sqrt{3}{2}}+2\cdot \frac{1}{2}=2+\sqrt{3}$.
+\end{sol}
+
+
+
+\newpage
+%%----------------------------------------------------------
+%%----------------------------------------------------------
+
+\subsection{Polynomial Interpolation}
+
+\begin{theo}[Fundamental Theorem of Algebra]
+If a polynomial $f(x)$ has degree $d>0$, then it has $d$ complex roots.
+\end{theo}
+
+\begin{theo}[Equal Polynomials]
+If two polynomials $f(x)$ has degree $d$ and $g(x)$ has a degree less than or equal to $d$ and $f(x)=g(x)$ for $x_{1},x_{2}\ldots x_{d+1}$, then $f(x)=g(x)$.
+\end{theo}
+
+\begin{pro}
+Consider the polynomial $f(x)-g(x)$ which has degree at most $d$. Then, $f(x)-g(x)$ has $d+1$ roots $x_{1},x_{2}\ldots x_{d+1}$. Because there are more roots than the degree $d$, by the Fundamental Theorem of Algebra, this implies that $f(x)-g(x)$ is the zero polynomial and that $f(x)-g(x)=0\implies f(x)=g(x)$.
+\end{pro}
+
+\begin{theo}[Lagrangian Interpolation]
+If a polynomial $f(x)$ of degree $d$ passes through $(x_{1},y_{1}),$ $(x_{2},y_{2}),$ $\ldots (x_{d+1},y_{d+1})$, then
+$$f(x)=\frac{y_{1}(x-x_{2})(x-x_{3})\ldots (x-x_{d+1})}{(x_{1}-x_{2})(x_{1}-x_{3})\ldots (x_{1}-x_{d+1})}$$
+$$+\frac{y_{2}(x-x_{1})(x-x_{3})\ldots (x-x_{d+1})}{(x_{2}-x_{1})(x_{2}-x_{3})\ldots (x_{2}-x_{d+1})}$$
+$$\ldots$$
+$$+\frac{y_{d+1}(x-x_{1})(x-x_{2})\ldots (x-x_{d})}{(x_{d+1}-x_{1})(x_{d+2}-x_{2})\ldots (x_{d+1}-x_{d})}$$
+\end{theo}
+
+This looks very intimidating but it's basically a very hamfisted way of getting a polynomial that goes through every point. The idea is that we can force it to be equal by strategically making all but one of the terms go to zero at one of the points.
+
+\begin{pro}
+If we represent the right hand side as $g(x)$, then we can clearly see that $g(x)=f(x)$ for $x=x_{1},x_{2}\ldots x_{d+1}$ as most of the terms except the one we want cancel out. By the previous theorem, $f(x)=g(x)$.
+\end{pro}
+
+\begin{exam}[Mandelbrot]
+There is a unique polynomial $P(x)$ of the form 
+$$P(x)=7x^7+c_{1}x^6+c_{2}x^{5}+\cdots + c_{6}x+c_{7}$$
+such that $P(1)=1,P(2)=2, \ldots,$ and $P(7)=7$. Find $P(0)$.
+\end{exam}
+
+\begin{sol}
+Note that $P(x)-x$ has the $7$ roots $1,2\ldots 7$. By the Fundamental Theorem of Algebra, it can have no other roots so $P(x)-x=a(x-1)(x-2)\cdots(x-7)$. We are given that the leading coefficient of $P(x)$ is $7$ so $a=7$. Then, $P(0)-0=-7!\cdot 7 = \ansbold{-35280}$.
+\end{sol}
+
+\newpage
+
+%%----------------------------------------------------------------------------------------------------------------------------%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%----------------------------------------------------------------------------------------------------------------------------%%
+\subsection{Finite Differences}
+
+We are essentially using the idea of a derivative from calculus discretely. That is, instead of having differences be continuous, they're integers. If you haven't learned calculus, don't worry about the calculus analogies here; they're not actually needed to know finite differences.
+
+Note that the following definition is commonly called the \textbf{backwards finite difference}. 
+
+\begin{defi}[Finite Difference]
+$$\Delta_{0} (x)=f(x)$$
+
+$$\Delta_{n} (x) = \Delta_{n-1} (x) - \Delta_{n-1} (x-1)$$
+\end{defi}
+
+\begin{theo}[Constant Nth Finite Differences]
+For a $n$-degree polynomial $f(x)$, $\Delta_{n}(x)$ is constant for all $x$. This is equivalent to $\Delta_{n+1}(x)=0$ for all $x$.
+\end{theo}
+
+\begin{pro}
+We prove by induction $\Delta_{k}(x)$ is a $n-k$ degree polynomial with leading coefficient $\frac{n!}{(n-k)!}$.
+\end{pro}
+
+You can think of it as the same as $f^{n}(x)$ being constant for $n$-degree polynomials in calculus.
+
+More specifically, we have
+\begin{theo}[Formula for Nth Finite Difference]
+If the leading coefficient of a $n$-degree polynomial $f(x)$ is $a$, then $\Delta_{n}(x)=n!\cdot a$.
+\end{theo}
+
+\begin{pro}
+We prove by induction $\Delta_{k}(x)$ is a $n-k$ degree polynomial with leading coefficient $\frac{n!}{(n-k)!}$.
+\end{pro}
+
+Again, this is analogous to using the Power Rule in Calculus repeatedly.
+
+\begin{exam}[HMMT February 2015 Team Reworded]
+The complex numbers $x, y, z$ satisfy
+$$xyz = -4$$
+$$(x + 1)(y + 1)(z + 1) = 7$$
+$$(x + 2)(y + 2)(z + 2) = -3$$
+
+Find the value of $(x + 3)(y + 3)(z + 3)$.
+\end{exam}
+
+%%%PLEASE PLEASE PLEASE PROOFREAD
+\begin{sol}
+Consider $f(k)=(k-x)(k-y)(k-z)$. Then, $f(0)=-xyz=4$, $f(-1)=-(x+1)(y+1)(z+1)=-7$, and $f(-2)=-(x+2)(y+2)(z+2)=3$.
+
+We know the leading coefficient of $f(k)$ is $1$ so $\Delta_{3}(x)=6$. We apply finite differences to get $f(-3)=28$. Then, $(x+3)(y+3)(z+3)=-f(-3)=\boxed{-28}$
+\end{sol}
+%%----------------------------------------------------------------------------------------------------------------------------%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%----------------------------------------------------------------------------------------------------------------------------%%
+\subsection{Root Rules}
+This is an assorted collection of rules and theorems about the roots of a polynomials. These don't come up often as the whole problem but may be useful as intermediate steps. 
+\begin{theo}[Descartes' Rule of Signs]
+The number of sign changes in the coefficients of a polynomial $f(x)$ is the maximum possible number of positive zeros. Also, the number of sign changes in the coefficients of polynomial $f(-x)$ from is the maximum possible number of negative zeros.
+\end{theo}
+
+\begin{exam}
+Using Descartes' Rule of Signs, what is the maximum number of positive real solutions to $x^4-x^3+x^2+1$?
+\end{exam}
+
+\begin{sol}
+The coefficients change sign two times, $1$ to $-1$ and $-1$ to $1$. So, $\ansbold{2}$.
+\end{sol}
+
+\begin{theo}[Rational Root Theorem]
+A rational root of the polynomial $f(x)=a_{k}x^{k}+a_{k-1}x^{k-1}\ldots + a_{0}$ is in the form $\frac{p}{q}$ where $p,q$ are relatively prime integers such that $p|a_{0}$ and $q|a_{k}$.
+\end{theo}
+
+\begin{theo}[Conjugate Root Theorem]
+If a polynomial $f(x)$ with real coefficients has a complex root $a+bi$, then the complex conjugate $a-bi$ is also a root.
+\end{theo}
+
+\begin{exam}
+Find the roots of the polynomial $x^4-14x^3+71x^2-136x+58$ given that $5-2i$ is a root.
+\end{exam}
+
+\begin{sol}
+By Conjugate Root Theorem, $5+2i$ is also a root. Then, $(x-5-2i)(x-5+2i)=x^2-10x+29$. We apply long division and the Quadratic Formula on $x^2-4x+2$ to find the other roots of $2\pm \sqrt{2}$.
+\end{sol}
+
+
+\begin{theo}[Radical Conjugate Root Theorem]
+If a polynomial $f(x)$ with rational coefficients has a root of the form $a+b\sqrt{c}$, then $a-b\sqrt{c}$ is also a root.
+\end{theo}
+
+\newpage
 \section{Problems}
 
-\minpt{30}%slightly less than 1/2
+\minpt{60}
 
-\psetquote{The future depends on the past, even if we don’t get to see it.}{Riebeck, Outer Wilds}
+%about 2/3 of points minus the hardest problem
+\psetquote{It is the time you have wasted for your rose that makes your rose so important.}{The Little Prince}
 
-\subsection{Arithmetic, Geometric, and Arithmetico-Geometric Series}
+\begin{prob}[AMC 12B 2019/8]{1}
 
-\begin{prob}[2020 AMC 10A/17]{1}
-Define $$P(x) =(x-1^2)(x-2^2)\cdots(x-100^2).$$How many integers $n$ are there such that $P(n)\leq 0$?
-\end{prob}
+Let $f(x) = x^{2}(1-x)^{2}$. What is the value of the sum
 
-\begin{prob}[Math Prize for Girls 2019]{2}
-The degree measures of the six interior angles of a convex hexagon form
-an arithmetic sequence (not necessarily in cyclic order). The common
-difference of this arithmetic sequence can be any real number in the
-open interval $(-D, D)$. Compute the greatest possible value of $D$.
-\end{prob}
-%24
-
-\begin{prob}[NEMO 2017]{2}
-I am thinking of a geometric sequence with $9600$ terms, $a_1, a_2, \ldots, a_{9600}$. The sum of the terms with indices divisible by three (i.e. $a_3 + a_6 + \cdots + a_{9600}$) is $\frac{1}{56}$ times the sum of the other terms (i.e. $a_1 + a_2 + a_4 + a_5 + · · · + a_{9598} + a_{9599}$). Given that the terms with even indices sum to $10$, what is the
-smallest possible sum of the whole sequence?
-\end{prob}
-%80
-
-\begin{req}[Mock AIME 2 2006-2007]{4}
-Given that $ iz^2=1+\frac 2z + \frac{3}{z^2}+\frac{4}{z ^3}+\frac{5}{z^4}+\cdots$ and $z=n\pm \sqrt{-i},$ find $ \lfloor 100n \rfloor$.
-\end{req}
-%100
-
-\begin{prob}[BMT 2014]{4}
-Evaluate
-$$\sum_{n=0}^{\infty} \sum_{k=0}^{\infty} \text{min}(n,k)(\frac{1}{2})^{n}(\frac{1}{3})^{k}$$
-\end{prob}
-% 3/5
-\subsection{Distributive Property}
-\begin{prob}[PHS HMMT TST 2020]{2}
-
-What is the value of $\frac{\frac{1}{1^2}+\frac{1}{2^2}+\frac{1}{3^2} \cdots}{\frac{1}{1^2}+\frac{1}{3^2}+\frac{1}{5^2}\cdots}$?
-Remember that $\frac{1}{1^2}+\frac{1}{2^2}\cdots = \frac{\pi^2}{6}$.
-\end{prob}
-
-%4/3
-
-\begin{prob}[Math Prizes For Girls 2019]{4}
-
-For each integer from 1 through 2019, Tala calculated the product of
-its digits. Compute the sum of all 2019 of Tala’s products.
-\end{prob}
-
-%
-
-\begin{req}[HMMT Feburary 2017]{6}
-
-Find the value of
-$$\sum_{1\leq a<b<c} \frac{1}{2^{a}3^{b}5^{c}}$$
-(i.e the sum of $\frac{1}{2^{a}3^{b}5^{c}}$ over all triples of positive integers $(a, b, c)$ satisfying $a < b < c$)
-\end{req}
-
-
-\subsection{General}
-
-\begin{prob}[HMMT November 2012 (Paraphrased)]{2}
-Compute
-$$(1^3 + 3 \cdot 1^2 + 3 \cdot 1) + (2^3 + 3 \cdot 2^2 + 3 \cdot 2) + · · · + (99^3 + 3 \cdot 99^2 + 3 \cdot 99)$$
+\[f \left(\frac{1}{2019} \right)-f  \left(\frac{2}{2019} \right)+f \left(\frac{3}{2019} \right)-f \left(\frac{4}{2019} \right)+\cdots + f \left(\frac{2017}{2019} \right) - f \left(\frac{2018}{2019} \right)?\]
 \end{prob}
 
 \begin{prob}[BMT 2015]{2}
-Let $\{a_n\}$ be a sequence of real numbers with $a_1 = -1, a_2 = 2$ and for all $n \ge 3$,
-$a_{n+1} - a_{n} - a_{n+2} = 0$.
-Find $a_{1} + a_{2} + a_{3} + . . . + a_{2015}$.
+Let $r, s$, and $t$ be the three roots of the equation $8x^3 + 1001x + 2008 = 0$. Find
+$(r + s)^3 + (s + t)^3 + (t + r)^3.$
 \end{prob}
 
-\begin{prob}[MMATHS 2019]{2}
- Let $F_1 = F_2 = 1$, and let $F_n = F_{n-1} + F_{n-2}$ for all $n \ge 3$. For each positive integer $n$, let $g(n)$ be the minimum possible value of
-$|a_1F_1 + a_2F_2 + · · · + a_nF_n|$,
-where each $a_i$
-is either $1$ or $-1$. Find $g(1) + g(2) + \cdots  + g(100)$
+\begin{prob}[PuMAC 2019]{3}
+Let Q be a quadratic polynomial. If the sum of the roots of $Q^{100}(x)$ (where $Q^{i}(x)$ is defined
+by $Q^{1}(x) = Q(x), Q^{i}(x) = Q(Q^{i-1}(x))$ for integers $i \ge 2$) is $8$ and the sum of the roots of $Q$
+is $S$, compute $|\log_{2}(S)|$.
 \end{prob}
 
-\begin{prob}[HMMT February 2004]{4}
-Evaluate the sum
-$$\frac{1}{2\lfloor \sqrt{1} \rfloor + 1} +\frac{1}{2\lfloor \sqrt{2} \rfloor + 1}+\frac{1}{2\lfloor \sqrt{3} \rfloor + 1} + \cdots + \frac{1}{2\lfloor \sqrt{100} \rfloor + 1}$$
+\begin{prob}[PHS HMMT TST 2020]{3}
+Let $a,b,c$ be the distinct real roots of $x^3+2x+5$. Find $(8-a^3)(8-b^3)(8-c^3)$.
 \end{prob}
 
-\begin{req}[Reun\rq{}s Thanksgiving Mock AMC 10]{4}
-Let $N=3+66+333+6666+33333+\ldots + \underbrace{666\cdots 666}_{\text{2016 6\rq{}s}} + \underbrace{333\cdots 333}_{\text{2017 3\rq{}s}}$. Find the sum of the digits of $N$
+\begin{prob}[AMC 10A 2017/24]{3}
+For certain real numbers $a$, $b$, and $c$, the polynomial\[g(x) = x^3 + ax^2 + x + 10\]has three distinct roots, and each root of $g(x)$ is also a root of the polynomial\[f(x) = x^4 + x^3 + bx^2 + 100x + c.\]What is $f(1)$?
+\end{prob}
+
+\begin{req}[AMC 10A 2019/24]{3}
+Let $p$, $q$, and $r$ be the distinct roots of the polynomial $x^3 - 22x^2 + 80x - 67$. It is given that there exist real numbers $A$, $B$, and $C$ such that $$\dfrac{1}{s^3 - 22s^2 + 80s - 67} = \dfrac{A}{s-p} + \dfrac{B}{s-q} + \frac{C}{s-r}$$for all $s\not\in\{p,q,r\}$. What is $\tfrac1A+\tfrac1B+\tfrac1C$?
 \end{req}
 
-\begin{prob}[MMATHS 2018]{4}
-Compute
-$$\sum_{m=1}^{\infty} \sum_{n=1}^{\infty} \frac{m\cos^2(n)+n\sin^2(m)}{3^{m+n}(m+n)}$$
+\begin{prob}[Canada]{3}
+If $a,b,c$ are roots of $a^3-a-1=0$, compute
+$$\frac{1+a}{1-a}+\frac{1+b}{1-b}+\frac{1+c}{1-c}$$
+\end{prob}
+%-7
+
+\begin{prob}[William Dai]{3}
+If $r_{1},r_{2},r_{3}$ and $r_{4}$ are the roots of $x^4+5x^3+3x^2+2x+1$, find $\frac{1}{r_{1}^3}+\frac{1}{r_{2}^3}+\frac{1}{r_{3}^3}+\frac{1}{r_{4}^3}$.
 \end{prob}
 
-\begin{prob}[HMMT Feburary 2016]{8}
-Let $A$ denote the set of all integers $n$ such that $1 \leq n \leq 10000$, and moreover the sum of the decimal digits of $n$ is $2$. Find the sum of the squares of the elements of $A$.
+\begin{prob}[AIME 1993/5]{3}
+Let $P_0(x) = x^3 + 313x^2 - 77x - 8$. For integers $n \ge 1$, define $P_n(x) = P_{n - 1}(x - n)$. What is the coefficient of $x$ in $P_{20}(x)$?
 \end{prob}
 
-\begin{prob}[BMT 2018]{14}
-Let $F_{1}=0, F_{2}=1$ and $F_{n}=F_{n-1}+F_{n-2}$. Compute
-$$\sum_{n=1}^{\infty} \frac{\sum_{i=1}^{n} F_{i}}{3^{n}}$$
+\begin{prob}[BMT 2019]{4}
+
+Let $r_1, r_2, r_3$ be the (possibly complex) roots of the polynomial $x^3 + ax^2 + bx + \frac{4}{3}$. How many
+pairs of integers a, b exist such that $r_{1}^3 + r_{2}^3 + r_{3}^3 = 0$ ?
 \end{prob}
 
+\begin{req}[AMC 12B 2017/23]{4}
+The graph of $y=f(x)$, where $f(x)$ is a polynomial of degree $3$, contains points $A(2,4)$, $B(3,9)$, and $C(4,16)$. Lines $AB$, $AC$, and $BC$ intersect the graph again at points $D$, $E$, and $F$, respectively, and the sum of the $x$-coordinates of $D$, $E$, and $F$ is $24$. What is $f(0)$?
+\end{req}
+
+\begin{prob}[HMMT February 2013]{4}
+Let z be a non-real complex number with $z^{23} = 1$. Compute
+$$\sum_{k=0}^{22} \frac{1}{1+z^{k}+z^{2k}}.$$
+\end{prob}
+\begin{prob}[FARML 2007/T9]{4}
+For fixed numbers $x,y,z,$ let $p(n)=x^n+y^n+z^n.$ If $p(2)=2,$ $p(4)=\frac{3}{2},$ and $p(6)=\frac{29}{24},$ compute $p(8).$
+\end{prob}
+
+\begin{prob}[David's Problem Stash]{4}
+Let $a$, $b$, and $c$ be nonzero real numbers such that $a+b+c=0$ and \[28(a^4+b^4+c^4) = a^7+b^7+c^7.\] Find $a^3+b^3+c^3$.
+\end{prob}
+
+\begin{prob}[]{4}
+Give all unordered pairs of $(x,y)$ where $x$ and $y$ are complex numbers satisfying:
+$$x+y=3$$
+$$x^5+y^5=33$$
+\end{prob}
+
+\begin{req}[HMMT 2008]{4}
+The equation $x^3-9x^2+8x+2=0$ has three real roots $p,q,r.$ Find $\frac{1}{p^2}+\frac{1}{q^2}+\frac{1}{r^2}.$
+\end{req}
+
+% find 1/p+1/q+1/r then square
+
+% general part 1 p7
+
+\begin{prob}[NanoMath Fall Meet 2020]{4}
+If $x + y = 6$ and $x^3 + y^3 = 108$, find $x^5 + y^5$.
+\end{prob}
+%2376
+
+\begin{prob}[2019 AIME I]{4}
+Let $x$ be a real number such that $\sin^{10} x + \cos^{10}x=\frac{11}{36}$. Then $\sin^{12}x+\cos^{12}x=\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.
+\end{prob}
+
+\begin{prob}[AoPS Forums]{6}
+
+Given $x_1,x_2,x_3,x_4$ are the roots of $P(x)=2x^4-5x+1$, find the value of $\sum_{i=1}^4 \frac{1}{(1-x_i)^3}$.
+\end{prob}
+
+\begin{prob}[AIME I 2014/14]{6}
+
+Let $m$ be the largest real solution to the equation
+
+$$ \dfrac{3}{x-3} + \dfrac{5}{x-5} + \dfrac{17}{x-17} + \dfrac{19}{x-19} = x^2 - 11x - 4$$
+
+There are positive integers $a, b,$ and $c$ such that $m = a + \sqrt{b + \sqrt{c}}$. Find $a+b+c$.
+\end{prob}
+
+\begin{prob}[SLKK AIME 2020]{6}
+Let $a, b,$ and $c$ be the three distinct solutions to $x^{3} - 4x^{2} + 5x + 1 = 0$.
+Find $$(a^3+b^3)(a^3+c^3)(b^3+c^3).$$
+\end{prob}
+
+\begin{prob}[AIME I 2019/10]{6}
+For distinct complex numbers $z_1,z_2,\dots,z_{673}$, the polynomial\[(x-z_1)^3(x-z_2)^3 \cdots (x-z_{673})^3\]can be expressed as $x^{2019} + 20x^{2018} + 19x^{2017}+g(x)$, where $g(x)$ is a polynomial with complex coefficients and with degree at most $2016$. The value of\[\left| \sum_{1 \le j <k \le 673} z_jz_k \right|\]can be expressed in the form $\tfrac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.
+\end{prob}
+
+\begin{prob}[HMMT Feburary 2017]{9}
+A polynomial P of degree $2015$ satisfies the equation $P(n) = \frac{1}{n^2}$ for $n = 1, 2, \ldots , 2016$. Find
+$\lfloor 2017P(2017) \rfloor$
+\end{prob}
+
+\begin{prob}[AIME 1990/15]{9}
+Find $ax^5 + by^5$ if the real numbers $a$, $b$, $x$, and $y$ satisfy the equations\[ax + by = 3,\]\[ax^2 + by^2 = 7,\]\[ax^3 + by^3 = 16,\]\[ax^4 + by^4 = 42.\]
+\end{prob}
+
+
+\begin{prob}[HMMT February 2020]{12}
+Let $P(x)$ be the unique polynomial of degree at most $2020$ satisfying $P(k^2) = k$ for $k = 0, 1, 2, \ldots , 2020$.
+Compute $P(2021^2)$.
+\end{prob}
+
+\begin{remark}
+The following problem is not explicitly algebra but it does use several polynomial techniques. It\rq{}s very, very hard!
+\end{remark}
+
+\begin{prob}[SLKK AIME 2020]{21}
+Let $p = 991$ be a prime. Let $S$ be the set of all lattice points $(x, y)$,
+with $1 \leq x, y \leq p - 1$. On each point $(x, y)$ in $S$, Olivia writes the number $x^2 + y^2$. Let
+$f(x, y)$ denote the product of the numbers written on all points in $S$ that share at least
+one coordinate with $(x, y)$. Find the remainder when
+$$\sum_{i=1}^{p-2} \sum_{j=1}^{p-2} f(i,j)$$
+is divided by p.
+\end{prob}
 \end{document}
