@@ -46,7 +46,7 @@ a+b &= 48
 Applying the manipulation trick again, we have: $2a +2b+2c = 156$, implying that $a+b+c = 78.$ Subtracting $a+b+c$ from $b+c,a+c,$ and $a+b$ leads to our desired answer: $(a,b,c)=\ansbold{(42,6,30)}.$
 \end{sol}
 \subsection{Symmetric and Cyclic Expressions}
-We can sometimes use the fact that a sum is symmetric along with combinatorical thinking to quickly determine it. For example, in $(a+b+c)^3$, what is the coefficient of $a^2b$? Without expanding the whole expression out, we can see that we must choose $a$ twice and $b$ once. Hence, there are $\binom{3}{2}=3$ of that term. Additionally, it's clear terms such $b^2c$ and $a^2c$ must have the same coefficient by symmetry.
+We can sometimes use the fact that a sum is symmetric along with combinatorical thinking to quickly determine it. For example, in $(a+b+c)^3$, what is the coefficient of $a^2b$? Without expanding the whole expression out, we can see that we must choose $a$ twice and $b$ once. Hence, there are $\binom{3}{2}=3$ of that term. Additionally, it's clear terms such  as$b^2c$ and $a^2c$ must have the same coefficient by symmetry.
 
 \begin{exam}[AMC 10A 2021/14]
 All the roots of the polynomial $z^6-10z^5+Az^4+Bz^3+Cz^2+Dz+16$ are positive integers, possibly repeated. What is the value of $B$?
@@ -184,7 +184,7 @@ For all $a,b$ and $\textbf{odd}$ positive integer power $n$, $a^n+b^n=(a+b)(a^{n
 This can similarily be applied subtly as with difference of powers.
 
 \subsubsection{Symmetric Polynomial Identities}
-
+These are some helpful polynomial identities when dealing with symmetric expressions.
 \begin{theo}[Square of Sum]
 $(\sum_{i=1}^{n} a_{i})^2 = \sum_{i=1}^{n} a_{i}^2 + (\sum_{1\leq i < j\leq n } a_{i}a_{j})$
 \end{theo}
@@ -265,14 +265,9 @@ We can see that $\frac{-1 + \sqrt{8057}}{2}>\sqrt{2015}$ and that $\frac{-1-\sqr
 Then $\frac{1}{S}=\frac{2}{\sqrt{8061}-\sqrt{8057}}=\frac{\sqrt{8061}+\sqrt{8057}}{2}$. Since $89 < \frac{1}{S} < 90$ so our answer is $\ansbold{89}$.
 \end{sol}
 
-\begin{exam}[NEMO 2017]
-The value of the expression
-\[\sqrt{1+\sqrt{\sqrt[3]{32}-\sqrt[3]{16}}} + \sqrt{1-\sqrt{\sqrt[3]{32}-\sqrt[3]{16}}}\]
-can be written as $\sqrt[m]{n}$, where $m$ and $n$ are positive integers. Compute the smallest possible value of
-$m + n$.
-\end{exam}
 
 \subsection{Expressions As Variables}
+Basically, we let expressions be variables and represent the given equations in terms of these variables.
 
 All of the following involve the very common substitution of letting $x+y=a$ and $xy=b$ and rewriting the terms you know in terms of these expressions. The upshot of this is that we can represent $x^{n}+y^{n}$ in terms of $a$ and $b$. The most common identity you'll use here is $x^2+y^2=a^2-2b$.
 
@@ -296,7 +291,8 @@ Let $a+b=x$ and $ab=y$. Then, $\frac{y}{x^2-2y}=\frac{1}{4}$. Multiplying, we ge
 
 \pagebreak\section{Problems}
 
-\minpt{}
+%about 2/3 of pts
+\minpt{60}
 
 \psetquote{It’s hard to do a really good job on anything you don’t think about in the shower.}{Paul Graham}
 
@@ -373,6 +369,12 @@ Let $r_1,r_2,r_3,r_4$ be the roots of $P(x)= x^4+4x^3-3x^2+2x-1.$ Suppose $Q(x)$
 Fran has two congruent rectangular prisms, each with volume $V$. There are three distinct ways for Fran to glue the two prisms together along congruent faces to form a larger rectangular prism. The three prisms that can be created in this way have surface areas $20,18,$ and $17$. Compute $V$.
 \end{prob}
 
+\begin{prob}[NEMO 2017]{5}
+The value of the expression
+\[\sqrt{1+\sqrt{\sqrt[3]{32}-\sqrt[3]{16}}} + \sqrt{1-\sqrt{\sqrt[3]{32}-\sqrt[3]{16}}}\]
+can be written as $\sqrt[m]{n}$, where $m$ and $n$ are positive integers. Compute the smallest possible value of
+$m + n$.
+\end{prob}
 
 \begin{prob}[vvluo]{6}
 Determine all solutions, if any exist, to the system
@@ -391,11 +393,9 @@ can be written in the form $\frac{m}{n}$, where $m$ and $n$ are relatively prime
 \end{prob}
 
 \begin{prob}[NICE Spring 2021/13]{6}
-Suppose $x$ and $y$ are nonzero real numbers satisfying the system of equations
-\begin{align*}
-    3x^2 + y^2 &= 13x,
-    x^2 + 3y^2 &= 14y.
-\end{align*}
+Suppose $x$ and $y$ are nonzero real numbers satisfying the system of equation.
+   \[3x^2 + y^2 = 13x,\]
+   \[ x^2 + 3y^2 = 14y.\]
 Find $x+y$.
 \end{prob}
 
