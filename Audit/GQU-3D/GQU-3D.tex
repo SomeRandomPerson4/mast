@@ -8,7 +8,401 @@
 \begin{document}
 \maketitle
 
-The idea is basically “figure out what matters, then only look there.”
+The idea is basically “figure out what matters, then only look there.” 
+\\
+In our handouts, we usually present intuitive and simple proofs of the theorems and formulas that we mention. This is not something we can do here because most of the proofs require calculus, and they aren't too enlightening with respect to solving the problems.
+
+\section{Parallelepipeds}
+The theme is “solids with $6$ faces.” 
+\subsection{Cubes}
+
+\begin{defi}[Cube]
+A cube is a solid with $6$ square faces.
+\end{defi}
+
+\begin{theo}[Volume of a Cube]
+The volume of a cube with side length $x$ is $x^3.$
+\end{theo}
+
+\begin{theo}[Surface Area of a Cube]
+The surface area of a cube with side length $x$ is $6x^2.$
+\end{theo}
+
+\begin{pro}
+There are six faces, and each face has area $x^2.$ Thus the total surface area is $6x^2.$
+\end{pro}
+
+\begin{center}
+% \usetikzlibrary{positioning,calc}
+\begin{tikzpicture}
+            \newcommand{\side}{3}
+            \newcommand{\otherside}{1.3}
+            \draw[dashed] (\otherside,\side+\otherside) -- (\otherside,\otherside) -- (\side+\otherside,\otherside)
+            (0,0) -- (\otherside,\otherside);
+            \draw (0,0) rectangle (\side,\side)
+            (0,\side) -- (\otherside,\otherside+\side) -- (\otherside+\side,\otherside+\side) -- (\side,\side)
+            (\otherside+\side,\otherside+\side) -- (\otherside+\side,\otherside) -- (\side,0);
+\end{tikzpicture}
+\end{center}
+
+\subsection{Rectangular Prisms}
+
+In this handout, a rectangular prism will always refer to a \textit{right} rectangular prism. Unless otherwise specified, rectangular prisms are right. This is generally true in competitions as well.
+
+A non-right rectangular prism is a parallelepiped with a rectangular base.\footnote{See below for the definition of a parallelepiped.}
+
+\begin{defi}[Right Rectangular Prism]
+A rectangular prism is a solid with $6$ rectangular faces.
+\end{defi}
+
+\begin{theo}[Volume of a Right Rectangular Prism]
+The volume of a rectangular prisms with side lengths $l,w,h$ is $lwh.$
+\end{theo}
+
+\begin{theo}[Surface Area of a Right Rectangular Prism]
+The surface area of a rectangular prism with side lengths $l,w,h$ is $2(lw+wh+hl).$
+\end{theo}
+
+\begin{pro}
+There are two faces with the dimensions $l\times w,$ $w\times h,$ and $h\times l.$ Multiplication and addition finish.
+\end{pro}
+
+\begin{center}
+% \usetikzlibrary{positioning,calc}
+\begin{tikzpicture}
+            \newcommand{\width}{3}
+            \newcommand{\length}{4}
+            \newcommand{\height}{2}
+            \newcommand{\otherside}{1.3}
+            \draw[dashed] (\otherside,\height+\otherside) -- (\otherside,\otherside) -- (\length+\otherside,\otherside)
+            (0,0) -- (\otherside,\otherside);
+            \draw (0,0) rectangle (\length,\height)
+            (0,\height) -- (\otherside,\otherside+\height) -- (\otherside+\length,\otherside+\height) -- (\length,\height)
+            (\otherside+\length,\otherside+\height) -- (\otherside+\length,\otherside) -- (\length,0);
+\end{tikzpicture}
+\end{center}
+
+\begin{exam}
+Three faces of a rectangular prism have areas $6,10,15.$ Find the volume of the rectangular prism.
+\end{exam}
+\begin{sol}
+Let the side lengths be $a,b,c.$ Note that
+\[ab=6\]
+\[bc=10\]
+\[ca=15,\]
+and the volume of the prism is $abc.$ Multiplying all of the expressions together gives us $(abc)^2=900,$ or $abc=30.$
+\end{sol}
+
+\subsection{Exercises}
+
+
+\begin{exer}
+Consider a rectangular prism whose base has an area of $40$ and a height of $17.$ What is its volume?
+\end{exer}
+\begin{exer}
+A right rectangular prism with a volume of $32000$ and a base width of $8$ and a base length of $10.$ When the prism is cut by a plane parallel and equidistant to both bases, what is the combined surface area of the two remaining figures?
+\end{exer}
+
+\subsection{General Parallelepipeds}
+
+\begin{defi}[Parallelepipeds]
+A parallelpiped is a solid with $6$ parallelogram faces.
+\end{defi}
+Note that all parallelepipeds are prisms.
+
+\begin{theo}[Volume of a Parallelepiped]
+The volume of a parallelepiped with a base of area $B$ and height $h$ is $Bh.$
+\end{theo}
+
+\begin{center}
+    \begin{tikzpicture}[scale=0.7]
+\draw (0,0) -- (4,0) -- (6.5,2) -- (7.5,5) -- (3.5,5) -- (1,3) -- (5,3) -- (7.5,5);
+\draw (0,0) -- (1,3);
+\draw (4,0) -- (5,3);
+\draw [dotted] (0,0) -- (2.5,2) -- (3.5,5);
+\draw [dotted] (2.5,2)--(6.5,2);
+\draw [dotted] (5,3)--(5,0);
+\node at (5.3,1.7) {$h$};
+\end{tikzpicture}
+\end{center}
+The surface area of a parallelepiped should also not be too hard to compute.
+
+
+\begin{exer}
+A parallelelepiped has coordinates $(0,0,0),(2,0,0),(1,\sqrt{3},0),(3,\sqrt{3},0)$ for one face and coordinates $(1,0,2),(3,0,2),(2,\sqrt{3},2),(4,\sqrt{3},2)$ for the opposite face. Find its surface area.
+\end{exer}
+
+
+\section{Prisms and Cylinders}
+
+\begin{defi}[Prism]
+A prism is a solid with two congruent parallel faces, and the rest of its faces are parallelograms.
+\end{defi}
+
+\begin{theo}[Volume of a Prism]
+The volume of a prism with a base of area $B$ and a height of $h$ is $Bh.$
+\end{theo}
+Note the similarity to the formula for the volume of a parallelpiped.
+
+\begin{defi}[Cylinder]
+A cylinder is a solid with two parallel circles as bases.
+\end{defi}
+
+\begin{theo}[Volume of a Cylinder]
+The volume of a cylinder with a base if area $B$ and a height of $h$ is $Bh.$
+\end{theo}
+An alternative formulation of this is that the volume of a cylinder with radius $r$ and height $h$ is $\frac{\pi r^2h}{3}.$
+
+\begin{defi}[Right and Oblique Cylinders]
+A cylinder is right if the line joining the centers of its bases is perpendicular to the bases, and oblique otherwise.
+\end{defi}
+Unless otherwise specified, cylinders are right. This is generally true in competitions as well. Regardless, the volume formula \textit{always} holds.
+
+\begin{center}
+    \begin{tikzpicture}
+    \newcommand{\size}{1.5}
+    \draw (-\size,0) arc (180:360:{\size} and 0.6);
+    \draw[dashed] (\size,0) arc (0:180:{\size} and 0.6);
+    \draw (-\size,\size+\size) arc (180:360:{\size} and 0.6);
+    \draw (\size,\size+\size) arc (0:180:{\size} and 0.6);
+    \draw (-\size,0)--(-\size,\size+\size);
+    \draw (\size,0)--(\size,\size+\size);
+    \draw[dashed] (\size,0)--(0,0)--(0,\size+\size);
+    \node at (0,-\size+\size/4) {\textit{A right cylinder.}};
+    %\filldraw (0,0) circle (1pt);
+    \node at (\size/2,\size/8) {$r$};
+    \node at (\size/6,\size) {$h$};
+    \end{tikzpicture}
+    \hspace{1.5cm}
+    %\textit{A right cylinder.}
+    %\\[1\baselineskip]
+    \begin{tikzpicture}
+    \newcommand{\size}{1.5}
+    \newcommand{\slant}{0.5}
+    \draw (-\size,0) arc (180:360:{\size} and 0.6);
+    \draw[dashed] (\size,0) arc (0:180:{\size} and 0.6);
+    \draw (-\size+\slant,\size+\size) arc (180:360:{\size} and 0.6);
+    \draw (\size+\slant,\size+\size) arc (0:180:{\size} and 0.6);
+    \draw (-\size,0)--(-\size+\slant,\size+\size);
+    \draw (\size,0)--(\size+\slant,\size+\size);
+    \draw[dashed] (\size,0)--(0,0);
+    \draw[dashed] (\size+\slant,0)--(\size+\slant,\size+\size);
+    \node at (0,-\size+\size/4) {\textit{An oblique cylinder.}};
+    %\filldraw (0,0) circle (1pt);
+    \node at (\size/2,\size/8) {$r$};
+    \node at (\slant+\size+\size/6,\size/5+\size/5+\size/5+\size/5) {$h$};
+    \end{tikzpicture}
+\end{center}
+
+\begin{theo}[Surface Area of a Right Cylinder]
+The surface area of a right cylinder with radius $r$ and height $h$ is $2\pi r^2+2\pi rh.$
+\end{theo}
+
+\begin{pro}
+The two faces have area $\pi r^2$ each, and the circumference of the circle multiplied by the height gives $2\pi r\cdot h.$ Adding yields $2\pi r^2+2\pi rh.$
+\end{pro}
+
+\subsection{Exercises}
+
+
+\begin{exer}
+Consider a cylinder with diameter $10$ and height $7.$ What is its volume?
+\end{exer}
+\begin{exer}
+Consider two right cylinders $P$ and $Q$ with the same volume. Cylinder $P$ has a radius $30\%$ longer than Cylinder $Q.$ What percent larger is the height of Cylinder $Q$ than that of Cylinder $P?$
+\end{exer}
+
+
+\section{Pyramids and Cones}
+
+\subsection{Pyramids}
+\begin{defi}
+A pyramid is a solid with a polygonal base whose vertices are all joined to a point not in the plane of the base. This point is called the \textit{apex}.
+\end{defi}
+
+The volume formula is identical to the volume of a cone.
+
+\begin{theo}[Volume of a Pyramid]
+The volume of a pyramid with a base of area $B$ and a height of $h$ is $\frac{Bh}{3}.$
+\end{theo}
+
+\subsection{Cones}
+\begin{defi}
+A cone is a solid with a circular base where every point on the base is joined to a point not in the plane of the base. This point is called the \textit{apex}.
+\end{defi}
+
+The volume formula is identical to the volume of a pyramid.
+
+\begin{theo}[Volume of a Cone]
+The volume of a cone with a base of area $B$ and a height of $h$ is $\frac{Bh}{3}.$
+\end{theo}
+An alternative formulation of this is that the volume of a cone with radius $r$ and height $h$ is $\frac{\pi r^2h}{3}.$
+
+\begin{defi}[Right and Oblique Cones]
+A cone is right if the line joining the center of it bases with the apex is perpendicular to the base, and oblique otherwise.
+\end{defi}
+Unless otherwise specified, cones are right. This is generally true in competitions as well. Regardless, the volume formula \textit{always} holds.
+
+\begin{center}
+    \begin{tikzpicture}
+    \newcommand{\size}{1.5}
+    \draw (-\size,0) arc (180:360:{\size} and 0.6);
+    \draw[dashed] (\size,0) arc (5:180:{\size} and 0.6);
+    
+    \draw (-\size,0)--(0,\size+\size)--(\size,0);
+    \draw[dashed] (\size,0)--(0,0)--(0,\size+\size);
+    
+    \node at (\size/2,\size/8) {$r$};
+    \node at (\size/6,\size-\size/6) {$h$};
+    
+    \node at (0,-\size+\size/4) {\textit{A right cone.}};
+    \end{tikzpicture}
+    \hspace{1.5cm}
+    \begin{tikzpicture}
+    \newcommand{\size}{1.5}
+    \newcommand{\slant}{2}
+    \draw (-\size,0) arc (180:360:{\size} and 0.6);
+    \draw[dashed] (\size,0) arc (10:180:{\size} and 0.6);
+    
+    \draw (-\size,0)--(\slant,\size+\size)--(\size,0);
+    \draw[dashed] (\size,0)--(0,0);
+    \draw[dashed] (\slant,\size+\size)--(\slant,0);
+    
+    \node at (\size/2,\size/8) {$r$};
+    \node at (\slant+\size/6,\size-\size/6) {$h$};
+    
+    \node at (0,-\size+\size/4) {\textit{An oblique cone.}};
+    \end{tikzpicture}
+\end{center}
+
+\begin{theo}[Surface Area of a Right Cone]
+The surface area of a cone with radius $r$ and height $h$ is $\pi r^2+2\pi r\sqrt{r^2+h^2}.$
+\end{theo}
+
+\begin{pro}
+The area of the base is $\pi r^2,$ and the circumference multiplied by the slant height is $2\pi r\cdot \sqrt{r^2+h^2.}$ (Note that the slant height is $\sqrt{r^2+h^2}$ by the Pythagorean Theorem.) Adding gives $\pi r^2+2\pi r\sqrt{r^2+h^2}.$
+\end{pro}
+
+The surface area of an oblique cone is surprisingly hard to find.
+\section{Spheres}
+Spheres are the $3$ dimensional version of circles.
+\begin{defi}[Sphere]
+A sphere is the locus of points in space equidistant from a certain point. This point is called the center.
+\end{defi}
+
+\begin{theo}[Volume of a Sphere]
+The volume of a sphere with radius $r$ is $\frac{4\pi r^3}{3}.$
+\end{theo}
+
+\begin{theo}[Surface Area of a Sphere]
+The surface area of a sphere with radius $r$ is $4\pi r^2.$
+\end{theo}
+
+\begin{center}
+    \begin{tikzpicture}
+%  \shade[ball color = gray!40, opacity = 0.4] (0,0) circle (2cm);
+  \draw (0,0) circle (2cm);
+  \draw (-2,0) arc (180:360:2 and 0.6);
+  \draw[dashed] (2,0) arc (0:180:2 and 0.6);
+%  \fill[fill=black] (0,0) circle (1pt);
+  \draw[dashed] (0,0 ) -- node[above]{$r$} (2,0);
+\end{tikzpicture}
+\end{center}
+
+
+\begin{exer}
+The numerical surface area and volume of a sphere are the same. What is the radius of this sphere?
+\end{exer}
+
+
+\begin{defi}[Cube]
+A cube is a solid with $6$ square faces.
+\end{defi}
+
+\begin{theo}[Volume of a Cube]
+The volume of a cube with side length $x$ is $x^3.$
+\end{theo}
+
+\begin{theo}[Surface Area of a Cube]
+The surface area of a cube with side length $x$ is $6x^2.$
+\end{theo}
+
+\begin{pro}
+There are six faces, and each face has area $x^2.$ Thus the total surface area is $6x^2.$
+\end{pro}
+
+\begin{center}
+% \usetikzlibrary{positioning,calc}
+\begin{tikzpicture}
+            \newcommand{\side}{3}
+            \newcommand{\otherside}{1.3}
+            \draw[dashed] (\otherside,\side+\otherside) -- (\otherside,\otherside) -- (\side+\otherside,\otherside)
+            (0,0) -- (\otherside,\otherside);
+            \draw (0,0) rectangle (\side,\side)
+            (0,\side) -- (\otherside,\otherside+\side) -- (\otherside+\side,\otherside+\side) -- (\side,\side)
+            (\otherside+\side,\otherside+\side) -- (\otherside+\side,\otherside) -- (\side,0);
+\end{tikzpicture}
+\end{center}
+
+\subsection{Rectangular Prisms}
+
+In this handout, a rectangular prism will always refer to a \textit{right} rectangular prism. Unless otherwise specified, rectangular prisms are right. This is generally true in competitions as well.
+
+A non-right rectangular prism is a parallelepiped with a rectangular base.\footnote{See below for the definition of a parallelepiped.}
+
+\begin{defi}[Right Rectangular Prism]
+A rectangular prism is a solid with $6$ rectangular faces.
+\end{defi}
+
+\begin{theo}[Volume of a Right Rectangular Prism]
+The volume of a rectangular prisms with side lengths $l,w,h$ is $lwh.$
+\end{theo}
+
+\begin{theo}[Surface Area of a Right Rectangular Prism]
+The surface area of a rectangular prism with side lengths $l,w,h$ is $2(lw+wh+hl).$
+\end{theo}
+
+\begin{pro}
+There are two faces with the dimensions $l\times w,$ $w\times h,$ and $h\times l.$ Multiplication and addition finish.
+\end{pro}
+
+\begin{center}
+% \usetikzlibrary{positioning,calc}
+\begin{tikzpicture}
+            \newcommand{\width}{3}
+            \newcommand{\length}{4}
+            \newcommand{\height}{2}
+            \newcommand{\otherside}{1.3}
+            \draw[dashed] (\otherside,\height+\otherside) -- (\otherside,\otherside) -- (\length+\otherside,\otherside)
+            (0,0) -- (\otherside,\otherside);
+            \draw (0,0) rectangle (\length,\height)
+            (0,\height) -- (\otherside,\otherside+\height) -- (\otherside+\length,\otherside+\height) -- (\length,\height)
+            (\otherside+\length,\otherside+\height) -- (\otherside+\length,\otherside) -- (\length,0);
+\end{tikzpicture}
+\end{center}
+
+\begin{exam}
+Three faces of a rectangular prism have areas $6,10,15.$ Find the volume of the rectangular prism.
+\end{exam}
+\begin{sol}
+Let the side lengths be $a,b,c.$ Note that
+\[ab=6\]
+\[bc=10\]
+\[ca=15,\]
+and the volume of the prism is $abc.$ Multiplying all of the expressions together gives us $(abc)^2=900,$ or $abc=30.$
+\end{sol}
+
+\subsection{Exercises}
+
+
+\begin{exer}
+Consider a rectangular prism whose base has an area of $40$ and a height of $17.$ What is its volume?
+\end{exer}
+\begin{exer}
+A right rectangular prism with a volume of $32000$ and a base width of $8$ and a base length of $10.$ When the prism is cut by a plane parallel and equidistant to both bases, what is the combined surface area of the two remaining figures?
+\end{exer}
+
+
 \section{Techniques}
 We assume basic competence in 3D Geometry. This means knowing all of the volume and surface area formulas.
 
@@ -152,7 +546,25 @@ Notice that the entire solution was essentially just doing the correct setup and
 
 \minpt{32}
 
-\psetquote{Does `read the mood' mean he should be a person that suits everyone? If so, then you're the ones with a few screws loose!}{Yugami-kun Has No Friends}
+\psetquote{Introducing change is like pulling off a bandage: the pain is a memory as soon as you feel it.}{Paul Graham}
+
+
+\begin{prob}[]{1}
+The net of a 3D figure is composed of 6 congruent squares and has a total area of 216 square inches. When the shape is folded to form a cube, how cubic inches are in its volume?
+\end{prob}
+
+\begin{center}
+    \begin{asy}
+    size(5cm);
+    draw((0,0)--(4,0)--(4,1)--(0,1)--cycle);
+    draw((1,-1)--(2,-1)--(2,2)--(1,2)--cycle);
+    draw((3,0)--(3,1));
+    \end{asy}
+\end{center}
+
+\begin{prob}[AMC 12A 2008/8]{1}
+What is the volume of a cube whose surface area is twice that of a cube with volume 1?
+\end{prob}
 
 \begin{prob}[AMC 12B 2005/16]{2}
 Eight spheres of radius 1, one per octant, are each tangent to the coordinate planes. What is the radius of the smallest sphere, centered at the origin, that contains these eight spheres?
@@ -215,6 +627,10 @@ label("1",C/2+B/2,SE);
 In tetrahedron $ABCD$, edge $AB$ has length 3 cm. The area of face $ABC$ is $15\mbox{cm}^2$ and the area of face $ABD$ is $12 \mbox { cm}^2$. These two faces meet each other at a $30^\circ$ angle. Find the volume of the tetrahedron in $\mbox{cm}^3$.
 \end{prob}
 
+\begin{prob}[AMC 12B 2008/18]{2}
+On a sphere with a radius of $2$ units, the points $A$ and $B$ are $2$ units away from each other. Compute the distance from the center of the sphere to the line segment $AB.$
+\end{prob}
+
 \begin{prob}[AMC 10A 2013/22]{3}
 Six spheres of radius $1$ are positioned so that their centers are at the vertices of a regular hexagon of side length $2$. The six spheres are internally tangent to a larger sphere whose center is the center of the hexagon. An eighth sphere is externally tangent to the six smaller spheres and internally tangent to the larger sphere. What is the radius of this eighth sphere?
 \end{prob}
@@ -239,6 +655,7 @@ Two congruent right circular cones each with base radius $3$ and height $8$ have
 On a $4\times 4\times 3$ rectangular parallelepiped, vertices $A$, $B$, and $C$ are adjacent to vertex $D$. Find the distance from $D$ to plane $ABC$.
 \end{prob}
 
+
 \begin{prob}[AIME I 2001/12]{6}
 A sphere is inscribed in the tetrahedron whose vertices are $A = (6,0,0), B = (0,4,0), C = (0,0,2),$ and $D = (0,0,0).$ The radius of the sphere is $m/n,$ where $m$ and $n$ are relatively prime positive integers. Find $m + n.$
 \end{prob}
@@ -250,6 +667,11 @@ A rectangular box has width $12$ inches, length $16$ inches, and height $\frac{m
 \begin{req}[NARML 10]{9}
 Three mutually tangent spheres with radii of $1$ are tangent to a table, and a cone is tangent to all three spheres with its tip oriented towards the table. If the cone has height $\sqrt{2}$ and its tip is $\tfrac{3+\sqrt{3}}{3}$ units above the table, compute the radius of the cone.
 \end{req}
+
+\begin{prob}[AIME II 2020/7]{9}
+Two congruent right circular cones each with base radius $3$ and height $8$ have axes of symmetry that intersect at right angles at a point in the interior of the cones a distance $3$ from the base of each cone. A sphere with radius $r$ lies inside both cones. The maximum possible value for $r^2$ is $\frac mn$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.
+\end{prob}
+
 
 \begin{prob}[AIME II 2016/14]{13}
 Equilateral $\triangle ABC$ has side length $600$. Points $P$ and $Q$ lie outside the plane of $\triangle ABC$ and are on opposite sides of the plane. Furthermore, $PA=PB=PC$, and $QA=QB=QC$, and the planes of $\triangle PAB$ and $\triangle QAB$ form a $120^{\circ}$ dihedral angle (the angle between the two planes). There is a point $O$ whose distance from each of $A,B,C,P,$ and $Q$ is $d$. Find $d$.
