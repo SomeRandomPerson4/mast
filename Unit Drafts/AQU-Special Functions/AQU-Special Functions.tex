@@ -1,0 +1,242 @@
+\documentclass{article}
+\usepackage[mast]{lucky}
+\usepackage[utf8]{inputenc}
+\title{Special Functions}
+\author{William Dai}
+\date{AQU-Special Funcitons}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+We discuss problems involving floor, ceiling, and fractional part functions. These problems are almost guaranteed to appear at least once in AMC or AIME and tend to have little actual theory, rather relying on a small set of techniques. Despite this, they may seem intimidating at first due to unfamiliarity with how to manipulate these functions.
+
+\newpage
+\section{Definitions}
+Usually, these functions will be defined in-contest. In particular, the contests might use different notation for these functions. But, knowing the definitions thoroughly in advance will obviously be very useful.
+
+\begin{defi}[Floor]
+$\lfloor n \rfloor$ is defined to be the greatest integer less than or equal to $n$.
+\end{defi}
+
+\begin{defi}[Ceiling]
+$\lceil n \rceil$ is defined to be the smallest integer greater than or equal to $n$.
+\end{defi}
+
+\begin{defi}[Fractional Part]
+$\{ n \}$ is often defined to be $n-\lfloor n \rfloor$.
+\end{defi}
+Notice that the above definition is generally accepted for positive numbers but it may vary if $n$ is negative. For $n<0$, $\{ n \}$ may be defined as $n-\lceil n \rceil$.
+
+You can think of this as taking it "modulo 1" because many of the same modular arithmetic properties will still apply. For example, $\{a+b\}=\{\{a\}+\{b\}\}$.
+
+\newpage
+\section{Identities}
+Here is a variety of identities that oftenly used.
+\subsection{Floor}
+
+\begin{theo}[]
+If $x\ge 0$, then $\lfloor x \rfloor = \sum_{1\leq i < x} 1$.
+\end{theo}
+
+\begin{theo}[]
+$\lfloor \frac{k}{n} \rfloor$ is the number of positive multiples of $n$ less than $k$.
+\end{theo}
+
+\begin{pro}[]
+We plug in the previous identity to get $\sum_{1\leq i < \frac{x}{n}} 1$. The index is equivalent to $n\leq ni < x$ so it is the number of multiples of $i$ less than $x$.
+\end{pro}
+
+\begin{theo}[]
+$\lfloor \frac{\lfloor \frac{k}{n} \rfloor}{n} \rfloor = \lfloor \frac{k}{n^2}\rfloor$ for positive integer $n$ and real $k$.
+\end{theo}
+
+\begin{pro}[]
+Using the previous identity directly, $\lfloor \frac{k}{n} \rfloor$ is the number of positive multiples of $n$ less than $k$. Let such multiples be $a_{x}=xn$ where $x=1,2\ldots \lfloor \frac{k}{n} \rfloor$. Then, $\lfloor \frac{\lfloor \frac{k}{n} \rfloor}{n} \rfloor$ is the number of positive multiples of $n$ less than $\lfloor \frac{k}{n} \rfloor$. So, it is the number of $x=nx'$ where $x<\lfloor \frac{k}{n} \rfloor$. Then, $a_{x}=n^2x'$ is a multiple of $n^2$. Then, $\lfloor \frac{\lfloor \frac{k}{n} \rfloor}{n} \rfloor$ is the number of multiple  $n^2$ less than $k$.
+\end{pro}
+
+This is very helpful for computing Legendre's quickly.
+
+\begin{theo}
+$\lfloor k+n\rfloor = \lfloor k \rfloor + n$ for real $k$ and integer $n$
+\end{theo}
+
+\begin{theo}
+
+\end{theo}
+\subsection{Fractional Part}
+
+As said before, we can think of the fractional part as taking the remainder modulo $1$.
+
+\begin{theo}
+$\{a+n\}=\{a\}$ for any $a$ and integer $n$.
+\end{theo}
+
+\begin{theo}
+$\{a+b\}=\{\{a\}+\{b\}\}$ for any $a,b$.
+\end{theo}
+
+\begin{theo}
+$\{ab\}=\{\{a\}\{b\}\}=\{a\}\{b\}$ for any $a,b$.
+\end{theo}
+
+\newpage
+\section{Techniques}
+We present some general techniques here which will help you manipulate and solve problems with these special functions. These techniques are presented as disjoint here but often times, you'll use a combination of these to solve a problem. We'll talk about the floor function specifically but these are also applicable to the ceiling function.
+
+\subsection{Bounding}
+We use the fact $\lfloor x \rfloor \leq x < \lfloor x \rfloor + 1$ in conjunction with the fact $\lfloor x \rfloor$ is an integer which limits the number of possibilities for it.
+
+
+\begin{exam}[RMO 2001/3]
+Find the number of positive integers $x$ such that
+$$\lfloor \frac{x}{99} \rfloor = \lfloor \frac{x}{101} \rfloor $$
+\end{exam}
+%2499
+
+\begin{sol}
+Let $$\lfloor \frac{x}{99} \rfloor = \lfloor \frac{x}{101} \rfloor = k$$ where $k\ge 0$.
+Then, we have $99k\leq x < 99k+99$ and $101k\leq x < 101k+101$.Then, $101k > 99k$ and $99k+99 < 101k+101$. So, all numbers in $[101k,99k+98]$ work. This interval contains $99-2k$ integers. Then, the total number is $99+97\ldots + 1 = 50^2-1=\boxed{2499}$
+\end{sol}
+
+\begin{exam}[HMMT February 2012]
+Find all ordered triples $(a, b, c)$ of positive reals that satisfy:$\lfloor a\rfloor bc = 3, a\lfloor b\rfloor c = 4$, and $ab\lfloor c\rfloor =5$, where
+$\lfloor x\rfloor$ denotes the greatest integer less than or equal to $x$.
+\end{exam}
+%(\sqrt(30)/3, \sqrt(30)/4, 2\sqrt(30)/5), (\sqrt(30)/3, \sqrt(30)/2, \sqrt(30)/5)
+
+\begin{sol}
+Let $p=abc$ and $q=\lfloor a \rfloor \lfloor b \rfloor \lfloor c \rfloor$. Then, multiplying the three equations gives us: $p=\sqrt{\frac{60}{q}}$. Then, substituting into the first equation gives $p=3\frac{a}{\lfloor a \rfloor}< 6$ using $\lfloor a\rfloor \ge 1$. Also, $p=5\frac{c}{\lfloor c \rfloor}\ge 5$. Then, $5\leq p < 6$ so $5\leq \sqrt{\frac{60}{q}} < 6$ which then gives $q=2$ since it is an integer. Then, $\lfloor a \rfloor, \lfloor b \rfloor, \lfloor c \rfloor $ are a permutation of $1,1,2$.
+
+\textbf{Case 1: (2,1,1)} 
+
+Then, $bc=\frac{3}{2}, ac=4,ac=5$. This gives $a=\frac{2}{3}\sqrt{30}>3$.
+
+\textbf{Case 2: (1,2,1)}
+
+Then, $bc=3,ac=2,ab=5$. This gives $(\frac{\sqrt{30}}{3}, \frac{\sqrt{30}}{2}, \frac{\sqrt{30}}{5})$.
+
+\textbf{Case 3: (1,1,2)}
+
+Then, $bc=3,ac=4,ab=\frac{5}{2}$. This gives $(\frac{\sqrt{30}}{3}, \frac{\sqrt{30}}{4}, \frac{2\sqrt{30}}{5})$
+\end{sol}
+
+\subsection{Functional Analysis}
+We create some function and analyze when and how it changes.
+\begin{exam}[HMMT February 2013]
+Find the number of integers $n$ such that
+$$1+\lfloor \frac{100n}{101} \rfloor = \lceil \frac{99n}{100} \rceil$$
+\end{exam}
+%10100
+
+\begin{sol}
+We rewrite to get
+$\lceil \frac{99n}{100} \rceil - \lfloor \frac{100n}{101} \rfloor = 1$.
+
+Let $f(n)=\lceil \frac{99n}{100} \rceil - \lfloor \frac{100n}{101} \rfloor$. Then, note that $f(n)$ is an integer for all real numbers $n$. Also, $f(n+100\cdot 101)=f(n)-1$. Then, consider $f(i+100\cdot 101k)$ for $i=0,1\ldots 100\cdot 101-1$. For each $i$, there must exist a $k$ such that $f(i+100\cdot 101k)=1$, namely $k=f(i)$. It also follows that each $f(n)=1$ must correspond to some $f(i)$ (by taking modulo $100\cdot 101$).
+
+So, our answer is $101\cdot 100=\boxed{10100}$.
+\end{sol}
+
+Notice how strong our reasoning is here. This could have as easily applied to $f(n)=0$ or $f(n)=2019$. Many times, if you see a floors/ceiling problem with arbitrary seeming numbers (like 2020 or 2021), there's usually a lot of nice functional analysis.
+
+\begin{exam}[1985 AIME/10]
+How many of the first 1000 positive integers can be expressed in the form
+
+$\lfloor 2x \rfloor + \lfloor 4x \rfloor + \lfloor 6x \rfloor + \lfloor 8x \rfloor$,
+
+where $x$ is a real number, and $\lfloor z \rfloor$ denotes the greatest integer less than or equal to $z$?
+\end{exam}
+%600
+
+\begin{sol}
+Let $f(x)=\lfloor 2x \rfloor + \lfloor 4x \rfloor + \lfloor 6x \rfloor + \lfloor 8x \rfloor$.
+
+Note that $\lcm(2,4,6,8)=24$. Then, note $f(x+\frac{1}{2})=f(x)+1+2+3+4=f(x)+10$. Also, note that $f(x)$ only changes when $x$ "crosses" $\frac{n}{2}, \frac{n}{4}, \frac{n}{6}, \frac{n}{8}$. Therefore, it only changes when it crosses $\frac{n}{24}$. Then, we just look at $f(\frac{k}{24})$ for $k=1\ldots 11, 12$ and note the number of distinct values it reaches. It turns out there are $6$ distinct values in $[1,10]$ and so each interval $[10k+1,10k+10]$ also has $6$ distinct values.
+
+So, the total number of distinct values in $[1,1000]=100\cdot 6=\boxed{600}$
+\end{sol}
+
+\subsection{Remainders}
+We rewrite $x$ as $\lfloor x \rfloor + \{x\}$ where $\{x\}$ is the fractional part. We then use bounding on $0\leq \{x\}<1$.
+
+\begin{exam}[HMMT February 2013]
+Let $a_1,a_2,a_3,a_4,a_5$ be real numbers whose sum is $20$. Determine the smallest possible
+value of
+$$\sum_{1\leq i<j\leq 5} \lfloor a_{i}+a_{j}\rfloor$$
+\end{exam}
+
+\begin{sol}
+$$\sum_{1\leq i<j\leq 5} \lfloor a_{i}+a_{j}\rfloor$$
+$$ = \sum_{1\leq i<j\leq 5} a_{i}+a_{j} - \{a_{i}+a_{j}\}$$
+$$ = 4\cdot 20 - \sum_{1\leq i < j\leq 5} \{a_{i}+a_{j}\}$$
+Now, 
+$$\sum_{1\leq i < j\leq 5} \{a_{i}+a_{j}\}$$
+$$=\sum_{i=1}^{5} \{a_{i}+a_{i+2}\} + \sum_{i=1}^{5} \{a_{i}+a_{i+1}\}$$ where $a_{6}=a_{1}$ and $a_{7}=a_{2}$.
+
+Since $\sum_{i=1}^{5} a_{i}+a_{i+2}$ is an integer, $\sum_{i=1}^{5} \{a_{i}+a_{i+2}\}$ is also an integer. So it is at most $4$ Similarly, $\sum_{i=1}^{5} \{a_{i}+a_{i+1}\}$ is also an integer and is at most $4$.
+
+Then, the sum is at least $80-8=\boxed{72}$. We can achieve this using $a_{1}=a_{2}=a_{3}=a_{4}=0.4$ and $a_{5}=18.4$. (This is motivated by how we want the equality case for when $\sum_{i=1}^{5} \{a_{i}+a_{i+2}\}=4$ and $\sum_{i=1}^{5} \{a_{i}+a_{i+1}\}=4$).
+\end{sol}
+
+\begin{exam}[AMC 10B 2018/25]
+Let $\lfloor x \rfloor$ denote the greatest integer less than or equal to $x$. How many real numbers $x$ satisfy the equation $x^2 + 10,000\lfloor x \rfloor = 10,000x$?
+\end{exam}
+
+\begin{sol}
+We rewrite to get
+$$\lfloor x \rfloor = x-\frac{x^2}{10000}$$
+$$\frac{x^2}{10000} = x-\lfloor x \rfloor$$
+$$\frac{x^2}{10000} = \{ x \}$$
+Then, $$0\leq x^2 < 10000$$
+$$-99\leq x \leq 99$$
+So, there are $\boxed{199}$ possible $x$.
+\end{sol}
+
+\newpage
+\section{Problems}
+\minpt{25}
+\psetquote{You live and learn. At any rate, you live.}{Douglas Adams}
+
+\begin{prob}[1991 AIME/6]{4}
+Suppose $r^{}_{}$ is a real number for which
+$$
+\left\lfloor r + \frac{19}{100} \right\rfloor + \left\lfloor r + \frac{20}{100} \right\rfloor + \left\lfloor r + \frac{21}{100} \right\rfloor + \cdots + \left\lfloor r + \frac{91}{100} \right\rfloor = 546$$
+Find $\lfloor 100r \rfloor$. (For real $x$, $\lfloor x \rfloor$ is the greatest integer less than or equal to $x^{}_{}$.)
+\end{prob}
+%743
+
+\begin{prob}[AMC 10A 2020/22]{4}
+For how many positive integers $n \le 1000$ is$$\left\lfloor \dfrac{998}{n} \right\rfloor+\left\lfloor \dfrac{999}{n} \right\rfloor+\left\lfloor \dfrac{1000}{n}\right \rfloor$$not divisible by $3$? (Recall that $\lfloor x \rfloor$ is the greatest integer less than or equal to $x$.)
+\end{prob}
+%22
+
+
+\begin{prob}[AMC 10B 2020/24]{6}
+How many positive integers $n$ satisfy$$\dfrac{n+1000}{70} = \lfloor \sqrt{n} \rfloor?$$
+(Recall that $\lfloor x\rfloor$ is the greatest integer not exceeding $x$.)
+\end{prob}
+%6
+
+\begin{prob}[AMC 10B 2016/25]{6}
+Let $f(x)=\sum\limits_{k=2}^{10}(\lfloor kx \rfloor -k \lfloor x \rfloor)$, where $\lfloor r \rfloor$ denotes the greatest integer less than or equal to $r$. How many distinct values does $f(x)$ assume for $x \ge 0$?
+\end{prob}
+
+\begin{prob}[CMIMC 2017]{9}
+The set $S$ of positive real numbers $x$ such that 
+	\[ \left\lfloor\frac{2x}{5}\right\rfloor + \left\lfloor\frac{3x}{5}\right\rfloor + 1 = \left\lfloor x\right\rfloor \]
+	can be written as $S = \bigcup_{j = 1}^{\infty} I_{j}$, where the $I_{i}$ are disjoint intervals of the form $[a_{i}, b_{i}) = \{x \, | \, a_i \leq x < b_i\}$ and $b_{i} \leq a_{i+1}$ for all $i \geq 1$. Find $\sum_{i=1}^{2017} (b_{i} - a_{i})$.
+\end{prob}
+%3782/3
+
+\begin{prob}[Czech And Slovak MO]{9}
+Solve the equation $x\cdot  \lfloor x\cdot \lfloor x \cdot \lfloor x \rfloor \rfloor \rfloor = 88$ in the set of real numbers.
+\end{prob}
+%22/7
+
+\begin{prob}[AIME II/2020/14]{9}
+For real number $x$ let $\lfloor x\rfloor$ be the greatest integer less than or equal to $x$, and define $\{x\} = x - \lfloor x \rfloor$ to be the fractional part of $x$. For example, $\{3\} = 0$ and $\{4.56\} = 0.56$. Define $f(x)=x\{x\}$, and let $N$ be the number of real-valued solutions to the equation $f(f(f(x)))=17$ for $0\leq x\leq 2020$. Find the remainder when $N$ is divided by $1000$.
+\end{prob}
+%10
+\end{document}
