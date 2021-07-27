@@ -1,4 +1,4 @@
-\documentclass[11pt][mast]{lucky}
+\documentclass[mast]{lucky}
 
 
 \title{Combinatorial Recursions}
@@ -20,8 +20,8 @@ The common theme is that we break down each problem into smaller versions of the
 \begin{exam}[USAJMO 2018/1]
 For each positive integer $n$, find the number of $n$-digit positive integers that satisfy both of the following conditions:
 \begin{itemize}
-\Item no two consecutive digits are equal, and
-\Item the last digit is a prime.
+\item no two consecutive digits are equal, and
+\item the last digit is a prime.
 \end{itemize}
 \end{exam}
 
@@ -115,8 +115,8 @@ So, we need to subtract a total of $a_{n-3} - a_{n-4}$ from $3a_{n-1}.$
 [USAJMO 2019/5] Let $n$ be a nonnegative integer. Determine the number of ways to choose $(n+1)^2$ sets $S_{i,j} \subseteq \{1, 2, . . . , 2n\},$
 for all $0 \leq i \leq n$ and $0 \leq j \leq n$ (not necessarily distinct), such that
 \begin{itemize}
-\Item $|S_{i,j}| = i + j,$ and
-\Item $S_{i,j} \subseteq S_{k,l}$ if $0 \leq i \leq k \leq n$ and $0 \leq j \leq l \leq n.$
+\item $|S_{i,j}| = i + j,$ and
+\item $S_{i,j} \subseteq S_{k,l}$ if $0 \leq i \leq k \leq n$ and $0 \leq j \leq l \leq n.$
 \end{itemize}
 \end{exam}
 
@@ -208,8 +208,8 @@ Consider sequences that consist entirely of $ A$'s and $ B$'s and that have the 
 
 A collection of $8$ cubes consists of one cube with edge-length $k$ for each integer $k, 1 \le k \le 8.$ A tower is to be built using all $8$ cubes according to the rules:
 \begin{itemize}
-    \Item Any cube may be the bottom cube in the tower.
-    \Item The cube immediately on top of a cube with edge-length $k$ must have edge-length at most $k+2.$
+    \item Any cube may be the bottom cube in the tower.
+    \item The cube immediately on top of a cube with edge-length $k$ must have edge-length at most $k+2.$
 \end{itemize}
 Let $T$ be the number of different towers than can be constructed. What is the remainder when $T$ is divided by $1000?$
 \end{prob}
@@ -275,6 +275,12 @@ $24.$ Determine the number of ways in which we can choose sets of
 eight distinct vertices $\{P_{i_1} , P_{i_2}
 ,\ldots , P_{i_a }\}$ such that none of the arcs
 $P_{i_j}P_{i_k}$ has length $3$ or $8.$ 
+\end{prob}
+
+\begin{prob}[ISL 2020 C1]{9}
+Let $n$ be a positive integer. Find the number of permutations $a_1$, $a_2$, $\dots a_n$ of the
+sequence $1$, $2$, $\dots$ , $n$ satisfying
+$$a_1 \le 2a_2\le 3a_3 \le \dots \le na_n$$.
 \end{prob}
 
 \begin{prob}[PUMaC 2019 A/6]{13}
