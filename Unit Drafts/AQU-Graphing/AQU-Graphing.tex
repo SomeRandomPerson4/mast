@@ -1,0 +1,95 @@
+\documentclass[mast]{lucky}
+\usepackage{asymptote}
+
+\title{Graphing}
+\author{math1}
+\date{AQU}
+
+\begin{document}
+
+\maketitle
+
+By itself, graphing does not provide a rigorous solution, but allows us to gain intuition about the polynomial, function, or other condition given in the problem.
+
+We begin with the following example.
+
+\begin{exam}[AIME I 2015/10]
+    Let $f(x)$ be a third-degree polynomial with real coefficients satisfying
+    \begin{align*}
+        |f(1)|=|f(2)|=|f(3)|=|f(5)|=|f(6)|=|f(7)|=12.
+    \end{align*}
+    Find $|f(0)|$.
+\end{exam}
+
+\begin{sol}
+    A purely algebraic approach does not seem nice here due to the absolute values. Instead, we consider a graphical approach. By symmetry, we may assume that $f(1) = 12$. Red points are points that the cubic passes through.
+    \begin{center}
+        \begin{asy}
+            size(5cm);
+            draw((0,0)--(85,0),arrow=Arrow(TeXHead));
+            draw((0,0)--(0,-50),arrow=Arrow(TeXHead));
+            draw((0,0)--(0,50),arrow=Arrow(TeXHead));
+
+            draw((-1,30)--(1,30));
+            draw((-1,-30)--(1,-30));
+
+            label("$12$",(-7,30));
+            label("$-12$",(-10,-30));
+
+            for(int i = 1; i < 8; ++i) {     
+                int n = 10*i;
+                if(i == 4) {
+                    continue;
+                }
+                draw((n, 1)--(n, -1));
+                dot((n,30), blue);
+                dot((n,-30), blue);
+            }
+            dot((10,30), red);
+        \end{asy}
+    \end{center}
+    To continue, we would like to use a strong property of cubics that would uniquely determine the rest of the points. One such property is that a cubic has exactly two turning points. 
+
+    Attempting to draw a curve with exactly two turning points that passes through one blue point per tick gives the following unique (up to symmetry) set of red points that the cubic passes through.
+    \begin{center}
+        \begin{asy}
+            size(5cm);
+            draw((0,0)--(85,0),arrow=Arrow(TeXHead));
+            draw((0,0)--(0,-50),arrow=Arrow(TeXHead));
+            draw((0,0)--(0,50),arrow=Arrow(TeXHead));
+
+            draw((-1,30)--(1,30));
+            draw((-1,-30)--(1,-30));
+
+            label("$12$",(-7,30));
+            label("$-12$",(-10,-30));
+
+            for(int i = 1; i < 8; ++i) {
+                int n = 10*i;
+                if(i == 4) {
+                    continue;
+                }
+                draw((n, 1)--(n, -1));
+                dot((n,30), blue);
+                dot((n,-30), blue);
+            }
+            dot((10,30), red);
+            dot((20,-30), red);
+            dot((30,-30), red);
+            dot((50,30), red);
+            dot((60,30), red);
+            dot((70,-30), red);
+        \end{asy}
+    \end{center}
+    There are many ways to finish the problem from here. A direct way is to write a system of equations and solve for the constant term of $f(x)$, but it is more elegant to note that
+    \begin{align*}
+        f(x) = a(x - 1)(x - 5)(x - 6) + 12
+    \end{align*}
+    for some constant $a$. In particular, $-12 = f(2) = 12a + 12$, so $a = -2$. Then, $|f(0)| = f(0) = -30a + 12 = -30(-2) + 12 = \ansbold{72}$.
+\end{sol}
+
+\begin{remark}
+    Notice that the solution is not rigorous (although similar ideas are likely involved in a rigorous solution to the problem, only formalized), but interpreting the given function graphically allowed us to easily express informal ideas on paper.
+\end{remark}
+
+\end{document}
