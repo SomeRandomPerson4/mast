@@ -1,0 +1,25 @@
+*.asy
+*.toc
+*.out
+*.synctex.gz
+*.xwm
+*.log
+*.aux
+*.fdb_latexmk
+*.fls
+*.pre
+*.synctex
+*.synctex(busy)
+*.DS_Store
+desktop.ini
+
+# compendium
+compendium-*.pdf
+
+# just have to assume normal units have no more than 99 asy diagrams
+*-?.pdf
+*-??.pdf
+
+# ignore stuff from solprint
+*.prob
+*.sol
