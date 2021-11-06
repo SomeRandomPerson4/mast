@@ -6,11 +6,11 @@
 
 Yes and no, respectively. The repository is public because it has no reason to be private (you can't access sensitive materials or information from here unless you have access). Here are some benefits as to it being public:
 - I can put contribution instructions in the public README.
-- Because [mast-web](mathadvance/mast-web) is going to work with the **precise** structure of this repository, open-sourcing it will make the mast-web technology more clear to outsiders.
+- Because [mast-web](https://github.com/mathadvance/mast-web) is going to work with the **precise** structure of this repository, open-sourcing it will make the mast-web technology more clear to outsiders.
 
 ## Submodules
 
-How materials work is they are placed in git submodules. The structure of each submodule is quite simple: a `.tex` file and the corresponding `.pdf` file. Each material must be compiled with [lucky.cls](chennisden/chennistex). 
+How materials work is they are placed in git submodules. The structure of each submodule is quite simple: a `.tex` file and the corresponding `.pdf` file. Each material must be compiled with [lucky.cls](https://github.com/chennisden/chennistex). 
 
 A couple of submodules will be made public (CQV-Perspectives is the first I plan to make public). This is just so the submodule structure & expectations can be made even more clear.
 
