@@ -102,7 +102,7 @@ How many times must you flip a coin before you expect it to land heads twice in 
 The naive answer is $4$ (and it is the wrong answer!) and the reasoning for it being wrong is simple. The expected amount of flips should not be the same as having it land heads twice (without having to be consecutive). We use states to do this instead.
 
 \begin{sol}
-Let $E_n$ be the amount of times you expect to flip a coin for it to land heads $n$ times in a row. Then $E_2=(\frac{1}{2}\cdot E_1+\frac{1}{2}\cdot E_2)+1$ and $E_1=(\frac{1}{2}\cdot 0+\frac{1}{2}\cdot E_2)+1.$ Simplifying both of these equations, $E_2=E_1+2$ and $2E_1=E_2+2.$ Substituting $E_2$ into the second equation yields $2E_1=E_1+2+2=E_1+4,$ so $E_1=4.$ Substituting that into the first equation yields $E_2=4+2=6,$ so the expected amount of flips to get two heads in a row is $6.$
+Let $E_2$ be the amount of times you expect to flip a coin to get two heads in a row, and let $E_1$ be the amount of times you expect to flip a coin to get two heads in a row given that the last roll was a head. Then $E_2=(\frac{1}{2}\cdot E_1+\frac{1}{2}\cdot E_2)+1$ and $E_1=(\frac{1}{2}\cdot 0+\frac{1}{2}\cdot E_2)+1.$ Simplifying both of these equations, $E_2=E_1+2$ and $2E_1=E_2+2.$ Substituting $E_2$ into the second equation yields $2E_1=E_1+2+2=E_1+4,$ so $E_1=4.$ Substituting that into the first equation yields $E_2=4+2=6,$ so the expected amount of flips to get two heads in a row is $6.$
 \end{sol}
 
 The generalization for expected value is very similar to probability (just add a $1$ to the end).
